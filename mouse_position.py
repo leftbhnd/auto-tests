@@ -9,7 +9,7 @@ result = []
 def getter():
     point_name = ''
     while True:
-        point_name = raw_input('название скриншота: ')
+        point_name = raw_input('название координаты: ')
         coordinates = m.position()
         result.append([coordinates, point_name])
         print(result)
