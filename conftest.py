@@ -24,7 +24,7 @@ def mouseClick():
     return _method
 
 # функция для вызова скриншота и сравнения с оригиналом
-@pytest.fixture
+@pytest.fixture()
 def screenDiffChecker():
     def _method(original_image):
         pyautogui.screenshot(
@@ -37,7 +37,7 @@ def screenDiffChecker():
     return _method
 
 # функция набора текста на экранной клавиатуре
-@pytest.fixture
+@pytest.fixture()
 def typeText():
     def _method(array_of_letters):
         for letter in array_of_letters:
@@ -48,7 +48,7 @@ def typeText():
     return _method
 
 # запуск ноды
-@pytest.fixture
+@pytest.fixture()
 def node():
     rospy.init_node('autotest')
     node = AutoTest()
