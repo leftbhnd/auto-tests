@@ -49,6 +49,10 @@ class AutoTest:
         self._pub_drive_to_point = rospy.Publisher(
             'drive/point', UInt16, queue_size=10
         )
+
+        self._pub_drive_pause_to_point = rospy.Publisher(
+            'drive/pause', Bool, queue_size=10
+        )
         '''
         publishers для joy
         '''
@@ -82,12 +86,16 @@ class AutoTest:
         rospy.Subscriber(
             'drive/point', UInt16, self._pointListenerCallback
         )
+        rospy.Subscriber(
+            'drive/pause', Bool, self._drivePauseListenerCallback
+        )
         '''
         Переменные subscribers
         '''
         self._answer_subscriber_state = False
         self._interaction_subscriber_state = False
         self._point_subscriber_state = False
+        self._drive_pause_subscriber_state = False
         '''
         Переменные для getters
         '''
@@ -97,7 +105,7 @@ class AutoTest:
         self._rwheel_data = ''
         self._lwheel_data = ''
         self._current_point = ''
-
+        self._drive_pause = ''
         '''
         sleep for publishers
         '''
@@ -205,7 +213,12 @@ class AutoTest:
             self._current_point = data
             self._point_subscriber_state = False
 
+    def getCurrentPoint(self):
+        rospy.sleep(self._timeout)
+        return self._current_point
+
     def getWheelsData(self):
+        rospy.sleep(self._timeout)
         return [self._rwheel_data, self._rwheel_data]
     '''
     методы для joy
@@ -253,4 +266,5 @@ class AutoTest:
             self._interaction_subscriber_state = False
 
     def getInteraction(self):
+        rospy.sleep(self._timeout)
         return [self._interaction_state, self._interaction_reason]
