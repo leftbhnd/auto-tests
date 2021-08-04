@@ -53,6 +53,10 @@ class AutoTest:
         self._pub_drive_pause = rospy.Publisher(
             'drive/pause', Bool, queue_size=10
         )
+
+        self._pub_drive_station = rospy.Publisher(
+            'drive/station', Bool, queue_size=10
+        )
         '''
         publishers для joy
         '''
@@ -89,6 +93,12 @@ class AutoTest:
         rospy.Subscriber(
             'drive/pause', Bool, self._drivePauseListenerCallback
         )
+        rospy.Subscriber(
+            'drive/station', Bool, self._driveStationListenerCallback
+        )
+        rospy.Subscriber(
+            'charge/state', Bool, self._chargeStateListenerCallback
+        )
         '''
         Переменные subscribers
         '''
@@ -98,6 +108,8 @@ class AutoTest:
         self._lwheel_subscriber_state = False
         self._point_subscriber_state = False
         self._drive_pause_subscriber_state = False
+        self._drive_station_subscriber_state = False
+        self._charge_state_subscriber_state = False
         '''
         Переменные для getters
         '''
@@ -107,12 +119,13 @@ class AutoTest:
         self._rwheel_data = ''
         self._lwheel_data = ''
         self._current_point = ''
-        self._drive_pause = True
+        self._drive_pause_state = True
+        self._drive_station_status = False
+        self._charge_status = False
         '''
         sleep for publishers
         '''
         self._timeout = 0.5
-
     '''
     методы для asr / tts
     '''
@@ -225,7 +238,7 @@ class AutoTest:
             self._point_subscriber_state = False
 
     def drivePausePub(self):
-        self._pub_drive_pause.publish(not self._drive_pause)
+        self._pub_drive_pause.publish(not self._drive_pause_state)
         rospy.sleep(self._timeout)
 
     def drivePauseListener(self):
@@ -234,8 +247,30 @@ class AutoTest:
 
     def _drivePauseListenerCallback(self, data):
         if self._drive_pause_subscriber_state:
-            self._drive_pause = data
+            self._drive_pause_state = data
             self._drive_pause_subscriber_state = False
+
+    def driveStationPub(self):
+        self._pub_drive_station.publish(True)
+        rospy.sleep(self._timeout)
+
+    def driveStationListener(self):
+        self._drive_station_subscriber_state = True
+        rospy.sleep(self._timeout)
+
+    def _driveStationListenerCallback(self, data):
+        if self._drive_station_subscriber_state:
+            self._drive_station_status = data
+            self._drive_pause_subscriber_state = False
+
+    def chargeStateListener(self):
+        self._charge_state_subscriber_state = True
+        rospy.sleep(self._timeout)
+
+    def _chargeStateListenerCallback(self, data):
+        if self._charge_state_subscriber_state:
+            self._charge_status = data
+            self._charge_state_subscriber_state = False
 
     def getWheelsData(self):
         rospy.sleep(self._timeout)
@@ -247,7 +282,15 @@ class AutoTest:
 
     def getDrivePause(self):
         rospy.sleep(self._timeout)
-        return self._drive_pause
+        return self._drive_pause_state
+
+    def getDriveStationStatus(self):
+        rospy.sleep(self._timeout)
+        return self._drive_station_status
+
+    def getChargeState(self):
+        rospy.sleep(self._timeout)
+        return self._charge_status
     '''
     методы для joy
     '''
