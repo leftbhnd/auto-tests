@@ -13,33 +13,38 @@ from std_msgs.msg import Empty
 from std_msgs.msg import UInt16
 from std_msgs.msg import Bool
 from std_msgs.msg import String
+from std_msgs.msg import Empty
 
 
 class AutoTest:
     def __init__(self):
         # публикатор текста для распознавания речи
-        self.pub_text_to_asr = rospy.Publisher(
+        self._pub_text_to_asr = rospy.Publisher(
             'asr/result', ASRResult, queue_size=10
         )
         # публикатор текста на произношение
-        self.pub_text_to_tts = rospy.Publisher(
+        self._pub_text_to_tts = rospy.Publisher(
             'tts/start', TTSCommand, queue_size=10
         )
         # публикатор прерывания текущего произношения
-        self.pub_cancel_speech = rospy.Publisher(
+        self._pub_cancel_speech = rospy.Publisher(
             'tts/cancel', Empty, queue_size=10
         )
         # публикатор лица для распознавания лиц
-        self.pub_face_to_faceArray = rospy.Publisher(
+        self._pub_face_to_faceArray = rospy.Publisher(
             'face/info/array', FaceArray, queue_size=10
         )
         # публикатор переключение режима езды
-        self.pub_drive_mode = rospy.Publisher(
+        self._pub_drive_mode = rospy.Publisher(
             'drive/mode', UInt16, queue_size=10
         )
         # публикатор отправки робота на точку в навигации
-        self.pub_drive_to_point = rospy.Publisher(
+        self._pub_drive_to_point = rospy.Publisher(
             'drive/point', UInt16, queue_size=10
+        )
+        # публикатор переключения режима фраз с джойстика
+        self._pub_joystick_phrase_mode = rospy.Publisher(
+            'joy/speech/switch', Empty, queue_size=10
         )
 
         # переменная для подписчика
@@ -59,7 +64,7 @@ class AutoTest:
         asr_result.text = values.text
         asr_result.final = 1
         asr_result.conf = 1.0
-        self.pub_text_to_asr.publish(asr_result)
+        self._pub_text_to_asr.publish(asr_result)
         rospy.sleep(self._timeout)
 
     # метод оправки текста на произношение
@@ -70,7 +75,7 @@ class AutoTest:
         tts_command.uuid = values.uuid
         tts_command.ignore_saving = False
         tts_command.rate = 0
-        self.pub_text_to_tts.publish(tts_command)
+        self._pub_text_to_tts.publish(tts_command)
         rospy.sleep(self._timeout)
 
     # подписчик для получения ответа робота
@@ -90,7 +95,7 @@ class AutoTest:
 
     # метод прерывания текущей реплики робота
     def cancelSpeech(self):
-        self.pub_cancel_speech.publish()
+        self._pub_cancel_speech.publish()
         rospy.sleep(self._timeout)
 
     # метод отправки лица в распознавание речи
@@ -114,22 +119,27 @@ class AutoTest:
         face_score.score = values.score
         face.persons = [face_score]
         face_array.faces.append(face)
-        self.pub_face_to_faceArray.publish(face_array)
+        self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
 
     # метод для активации режима "авто"
     def autoModePub(self):
-        self.pub_drive_mode.publish(1)
+        self._pub_drive_mode.publish(1)
         rospy.sleep(self._timeout)
 
     # метод для активации режима "джойстик"
     def joyModePub(self):
-        self.pub_drive_mode.publish(0)
+        self._pub_drive_mode.publish(0)
         rospy.sleep(self._timeout)
 
     # метод для отправки робота на точку
     def driveToPointPub(self, values):
-        self.pub_drive_to_point.publish(values.point)
+        self._pub_drive_to_point.publish(values.point)
+        rospy.sleep(self._timeout)
+
+    # метод для переключения режима фраз с джойстик
+    def switchJoystickPhraseMode(self):
+        self._pub_joystick_phrase_mode.publish()
         rospy.sleep(self._timeout)
 
     def getAnswer(self):
