@@ -212,6 +212,8 @@ class AutoTest:
         rospy.sleep(self._timeout)
 
     def interactionListener(self):
+        self._interaction_state = ''
+        self._interaction_reason = ''
         self._interaction_subscriber_state = True
         rospy.sleep(self._timeout)
 
