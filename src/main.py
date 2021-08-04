@@ -79,6 +79,9 @@ class AutoTest:
         rospy.Subscriber(
             'lwheel', Int32, self._lwheelListenerCallback
         )
+        rospy.Subscriber(
+            'drive/point', UInt16, self._pointListenerCallback
+        )
         '''
         Переменные subscribers
         '''
@@ -92,6 +95,7 @@ class AutoTest:
         self._interaction_reason = ''
         self._rwheel_data = ''
         self._lwheel_data = ''
+        self._current_point = ''
 
         '''
         sleep for publishers
@@ -184,11 +188,15 @@ class AutoTest:
     def driveToPointPub(self, values):
         self._pub_drive_to_point.publish(values.point)
         rospy.sleep(self._timeout)
-    
+
     def _rwheelListenerCallback(self, data):
         self._rwheel_data = data
+
     def _lwheelListenerCallback(self, data):
         self._lwheel_data = data
+
+    def _pointListenerCallback(self, data):
+        self._current_point = data
 
     def getWheelsData(self):
         return [self._rwheel_data, self._rwheel_data]
@@ -228,8 +236,6 @@ class AutoTest:
         rospy.sleep(self._timeout)
 
     def interactionListener(self):
-        self._interaction_state = ''
-        self._interaction_reason = ''
         self._interaction_subscriber_state = True
         rospy.sleep(self._timeout)
 
