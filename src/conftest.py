@@ -15,7 +15,7 @@ timeout = 0.5
 
 m = PyMouse()
 
-# функция клика
+
 @pytest.fixture()
 def mouseClick():
     def _method(msg):
@@ -23,20 +23,22 @@ def mouseClick():
         time.sleep(timeout)
     return _method
 
-# функция для вызова скриншота и сравнения с оригиналом
+
 @pytest.fixture()
 def screenDiffChecker():
     def _method(original_image):
         pyautogui.screenshot(
-            screens_dir + 'screen.png', region=(0, 40, 1920, 1080))
+            screens_dir + 'screen.png', region=(0, 40, 1920, 1080)
+        )
         current = Image.open(screens_dir + 'screen.png')
         original = Image.open(
-            screens_dir + original_image)
+            screens_dir + original_image
+        )
         difference = ImageChops.difference(current, original).getbbox()
         return difference
     return _method
 
-# функция набора текста на экранной клавиатуре
+
 @pytest.fixture()
 def typeText():
     def _method(array_of_letters):
@@ -47,7 +49,7 @@ def typeText():
             time.sleep(0.1)
     return _method
 
-# запуск ноды
+
 @pytest.fixture()
 def node():
     rospy.init_node('autotest')

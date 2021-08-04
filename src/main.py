@@ -19,22 +19,28 @@ class AutoTest:
     def __init__(self):
         # публикатор текста для распознавания речи
         self.pub_text_to_asr = rospy.Publisher(
-            'asr/result', ASRResult, queue_size=10)
+            'asr/result', ASRResult, queue_size=10
+        )
         # публикатор текста на произношение
         self.pub_text_to_tts = rospy.Publisher(
-            'tts/start', TTSCommand, queue_size=10)
+            'tts/start', TTSCommand, queue_size=10
+        )
         # публикатор прерывания текущего произношения
         self.pub_cancel_speech = rospy.Publisher(
-            'tts/cancel', Empty, queue_size=10)
+            'tts/cancel', Empty, queue_size=10
+        )
         # публикатор лица для распознавания лиц
         self.pub_face_to_faceArray = rospy.Publisher(
-            'face/info/array', FaceArray, queue_size=10)
+            'face/info/array', FaceArray, queue_size=10
+        )
         # публикатор переключение режима езды
         self.pub_drive_mode = rospy.Publisher(
-            'drive/mode', UInt16, queue_size=10)
+            'drive/mode', UInt16, queue_size=10
+        )
         # публикатор отправки робота на точку в навигации
         self.pub_drive_to_point = rospy.Publisher(
-            'drive/point', UInt16, queue_size=10)
+            'drive/point', UInt16, queue_size=10
+        )
 
         # переменная для подписчика
         self._answer_subscriber_state = False
@@ -72,8 +78,9 @@ class AutoTest:
         self._robot_answer = ''
         self._answer_subscriber_state = True
         rospy.sleep(self._timeout)
-        rospy.Subscriber('answers/answer', Answer,
-                        self._answersListnerCallback)
+        rospy.Subscriber(
+            'answers/answer', Answer, self._answersListnerCallback
+        )
 
     # callback для получения значения переменной ответа
     def _answersListnerCallback(self, data):
