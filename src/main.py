@@ -9,6 +9,8 @@ from promobot_msgs.msg import FaceArray
 from promobot_msgs.msg import Face
 from promobot_msgs.msg import FaceScore
 from promobot_msgs.msg import TTSCommand
+from promobot_msgs.msg import Interaction
+from sensor_msgs.msg import Joy
 from std_msgs.msg import Empty
 from std_msgs.msg import UInt16
 from std_msgs.msg import Bool
@@ -18,43 +20,79 @@ from std_msgs.msg import Empty
 
 class AutoTest:
     def __init__(self):
-        # публикатор текста для распознавания речи
+        ''' 
+        publishers для asr / tts
+        '''
         self._pub_text_to_asr = rospy.Publisher(
             'asr/result', ASRResult, queue_size=10
         )
-        # публикатор текста на произношение
         self._pub_text_to_tts = rospy.Publisher(
             'tts/start', TTSCommand, queue_size=10
         )
-        # публикатор прерывания текущего произношения
         self._pub_cancel_speech = rospy.Publisher(
             'tts/cancel', Empty, queue_size=10
         )
-        # публикатор лица для распознавания лиц
+        '''
+        publishers для faceRecognize
+        '''
         self._pub_face_to_faceArray = rospy.Publisher(
             'face/info/array', FaceArray, queue_size=10
         )
-        # публикатор переключение режима езды
+        '''
+        publishers для drive
+        '''
         self._pub_drive_mode = rospy.Publisher(
             'drive/mode', UInt16, queue_size=10
         )
-        # публикатор отправки робота на точку в навигации
+
         self._pub_drive_to_point = rospy.Publisher(
             'drive/point', UInt16, queue_size=10
         )
-        # публикатор переключения режима фраз с джойстика
-        self._pub_joystick_phrase_mode = rospy.Publisher(
+        '''
+        publishers для joy
+        '''
+        self._pub_joy_phrase_mode = rospy.Publisher(
             'joy/speech/switch', Empty, queue_size=10
         )
 
-        # переменная для подписчика
+        self._pub_joy_cmd = rospy.Publisher('joy', Joy, queue_size=10)
+
+        '''
+        publishers для interaction
+        '''
+        self._pub_interaction = rospy.Publisher(
+            'interaction', Interaction, queue_size=10
+        )
+        '''
+        subscribers
+        '''
+        rospy.Subscriber(
+            'answers/answer', Answer, self._answersListenerCallback
+        )
+        rospy.Subscriber(
+            'interaction', Interaction, self._interactionListenerCallback
+        )
+        '''
+        Переменные subscribers
+        '''
         self._answer_subscriber_state = False
-        # переменная для записи ответа
+        self._interaction_subscriber_state = False
+        '''
+        Переменные для getters
+        '''
         self._robot_answer = ''
-        # таймауты
+        self._interaction_state = ''
+        self._interaction_reason = ''
+
+        '''
+        sleep for publishers
+        '''
         self._timeout = 0.5
 
-    # метод отправки сообщения в asr
+    ''' 
+    методы для asr / tts
+    '''
+
     def asrPub(self, values):
         asr_result = ASRResult()
         asr_result.header.frame_id = "asr"
@@ -67,7 +105,6 @@ class AutoTest:
         self._pub_text_to_asr.publish(asr_result)
         rospy.sleep(self._timeout)
 
-    # метод оправки текста на произношение
     def ttsPub(self, values):
         tts_command = TTSCommand()
         tts_command.text = values.text
@@ -78,27 +115,28 @@ class AutoTest:
         self._pub_text_to_tts.publish(tts_command)
         rospy.sleep(self._timeout)
 
-    # подписчик для получения ответа робота
-    def answersListner(self):
+    def answersListener(self):
         self._robot_answer = ''
         self._answer_subscriber_state = True
         rospy.sleep(self._timeout)
-        rospy.Subscriber(
-            'answers/answer', Answer, self._answersListnerCallback
-        )
 
-    # callback для получения значения переменной ответа
-    def _answersListnerCallback(self, data):
+    def _answersListenerCallback(self, data):
         if self._answer_subscriber_state:
             self._robot_answer = data.replica.text
             self._answer_subscriber_state = False
 
-    # метод прерывания текущей реплики робота
     def cancelSpeech(self):
         self._pub_cancel_speech.publish()
         rospy.sleep(self._timeout)
 
-    # метод отправки лица в распознавание речи
+    def getAnswer(self):
+        rospy.sleep(self._timeout)
+        return self._robot_answer.decode('utf-8')
+
+    ''' 
+    методы для faceRecognize
+    '''
+
     def facePub(self, values):
         face_array = FaceArray()
         face = Face()
@@ -122,47 +160,66 @@ class AutoTest:
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
 
-    # метод для активации режима "авто"
+    '''
+    методы для driving
+    '''
+
     def autoModePub(self):
         self._pub_drive_mode.publish(1)
         rospy.sleep(self._timeout)
 
-    # метод для активации режима "джойстик"
     def joyModePub(self):
         self._pub_drive_mode.publish(0)
         rospy.sleep(self._timeout)
 
-    # метод для отправки робота на точку
     def driveToPointPub(self, values):
         self._pub_drive_to_point.publish(values.point)
         rospy.sleep(self._timeout)
 
-    # метод для переключения режима фраз с джойстик
-    def switchJoystickPhraseMode(self):
-        self._pub_joystick_phrase_mode.publish()
+    '''
+    методы для joy
+    '''
+
+    def switchJoyPhraseMode(self):
+        self._pub_joy_phrase_mode.publish()
         rospy.sleep(self._timeout)
 
-    def getAnswer(self):
+    def sendJoyCommand(self, values):
+        joy = Joy()
+        joy.header.frame_id = ''
+        joy.header.stamp = rospy.get_rostime()
+        '''
+        axes и buttons представляют собой массив float и int, сообщение формируется отдельным классом: JoyCmdMsg().
+        Добавлены команды: upVolume, downVolume, upMic, downMic, phraseMode, nextPhrase, previosePhrase, autoMode
+        чтобы сформировать сообщение, необходимо вызвать нужный метод. Пример:
+        joy = JoyCmdMsg()
+        joy_msg = joy.autoMode()
+        '''
+        joy.axes = values['axes']
+        joy.buttons = values['buttons']
+        self._pub_joy_cmd.publish(joy)
         rospy.sleep(self._timeout)
-        return self._robot_answer.decode('utf-8')
 
+    '''
+    методы для interaction
+    '''
 
-class AsrMsg:
-    def __init__(self, text, uuid):
-        self.text = text
-        self.uuid = uuid
+    def startInteraction(self, values):
+        interaction = Interaction()
+        interaction.state = values.state
+        interaction.reason = values.reason
+        self._pub_interaction.publish(interaction)
+        rospy.sleep(self._timeout)
 
+    def interactionListener(self):
+        self._interaction_subscriber_state = True
+        rospy.sleep(self._timeout)
 
-class ClickMsg:
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
+    def _interactionListenerCallback(self, data):
+        if self._interaction_subscriber_state:
+            self._interaction_state = data.state
+            self._interaction_reason = data.reason
+            self._interaction_subscriber_state = False
 
-
-class FaseMsg:
-    def __init__(self, type, id, facemask, score):
-        self.type = type
-        self.id = id
-        self.facemask = facemask
-        self.score = score
+    def getInteraction(self):
+        return [self._interaction_state, self._interaction_reason]
