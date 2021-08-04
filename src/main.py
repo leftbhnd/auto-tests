@@ -22,8 +22,11 @@ from std_msgs.msg import Int32
 class AutoTest:
     def __init__(self):
         '''
-        publishers для asr / tts
+        publishers&subscribers для asr / tts
         '''
+        rospy.Subscriber(
+            'answers/answer', Answer, self._answersListenerCallback
+        )
         self._pub_text_to_asr = rospy.Publisher(
             'asr/result', ASRResult, queue_size=10
         )
@@ -34,31 +37,50 @@ class AutoTest:
             'tts/cancel', Empty, queue_size=10
         )
         '''
-        publishers для faceRecognize
+        publishers&subscribers для faceRecognize
         '''
         self._pub_face_to_faceArray = rospy.Publisher(
             'face/info/array', FaceArray, queue_size=10
         )
         '''
-        publishers для drive
+        publishers&subscribers для drive
         '''
         self._pub_drive_mode = rospy.Publisher(
             'drive/mode', UInt16, queue_size=10
         )
 
+        rospy.Subscriber(
+            'drive/point', UInt16, self._pointListenerCallback
+        )
         self._pub_drive_to_point = rospy.Publisher(
             'drive/point', UInt16, queue_size=10
         )
 
+        rospy.Subscriber(
+            'drive/pause', Bool, self._drivePauseListenerCallback
+        )
         self._pub_drive_pause = rospy.Publisher(
             'drive/pause', Bool, queue_size=10
         )
 
+        rospy.Subscriber(
+            'drive/station', Bool, self._driveStationListenerCallback
+        )
         self._pub_drive_station = rospy.Publisher(
             'drive/station', Bool, queue_size=10
         )
+
+        rospy.Subscriber(
+            'rwheel', Int32, self._rwheelListenerCallback
+        )
+        rospy.Subscriber(
+            'lwheel', Int32, self._lwheelListenerCallback
+        )
+        rospy.Subscriber(
+            'charge/state', Bool, self._chargeStateListenerCallback
+        )
         '''
-        publishers для joy
+        publishers&subscribers для joy
         '''
         self._pub_joy_phrase_mode = rospy.Publisher(
             'joy/speech/switch', Empty, queue_size=10
@@ -67,38 +89,15 @@ class AutoTest:
         self._pub_joy_cmd = rospy.Publisher('joy', Joy, queue_size=10)
 
         '''
-        publishers для interaction
+        publishers&subscribers для interaction
         '''
-        self._pub_interaction = rospy.Publisher(
-            'interaction', Interaction, queue_size=10
-        )
-        '''
-        subscribers
-        '''
-        rospy.Subscriber(
-            'answers/answer', Answer, self._answersListenerCallback
-        )
         rospy.Subscriber(
             'interaction', Interaction, self._interactionListenerCallback
         )
-        rospy.Subscriber(
-            'rwheel', Int32, self._rwheelListenerCallback
+        self._pub_interaction = rospy.Publisher(
+            'interaction', Interaction, queue_size=10
         )
-        rospy.Subscriber(
-            'lwheel', Int32, self._lwheelListenerCallback
-        )
-        rospy.Subscriber(
-            'drive/point', UInt16, self._pointListenerCallback
-        )
-        rospy.Subscriber(
-            'drive/pause', Bool, self._drivePauseListenerCallback
-        )
-        rospy.Subscriber(
-            'drive/station', Bool, self._driveStationListenerCallback
-        )
-        rospy.Subscriber(
-            'charge/state', Bool, self._chargeStateListenerCallback
-        )
+
         '''
         Переменные subscribers
         '''
@@ -120,8 +119,8 @@ class AutoTest:
         self._lwheel_data = ''
         self._current_point = ''
         self._drive_pause_state = True
-        self._drive_station_status = False
-        self._charge_status = False
+        self._drive_station_state = False
+        self._charge_state = False
         '''
         sleep for publishers
         '''
@@ -152,6 +151,10 @@ class AutoTest:
         self._pub_text_to_tts.publish(tts_command)
         rospy.sleep(self._timeout)
 
+    def cancelSpeech(self):
+        self._pub_cancel_speech.publish()
+        rospy.sleep(self._timeout)
+
     def answersListener(self):
         self._robot_answer = ''
         self._answer_subscriber_state = True
@@ -161,10 +164,6 @@ class AutoTest:
         if self._answer_subscriber_state:
             self._robot_answer = data.replica.text
             self._answer_subscriber_state = False
-
-    def cancelSpeech(self):
-        self._pub_cancel_speech.publish()
-        rospy.sleep(self._timeout)
 
     def getAnswer(self):
         rospy.sleep(self._timeout)
@@ -260,7 +259,7 @@ class AutoTest:
 
     def _driveStationListenerCallback(self, data):
         if self._drive_station_subscriber_state:
-            self._drive_station_status = data
+            self._drive_station_state = data
             self._drive_pause_subscriber_state = False
 
     def chargeStateListener(self):
@@ -269,7 +268,7 @@ class AutoTest:
 
     def _chargeStateListenerCallback(self, data):
         if self._charge_state_subscriber_state:
-            self._charge_status = data
+            self._charge_state = data
             self._charge_state_subscriber_state = False
 
     def getWheelsData(self):
@@ -286,11 +285,11 @@ class AutoTest:
 
     def getDriveStationStatus(self):
         rospy.sleep(self._timeout)
-        return self._drive_station_status
+        return self._drive_station_state
 
     def getChargeState(self):
         rospy.sleep(self._timeout)
-        return self._charge_status
+        return self._charge_state
     '''
     методы для joy
     '''
@@ -303,13 +302,6 @@ class AutoTest:
         joy = Joy()
         joy.header.frame_id = ''
         joy.header.stamp = rospy.get_rostime()
-        '''
-        axes и buttons представляют собой массив float и int, сообщение формируется отдельным классом: JoyCmdMsg().
-        Добавлены команды: upVolume, downVolume, upMic, downMic, phraseMode, nextPhrase, previosePhrase, autoMode
-        чтобы сформировать сообщение, необходимо вызвать нужный метод. Пример:
-        joy = JoyCmdMsg()
-        joy_msg = joy.autoMode()
-        '''
         joy.axes = values['axes']
         joy.buttons = values['buttons']
         self._pub_joy_cmd.publish(joy)
