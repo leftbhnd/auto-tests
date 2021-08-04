@@ -87,6 +87,7 @@ class AutoTest:
         '''
         self._answer_subscriber_state = False
         self._interaction_subscriber_state = False
+        self._point_subscriber_state = False
         '''
         Переменные для getters
         '''
@@ -195,8 +196,14 @@ class AutoTest:
     def _lwheelListenerCallback(self, data):
         self._lwheel_data = data
 
+    def pointListener(self):
+        self._point_subscriber_state = True
+        rospy.sleep(self._timeout)
+
     def _pointListenerCallback(self, data):
-        self._current_point = data
+        if self._point_subscriber_state:
+            self._current_point = data
+            self._point_subscriber_state = False
 
     def getWheelsData(self):
         return [self._rwheel_data, self._rwheel_data]
