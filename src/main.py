@@ -37,11 +37,11 @@ class AutoTest:
             'drive/point', UInt16, queue_size=10)
 
         # переменная для подписчика
-        self.answer_subscriber_state = False
+        self._answer_subscriber_state = False
         # переменная для записи ответа
-        self.robot_answer = ''
+        self._robot_answer = ''
         # таймауты
-        self.timeout = 0.5
+        self._timeout = 0.5
 
     # метод отправки сообщения в asr
     def asrPub(self, values):
@@ -54,7 +54,7 @@ class AutoTest:
         asr_result.final = 1
         asr_result.conf = 1.0
         self.pub_text_to_asr.publish(asr_result)
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     # метод оправки текста на произношение
     def ttsPub(self, values):
@@ -65,26 +65,26 @@ class AutoTest:
         tts_command.ignore_saving = False
         tts_command.rate = 0
         self.pub_text_to_tts.publish(tts_command)
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     # подписчик для получения ответа робота
     def answersListner(self):
-        self.robot_answer = ''
-        self.answer_subscriber_state = True
-        rospy.sleep(self.timeout)
+        self._robot_answer = ''
+        self._answer_subscriber_state = True
+        rospy.sleep(self._timeout)
         rospy.Subscriber('answers/answer', Answer,
                         self._answersListnerCallback)
 
     # callback для получения значения переменной ответа
     def _answersListnerCallback(self, data):
-        if self.answer_subscriber_state:
-            self.robot_answer = data.replica.text
-            self.answer_subscriber_state = False
+        if self._answer_subscriber_state:
+            self._robot_answer = data.replica.text
+            self._answer_subscriber_state = False
 
     # метод прерывания текущей реплики робота
     def cancelSpeech(self):
         self.pub_cancel_speech.publish()
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     # метод отправки лица в распознавание речи
     def facePub(self, values):
@@ -108,26 +108,26 @@ class AutoTest:
         face.persons = [face_score]
         face_array.faces.append(face)
         self.pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     # метод для активации режима "авто"
     def autoModePub(self):
         self.pub_drive_mode.publish(1)
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     # метод для активации режима "джойстик"
     def joyModePub(self):
         self.pub_drive_mode.publish(0)
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     # метод для отправки робота на точку
     def driveToPointPub(self, values):
         self.pub_drive_to_point.publish(values.point)
-        rospy.sleep(self.timeout)
+        rospy.sleep(self._timeout)
 
     def getAnswer(self):
-        rospy.sleep(self.timeout)
-        return self.robot_answer.decode('utf-8')
+        rospy.sleep(self._timeout)
+        return self._robot_answer.decode('utf-8')
 
 
 class AsrMsg:
