@@ -54,7 +54,7 @@ class AutoTest:
         asr_result.final = 1
         asr_result.conf = 1.0
         self.pub_text_to_asr.publish(asr_result)
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     # метод оправки текста на произношение
     def ttsPub(self, values):
@@ -65,13 +65,13 @@ class AutoTest:
         tts_command.ignore_saving = False
         tts_command.rate = 0
         self.pub_text_to_tts.publish(tts_command)
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     # подписчик для получения ответа робота
     def answersListner(self):
         self.robot_answer = ''
         self.answer_subscriber_state = True
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
         rospy.Subscriber('answers/answer', Answer,
                         self._answersListnerCallback)
 
@@ -84,7 +84,7 @@ class AutoTest:
     # метод прерывания текущей реплики робота
     def cancelSpeech(self):
         self.pub_cancel_speech.publish()
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     # метод отправки лица в распознавание речи
     def facePub(self, values):
@@ -108,25 +108,25 @@ class AutoTest:
         face.persons = [face_score]
         face_array.faces.append(face)
         self.pub_face_to_faceArray.publish(face_array)
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     # метод для активации режима "авто"
     def autoModePub(self):
         self.pub_drive_mode.publish(1)
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     # метод для активации режима "джойстик"
     def joyModePub(self):
         self.pub_drive_mode.publish(0)
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     # метод для отправки робота на точку
     def driveToPointPub(self, values):
         self.pub_drive_to_point.publish(values.point)
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
 
     def getAnswer(self):
-        time.sleep(self.timeout)
+        rospy.sleep(self.timeout)
         return self.robot_answer.decode('utf-8')
 
 
