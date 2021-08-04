@@ -16,6 +16,7 @@ from std_msgs.msg import UInt16
 from std_msgs.msg import Bool
 from std_msgs.msg import String
 from std_msgs.msg import Empty
+from std_msgs.msg import Int32
 
 
 class AutoTest:
@@ -72,6 +73,12 @@ class AutoTest:
         rospy.Subscriber(
             'interaction', Interaction, self._interactionListenerCallback
         )
+        rospy.Subscriber(
+            'rwheel', Int32, self._rwheelListenerCallback
+        )
+        rospy.Subscriber(
+            'lwheel', Int32, self._lwheelListenerCallback
+        )
         '''
         Переменные subscribers
         '''
@@ -83,6 +90,8 @@ class AutoTest:
         self._robot_answer = ''
         self._interaction_state = ''
         self._interaction_reason = ''
+        self._rwheel_data = ''
+        self._lwheel_data = ''
 
         '''
         sleep for publishers
@@ -175,7 +184,14 @@ class AutoTest:
     def driveToPointPub(self, values):
         self._pub_drive_to_point.publish(values.point)
         rospy.sleep(self._timeout)
+    
+    def _rwheelListenerCallback(self, data):
+        self._rwheel_data = data
+    def _lwheelListenerCallback(self, data):
+        self._lwheel_data = data
 
+    def getWheelsData(self):
+        return [self._rwheel_data, self._rwheel_data]
     '''
     методы для joy
     '''
