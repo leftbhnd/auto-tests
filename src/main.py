@@ -21,7 +21,7 @@ from std_msgs.msg import Int32
 
 class AutoTest:
     def __init__(self):
-        ''' 
+        '''
         publishers для asr / tts
         '''
         self._pub_text_to_asr = rospy.Publisher(
@@ -50,7 +50,7 @@ class AutoTest:
             'drive/point', UInt16, queue_size=10
         )
 
-        self._pub_drive_pause_to_point = rospy.Publisher(
+        self._pub_drive_pause = rospy.Publisher(
             'drive/pause', Bool, queue_size=10
         )
         '''
@@ -94,6 +94,8 @@ class AutoTest:
         '''
         self._answer_subscriber_state = False
         self._interaction_subscriber_state = False
+        self._rwheel_subscriber_state = False
+        self._lwheel_subscriber_state = False
         self._point_subscriber_state = False
         self._drive_pause_subscriber_state = False
         '''
@@ -105,13 +107,13 @@ class AutoTest:
         self._rwheel_data = ''
         self._lwheel_data = ''
         self._current_point = ''
-        self._drive_pause = ''
+        self._drive_pause = True
         '''
         sleep for publishers
         '''
         self._timeout = 0.5
 
-    ''' 
+    '''
     методы для asr / tts
     '''
 
@@ -155,7 +157,7 @@ class AutoTest:
         rospy.sleep(self._timeout)
         return self._robot_answer.decode('utf-8')
 
-    ''' 
+    '''
     методы для faceRecognize
     '''
 
@@ -198,11 +200,20 @@ class AutoTest:
         self._pub_drive_to_point.publish(values.point)
         rospy.sleep(self._timeout)
 
+    def wheelsListener(self):
+        self._lwheel_subscriber_state = True
+        self._rwheel_subscriber_state = True
+        rospy.sleep(self._timeout)
+
     def _rwheelListenerCallback(self, data):
-        self._rwheel_data = data
+        if self._rwheel_subscriber_state:
+            self._rwheel_data = data
+            self._rwheel_subscriber_state = False
 
     def _lwheelListenerCallback(self, data):
-        self._lwheel_data = data
+        if self._lwheel_subscriber_state:
+            self._lwheel_data = data
+            self._lwheel_subscriber_state = False
 
     def pointListener(self):
         self._point_subscriber_state = True
@@ -213,13 +224,30 @@ class AutoTest:
             self._current_point = data
             self._point_subscriber_state = False
 
-    def getCurrentPoint(self):
+    def drivePausePub(self):
+        self._pub_drive_pause.publish(not self._drive_pause)
         rospy.sleep(self._timeout)
-        return self._current_point
+
+    def drivePauseListener(self):
+        self._drive_pause_subscriber_state = True
+        rospy.sleep(self._timeout)
+
+    def _drivePauseListenerCallback(self, data):
+        if self._drive_pause_subscriber_state:
+            self._drive_pause = data
+            self._drive_pause_subscriber_state = False
 
     def getWheelsData(self):
         rospy.sleep(self._timeout)
         return [self._rwheel_data, self._rwheel_data]
+
+    def getCurrentPoint(self):
+        rospy.sleep(self._timeout)
+        return self._current_point
+
+    def getDrivePause(self):
+        rospy.sleep(self._timeout)
+        return self._drive_pause
     '''
     методы для joy
     '''
