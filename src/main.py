@@ -10,9 +10,12 @@ from promobot_msgs.msg import Face
 from promobot_msgs.msg import FaceScore
 from promobot_msgs.msg import TTSCommand
 from promobot_msgs.msg import Interaction
+from promobot_msgs.msg import ScriptProcess
+from promobot_msgs.msg import ServoStates
 from sensor_msgs.msg import Joy
 from std_msgs.msg import Empty
 from std_msgs.msg import UInt16
+from std_msgs.msg import UInt8
 from std_msgs.msg import Bool
 from std_msgs.msg import String
 from std_msgs.msg import Empty
@@ -71,6 +74,9 @@ class AutoTest:
         )
 
         rospy.Subscriber(
+            'drive/status', UInt8, self._driveStatusListenerCallback
+        )
+        rospy.Subscriber(
             'rwheel', Int32, self._rwheelListenerCallback
         )
         rospy.Subscriber(
@@ -99,6 +105,16 @@ class AutoTest:
         )
 
         '''
+        publishers&subscribers для script/servos
+        '''
+        rospy.Subscriber(
+            'script/process', ScriptProcess, self._scriptProcessListenerCallback
+        )
+        rospy.Subscriber(
+            'promobot_servos/core', ServoStates, self._servoStateListenerCallback
+        )
+
+        '''
         Переменные subscribers
         '''
         self._answer_subscriber_state = False
@@ -108,7 +124,10 @@ class AutoTest:
         self._point_subscriber_state = False
         self._drive_pause_subscriber_state = False
         self._drive_station_subscriber_state = False
+        self._drive_status_subscriber_state = False
         self._charge_state_subscriber_state = False
+        self._script_process_subscriber_state = False
+        self._servos_state_subscriber_state = False
         '''
         Переменные для getters
         '''
@@ -120,7 +139,15 @@ class AutoTest:
         self._current_point = ''
         self._drive_pause_state = True
         self._drive_station_state = False
+        self._drive_status = 0
         self._charge_state = False
+        self._script_name = ''
+        self._script_state = False
+        self._servos_state = []
+        '''
+        param's getter
+        '''
+        self._levels_order = rospy.get_param('answers/levels_order')
         '''
         sleep for publishers
         '''
@@ -169,6 +196,8 @@ class AutoTest:
         rospy.sleep(self._timeout)
         return self._robot_answer.decode('utf-8')
 
+    def getLevelsOrder(self):
+        return self._levels_order
     '''
     методы для faceRecognize
     '''
@@ -262,6 +291,15 @@ class AutoTest:
             self._drive_station_state = data
             self._drive_pause_subscriber_state = False
 
+    def driveStatusListener(self):
+        self._drive_status_subscriber_state = True
+        rospy.sleep(self._timeout)
+
+    def _driveStatusListenerCallback(self, data):
+        if self._drive_status_subscriber_state:
+            self._drive_status = data
+            self._drive_status_subscriber_state = False
+
     def chargeStateListener(self):
         self._charge_state_subscriber_state = True
         rospy.sleep(self._timeout)
@@ -286,6 +324,10 @@ class AutoTest:
     def getDriveStationStatus(self):
         rospy.sleep(self._timeout)
         return self._drive_station_state
+
+    def getDriveStatus(self):
+        rospy.sleep(self._timeout)
+        return self._drive_status
 
     def getChargeState(self):
         rospy.sleep(self._timeout)
@@ -331,3 +373,36 @@ class AutoTest:
     def getInteraction(self):
         rospy.sleep(self._timeout)
         return [self._interaction_state, self._interaction_reason]
+
+    '''
+    методы для script/servos
+    '''
+
+    def scriptProcessListener(self):
+        self._script_process_subscriber_state = True
+        rospy.sleep(self._timeout)
+
+    def _scriptProcessListenerCallback(self, data):
+        if self._script_process_subscriber_state:
+            self._script_state = data.state
+            self._script_name = data.name
+            self._script_process_subscriber_state = False
+
+    def servoStateListener(self):
+        self._servos_state = []
+        self._servos_state_subscriber_state = True
+        rospy.sleep(self._timeout)
+
+    def _servoStateListenerCallback(self, data):
+        if self._servos_state_subscriber_state:
+            self._servos_state.append(date)
+            rospy.sleep(self._timeout)
+            self._servos_state_subscriber_state = False
+
+    def getScriptProcess(self):
+        rospy.sleep(self._timeout)
+        return [self._script_name, self._script_state]
+
+    def getServosState(self):
+        rospy.sleep(self._timeout)
+        return self._servos_state
