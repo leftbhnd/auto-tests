@@ -1,4 +1,4 @@
-class AsrMsg:
+class AsrTtsMsg:
     def __init__(self, text, uuid):
         self.text = text
         self.uuid = uuid
@@ -128,7 +128,7 @@ class JoyCmdMsg:
                 {'axes': self._axes, 'buttons': self._buttons}
                 ]
 
-    def previosePhrase(self):
+    def previousPhrase(self):
         # Y RB
         first_press_axes, first_press_buttons = list(
             self._axes), list(self._buttons)

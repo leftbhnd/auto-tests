@@ -10,6 +10,7 @@ from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
 from helpers import letters_dict, screens_dir
+from messages import JoyCmdMsg
 
 timeout = 0.5
 
@@ -56,3 +57,8 @@ def node():
     node = AutoTest()
     time.sleep(timeout)
     return node
+
+@pytest.fixture()
+def joy():
+    joy = JoyCmdMsg()
+    return joy
