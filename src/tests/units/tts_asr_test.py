@@ -3,7 +3,7 @@
 import rospy
 import pytest
 
-from messages import AsrTtsMsg
+from src.helpers.messages import AsrTtsMsg
 
 
 def test_asr(node):

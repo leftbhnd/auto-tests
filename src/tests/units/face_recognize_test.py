@@ -3,7 +3,7 @@
 import rospy
 import pytest
 
-from messages import FaceMsg
+from src.helpers.messages import FaceMsg
 
 
 def test_face_recognize(node):

@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 import rospy
 
-from driving import Driving
-from faceRecognize import FaceRecognize
-from interaction import Interaction
-from joy import Joy
-from script import Script
-from servos import Servos
-from ttsAsr import TtsAsr
+
+from src.modules.driving import Driving
+from src.modules.faceRecognize import FaceRecognize
+from src.modules.interaction import Interaction
+from src.modules.joy import Joy
+from src.modules.script import Script
+from src.modules.servos import Servos
+from src.modules.ttsAsr import TtsAsr
 
 
 class AutoTest(Driving, FaceRecognize, Interaction, Joy, Script, Servos, TtsAsr):
