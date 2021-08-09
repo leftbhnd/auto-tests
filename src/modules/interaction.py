@@ -5,7 +5,7 @@ import rospy
 from promobot_msgs.msg import Interaction
 
 
-class Interaction:
+class InteractionService:
     def __init__(self):
         '''
         publishers
@@ -20,9 +20,8 @@ class Interaction:
         '''
         переменные для геттеров 
         '''
-        self._interaction = []
-        #self._interaction_state = False
-        #self._interaction_reason = 0
+        self._interaction_state = False
+        self._interaction_reason = 0
 
         self._timeout = 0.5
 
@@ -35,7 +34,6 @@ class Interaction:
 
     def interactionListener(self):
         rospy.sleep(self._timeout)
-        self._interaction = []
         self._interaction_subscriber_state = True
         rospy.Subscriber(
             'interaction', Interaction, self._interactionListener
@@ -43,13 +41,10 @@ class Interaction:
 
     def _interactionListener(self, data):
         if self._interaction_subscriber_state:
-            self._interaction.append(data.state)
-            self._interaction.append(data.reason)
-            # self._interaction_state = data.state
-            # self._interaction_reason = data.reason
+            self._interaction_state = data.state
+            self._interaction_reason = data.reason
             self._interaction_subscriber_state = False
 
     def getInteraction(self):
         rospy.sleep(self._timeout)
-        return self._interaction
-        # return [self._interaction_state, self._interaction_reason]
+        return [self._interaction_state, self._interaction_reason]

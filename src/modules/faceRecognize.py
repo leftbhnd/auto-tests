@@ -7,7 +7,7 @@ from promobot_msgs.msg import Face
 from promobot_msgs.msg import FaceScore
 
 
-class FaceRecognize:
+class FaceRecognizeService:
     def __init__(self):
         '''
         publishers

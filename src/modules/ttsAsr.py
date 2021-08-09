@@ -8,7 +8,7 @@ from promobot_msgs.msg import TTSCommand
 from std_msgs.msg import Empty
 
 
-class TtsAsr:
+class TtsAsrService:
     def __init__(self):
         '''
         publishers

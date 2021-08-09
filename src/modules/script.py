@@ -5,7 +5,7 @@ import rospy
 from promobot_msgs.msg import ScriptProcess
 
 
-class Script:
+class ScriptService:
     def __init__(self):
         '''
         переменные для включения subscribers 

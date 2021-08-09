@@ -5,7 +5,7 @@ import rospy
 from promobot_msgs.msg import ServoStates
 
 
-class Servos:
+class ServosService:
     def __init__(self):
         '''
         переменные для включения subscribers 

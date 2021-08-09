@@ -6,7 +6,7 @@ from sensor_msgs.msg import Joy
 from std_msgs.msg import Empty
 
 
-class Joy:
+class JoyService:
     def __init__(self):
         '''
         publishers

@@ -21,4 +21,4 @@ def test_tts(node):
 
 
 def test_levels_order(node):
-    assert node.getLevelsOrder() is ['0', '1', '2', '3', '4', '5', '6', '7']
+    assert node.getLevelsOrder() == ['0', '1', '2', '3', '4', '5', '6', '7']

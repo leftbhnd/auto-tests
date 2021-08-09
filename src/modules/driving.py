@@ -7,7 +7,7 @@ from std_msgs.msg import UInt16
 from std_msgs.msg import Empty
 
 
-class Driving:
+class DrivingService:
     def __init__(self):
         '''
         publishers

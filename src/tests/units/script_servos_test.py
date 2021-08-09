@@ -6,7 +6,7 @@ import pytest
 
 def test_script(node):
     node.scriptProcessListener()
-    assert node.getScriptProcess() is ['test_rotate_head', True]
+    assert node.getScriptProcess() == ['test_rotate_head', True]
 
 
 def test_servos_state(node):

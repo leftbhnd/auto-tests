@@ -28,7 +28,7 @@ def test_drive_to_point(node):
 
 def test_wheels_data(node):
     node.wheelsListener()
-    assert node.getWheelsData() is [200, 200]
+    assert node.getWheelsData() == [200, 200]
     time.sleep(3)
 
 
