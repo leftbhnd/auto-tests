@@ -3,7 +3,9 @@
 import rospy
 
 from std_msgs.msg import Bool
+from std_msgs.msg import UInt8
 from std_msgs.msg import UInt16
+from std_msgs.msg import Int32
 from std_msgs.msg import Empty
 
 
@@ -29,7 +31,7 @@ class DrivingService:
         )
 
         self._pub_drive_station = rospy.Publisher(
-            'drive/station', Empty, latch=True, queue_size=10
+            'drive/station', Bool, latch=True, queue_size=10
         )
         '''
         переменные для включения subscribers 
@@ -46,10 +48,8 @@ class DrivingService:
         '''
         переменные для геттеров
         '''
-        self._current_drive_mode = ''
+        self._current_drive_mode = 0
         self._wheels_data = []
-        # self._rwheel_data = ''
-        # self._lwheel_data = ''
         self._current_point = ''
         self._drive_pause_state = True
         self._drive_station_state = False
@@ -58,32 +58,35 @@ class DrivingService:
         '''
         переменные для Publishers
         '''
-        self._joy_mode = 0
-        self._auto_mode = 1
 
-        self._timeout = 0.5
+        self._timeout = 0.9
 
     # /drive/mode
 
     def autoModePub(self):
-        self._pub_drive_mode.publish(self._auto_mode)
+        autoMsg = UInt16()
+        autoMsg.data = 1
+        self._pub_drive_mode.publish(autoMsg)
         rospy.sleep(self._timeout)
 
     def joyModePub(self):
-        self._pub_drive_mode.publish(self._joy_mode)
+        joyMsg = UInt16()
+        joyMsg.data = 0
+        self._pub_drive_mode.publish(joyMsg)
         rospy.sleep(self._timeout)
 
     def driveModeListener(self):
-        rospy.sleep(self._timeout)
         self._drive_mode_subscriber_state = True
         rospy.Subscriber(
             'drive/mode', UInt16, self._driveModeListener
         )
+        rospy.sleep(self._timeout)
 
-    def _driveModeListener(self, data):
+    def _driveModeListener(self, drive_mode):
         if self._drive_mode_subscriber_state:
-            self._current_drive_mode = data.data
+            self._current_drive_mode = drive_mode.data
             self._drive_mode_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getDriveMode(self):
         rospy.sleep(self._timeout)
@@ -92,20 +95,23 @@ class DrivingService:
     # /drive/point
 
     def toPointPub(self, point):
-        self._pub_to_point.publish(point)
+        pointMsg = UInt16()
+        pointMsg.data = point
+        self._pub_to_point.publish(pointMsg)
         rospy.sleep(self._timeout)
 
     def pointListener(self):
-        rospy.sleep(self._timeout)
         self._point_subscriber_state = True
         rospy.Subscriber(
             'drive/point', UInt16, self._pointListener
         )
+        rospy.sleep(self._timeout)
 
-    def _pointListener(self, data):
+    def _pointListener(self, point):
         if self._point_subscriber_state:
-            self._current_point = data.data
+            self._current_point = point.data
             self._point_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getCurrentPoint(self):
         rospy.sleep(self._timeout)
@@ -114,7 +120,6 @@ class DrivingService:
     # /rwheel /lwheel
 
     def wheelsListener(self):
-        rospy.sleep(self._timeout)
         self._wheels_data = []
         self._lwheel_subscriber_state = True
         self._rwheel_subscriber_state = True
@@ -124,47 +129,50 @@ class DrivingService:
         rospy.Subscriber(
             'lwheel', Int32, self._lwheelListener
         )
+        rospy.sleep(self._timeout)
 
-    def _rwheelListener(self, data):
+    def _rwheelListener(self, rwheel_value):
         if self._rwheel_subscriber_state:
-            self._wheels_data.append(data.data)
-            #self._rwheel_data = data.data
+            self._wheels_data.append(rwheel_value.data)
             self._rwheel_subscriber_state = False
+        rospy.sleep(self._timeout)
 
-    def _lwheelListener(self, data):
+    def _lwheelListener(self, lwheel_value):
         if self._lwheel_subscriber_state:
-            self._wheels_data.append(data.data)
-            #self._lwheel_data = data.data
+            self._wheels_data.append(lwheel_value.data)
             self._lwheel_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getWheelsData(self):
         rospy.sleep(self._timeout)
         return self._wheels_data
-        # return [self._rwheel_data, self._rwheel_data]
 
     # /drive/pause
 
     def enableDrivePausePub(self):
-        self._drive_pause_state = True
-        self._pub_drive_pause.publish(self._drive_pause_state)
+        boolMsg = Bool()
+        boolMsg.data = True
+        self._pub_drive_pause.publish(boolMsg)
         rospy.sleep(self._timeout)
 
     def disableDrivePausePub(self):
-        self._drive_pause_state = False
-        self._pub_drive_pause.publish(self._drive_pause_state)
+        boolMsg = Bool()
+        boolMsg.data = False
+        self._pub_drive_pause.publish(boolMsg)
         rospy.sleep(self._timeout)
 
     def drivePauseListener(self):
-        rospy.sleep(self._timeout)
         self._drive_pause_subscriber_state = True
         rospy.Subscriber(
             'drive/pause', Bool, self._drivePauseListener
         )
+        rospy.sleep(self._timeout)
 
-    def _drivePauseListener(self, data):
+    def _drivePauseListener(self, pause):
         if self._drive_pause_subscriber_state:
-            self._drive_pause_state = data.data
+            self._drive_pause_state = pause.data
             self._drive_pause_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getDrivePause(self):
         rospy.sleep(self._timeout)
@@ -173,24 +181,28 @@ class DrivingService:
     # /charge/runApplication /drive/station
 
     def chargeAppPub(self):
-        self._pub_charge_app.publish()
+        empty = Empty()
+        self._pub_charge_app.publish(empty)
         rospy.sleep(self._timeout)
 
     def driveStationPub(self):
-        self._pub_drive_station.publish(True)
+        boolMsg = Bool()
+        boolMsg.data = True
+        self._pub_drive_station.publish(boolMsg)
         rospy.sleep(self._timeout)
 
     def driveStationListener(self):
-        rospy.sleep(self._timeout)
         self._drive_station_subscriber_state = True
         rospy.Subscriber(
             'drive/station', Bool, self._driveStationListener
         )
+        rospy.sleep(self._timeout)
 
-    def _driveStationListener(self, data):
+    def _driveStationListener(self, drive_station):
         if self._drive_station_subscriber_state:
-            self._drive_station_state = data.data
+            self._drive_station_state = drive_station.data
             self._drive_pause_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getDriveStationStatus(self):
         rospy.sleep(self._timeout)
@@ -199,16 +211,17 @@ class DrivingService:
     # /drive/status
 
     def driveStatusListener(self):
-        rospy.sleep(self._timeout)
         self._drive_status_subscriber_state = True
         rospy.Subscriber(
             'drive/status', UInt8, self._driveStatusListener
         )
+        rospy.sleep(self._timeout)
 
-    def _driveStatusListener(self, data):
+    def _driveStatusListener(self, drive_status):
         if self._drive_status_subscriber_state:
-            self._drive_status = data.data
+            self._drive_status = drive_status.data
             self._drive_status_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getDriveStatus(self):
         rospy.sleep(self._timeout)
@@ -217,16 +230,17 @@ class DrivingService:
     # /charge/state
 
     def chargeStateListener(self):
-        rospy.sleep(self._timeout)
         self._charge_state_subscriber_state = True
         rospy.Subscriber(
             'charge/state', Bool, self._chargeStateListenerCallback
         )
+        rospy.sleep(self._timeout)
 
-    def _chargeStateListenerCallback(self, data):
+    def _chargeStateListenerCallback(self, charge_state):
         if self._charge_state_subscriber_state:
-            self._charge_state = data
+            self._charge_state = charge_state.data
             self._charge_state_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getChargeState(self):
         rospy.sleep(self._timeout)
