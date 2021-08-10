@@ -17,9 +17,13 @@ class JoyService:
 
         self._pub_joy_cmd = rospy.Publisher(
             'joy', Joy, latch=True, queue_size=10)
-
+        '''
+        переменные для включения subscribers 
+        '''
         self._joy_cmd_subscriber_state = False
-
+        '''
+        переменные для геттеров
+        '''
         self._joy_cmd = []
 
         self._timeout = 0.5
@@ -39,18 +43,19 @@ class JoyService:
             rospy.sleep(self._timeout)
 
     def joyListener(self):
-        rospy.sleep(self._timeout)
         self._joy_cmd = []
         self._joy_cmd_subscriber_state = True
         rospy.Subscriber(
             'joy', Joy, self._joyListener
         )
+        rospy.sleep(self._timeout)
 
     def _joyListener(self, data):
         if self._joy_cmd_subscriber_state:
             self._joy_cmd.append(data.axes)
             self._joy_cmd.append(data.buttons)
             self._joy_cmd_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getJoyCmd(self):
         rospy.sleep(self._timeout)

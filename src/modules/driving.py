@@ -55,9 +55,6 @@ class DrivingService:
         self._drive_station_state = False
         self._drive_status = 0
         self._charge_state = False
-        '''
-        переменные для Publishers
-        '''
 
         self._timeout = 0.9
 

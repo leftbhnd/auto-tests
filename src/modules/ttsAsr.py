@@ -49,17 +49,18 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
 
     def answersListener(self):
-        rospy.sleep(self._timeout)
         self._robot_answer = ''
         self._answer_subscriber_state = True
         rospy.Subscriber(
             'answers/answer', Answer, self._answersListener
         )
+        rospy.sleep(self._timeout)
 
     def _answersListener(self, answer):
         if self._answer_subscriber_state:
             self._robot_answer = answer.replica.text
             self._answer_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getAnswer(self):
         rospy.sleep(self._timeout)
@@ -79,17 +80,18 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
 
     def ttsListener(self):
-        rospy.sleep(self._timeout)
         self._robot_speech = ''
         self._tts_subscriber_state = True
         rospy.Subscriber(
             'tts/start', TTSCommand, self._ttsListener
         )
+        rospy.sleep(self._timeout)
 
     def _ttsListener(self, speech):
         if self._tts_subscriber_state:
             self._robot_speech = speech.text
             self._tts_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getTts(self):
         rospy.sleep(self._timeout)

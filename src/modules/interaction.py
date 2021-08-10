@@ -33,17 +33,18 @@ class InteractionService:
         rospy.sleep(self._timeout)
 
     def interactionListener(self):
-        rospy.sleep(self._timeout)
         self._interaction_subscriber_state = True
         rospy.Subscriber(
             'interaction', Interaction, self._interactionListener
         )
+        rospy.sleep(self._timeout)
 
     def _interactionListener(self, data):
         if self._interaction_subscriber_state:
             self._interaction_state = data.state
             self._interaction_reason = data.reason
             self._interaction_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getInteraction(self):
         rospy.sleep(self._timeout)

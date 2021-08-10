@@ -19,18 +19,18 @@ class ServosService:
         self._timeout = 0.5
 
     def servoStateListener(self):
-        rospy.sleep(self._timeout)
         self._servos_state = []
         self._servos_state_subscriber_state = True
         rospy.Subscriber(
             'promobot_servos/core', ServoStates, self._servoStateListener
         )
+        rospy.sleep(self._timeout)
 
     def _servoStateListener(self, data):
         if self._servos_state_subscriber_state:
             self._servos_state.append(data.states)
-            rospy.sleep(self._timeout)
             self._servos_state_subscriber_state = False
+        rospy.sleep(self._timeout)
 
     def getServosState(self):
         rospy.sleep(self._timeout)
