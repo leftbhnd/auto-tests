@@ -23,16 +23,18 @@ class TtsAsrService:
             'tts/cancel', Empty, latch=True, queue_size=10
         )
         '''
-        переменные для включения subscribers 
+        переменные для включения subscribers
         '''
         self._answer_subscriber_state = False
+        self._tts_subscriber_state = False
         '''
-        переменные для геттеров 
+        переменные для геттеров
         '''
         self._robot_answer = ''
+        self._robot_speech = ''
         self._levels_order = rospy.get_param('answers/levels_order')
 
-        self._timeout = 0.5
+        self._timeout = 0.8
 
     def asrPub(self, data):
         asr_result = ASRResult()
@@ -54,14 +56,14 @@ class TtsAsrService:
             'answers/answer', Answer, self._answersListener
         )
 
-    def _answersListener(self, data):
+    def _answersListener(self, answer):
         if self._answer_subscriber_state:
-            self._robot_answer = data.replica.text
+            self._robot_answer = answer.replica.text
             self._answer_subscriber_state = False
 
     def getAnswer(self):
         rospy.sleep(self._timeout)
-        return self._robot_answer.decode('utf-8')
+        return self._robot_answer
 
     def cancelSpeechPub(self):
         self._pub_cancel_speech.publish()
@@ -75,6 +77,23 @@ class TtsAsrService:
         tts_command.ignore_saving = False
         self._pub_text_to_tts.publish(tts_command)
         rospy.sleep(self._timeout)
+
+    def ttsListener(self):
+        rospy.sleep(self._timeout)
+        self._robot_speech = ''
+        self._tts_subscriber_state = True
+        rospy.Subscriber(
+            'tts/start', TTSCommand, self._ttsListener
+        )
+
+    def _ttsListener(self, speech):
+        if self._tts_subscriber_state:
+            self._robot_speech = speech.text
+            self._tts_subscriber_state = False
+
+    def getTts(self):
+        rospy.sleep(self._timeout)
+        return self._robot_speech
 
     def getLevelsOrder(self):
         return self._levels_order
