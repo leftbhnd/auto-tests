@@ -98,4 +98,5 @@ class TtsAsrService:
         return self._robot_speech
 
     def getLevelsOrder(self):
+        rospy.sleep(self._timeout)
         return self._levels_order
