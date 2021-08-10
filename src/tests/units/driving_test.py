@@ -67,3 +67,6 @@ def test_enable_joy_mode(node):
     node.joyModePub()
     node.driveModeListener()
     assert node.getDriveMode() == 0
+
+def test_use_radius(node):
+    assert node.getUseRadius() in [True, False]
