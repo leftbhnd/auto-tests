@@ -12,7 +12,7 @@ from src.modules.servos import ServosService
 from src.modules.ttsAsr import TtsAsrService
 
 
-class AutoTest(DrivingService, FaceRecognizeService, InteractionsService, JoyService, ScriptService, ServosService, TtsAsrService):
+class AutoTest(DrivingService, FaceRecognizeService, InteractionService, JoyService, ScriptService, ServosService, TtsAsrService):
     def __init__(self):
         DrivingService.__init__(self)
         FaceRecognizeService.__init__(self)
