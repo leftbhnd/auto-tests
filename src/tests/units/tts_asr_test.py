@@ -2,22 +2,35 @@
 # -*- coding: utf-8 -*-
 import rospy
 import pytest
+import time
 
 from src.helpers.messages import AsrTtsMsg
 
 
 def test_asr(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет', '11520092-a2a4-12eb-bcbc-0242ac132200')
+    asr_msg = AsrTtsMsg('привет', '1143c011-a2a4-12eb-bcbc-0242ac132200')
     node.asrPub(asr_msg)
     node.answersListener()
-    assert node.getAnswer() is 'привет'
+    assert node.getAnswer() in [
+        "Доброго времени суток!",
+        "Доброго времени суток! Добро пожаловать в {company}.",
+        "Приветики! Добро пожаловать в {company}.",
+        "И вам привет! Как поживаете?",
+        "Какая честь! Как поживаете?",
+        "Приветики! Как поживаете?",
+        "Приветики!"
+    ]
 
 
 def test_tts(node):
+    time.sleep(10)
+    node.cancelSpeechPub()
     tts_msg = AsrTtsMsg('я робот ты робот',
-                        '11520092-a2a4-12eb-bcbc-0242ac132222')
+                        '11520092-a2a7-13eb-bcbc-0242ac132222')
     node.ttsPub(tts_msg)
+    node.ttsListener()
+    assert node.getTts() == 'я робот ты робот'
 
 
 def test_levels_order(node):
