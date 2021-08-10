@@ -55,6 +55,7 @@ class DrivingService:
         self._drive_station_state = False
         self._drive_status = 0
         self._charge_state = False
+        self._use_radius = rospy.get_param('driving/useRadius')
 
         self._timeout = 0.9
 
@@ -242,3 +243,7 @@ class DrivingService:
     def getChargeState(self):
         rospy.sleep(self._timeout)
         return self._charge_state
+
+    def getUseRadius(self):
+        rospy.sleep(self._timeout)
+        return self._use_radius
