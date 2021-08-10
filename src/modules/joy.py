@@ -18,6 +18,10 @@ class JoyService:
         self._pub_joy_cmd = rospy.Publisher(
             'joy', Joy, latch=True, queue_size=10)
 
+        self._joy_cmd_subscriber_state = False
+
+        self._joy_cmd = []
+
         self._timeout = 0.5
 
     def joyPhraseModePub(self):
@@ -33,3 +37,21 @@ class JoyService:
             joy.buttons = command['buttons']
             self._pub_joy_cmd.publish(joy)
             rospy.sleep(self._timeout)
+
+    def joyListener(self):
+        rospy.sleep(self._timeout)
+        self._joy_cmd = []
+        self._joy_cmd_subscriber_state = True
+        rospy.Subscriber(
+            'joy', Joy, self._joyListener
+        )
+
+    def _joyListener(self, data):
+        if self._joy_cmd_subscriber_state:
+            self._joy_cmd.append(data.axes)
+            self._joy_cmd.append(data.buttons)
+            self._joy_cmd_subscriber_state = False
+
+    def getJoyCmd(self):
+        rospy.sleep(self._timeout)
+        return self._joy_cmd
