@@ -9,7 +9,7 @@ import rospy
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.helpers import letters_dict, screens_dir
+from helpers.helpers import letters_dict, element_dict, screens_dir
 from helpers.messages import JoyCmdMsg
 
 timeout = 0.5
@@ -39,6 +39,24 @@ def screenDiffChecker():
         return difference
     return _method
 
+
+@pytest.fixture()
+def clickOn():
+    def _method(element):
+        x = element_dict[element][0]
+        y = element_dict[element][1]
+        m.click(x, y, 1)
+        time.sleep(0.1)
+    return _method
+
+@pytest.fixture():
+def openPasswordModal():
+    def _method():
+        m.click(50, 50, 1)
+        m.click(50, 50, 1)
+        m.click(50, 50, 1)
+        m.click(50, 50, 1)
+        m.click(50, 50, 1)
 
 @pytest.fixture()
 def typeText():
