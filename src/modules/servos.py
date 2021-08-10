@@ -28,7 +28,7 @@ class ServosService:
 
     def _servoStateListener(self, data):
         if self._servos_state_subscriber_state:
-            self._servos_state.append(data)
+            self._servos_state.append(data.states)
             rospy.sleep(self._timeout)
             self._servos_state_subscriber_state = False
 
