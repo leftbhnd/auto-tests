@@ -29,7 +29,7 @@ def mouseClick():
 def screenDiffChecker():
     def _method(original_image):
         pyautogui.screenshot(
-            screens_dir + 'screen.png', region=(0, 40, 1920, 1080)
+            screens_dir + 'screen.png', region=(0, 40, 1280, 800)
         )
         current = Image.open(screens_dir + 'screen.png')
         original = Image.open(
