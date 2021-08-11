@@ -46,17 +46,25 @@ def clickOn():
         x = element_dict[element][0]
         y = element_dict[element][1]
         m.click(x, y, 1)
-        time.sleep(0.1)
+        time.sleep(0.5)
     return _method
 
-@pytest.fixture():
+
+@pytest.fixture()
 def openPasswordModal():
     def _method():
         m.click(50, 50, 1)
+        time.sleep(0.1)
         m.click(50, 50, 1)
+        time.sleep(0.1)
         m.click(50, 50, 1)
+        time.sleep(0.1)
         m.click(50, 50, 1)
+        time.sleep(0.1)
         m.click(50, 50, 1)
+        time.sleep(0.5)
+    return _method
+
 
 @pytest.fixture()
 def typeText():
