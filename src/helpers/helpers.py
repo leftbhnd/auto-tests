@@ -15,9 +15,8 @@ letters_dict = {'й': (429, 725), 'ц': (518, 725), 'у': (618, 725), 'к': (710
                 }
 
 
-element_dict = {'control': (617, 671), 'choose_numbers': (299, 758), '1': (285, 565),
-                'pass_modal_close': (891, 316), 'pass_modal_ok': (836, 452),
-                'pass_modal_input': (421, 390), 'connection': (206, 195),
+element_dict = {'control': (617, 671), 'choose_numbers': (299, 758), 'pass_modal_close': (891, 316),
+                'pass_modal_ok': (836, 452), 'pass_modal_input': (421, 390), 'connection': (206, 195),
                 'promo': (205, 279), 'testing': (206, 366), 'settings': (190, 443),
                 'browser': (183, 530), 'identification': (191, 607), 'send_to_charge': (1173, 454),
                 'auto_mode': (1169, 507), 'phrase_mode': (1169, 553), 'answers_log': (1168, 598),
@@ -32,8 +31,9 @@ element_dict = {'control': (617, 671), 'choose_numbers': (299, 758), '1': (285, 
                 'restart_modal_no': (655, 454), 'restart_modal_close': (905, 329),
                 'radius_modal_yes': (818, 479), 'radius_modal_no': (639, 477),
                 'radius_modal_close': (889, 300), 'radius_modal_increase': (701, 412),
-                'radius_modal_decrease': (580, 412), 'no_connection_modal_yes': (827, 450),
-                'no_connection_modal_no': (649, 457), 'no_connection_modal_close': (898, 324)
+                'radius_modal_decrease': (580, 412), 'no_connection_modal_yes': (829, 455),
+                'no_connection_modal_no': (649, 457), 'no_connection_modal_close': (898, 324),
+                'play': (635, 413), 'useRadius': (1016, 205)
                 }
 
 
