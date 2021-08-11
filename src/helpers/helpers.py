@@ -33,7 +33,8 @@ element_dict = {'control': (617, 671), 'choose_numbers': (299, 758), 'pass_modal
                 'radius_modal_close': (889, 300), 'radius_modal_increase': (701, 412),
                 'radius_modal_decrease': (580, 412), 'no_connection_modal_yes': (829, 455),
                 'no_connection_modal_no': (649, 457), 'no_connection_modal_close': (898, 324),
-                'play': (635, 413), 'useRadius': (1016, 205)
+                'play': (635, 413), 'useRadius': (1016, 205), 'apps_menu_open': (95, 646),
+                'apps_menu_close': (101, 107)
                 }
 
 
