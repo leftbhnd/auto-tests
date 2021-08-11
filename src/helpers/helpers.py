@@ -30,6 +30,10 @@ element_dict = {'control': (617, 671), 'choose_numbers': (299, 758), '1': (285, 
                 'back': (97, 91), 'save_modal_yes': (818, 441), 'save_modal_no': (651, 441),
                 'save_modal_close': (890, 339), 'restart_modal_yes': (830, 461),
                 'restart_modal_no': (655, 454), 'restart_modal_close': (905, 329),
+                'radius_modal_yes': (818, 479), 'radius_modal_no': (639, 477),
+                'radius_modal_close': (889, 300), 'radius_modal_increase': (701, 412),
+                'radius_modal_decrease': (580, 412), 'no_connection_modal_yes': (827, 450),
+                'no_connection_modal_no': (649, 457), 'no_connection_modal_close': (898, 324)
                 }
 
 
