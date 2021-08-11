@@ -32,7 +32,6 @@ class TtsAsrService:
         '''
         self._robot_answer = ''
         self._robot_speech = ''
-        self._levels_order = rospy.get_param('answers/levels_order')
 
         self._timeout = 0.8
 
@@ -99,4 +98,5 @@ class TtsAsrService:
 
     def getLevelsOrder(self):
         rospy.sleep(self._timeout)
-        return self._levels_order
+        levels_order = rospy.get_param('answers/levels_order')
+        return levels_order
