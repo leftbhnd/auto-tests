@@ -5,10 +5,14 @@ import time
 
 
 @pytest.mark.useRadiusTrue
-def test_check_run_state(clickOn, screenDiffChecker):
+def test_check_radius_modal(clickOn, screenDiffChecker):
     clickOn('play')
-    assert screenDiffChecker('run_state.png') is None
+    assert screenDiffChecker('radius_modal.png') is None
 
+@pytest.mark.useRadiusTrue
+def test_check_run_active(clickOn, screenDiffChecker):
+    clickOn('radius_modal_yes')
+    assert screenDiffChecker('run_state.png') is None
 
 @pytest.mark.useRadiusTrue
 def test_check_run_active(screenDiffChecker):
@@ -26,4 +30,7 @@ def test_open_menu(openPasswordModal, clickOn, typeText, screenDiffChecker):
     clickOn('choose_numbers')
     typeText(['1', '2', '3', '4', '5', '6'])
     clickOn('pass_modal_ok')
+    clickOn('restart')
+    clickOn('restart_modal_yes')
+    time.sleep(10)
     assert screenDiffChecker('start.png') is None
