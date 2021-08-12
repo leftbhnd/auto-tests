@@ -28,6 +28,9 @@ element_dict = {
     'ident_modal_pass_input': (666, 373), 'ident_modal_pass_eye': (916, 373),
     'ident_modal_confirm_input': (657, 418), 'ident_modal_confirm_eye': (917, 413),
     'ident_modal_save': (846, 464), 'ident_modal_close': (936, 294),
+    'connection_info_modal_close': (889, 308), 'wifi_pass_modal_input': (415, 400),
+    'wifi_pass_modal_eye': (870, 397), 'wifi_pass_modal_ok': (809, 444),
+    'wifi_pass_modal_close': (889, 319),
     # кнопки
     'control': (617, 671), 'choose_numbers': (299, 758), 'connection': (206, 195),
     'promo': (205, 279), 'testing': (206, 366), 'settings': (190, 443),
@@ -41,7 +44,8 @@ element_dict = {
     'face_recognize': (754, 297), 'navigation': (1008, 288), 'lingvo': (265, 574),
     'language_settings': (506, 593), 'internet_services': (759, 587), 'update': (1025, 574),
     'back': (97, 91), 'play': (635, 413), 'useRadius': (1016, 205), 'apps_menu_open': (95, 646),
-    'apps_menu_close': (101, 107), 'reset_input': (612, 62),
+    'apps_menu_close': (101, 107), 'reset_input': (612, 62), 'connection_info': (795, 731),
+    'connection_update': (359, 729), 'random_wifi': (437, 234),
     # ubuntu
     'activities': (33, 13), 'work_space': (1263, 152)
 }
