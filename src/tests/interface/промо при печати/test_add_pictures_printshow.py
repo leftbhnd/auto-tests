@@ -4,11 +4,11 @@ import pytest
 import time
 
 '''
-X seconds
+55.75 seconds
 '''
 
 
-@pytest.mark.slideshow_videos
+@pytest.mark.printshow_pictures
 def test_promo_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
@@ -19,34 +19,36 @@ def test_promo_open(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('promo.png') is None
 
 
-@pytest.mark.slideshow_videos
-def test_promo_add_video(clickOn, screenDiffChecker):
-    clickOn('promo_videos')
-    clickOn('promo_videos')
+@pytest.mark.printshow_pictures
+def test_promo_add_picture(clickOn, screenDiffChecker):
+    clickOn('promo_selector')
+    clickOn('promo_choose_print')
+    clickOn('promo_pictures')
+    clickOn('promo_pictures')
     clickOn('fs_promo_checkbox1')
     clickOn('promo_add')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('promo_video.png') is None
+    assert screenDiffChecker('promo_picture_printshow.png') is None
 
 
-@pytest.mark.slideshow_videos
-def test_promo_add_two_videos(clickOn, screenDiffChecker):
+@pytest.mark.printshow_pictures
+def test_promo_add_two_pictures(clickOn, screenDiffChecker):
     clickOn('fs_promo_checkbox2')
     clickOn('fs_promo_checkbox3')
     clickOn('promo_add')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('promo_three_videos.png') is None
+    assert screenDiffChecker('promo_three_pictures_printshow.png') is None
 
 
-@pytest.mark.slideshow_videos
-def test_promo_add_all_videos(clickOn, screenDiffChecker):
+@pytest.mark.printshow_pictures
+def test_promo_add_all_pictures(clickOn, screenDiffChecker):
     clickOn('fs_promo_choose_all')
     clickOn('promo_add')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('promo_all_videos.png') is None
+    assert screenDiffChecker('promo_all_pictures_printshow.png') is None
 
 
-@pytest.mark.slideshow_videos
+@pytest.mark.printshow_pictures
 def test_reset(clickOn, screenDiffChecker):
     clickOn('robot_promo_checkbox1')
     clickOn('robot_promo_choose_all')
