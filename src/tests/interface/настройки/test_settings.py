@@ -68,13 +68,6 @@ def test_internet_services(clickOn, screenDiffChecker):
 
 
 @pytest.mark.settings
-def test_update(clickOn, screenDiffChecker):
-    clickOn('back')
-    clickOn('update')
-    assert screenDiffChecker('update.png') is None
-
-
-@pytest.mark.settings
 def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('restart')
