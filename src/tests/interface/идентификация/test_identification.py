@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-79.94 seconds
+39.94 seconds
 '''
 
 
@@ -102,7 +102,4 @@ def test_restore(clickOn, typeText, screenDiffChecker):
     typeText(['1', '2', '3', '4', '5', '6'])
     clickOn('kb_ident_modal_save')
     time.sleep(4)
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    clickOn('back')

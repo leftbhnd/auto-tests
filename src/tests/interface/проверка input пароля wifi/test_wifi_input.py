@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-58.57 seconds
+18.57 seconds
 '''
 
 
@@ -58,7 +58,4 @@ def test_visiable_input(clickOn, customScreenDiffChecker):
 def test_reset(clickOn, screenDiffChecker):
     clickOn('kb_wifi_pass_modal_close')
     clickOn('back')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    clickOn('back')

@@ -5,7 +5,7 @@ import time
 
 
 '''
-70.98 seconds
+30.98 seconds
 '''
 
 
@@ -132,7 +132,4 @@ def test_internet_services_ya_disk(clickOn, screenDiffChecker):
 def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('back')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    clickOn('back')

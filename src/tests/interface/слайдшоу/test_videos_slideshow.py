@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-58.72 seconds
+18.72 seconds
 '''
 
 
@@ -74,7 +74,4 @@ def test_delete_all_videos(clickOn, screenDiffChecker):
 def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('save_modal_yes')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('startHZ.png') is None
+    clickOn('back')

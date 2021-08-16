@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-72.83 seconds
+32.83 seconds
 '''
 
 
@@ -80,7 +80,4 @@ def test_restore(clickOn, screenDiffChecker):
     time.sleep(1)
     clickOn('work_space')
     time.sleep(1)
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    clickOn('back')

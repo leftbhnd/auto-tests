@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-62.52 seconds
+22.52 seconds
 '''
 
 
@@ -69,7 +69,4 @@ def test_identification(clickOn, screenDiffChecker):
 @pytest.mark.control_buttons
 def test_restore(clickOn, screenDiffChecker):
     clickOn('ident_modal_close')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    clickOn('back')
