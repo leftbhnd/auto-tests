@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-63.99 seconds
+23.99 seconds
 '''
 
 
@@ -67,7 +67,4 @@ def test_connection_wifi_pass_modal(clickOn, customScreenDiffChecker):
 def test_reset(clickOn, screenDiffChecker):
     clickOn('wifi_pass_modal_close')
     clickOn('back')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    clickOn('back')
