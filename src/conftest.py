@@ -112,11 +112,10 @@ def typeText():
 
 @pytest.fixture
 def node():
-    def _method()
-        rospy.init_node('autotest')
-        node = AutoTest()
-        time.sleep(timeout)
-    return _method
+    rospy.init_node('autotest')
+    node = AutoTest()
+    time.sleep(timeout)
+    return node
 
 
 @pytest.fixture
