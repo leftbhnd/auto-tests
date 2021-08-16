@@ -82,8 +82,9 @@ element_dict = {
     'test_hand_left': (194, 307), 'zero_all_servos': (199, 454),
     'testing_main_camera': (499, 228), 'testing_face_recognize': (508, 315),
     'testing_bottom_camera': (496, 375), 'testing_fisheye_camera': (501, 451),
-    'testing_videstream_close': (1210, 66), 'periphery_statuses': (781, 233), 
+    'testing_videostream_close': (1210, 66), 'periphery_statuses': (781, 233), 
     'testing_record_sound': (1061, 232), 'testing_speech_recognize': (1072, 387), 
+    'periphery_statuses_close': (1130, 271), 
     # кнопки раздела "Настройки"
     'system_hardware': (147, 239), 'system_led': (109, 289),
     'system_dialog': (124, 344), 'system_interaction': (144, 400),
