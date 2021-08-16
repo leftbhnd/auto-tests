@@ -6,12 +6,12 @@ import time
 from src.helpers.messages import AsrTtsMsg
 
 '''
-X seconds
+168.00 seconds
 '''
 
 
 @pytest.mark.testing
-def test_promo_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
+def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
     time.sleep(10)
@@ -27,32 +27,37 @@ def test_promo_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
 @pytest.mark.testing
 def test_rotate_head(clickOn, node):
     clickOn('test_rotate_head')
+    node.scriptProcessListener()
     assert node.getScriptProcess() == ['test_rotate_head', True]
 
 
 @pytest.mark.testing
 def test_hand_left(clickOn, node):
-    time.sleep(15)
+    time.sleep(18)
     clickOn('test_hand_left')
+    node.scriptProcessListener()
     assert node.getScriptProcess() == ['test_hand_left', True]
 
 
 @pytest.mark.testing
 def test_hand_right(clickOn, node):
-    time.sleep(15)
+    time.sleep(8)
     clickOn('test_hand_right')
+    node.scriptProcessListener()
     assert node.getScriptProcess() == ['test_hand_right', True]
 
 
 @pytest.mark.testing
 def test_zero_all_servos(clickOn, node):
-    time.sleep(15)
+    time.sleep(8)
     clickOn('zero_all_servos')
-    assert node.getScriptProcess() == ['zero_all_servos', True]
+    node.scriptProcessListener()
+    assert node.getScriptProcess() == ['reset', True]
 
 
 @pytest.mark.testing
 def test_main_camera(clickOn, customScreenDiffChecker):
+    time.sleep(45)
     clickOn('testing_main_camera')
     assert customScreenDiffChecker(
         {
@@ -122,7 +127,7 @@ def test_record_sound_finish(clickOn, screenDiffChecker):
 def test_speech_recognize(clickOn, node, screenDiffChecker):
     clickOn('testing_speech_recognize')
     asr_msg = AsrTtsMsg('как дела робот',
-                        'a6aadeab-4979-47bf-87c7-44e9efbfe5bd'
+                        'a6aadeab-5279-17bf-87d2-44e9efbfe5bd'
                         )
     node.asrPub(asr_msg)
     assert screenDiffChecker('testing_speech_recognize.png') is None
