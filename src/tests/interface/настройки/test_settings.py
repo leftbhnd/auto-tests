@@ -5,7 +5,7 @@ import time
 
 
 '''
-X seconds
+54.01 seconds
 '''
 
 
@@ -15,6 +15,7 @@ def test_settings_open(clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
     typeText(['1', '2', '3', '4', '5', '6'])
+    clickOn('pass_modal_ok')
     clickOn('settings')
     assert screenDiffChecker('settings.png') is None
 
@@ -69,6 +70,7 @@ def test_internet_services(clickOn, screenDiffChecker):
 
 @pytest.mark.settings
 def test_reset(clickOn, screenDiffChecker):
+    clickOn('back')
     clickOn('back')
     clickOn('restart')
     clickOn('restart_modal_yes')

@@ -5,7 +5,7 @@ import time
 
 
 '''
-X seconds
+70.98 seconds
 '''
 
 
@@ -15,6 +15,7 @@ def test_system_hardware(clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
     typeText(['1', '2', '3', '4', '5', '6'])
+    clickOn('pass_modal_ok')
     clickOn('settings')
     clickOn('system')
     clickOn('system_hardware')
@@ -129,6 +130,7 @@ def test_internet_services_ya_disk(clickOn, screenDiffChecker):
 
 @pytest.mark.settings_extend
 def test_reset(clickOn, screenDiffChecker):
+    clickOn('back')
     clickOn('back')
     clickOn('restart')
     clickOn('restart_modal_yes')
