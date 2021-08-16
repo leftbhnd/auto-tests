@@ -77,6 +77,25 @@ element_dict = {
     'robot_promo_checkbox7': (88, 590), 'robot_promo_checkbox8': (80, 644),
     'robot_promo_slider_top': (608, 240), 'robot_promo_slider_btm': (610, 632),
     'robot_promo_choose_all': (557, 173),
+    # кнопки раздела "Тестирование"
+    'test_rotate_head': (190, 234), 'test_hand_right': (180, 378),
+    'test_hand_left': (194, 307), 'zero_all_servos': (199, 454),
+    'testing_main_camera': (499, 228), 'testing_face_recognize': (508, 315),
+    'testing_bottom_camera': (496, 375), 'testing_fisheye_camera': (501, 451),
+    'testing_videstream_close': (1210, 66), 'periphery_statuses': (781, 233), 
+    'testing_record_sound': (1061, 232), 'testing_speech_recognize': (1072, 387), 
+    # кнопки раздела "Настройки"
+    'system_hardware': (147, 239), 'system_led': (109, 289),
+    'system_dialog': (124, 344), 'system_interaction': (144, 400),
+    'system_menu_panel': (148, 460), 'system_mic_array': (132, 518),
+    'system_reset': (146, 584), 'applications_main': (198, 193),
+    'applications_apps': (160, 241), 'applications_widgets': (150, 297),
+    'fr_settings': (157, 190), 'fr_tacker': (113, 237),
+    'fr_facedb': (108, 297), 'nav_settings': (174, 194), 'nav_navigation': (152, 242),
+    'lingvo_answers': (141, 197), 'lingvo_sources': (129, 239),
+    'language_settings_choose': (135, 188), 'language_settings_synthesis': (150, 246),
+    'interner_services_post': (155, 185), 'internet_services_sip': (160, 241),
+    'internet_services_ya_disk': (184, 301),
     # кнопки настроек раздела "Навигация"
     'useRadius': (1016, 205),
     # кнопки переходов/смены состояний
