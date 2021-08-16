@@ -18,7 +18,9 @@ def test_connection(clickOn, typeText, customScreenDiffChecker):
     clickOn('connection')
     time.sleep(5)
     assert customScreenDiffChecker(
-        {'image': 'connection.png', 'coordinates': (0, 40, 920, 150)}
+        {
+            'image': 'connection.png', 'coordinates': (0, 40, 920, 150)
+        }
     ) is None
 
 
@@ -49,7 +51,9 @@ def test_browser(clickOn, customScreenDiffChecker):
     clickOn('browser')
     time.sleep(5)
     assert customScreenDiffChecker(
-        {'image': 'browser.png', 'coordinates': (0, 40, 1280, 75)}
+        {
+            'image': 'browser.png', 'coordinates': (0, 40, 1280, 75)
+        }
     ) is None
 
 

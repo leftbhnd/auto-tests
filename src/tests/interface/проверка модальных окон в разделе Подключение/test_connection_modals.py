@@ -18,7 +18,9 @@ def test_connection_open(clickOn, typeText, customScreenDiffChecker):
     clickOn('connection')
     time.sleep(5)
     assert customScreenDiffChecker(
-        {'image': 'connection.png', 'coordinates': (0, 40, 920, 150)}
+        {
+            'image': 'connection.png', 'coordinates': (0, 40, 920, 150)
+        }
     ) is None
 
 
@@ -27,8 +29,10 @@ def test_connection_info_modal(clickOn, customScreenDiffChecker):
     clickOn('connection_info')
     time.sleep(5)
     assert customScreenDiffChecker(
-        {'image': 'connection_info_modal.png',
-            'coordinates': (365, 292, 548, 212)}
+        {
+            'image': 'connection_info_modal.png',
+            'coordinates': (365, 292, 548, 212)
+        }
     ) is None
 
 
@@ -38,9 +42,10 @@ def test_connection_update_modal(clickOn, customScreenDiffChecker):
     clickOn('connection_update')
     time.sleep(2)
     assert customScreenDiffChecker(
-        {'image': 'connection_update_modal.png',
+        {
+            'image': 'connection_update_modal.png',
             'coordinates': (0, 40, 1280, 120)
-         }
+        }
     ) is None
 
 
@@ -51,9 +56,10 @@ def test_connection_wifi_pass_modal(clickOn, customScreenDiffChecker):
     clickOn('reset_input')
     clickOn('reset_input')
     assert customScreenDiffChecker(
-        {'image': 'wifi_pass_modal.png',
+        {
+            'image': 'wifi_pass_modal.png',
             'coordinates': (365, 292, 548, 212)
-         }
+        }
     ) is None
 
 

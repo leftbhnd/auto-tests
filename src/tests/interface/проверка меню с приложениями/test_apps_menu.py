@@ -15,7 +15,9 @@ def test_menu_open_button(clickOn, customScreenDiffChecker):
     time.sleep(10)
     clickOn('apps_menu_open')
     assert customScreenDiffChecker(
-        {'image': 'apps_menu.png', 'coordinates': (0, 40, 1280, 660)}
+        {
+            'image': 'apps_menu.png', 'coordinates': (0, 40, 1280, 660)
+        }
     ) is None
 
 
@@ -31,7 +33,9 @@ def test_menu_close_swipe(pressAndMove, customScreenDiffChecker):
 def test_menu_open_swipe(pressAndMove, customScreenDiffChecker):
     pressAndMove([(608, 734), (616, 62)])
     assert customScreenDiffChecker(
-        {'image': 'apps_menu.png', 'coordinates': (0, 40, 1280, 660)}
+        {
+            'image': 'apps_menu.png', 'coordinates': (0, 40, 1280, 660)
+        }
     ) is None
 
 
@@ -39,7 +43,9 @@ def test_menu_open_swipe(pressAndMove, customScreenDiffChecker):
 def test_menu_close_button(clickOn, customScreenDiffChecker):
     clickOn('apps_menu_close')
     assert customScreenDiffChecker(
-        {'image': 'gui.png', 'coordinates': (0, 40, 1280, 660)}
+        {
+            'image': 'gui.png', 'coordinates': (0, 40, 1280, 660)
+        }
     ) is None
 
 

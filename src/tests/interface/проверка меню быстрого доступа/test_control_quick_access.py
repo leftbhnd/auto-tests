@@ -66,7 +66,9 @@ def test_hide(clickOn, customScreenDiffChecker):
     clickOn('restart_modal_no')
     clickOn('hide')
     assert customScreenDiffChecker(
-        {'image': 'ubuntu_screen.png', 'coordinates': (150, 40, 1280, 800)}
+        {
+            'image': 'ubuntu_screen.png', 'coordinates': (150, 40, 1280, 800)
+        }
     ) is None
 
 
