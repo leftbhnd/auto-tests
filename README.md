@@ -62,9 +62,8 @@ sudo apt-get install scrot
 
 # Фикстуры
 
-- `mouseClick(msg.x, msg.y)`
 - `screenDiffChecker('original_image', coordinates=(0, 40, 1280, 800))`
-- `pressAndMove([(x1, y1), (x2, y2)])`
+- `pressAndMove(SwipeMsg)`
 - `clickOn('button')`
 - `openPasswordModal()`
 - `typeText('привет')`

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.messages import PressAndMoveMsg
+from src.helpers.messages import SwipeMsg
 '''
 60.80 seconds
 '''
@@ -20,14 +20,14 @@ def test_menu_open_button(clickOn, screenDiffChecker):
 
 @pytest.mark.appsMenu
 def test_menu_close_swipe(pressAndMove, screenDiffChecker):
-    swipe_msg = PressAndMoveMsg(616, 62, 608, 734)
+    swipe_msg = SwipeMsg((616, 62), (608, 734))
     pressAndMove(swipe_msg)
     assert screenDiffChecker('gui.png', (0, 40, 1280, 660)) is None
 
 
 @pytest.mark.appsMenu
 def test_menu_open_swipe(pressAndMove, screenDiffChecker):
-    swipe_msg = PressAndMoveMsg(608, 734, 616, 62)
+    swipe_msg = SwipeMsg((608, 734), (616, 62))
     pressAndMove(swipe_msg)
     assert screenDiffChecker(
         'apps_menu.png', (0, 40, 1280, 660)) is None

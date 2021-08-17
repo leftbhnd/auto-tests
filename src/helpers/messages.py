@@ -4,12 +4,12 @@ class AsrTtsMsg:
         self.uuid = uuid
 
 
-class PressAndMoveMsg:
-    def __init__(self, startX, startY, finishX, finishY):
-        self.startX = startX
-        self.startY = startY
-        self.finishX = finishX
-        self.finishY = finishY
+class SwipeMsg:
+    def __init__(self, start, finish):
+        self.startX = start[0]
+        self.startY = start[1]
+        self.finishX = finish[0]
+        self.finishY = finish[1]
 
 
 class FaceMsg:
