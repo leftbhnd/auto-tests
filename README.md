@@ -24,9 +24,6 @@ sudo apt-get install scrot
 
 # API класса main.py
 
-<deatails>
-<summary>Подробнее</summary>
-
 ### Publishers:
 
 - `node.facePub(msg)`
@@ -62,12 +59,8 @@ sudo apt-get install scrot
 - `node.getChargeState()`
 - `node.getUseRadius()`
 - `node.getJoyCmd()`
-</details>
 
 # Фикстуры
-
-<deatails>
-<summary>Подробнее</summary>
 
 - `mouseClick(msg.x, msg.y)`
 - `screenDiffChecker('original_image', coordinates=(0, 40, 1280, 800))`
@@ -78,12 +71,7 @@ sudo apt-get install scrot
 - `node`
 - `joy`
 
-</details>
-
 # Запуск тестов
-
-<deatails>
-<summary>Подробнее</summary>
 
 ### Запуск всех тестов:
 
@@ -130,8 +118,6 @@ pytest test_example.py -v --maxfail = 3
 
 Тест завершится после трех неудачных попыток
 ```
-
-</details>
 
 # Формирование отчета
 
