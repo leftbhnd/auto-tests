@@ -137,8 +137,8 @@ class DrivingService:
 
     # /charge/runApplication /drive/station
     def chargeAppPub(self):
-        empty = Empty()
-        self._pub_charge_app.publish(empty)
+        empty_msg = Empty()
+        self._pub_charge_app.publish(empty_msg)
         rospy.sleep(self._timeout)
 
     def driveStationPub(self):

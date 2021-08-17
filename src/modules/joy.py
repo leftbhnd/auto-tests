@@ -33,8 +33,8 @@ class JoyService:
         self._timeout = 0.5
 
     def joyPhraseModePub(self):
-        empty = Empty()
-        self._pub_joy_phrase_mode.publish(empty)
+        empty_msg = Empty()
+        self._pub_joy_phrase_mode.publish(empty_msg)
         rospy.sleep(self._timeout)
 
     def joyCommandPub(self, commands):
