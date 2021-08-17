@@ -11,7 +11,6 @@ def test_asr(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('привет', '1143c011-a2a4-12eb-bcbc-0242ac132200')
     node.asrPub(asr_msg)
-    node.answersListener()
     assert node.getAnswer() in [
         "Доброго времени суток!",
         "Доброго времени суток! Добро пожаловать в {company}.",
@@ -29,7 +28,6 @@ def test_tts(node):
     tts_msg = AsrTtsMsg('я робот ты робот',
                         '11520092-a2a7-13eb-bcbc-0242ac132222')
     node.ttsPub(tts_msg)
-    node.ttsListener()
     assert node.getTts() == 'я робот ты робот'
 
 

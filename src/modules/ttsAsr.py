@@ -23,10 +23,14 @@ class TtsAsrService:
             'tts/cancel', Empty, latch=True, queue_size=10
         )
         '''
-        переменные для включения subscribers
+        subscribers
         '''
-        self._answer_subscriber_state = False
-        self._tts_subscriber_state = False
+        rospy.Subscriber(
+            'answers/answer', Answer, self._answersListener
+        )
+        rospy.Subscriber(
+            'tts/start', TTSCommand, self._ttsListener
+        )
         '''
         переменные для геттеров
         '''
@@ -47,19 +51,8 @@ class TtsAsrService:
         self._pub_text_to_asr.publish(asr_result)
         rospy.sleep(self._timeout)
 
-    def answersListener(self):
-        self._robot_answer = ''
-        self._answer_subscriber_state = True
-        rospy.Subscriber(
-            'answers/answer', Answer, self._answersListener
-        )
-        rospy.sleep(self._timeout)
-
     def _answersListener(self, answer):
-        if self._answer_subscriber_state:
-            self._robot_answer = answer.replica.text
-            self._answer_subscriber_state = False
-        rospy.sleep(self._timeout)
+        self._robot_answer = answer.replica.text
 
     def getAnswer(self):
         rospy.sleep(self._timeout)
@@ -78,22 +71,10 @@ class TtsAsrService:
         self._pub_text_to_tts.publish(tts_command)
         rospy.sleep(self._timeout)
 
-    def ttsListener(self):
-        self._robot_speech = ''
-        self._tts_subscriber_state = True
-        rospy.Subscriber(
-            'tts/start', TTSCommand, self._ttsListener
-        )
-        rospy.sleep(self._timeout)
-
     def _ttsListener(self, speech):
-        if self._tts_subscriber_state:
-            self._robot_speech = speech.text
-            self._tts_subscriber_state = False
-        rospy.sleep(self._timeout)
+        self._robot_speech = speech.text
 
     def getTts(self):
-        rospy.sleep(self._timeout)
         return self._robot_speech
 
     def getLevelsOrder(self):
