@@ -56,7 +56,9 @@ def pressAndMove():
 @pytest.fixture
 def clickOn():
     def _method(button):
-        m.click(buttons_dict[button][0], buttons_dict[button][1], 1)
+        x = buttons_dict[button][0]
+        y = buttons_dict[button][1]
+        m.click(x, y, 1)
         time.sleep(default_timeout)
     return _method
 
@@ -81,7 +83,9 @@ def openPasswordModal():
 def typeText():
     def _method(list_of_symbols):
         for symbol in list_of_symbols:
-            m.click(kb_symbols_dict[symbol][0], kb_symbols_dict[symbol][1], 1)
+            x = kb_symbols_dict[symbol][0]
+            y = kb_symbols_dict[symbol][1]
+            m.click(x, y, 1)
             time.sleep(faster_timeout)
     return _method
 
