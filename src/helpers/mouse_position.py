@@ -11,7 +11,7 @@ def getter():
     while True:
         point_name = raw_input('название координаты: ')
         coordinates = m.position()
-        result.append([point_name, coordinates])
+        result.append({point_name: coordinates})
         print(result)
 
 getter()
