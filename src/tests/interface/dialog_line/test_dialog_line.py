@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 import time
+import uuid
 
 from src.helpers.messages import AsrTtsMsg
 '''
@@ -15,9 +16,7 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
     clickOn('radius_modal_yes')
     time.sleep(15)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('тестовое правило с лопатой',
-                        '1243c023-11a4-3344-bc21-0252ac131133'
-                        )
+    asr_msg = AsrTtsMsg('тестовое правило с лопатой')
     node.asrPub(asr_msg)
     screenDiffChecker('dialog_line.png') is None
 

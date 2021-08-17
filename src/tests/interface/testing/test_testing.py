@@ -118,9 +118,7 @@ def test_record_sound_finish(clickOn, screenDiffChecker):
 @pytest.mark.testing
 def test_speech_recognize(clickOn, node, screenDiffChecker):
     clickOn('testing_speech_recognize')
-    asr_msg = AsrTtsMsg('как дела робот',
-                        'a6aadeab-5279-17bf-87d2-44e9efbfe5bd'
-                        )
+    asr_msg = AsrTtsMsg('как дела робот')
     node.asrPub(asr_msg)
     assert screenDiffChecker('testing_speech_recognize.png') is None
 

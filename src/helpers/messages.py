@@ -1,7 +1,10 @@
+import uuid
+
+
 class AsrTtsMsg:
-    def __init__(self, text, uuid):
+    def __init__(self, text):
         self.text = text
-        self.uuid = uuid
+        self.uuid = str(uuid.uuid4())
 
 
 class SwipeMsg:

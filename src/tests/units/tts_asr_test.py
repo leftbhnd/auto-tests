@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import rospy
 import pytest
 import time
+import uuid
+
 
 from src.helpers.messages import AsrTtsMsg
 
 
 def test_asr(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет', '1143c011-a2a4-12eb-bcbc-0242ac132200')
+    asr_msg = AsrTtsMsg('привет')
     node.asrPub(asr_msg)
     assert node.getAnswer() in [
         "Доброго времени суток!",
@@ -25,8 +26,7 @@ def test_asr(node):
 def test_tts(node):
     time.sleep(10)
     node.cancelSpeechPub()
-    tts_msg = AsrTtsMsg('я робот ты робот',
-                        '11520092-a2a7-13eb-bcbc-0242ac132222')
+    tts_msg = AsrTtsMsg('я робот ты робот')
     node.ttsPub(tts_msg)
     assert node.getTts() == 'я робот ты робот'
 
