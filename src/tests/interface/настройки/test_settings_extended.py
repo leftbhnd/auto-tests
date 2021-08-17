@@ -117,19 +117,19 @@ def test_internet_services_sip(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('internet_services')
     clickOn('internet_services_sip')
-    time.sleep(3)
+    time.sleep(1)
     assert screenDiffChecker('internet_services_sip.png') is None
 
 
 @pytest.mark.settings_extend
 def test_internet_services_ya_disk(clickOn, screenDiffChecker):
     clickOn('internet_services_ya_disk')
-    time.sleep(3)
+    time.sleep(1)
     assert screenDiffChecker('internet_services_ya_disk.png') is None
 
 
 @pytest.mark.settings_extend
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn('back')
     clickOn('back')
     clickOn('back')

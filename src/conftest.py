@@ -9,7 +9,7 @@ import rospy
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, timeout
+from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, faster_timeout, default_timeout
 from helpers.messages import JoyCmdMsg
 
 
@@ -20,7 +20,7 @@ m = PyMouse()
 def mouseClick():
     def _method(msg):
         m.click(msg.x, msg.y, 1)
-        time.sleep(timeout)
+        time.sleep(default_timeout)
     return _method
 
 
@@ -47,9 +47,9 @@ def pressAndMove():
         finishX = twoPointsList[1][0]
         finishY = twoPointsList[1][1]
         m.press(startX, startY, 1)
-        time.sleep(timeout)
+        time.sleep(default_timeout)
         m.release(finishX, finishY, 1)
-        time.sleep(timeout)
+        time.sleep(default_timeout)
     return _method
 
 
@@ -57,7 +57,7 @@ def pressAndMove():
 def clickOn():
     def _method(button):
         m.click(buttons_dict[button][0], buttons_dict[button][1], 1)
-        time.sleep(timeout)
+        time.sleep(default_timeout)
     return _method
 
 
@@ -65,15 +65,15 @@ def clickOn():
 def openPasswordModal():
     def _method():
         m.click(50, 50, 1)
-        time.sleep(0.1)
+        time.sleep(faster_timeout)
         m.click(50, 50, 1)
-        time.sleep(0.1)
+        time.sleep(faster_timeout)
         m.click(50, 50, 1)
-        time.sleep(0.1)
+        time.sleep(faster_timeout)
         m.click(50, 50, 1)
-        time.sleep(0.1)
+        time.sleep(faster_timeout)
         m.click(50, 50, 1)
-        time.sleep(timeout)
+        time.sleep(faster_timeout)
     return _method
 
 
@@ -82,7 +82,7 @@ def typeText():
     def _method(array_of_letters):
         for symbol in array_of_letters:
             m.click(kb_symbols_dict[symbol][0], kb_symbols_dict[symbol][1], 1)
-            time.sleep(timeout)
+            time.sleep(faster_timeout)
     return _method
 
 
@@ -90,12 +90,12 @@ def typeText():
 def node():
     rospy.init_node('autotest')
     node = AutoTest()
-    time.sleep(timeout)
+    time.sleep(default_timeout)
     return node
 
 
 @pytest.fixture
 def joy():
     joy = JoyCmdMsg()
-    time.sleep(timeout)
+    time.sleep(default_timeout)
     return joy

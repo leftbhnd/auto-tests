@@ -69,7 +69,7 @@ def test_internet_services(clickOn, screenDiffChecker):
 
 
 @pytest.mark.settings
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn('back')
     clickOn('back')
     clickOn('back')
