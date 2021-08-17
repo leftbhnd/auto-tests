@@ -79,8 +79,8 @@ def openPasswordModal():
 
 @pytest.fixture
 def typeText():
-    def _method(array_of_letters):
-        for symbol in array_of_letters:
+    def _method(list_of_symbols):
+        for symbol in list_of_symbols:
             m.click(kb_symbols_dict[symbol][0], kb_symbols_dict[symbol][1], 1)
             time.sleep(faster_timeout)
     return _method
