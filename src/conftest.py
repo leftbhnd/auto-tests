@@ -27,32 +27,13 @@ def mouseClick():
 
 @pytest.fixture
 def screenDiffChecker():
-    def _method(original_image):
+    def _method(original_image, coordinates=(0, 40, 1280, 800)):
         pyautogui.screenshot(
-            screens_dir + 'screen.png', region=(0, 40, 1280, 800)
+            screens_dir + 'screen.png', region=coordinates
         )
         current = Image.open(screens_dir + 'screen.png')
         original = Image.open(
             screens_dir + original_image
-        )
-        difference = ImageChops.difference(current, original).getbbox()
-        return difference
-    return _method
-
-
-@pytest.fixture
-def customScreenDiffChecker():
-    def _method(image_info):
-        left = image_info['coordinates'][0]
-        top = image_info['coordinates'][1]
-        right = image_info['coordinates'][2]
-        bottom = image_info['coordinates'][3]
-        pyautogui.screenshot(
-            screens_dir + 'screen.png', region=(left, top, right, bottom)
-        )
-        current = Image.open(screens_dir + 'screen.png')
-        original = Image.open(
-            screens_dir + image_info['image']
         )
         difference = ImageChops.difference(current, original).getbbox()
         return difference
