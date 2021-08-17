@@ -33,14 +33,10 @@ def screenDiffChecker():
 
 @pytest.fixture
 def pressAndMove():
-    def _method(twoPointsList):
-        startX = twoPointsList[0][0]
-        startY = twoPointsList[0][1]
-        finishX = twoPointsList[1][0]
-        finishY = twoPointsList[1][1]
-        m.press(startX, startY, 1)
+    def _method(msg):
+        m.press(msg.startX, msg.startY, 1)
         time.sleep(default_timeout)
-        m.release(finishX, finishY, 1)
+        m.release(msg.finishX, msg.finishY, 1)
         time.sleep(default_timeout)
     return _method
 

@@ -4,11 +4,12 @@ class AsrTtsMsg:
         self.uuid = uuid
 
 
-class ClickMsg:
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
+class PressAndMoveMsg:
+    def __init__(self, startX, startY, finishX, finishY):
+        self.startX = startX
+        self.startY = startY
+        self.finishX = finishX
+        self.finishY = finishY
 
 
 class FaceMsg:
