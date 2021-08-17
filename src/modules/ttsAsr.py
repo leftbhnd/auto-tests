@@ -59,7 +59,8 @@ class TtsAsrService:
         return self._robot_answer
 
     def cancelSpeechPub(self):
-        self._pub_cancel_speech.publish()
+        empty = Empty()
+        self._pub_cancel_speech.publish(empty)
         rospy.sleep(self._timeout)
 
     def ttsPub(self, data):

@@ -9,44 +9,31 @@ import time
 
 
 @pytest.mark.appsMenu
-def test_menu_open_button(clickOn, customScreenDiffChecker):
+def test_menu_open_button(clickOn, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
     time.sleep(10)
     clickOn('apps_menu_open')
-    assert customScreenDiffChecker(
-        {
-            'image': 'apps_menu.png', 'coordinates': (0, 40, 1280, 660)
-        }
-    ) is None
+    assert screenDiffChecker('apps_menu.png', (0, 40, 1280, 660)) is None
 
 
 @pytest.mark.appsMenu
-def test_menu_close_swipe(pressAndMove, customScreenDiffChecker):
+def test_menu_close_swipe(pressAndMove, screenDiffChecker):
     pressAndMove([(616, 62), (608, 734)])
-    assert customScreenDiffChecker(
-        {'image': 'gui.png', 'coordinates': (0, 40, 1280, 660)}
-    ) is None
+    assert screenDiffChecker('gui.png', (0, 40, 1280, 660)) is None
 
 
 @pytest.mark.appsMenu
-def test_menu_open_swipe(pressAndMove, customScreenDiffChecker):
+def test_menu_open_swipe(pressAndMove, screenDiffChecker):
     pressAndMove([(608, 734), (616, 62)])
-    assert customScreenDiffChecker(
-        {
-            'image': 'apps_menu.png', 'coordinates': (0, 40, 1280, 660)
-        }
-    ) is None
+    assert screenDiffChecker(
+        'apps_menu.png', (0, 40, 1280, 660)) is None
 
 
 @pytest.mark.appsMenu
-def test_menu_close_button(clickOn, customScreenDiffChecker):
+def test_menu_close_button(clickOn, screenDiffChecker):
     clickOn('apps_menu_close')
-    assert customScreenDiffChecker(
-        {
-            'image': 'gui.png', 'coordinates': (0, 40, 1280, 660)
-        }
-    ) is None
+    assert screenDiffChecker('gui.png', (0, 40, 1280, 660)) is None
 
 
 @pytest.mark.appsMenu

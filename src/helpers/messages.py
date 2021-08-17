@@ -34,9 +34,10 @@ class JoyCmdMsg:
         buttons = [A, B, 0, X, Y, 0, LB, RB, 0, 0, 0, start, 0, 0, 0, back, 0, up, right, down, left]
         '''
         self._axes = [0.0, 0.0, 0.0, 0.0, 1.0, 1.0]
-        self._buttons = [0, 0, 0, 0, 0, 0, 0, 0,
-                         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-                         ]
+        self._buttons = [
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        ]
 
     def upVolume(self):
         # X LB
@@ -48,10 +49,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[3], second_press_buttons[6] = 1, 0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def downVolume(self):
         # X LT
@@ -63,10 +65,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[3], second_press_axes[5] = 1, 1.0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def upMic(self):
         # X RB
@@ -78,10 +81,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[3], second_press_buttons[7] = 1, 0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def downMic(self):
         # X RT
@@ -93,10 +97,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[3], second_press_axes[4] = 1, 1.0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def phraseMode(self):
         # back Y
@@ -108,10 +113,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[15], second_press_buttons[4] = 1, 0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def nextPhrase(self):
         # Y RT
@@ -123,10 +129,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[4], second_press_axes[4] = 1, 1.0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def previousPhrase(self):
         # Y RB
@@ -138,10 +145,11 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[4], second_press_buttons[7] = 1, 0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]
 
     def autoMode(self):
         # back start
@@ -153,7 +161,8 @@ class JoyCmdMsg:
             self._axes), list(self._buttons)
         second_press_buttons[15], second_press_buttons[11] = 1, 0
 
-        return [{'axes': first_press_axes, 'buttons': first_press_buttons},
-                {'axes': second_press_axes, 'buttons': second_press_buttons},
-                {'axes': self._axes, 'buttons': self._buttons}
-                ]
+        return [
+            {'axes': first_press_axes, 'buttons': first_press_buttons},
+            {'axes': second_press_axes, 'buttons': second_press_buttons},
+            {'axes': self._axes, 'buttons': self._buttons}
+        ]

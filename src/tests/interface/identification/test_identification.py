@@ -60,9 +60,9 @@ def test_confirm_hide_input_not_same(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.identification
-def test_save_new_pass(clickOn, typeText, screenDiffChecker):
+def test_save_new_pass(clickOn, screenDiffChecker):
     clickOn('kb_ident_modal_confirm_input')
-    typeText('d')
+    clickOn('delete')
     clickOn('kb_ident_modal_save')
     assert screenDiffChecker('ident_pass_save.png') is None
 

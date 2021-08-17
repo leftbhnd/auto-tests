@@ -1,96 +1,126 @@
-# Документация
+# Настройка окружения
 
-## Настройка окружения
 ```
-pip install pytest
-pip install pytest-xdist
+sudo apt-get install -y python-pytest
 pip install pyautogui
-pip install PIL
+sudo apt-get install scrot
 ```
-## Структура проекта:
-`conftest.py` - файл с фикстурами (функциями, которые можно вызывать в тесте без импорта)
 
-`main.py` - файл с классом, методы которого публикуют и получают данные из топика. Также с классами, в которых формируется нужный тип сообщения для топиков.
+# Структура проекта:
 
-`helpers.py` - файл для хранения вспомогательных переменных.
+`main.py` - класс управления топиками робота
 
-`*_test.py` - примеры тестов
+`src/conftest.py` - функции, которые можно использовать без импорта в тестах
 
+`src/helpers/*` - вспомогательные скрипты/конфиги
 
-## Важно!
-+ Название тестов должно содержать: `*_test.py`
-+ Внутри тестов функции должны называться: `test*()`
+`src/tests/*` - unit и e2e тесты
 
-## Запуск тестов:
+# Test's codestyle
 
-#### Запуск всех тестов:
+- Название тестов должно содержать: `*_test.py` или `*test_*.py`
+- Внутри тестов функции должны содержать слово `test`
+- Использовать уникальный `@pytest.mark.X` внутри одного файла
+
+# API класса main.py
+
+### Publishers:
+
+- `node.facePub(msg)`
+- `node.interactionPub(msg)`
+- `node.asrPub(msg)`
+- `node.cancelSpeechPub(msg)`
+- `node.ttsPub(msg)`
+- `node.autoModePub(msg)`
+- `node.joyModePub(msg)`
+- `node.toPointPub()`
+- `node.enableDrivePausePub(msg)`
+- `node.disableDrivePausePub(msg)`
+- `node.chargeAppPub(msg)`
+- `node.driveStationPub(msg)`
+- `node.joyPhraseModePub(msg)`
+- `node.joyCommandPub(msg)`
+
+### Getters:
+
+- `node.getInteraction()`
+- `node.getScriptProcess()`
+- `node.getScriptProcess()`
+- `node.getServosState()`
+- `node.getAnswer()`
+- `node.getTts()`
+- `node.getLevelsOrder()`
+- `node.getDriveMode()`
+- `node.getCurrentPoint()`
+- `node.getWheelsData()`
+- `node.getDrivePause()`
+- `node.getDriveStationStatus()`
+- `node.getDriveStatus()`
+- `node.getChargeState()`
+- `node.getUseRadius()`
+- `node.getJoyCmd()`
+
+# Фикстуры
+
+- `mouseClick(msg.x, msg.y)`
+- `screenDiffChecker('original_image', coordinates=(0, 40, 1280, 800))`
+- `pressAndMove([(x1, y1), (x2, y2)])`
+- `clickOn('button')`
+- `openPasswordModal()`
+- `typeText(['привет'])`
+- `node`
+- `joy`
+
+# Запуск тестов
+
+### Запуск всех тестов:
+
 ```
 pytest -v
 ```
 
-#### Запуск конкретного теста:
+### Запуск конкретного теста:
+
 ```
 pytest test_name.py -v
 ```
 
-#### Запуск нескольких тестов с однотипным словом в названии:
+### Запуск нескольких тестов с однотипным словом в названии:
+
 ```
 pytest -k word_in_test -v
 ```
 
-#### Вызов тестовых функций отдельных тестов:
-```
-Перед тестовой функцией можно указать маркировку теста, например, driving:
-@pytest.mark.driving
+### Вызов тестовых функций отдельных тестов:
 
-Для запуска всех тестов с маркировкой driving необходимо выполнить команду: 
+```
+Для запуска всех тестов с маркировкой driving необходимо выполнить команду:
 pytest -m driving -v
 ```
 
-#### Добавление вспомогательных и переиспользуемых функций для выполнение тестов (при частом переиспользовании в разных тестах лучше вынести в conftest.py):
-```
-@pytest.fixture
-def functionName():
-    pass
+### Использование нескольких входных параметров:
 
-def test_save(functionName):
-    functionName()
-    pass
 ```
-
-#### Использование нескольких входных параметров:
-```
-@pytest.mark.parametrize("question, answer",[('привет','добрый день'),('как дела','хорошо'),(True, True),(1, 1)])
+@pytest.mark.parametrize("question, answer", [
+    ('привет', 'добрый день'),
+    ('как дела', 'хорошо'),
+    (True, True),
+    (1, 1)
+])
 def test_differ(question, answer):
    assert question == answer
 ```
 
-#### Пропустить тесты:
-```
-тест не будет считаться частью неудачной или пройденной проверки:
-@pytest.mark.xfail
-def ...
+### Остановка тестов после N сбоев:
 
-пропустить выполнение теста:
-@pytest.mark.skip
-def ...
-```
-
-#### Остановка тестов после N сбоев:
 ```
 pytest test_example.py -v --maxfail = 3
 
 Тест завершится после трех неудачных попыток
 ```
 
-#### Одновременный запуск тестов:
-```
-pytest -n 3
+# Формирование отчета
 
-запустит сразу три теста одновременно
-```
-
-## Формирование отчета
 ```
 pytest test_example.py -v --junitxml="result.xml"
 ```
