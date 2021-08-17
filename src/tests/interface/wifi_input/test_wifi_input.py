@@ -13,7 +13,7 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('connection')
     time.sleep(5)
@@ -26,7 +26,7 @@ def test_hide_input(clickOn, typeText, screenDiffChecker):
     clickOn('random_wifi')
     clickOn('wifi_pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['2', '2', '8', '1', '4', '8', '8'])
+    typeText('2281488')
     clickOn('reset_input')
     clickOn('reset_input')
     assert screenDiffChecker(

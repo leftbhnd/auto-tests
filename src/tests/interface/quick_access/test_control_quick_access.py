@@ -13,7 +13,7 @@ def test_charge_app(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('send_to_charge')
     time.sleep(2)
@@ -27,7 +27,7 @@ def test_auto_tumbler_disable(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     assert screenDiffChecker('control.png') is None
 

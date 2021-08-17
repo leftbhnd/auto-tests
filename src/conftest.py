@@ -17,14 +17,6 @@ m = PyMouse()
 
 
 @pytest.fixture
-def mouseClick():
-    def _method(msg):
-        m.click(msg.x, msg.y, 1)
-        time.sleep(default_timeout)
-    return _method
-
-
-@pytest.fixture
 def screenDiffChecker():
     def _method(original_image, coordinates=(0, 40, 1280, 800)):
         pyautogui.screenshot(
@@ -66,23 +58,16 @@ def clickOn():
 @pytest.fixture
 def openPasswordModal():
     def _method():
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
+        for i in range(5):
+            m.click(50, 50, 1)
+            time.sleep(faster_timeout)
     return _method
 
 
 @pytest.fixture
 def typeText():
-    def _method(list_of_symbols):
-        for symbol in list_of_symbols:
+    def _method(symbols):
+        for symbol in symbols:
             x = kb_symbols_dict[symbol][0]
             y = kb_symbols_dict[symbol][1]
             m.click(x, y, 1)

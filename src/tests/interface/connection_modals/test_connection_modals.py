@@ -13,7 +13,7 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('connection')
     time.sleep(5)

@@ -12,7 +12,7 @@ import time
 def test_disable_radius(node, clickOn, typeText):
     clickOn('control')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('settings')
     clickOn('navigation')
@@ -51,7 +51,7 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('settings')
     clickOn('navigation')

@@ -18,7 +18,7 @@ def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('testing')
     assert screenDiffChecker('testing_runned.png') is None

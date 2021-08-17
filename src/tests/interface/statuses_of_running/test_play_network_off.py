@@ -10,7 +10,7 @@ import time
 def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
@@ -45,7 +45,7 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')

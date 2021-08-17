@@ -67,7 +67,7 @@ sudo apt-get install scrot
 - `pressAndMove([(x1, y1), (x2, y2)])`
 - `clickOn('button')`
 - `openPasswordModal()`
-- `typeText(['привет'])`
+- `typeText('привет')`
 - `node`
 - `joy`
 
