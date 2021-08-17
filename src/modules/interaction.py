@@ -14,9 +14,12 @@ class InteractionService:
             'interaction', Interaction, latch=True, queue_size=10
         )
         '''
-        переменные для включения subscribers 
+        subscribers
         '''
-        self._interaction_subscriber_state = False
+        rospy.Subscriber(
+            'interaction', Interaction, self._interactionListener
+        )
+
         '''
         переменные для геттеров 
         '''
@@ -32,20 +35,9 @@ class InteractionService:
         self._pub_interaction.publish(interaction)
         rospy.sleep(self._timeout)
 
-    def interactionListener(self):
-        self._interaction_subscriber_state = True
-        rospy.Subscriber(
-            'interaction', Interaction, self._interactionListener
-        )
-        rospy.sleep(self._timeout)
-
-    def _interactionListener(self, data):
-        if self._interaction_subscriber_state:
-            self._interaction_state = data.state
-            self._interaction_reason = data.reason
-            self._interaction_subscriber_state = False
-        rospy.sleep(self._timeout)
+    def _interactionListener(self, interaction):
+        self._interaction_state = interaction.state
+        self._interaction_reason = interaction.reason
 
     def getInteraction(self):
-        rospy.sleep(self._timeout)
         return [self._interaction_state, self._interaction_reason]
