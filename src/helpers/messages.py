@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import uuid
 
 
@@ -9,7 +11,7 @@ class AsrTtsMsg:
 
 class SwipeMsg:
     def __init__(self, start, finish):
-        # 2 кортежа, нажатие, затем сдвиг
+        # 2 кортежа, нажатие -> сдвиг
         self.startX = start[0]
         self.startY = start[1]
         self.finishX = finish[0]
