@@ -9,10 +9,9 @@ import rospy
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.helpers import letters_dict, element_dict, screens_dir
+from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, timeout
 from helpers.messages import JoyCmdMsg
 
-timeout = 0.5
 
 m = PyMouse()
 
@@ -56,10 +55,8 @@ def pressAndMove():
 
 @pytest.fixture
 def clickOn():
-    def _method(element):
-        x = element_dict[element][0]
-        y = element_dict[element][1]
-        m.click(x, y, 1)
+    def _method(button):
+        m.click(buttons_dict[button][0], buttons_dict[button][1], 1)
         time.sleep(timeout)
     return _method
 
@@ -83,11 +80,9 @@ def openPasswordModal():
 @pytest.fixture
 def typeText():
     def _method(array_of_letters):
-        for letter in array_of_letters:
-            x = letters_dict[letter][0]
-            y = letters_dict[letter][1]
-            m.click(x, y, 1)
-            time.sleep(0.1)
+        for symbol in array_of_letters:
+            m.click(kb_symbols_dict[symbol][0], kb_symbols_dict[symbol][1], 1)
+            time.sleep(timeout)
     return _method
 
 
@@ -102,4 +97,5 @@ def node():
 @pytest.fixture
 def joy():
     joy = JoyCmdMsg()
+    time.sleep(timeout)
     return joy
