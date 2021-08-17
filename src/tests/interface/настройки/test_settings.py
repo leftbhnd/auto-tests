@@ -5,7 +5,7 @@ import time
 
 
 '''
-14.01 seconds
+13.18 seconds
 '''
 
 

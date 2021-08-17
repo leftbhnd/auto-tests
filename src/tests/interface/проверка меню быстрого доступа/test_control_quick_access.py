@@ -4,7 +4,7 @@ import pytest
 import time
 
 '''
-32.83 seconds
+35.63 seconds
 '''
 
 
@@ -23,7 +23,7 @@ def test_charge_app(clickOn, typeText, screenDiffChecker):
 @pytest.mark.control_qa
 def test_auto_tumbler_disable(clickOn, typeText, screenDiffChecker):
     clickOn('send_to_charge_close')
-    time.sleep(4)
+    time.sleep(8)
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -62,14 +62,10 @@ def test_restart_modal(clickOn, screenDiffChecker):
 
 
 @pytest.mark.control_qa
-def test_hide(clickOn, customScreenDiffChecker):
+def test_hide(clickOn, screenDiffChecker):
     clickOn('restart_modal_no')
     clickOn('hide')
-    assert customScreenDiffChecker(
-        {
-            'image': 'ubuntu_screen.png', 'coordinates': (150, 40, 1280, 800)
-        }
-    ) is None
+    assert screenDiffChecker('ubuntu_screen.png', (150, 40, 1280, 800)) is None
 
 
 @pytest.mark.control_qa

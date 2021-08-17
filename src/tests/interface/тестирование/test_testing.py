@@ -56,50 +56,42 @@ def test_zero_all_servos(clickOn, node):
 
 
 @pytest.mark.testing
-def test_main_camera(clickOn, customScreenDiffChecker):
+def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(45)
     clickOn('testing_main_camera')
-    assert customScreenDiffChecker(
-        {
-            'image': 'testing_main_camera_header.png',
-            'coordinates': (0, 40, 1280, 60)
-        }
+    assert screenDiffChecker(
+        'testing_main_camera_header.png',
+        (0, 40, 1280, 60)
     ) is None
 
 
 @pytest.mark.testing
-def test_face_recognize(clickOn, customScreenDiffChecker):
+def test_face_recognize(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_face_recognize')
-    assert customScreenDiffChecker(
-        {
-            'image': 'testing_face_recognize_header.png',
-            'coordinates': (0, 40, 1280, 60)
-        }
+    assert screenDiffChecker(
+        'testing_face_recognize_header.png',
+        (0, 40, 1280, 60)
     ) is None
 
 
 @pytest.mark.testing
-def test_bottom_camera(clickOn, customScreenDiffChecker):
+def test_bottom_camera(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_bottom_camera')
-    assert customScreenDiffChecker(
-        {
-            'image': 'testing_bottom_camera_header.png',
-            'coordinates': (0, 40, 1280, 60)
-        }
+    assert screenDiffChecker(
+        'testing_bottom_camera_header.png',
+        (0, 40, 1280, 60)
     ) is None
 
 
 @pytest.mark.testing
-def test_fisheye_camera(clickOn, customScreenDiffChecker):
+def test_fisheye_camera(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_fisheye_camera')
-    assert customScreenDiffChecker(
-        {
-            'image': 'testing_fisheye_camera_header.png',
-            'coordinates': (0, 40, 1280, 60)
-        }
+    assert screenDiffChecker(
+        'testing_fisheye_camera_header.png',
+        (0, 40, 1280, 60)
     ) is None
 
 
