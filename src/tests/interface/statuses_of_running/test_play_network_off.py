@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import default_timeout, running_timeout, restart_timeout
+from src.helpers.test_config import default_timeout, slower_timeout, running_timeout, restart_timeout
 '''
 97.35 seconds
 '''
@@ -19,6 +19,7 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
     clickOn('restart_modal_yes')
     time.sleep(35)
     clickOn('play')
+    time.sleep(slower_timeout)
     assert screenDiffChecker('no_connection_modal.png') is None
 
 
