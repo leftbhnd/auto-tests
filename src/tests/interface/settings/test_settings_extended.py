@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import default_timeout, modals_timeout
+from src.helpers.test_config import default_timeout, slower_timeout, modals_timeout
 '''
 30.24 seconds
 '''
@@ -117,14 +117,14 @@ def test_internet_services_sip(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('internet_services')
     clickOn('internet_services_sip')
-    time.sleep(default_timeout)
+    time.sleep(slower_timeout)
     assert screenDiffChecker('internet_services_sip.png') is None
 
 
 @pytest.mark.interface
 def test_internet_services_ya_disk(clickOn, screenDiffChecker):
     clickOn('internet_services_ya_disk')
-    time.sleep(default_timeout)
+    time.sleep(slower_timeout)
     assert screenDiffChecker('internet_services_ya_disk.png') is None
 
 

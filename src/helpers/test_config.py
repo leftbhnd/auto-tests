@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 faster_timeout = 0.1
+slower_timeout = 1
 default_timeout = 0.5
 restart_timeout = 45
 running_timeout = 10
