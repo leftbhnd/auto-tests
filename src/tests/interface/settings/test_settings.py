@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import modals_timeout
+from src.helpers.test_config import default_timeout, modals_timeout
 '''
 13.18 seconds
 '''
@@ -72,5 +72,6 @@ def test_internet_services(clickOn, screenDiffChecker):
 def test_reset(clickOn):
     clickOn('back')
     clickOn('back')
+    time.sleep(default_timeout)
     clickOn('back')
     time.sleep(modals_timeout)
