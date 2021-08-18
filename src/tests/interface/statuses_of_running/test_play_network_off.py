@@ -17,7 +17,7 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(35)
+    time.sleep(30)
     clickOn('play')
     assert screenDiffChecker('no_connection_modal.png') is None
 
@@ -26,19 +26,18 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
 def test_check_run_state(clickOn, screenDiffChecker):
     clickOn('no_connection_modal_yes')
     clickOn('radius_modal_yes')
-    time.sleep(0.6)
     assert screenDiffChecker('run_state.png') is None
 
 
 @pytest.mark.interface
 def test_check_run_active(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(default_timeout)
     assert screenDiffChecker('run_active.png') is None
 
 
 @pytest.mark.interface
 def test_check_run(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(default_timeout)
     assert screenDiffChecker('run.png') is None
 
 
