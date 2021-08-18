@@ -49,6 +49,7 @@ def test_system_menu_panel(clickOn, screenDiffChecker):
 @pytest.mark.interface
 def test_system_reset(clickOn, screenDiffChecker):
     clickOn('system_reset')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_reset.png') is None
 
 
