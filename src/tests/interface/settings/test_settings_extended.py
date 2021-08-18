@@ -117,12 +117,14 @@ def test_internet_services_sip(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('internet_services')
     clickOn('internet_services_sip')
+    time.sleep(default_timeout)
     assert screenDiffChecker('internet_services_sip.png') is None
 
 
 @pytest.mark.interface
 def test_internet_services_ya_disk(clickOn, screenDiffChecker):
     clickOn('internet_services_ya_disk')
+    time.sleep(default_timeout)
     assert screenDiffChecker('internet_services_ya_disk.png') is None
 
 
