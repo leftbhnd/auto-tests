@@ -25,7 +25,7 @@ def test_connection(clickOn, typeText, screenDiffChecker):
 def test_promo(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('promo')
-    assert screenDiffChecker('promo.png') is None
+    assert screenDiffChecker('promo.png', (0, 40, 1280, 100)) is None
 
 
 @pytest.mark.interface
