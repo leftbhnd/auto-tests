@@ -19,6 +19,7 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
     clickOn('restart_modal_yes')
     time.sleep(30)
     clickOn('play')
+    time.sleep(slower_timeout)
     assert screenDiffChecker('no_connection_modal.png') is None
 
 
