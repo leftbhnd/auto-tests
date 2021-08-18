@@ -19,42 +19,49 @@ def test_system_hardware(clickOn, typeText, screenDiffChecker):
     clickOn('settings')
     clickOn('system')
     clickOn('system_hardware')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_hardware.png') is None
 
 
 @pytest.mark.interface
 def test_system_led(clickOn, screenDiffChecker):
     clickOn('system_led')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_led.png') is None
 
 
 @pytest.mark.interface
 def test_system_dialog(clickOn, screenDiffChecker):
     clickOn('system_dialog')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_dialog.png') is None
 
 
 @pytest.mark.interface
 def test_system_interaction(clickOn, screenDiffChecker):
     clickOn('system_interaction')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_interaction.png') is None
 
 
 @pytest.mark.interface
 def test_system_menu_panel(clickOn, screenDiffChecker):
     clickOn('system_menu_panel')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_menu_panel.png') is None
 
 
 @pytest.mark.interface
 def test_system_reset(clickOn, screenDiffChecker):
     clickOn('system_reset')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_reset.png') is None
 
 
 @pytest.mark.interface
 def test_system_mic_array(clickOn, screenDiffChecker):
     clickOn('system_mic_array')
+    time.sleep(default_timeout)
     assert screenDiffChecker('system_mic_array.png') is None
 
 
