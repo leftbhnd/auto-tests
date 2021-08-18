@@ -10,7 +10,7 @@ from src.helpers.test_config import running_timeout, restart_timeout
 '''
 
 
-@pytest.mark.appsMenu
+@pytest.mark.interface
 def test_menu_open_button(clickOn, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
@@ -19,14 +19,14 @@ def test_menu_open_button(clickOn, screenDiffChecker):
     assert screenDiffChecker('apps_menu.png', (0, 40, 1280, 660)) is None
 
 
-@pytest.mark.appsMenu
+@pytest.mark.interface
 def test_menu_close_swipe(pressAndMove, screenDiffChecker):
     swipe_msg = SwipeMsg((616, 62), (608, 734))
     pressAndMove(swipe_msg)
     assert screenDiffChecker('gui.png', (0, 40, 1280, 660)) is None
 
 
-@pytest.mark.appsMenu
+@pytest.mark.interface
 def test_menu_open_swipe(pressAndMove, screenDiffChecker):
     swipe_msg = SwipeMsg((608, 734), (616, 62))
     pressAndMove(swipe_msg)
@@ -34,13 +34,13 @@ def test_menu_open_swipe(pressAndMove, screenDiffChecker):
         'apps_menu.png', (0, 40, 1280, 660)) is None
 
 
-@pytest.mark.appsMenu
+@pytest.mark.interface
 def test_menu_close_button(clickOn, screenDiffChecker):
     clickOn('apps_menu_close')
     assert screenDiffChecker('gui.png', (0, 40, 1280, 660)) is None
 
 
-@pytest.mark.appsMenu
+@pytest.mark.interface
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     openPasswordModal()
     clickOn('pass_modal_input')

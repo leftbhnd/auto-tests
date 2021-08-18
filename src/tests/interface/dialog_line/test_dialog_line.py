@@ -11,7 +11,7 @@ from src.helpers.test_config import running_timeout, restart_timeout
 '''
 
 
-@pytest.mark.dialogLine
+@pytest.mark.interface
 def test_dialog_line(clickOn, node, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
@@ -22,7 +22,7 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
     screenDiffChecker('dialog_line.png') is None
 
 
-@pytest.mark.dialogLine
+@pytest.mark.interface
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     openPasswordModal()
     clickOn('pass_modal_input')

@@ -9,7 +9,7 @@ from src.helpers.test_config import default_timeout, modals_timeout, running_tim
 '''
 
 
-@pytest.mark.useRadiusFalse
+@pytest.mark.interface
 def test_disable_radius(node, clickOn, typeText):
     clickOn('control')
     clickOn('choose_numbers')
@@ -28,25 +28,25 @@ def test_disable_radius(node, clickOn, typeText):
     assert node.getUseRadius() == False
 
 
-@pytest.mark.useRadiusFalse
+@pytest.mark.interface
 def test_check_run_state(clickOn, screenDiffChecker):
     clickOn('play')
     assert screenDiffChecker('run_state.png') is None
 
 
-@pytest.mark.useRadiusFalse
+@pytest.mark.interface
 def test_check_run_active(screenDiffChecker):
     time.sleep(default_timeout)
     assert screenDiffChecker('run_active.png') is None
 
 
-@pytest.mark.useRadiusFalse
+@pytest.mark.interface
 def test_check_run(screenDiffChecker):
     time.sleep(default_timeout)
     assert screenDiffChecker('run.png') is None
 
 
-@pytest.mark.useRadiusFalse
+@pytest.mark.interface
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
     time.sleep(running_timeout)
     openPasswordModal()
