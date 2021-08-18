@@ -9,7 +9,7 @@ import rospy
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, faster_timeout, default_timeout
+from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, failed_dir, faster_timeout, default_timeout
 from helpers.messages import JoyCmdMsg
 
 
@@ -22,12 +22,19 @@ def screenDiffChecker():
         pyautogui.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
-        current = Image.open(screens_dir + 'screen.png')
+        current = Image.open(
+            screens_dir + 'screen.png'
+        )
         original = Image.open(
             screens_dir + original_image
         )
-        difference = ImageChops.difference(current, original).getbbox()
-        return difference
+        result = ImageChops.difference(current, original)
+        difference = result.getbbox()
+        if difference != None:
+            result.save(
+                failed_dir + 'failed_' + original_image
+            )
+            return difference
     return _method
 
 

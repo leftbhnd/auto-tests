@@ -3,6 +3,7 @@
 faster_timeout = 0.1
 default_timeout = 0.4
 screens_dir = '/home/promobot/.tests/screens/'
+failed_dir = '/home/promobot/.tests/screens/test_failed/'
 
 kb_symbols_dict = {
     # letters
