@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import modals_timeout, running_timeout
+from src.helpers.test_config import modals_timeout
 '''
 35.63 seconds
 '''
@@ -24,7 +24,7 @@ def test_charge_app(clickOn, typeText, screenDiffChecker):
 @pytest.mark.interface
 def test_auto_tumbler_disable(clickOn, typeText, screenDiffChecker):
     clickOn('send_to_charge_close')
-    time.sleep(running_timeout)
+    time.sleep(modals_timeout)
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')

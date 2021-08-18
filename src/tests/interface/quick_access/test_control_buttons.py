@@ -5,7 +5,7 @@ import time
 
 from src.helpers.test_config import modals_timeout
 '''
-22.52 seconds
+23.40 seconds
 '''
 
 
