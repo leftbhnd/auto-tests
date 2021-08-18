@@ -3,7 +3,7 @@
 
 faster_timeout = 0.2
 default_timeout = 0.5
-restart_timeout = 40
+restart_timeout = 50
 running_timeout = 10
 modals_timeout = 5
 screens_dir = '/home/promobot/.tests/screens/'
