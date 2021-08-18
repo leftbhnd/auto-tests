@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import modals_timeout
+from src.helpers.test_config import default_timeout, modals_timeout
 '''
 30.24 seconds
 '''
@@ -129,6 +129,7 @@ def test_internet_services_ya_disk(clickOn, screenDiffChecker):
 @pytest.mark.interface
 def test_reset(clickOn):
     clickOn('back')
+    time.sleep(default_timeout)
     clickOn('back')
     clickOn('back')
     time.sleep(modals_timeout)

@@ -71,7 +71,7 @@ def test_internet_services(clickOn, screenDiffChecker):
 @pytest.mark.interface
 def test_reset(clickOn):
     clickOn('back')
-    clickOn('back')
     time.sleep(default_timeout)
+    clickOn('back')
     clickOn('back')
     time.sleep(modals_timeout)
