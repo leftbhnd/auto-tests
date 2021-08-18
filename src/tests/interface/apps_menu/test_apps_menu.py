@@ -6,7 +6,7 @@ import time
 from src.helpers.messages import SwipeMsg
 from src.helpers.test_config import running_timeout, restart_timeout
 '''
-60.80 seconds
+65.54 seconds
 '''
 
 

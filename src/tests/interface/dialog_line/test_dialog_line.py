@@ -7,7 +7,7 @@ import uuid
 from src.helpers.messages import AsrTtsMsg
 from src.helpers.test_config import running_timeout, restart_timeout
 '''
-63.33 seconds
+63.23 seconds
 '''
 
 
