@@ -26,7 +26,9 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
 @pytest.mark.interface
 def test_check_run_state(clickOn, screenDiffChecker):
     clickOn('no_connection_modal_yes')
+    time.sleep(slower_timeout)
     clickOn('radius_modal_yes')
+    time.sleep(default_timeout)
     assert screenDiffChecker('run_state.png') is None
 
 

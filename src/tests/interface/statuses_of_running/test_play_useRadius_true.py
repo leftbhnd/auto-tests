@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import default_timeout, running_timeout, restart_timeout
+from src.helpers.test_config import default_timeout, slower_timeout, running_timeout, restart_timeout
 '''
 59 seconds
 '''
@@ -12,6 +12,7 @@ from src.helpers.test_config import default_timeout, running_timeout, restart_ti
 @pytest.mark.interface
 def test_check_radius_modal(clickOn, screenDiffChecker):
     clickOn('play')
+    time.sleep(slower_timeout)
     assert screenDiffChecker('radius_modal.png') is None
 
 
