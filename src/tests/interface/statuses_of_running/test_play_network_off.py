@@ -32,13 +32,13 @@ def test_check_run_state(clickOn, screenDiffChecker):
 
 @pytest.mark.interface
 def test_check_run_active(screenDiffChecker):
-    time.sleep(default_timeout)
+    time.sleep(0.6)
     assert screenDiffChecker('run_active.png') is None
 
 
 @pytest.mark.interface
 def test_check_run(screenDiffChecker):
-    time.sleep(default_timeout)
+    time.sleep(0.6)
     assert screenDiffChecker('run.png') is None
 
 
