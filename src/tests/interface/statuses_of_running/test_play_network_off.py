@@ -5,7 +5,7 @@ import time
 
 from src.helpers.test_config import default_timeout, slower_timeout, running_timeout, restart_timeout
 '''
-97.35 seconds
+92.24 seconds
 '''
 
 

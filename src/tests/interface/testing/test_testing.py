@@ -6,7 +6,7 @@ import time
 from src.helpers.messages import AsrTtsMsg
 from src.helpers.test_config import running_timeout, restart_timeout
 '''
-168.00 seconds
+159.15 seconds
 '''
 
 
@@ -129,4 +129,3 @@ def test_reset(clickOn, screenDiffChecker):
     clickOn('restart')
     clickOn('restart_modal_yes')
     time.sleep(restart_timeout)
-    assert screenDiffChecker('start.png') is None
