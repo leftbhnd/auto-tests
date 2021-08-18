@@ -67,6 +67,7 @@ def openPasswordModal():
         for i in range(5):
             m.click(50, 50, 1)
             time.sleep(faster_timeout)
+        time.sleep(default_timeout)
     return _method
 
 
