@@ -3,7 +3,7 @@
 ```
 sudo apt-get install -y python-pytest
 pip install pyautogui
-sudo apt-get install scrot
+sudo apt-get install -y scrot
 ```
 
 # Структура проекта:
