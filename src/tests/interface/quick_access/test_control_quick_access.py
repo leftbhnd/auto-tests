@@ -3,6 +3,7 @@
 import pytest
 import time
 
+from src.helpers.test_config import modals_timeout, running_timeout
 '''
 35.63 seconds
 '''
@@ -23,7 +24,7 @@ def test_charge_app(clickOn, typeText, screenDiffChecker):
 @pytest.mark.control_qa
 def test_auto_tumbler_disable(clickOn, typeText, screenDiffChecker):
     clickOn('send_to_charge_close')
-    time.sleep(8)
+    time.sleep(running_timeout)
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -42,14 +43,14 @@ def test_auto_tumbler_enable(clickOn, screenDiffChecker):
 def test_phrase_tumbler_enable(clickOn, screenDiffChecker):
     clickOn('auto_mode')
     clickOn('phrase_mode')
-    time.sleep(4)
+    time.sleep(modals_timeout)
     assert screenDiffChecker('control_phrase_mode_enable.png') is None
 
 
 @pytest.mark.control_qa
 def test_answerlog_tumbler_enable(clickOn, screenDiffChecker):
     clickOn('phrase_mode')
-    time.sleep(4)
+    time.sleep(modals_timeout)
     clickOn('answers_log')
     assert screenDiffChecker('control_answers_log_enable.png') is None
 
@@ -71,10 +72,7 @@ def test_hide(clickOn, screenDiffChecker):
 @pytest.mark.control_qa
 def test_restore(clickOn, screenDiffChecker):
     clickOn('activities')
-    time.sleep(1)
     clickOn('work_space')
-    time.sleep(1)
     clickOn('work_space')
-    time.sleep(1)
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)

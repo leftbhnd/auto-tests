@@ -3,6 +3,7 @@
 import pytest
 import time
 
+from src.helpers.test_config import default_timeout, modals_timeout, running_timeout, restart_timeout
 '''
 110 seconds
 '''
@@ -19,11 +20,11 @@ def test_disable_radius(node, clickOn, typeText):
     clickOn('useRadius')
     clickOn('back')
     clickOn('save_modal_yes')
-    time.sleep(3)
+    time.sleep(modals_timeout)
     clickOn('back')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
+    time.sleep(restart_timeout)
     assert node.getUseRadius() == False
 
 
@@ -35,19 +36,19 @@ def test_check_run_state(clickOn, screenDiffChecker):
 
 @pytest.mark.useRadiusFalse
 def test_check_run_active(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(default_timeout)
     assert screenDiffChecker('run_active.png') is None
 
 
 @pytest.mark.useRadiusFalse
 def test_check_run(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(default_timeout)
     assert screenDiffChecker('run.png') is None
 
 
 @pytest.mark.useRadiusFalse
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
-    time.sleep(5)
+    time.sleep(running_timeout)
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -58,9 +59,9 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
     clickOn('useRadius')
     clickOn('back')
     clickOn('save_modal_yes')
-    time.sleep(3)
+    time.sleep(modals_timeout)
     clickOn('back')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
+    time.sleep(restart_timeout)
     assert node.getUseRadius() == True

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-
+from src.helpers.test_config import modals_timeout
 '''
 30.24 seconds
 '''
@@ -117,14 +117,12 @@ def test_internet_services_sip(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('internet_services')
     clickOn('internet_services_sip')
-    time.sleep(1)
     assert screenDiffChecker('internet_services_sip.png') is None
 
 
 @pytest.mark.settings_extend
 def test_internet_services_ya_disk(clickOn, screenDiffChecker):
     clickOn('internet_services_ya_disk')
-    time.sleep(1)
     assert screenDiffChecker('internet_services_ya_disk.png') is None
 
 
@@ -133,4 +131,4 @@ def test_reset(clickOn):
     clickOn('back')
     clickOn('back')
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)

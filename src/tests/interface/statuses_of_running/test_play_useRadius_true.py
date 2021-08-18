@@ -3,13 +3,15 @@
 import pytest
 import time
 
+from src.helpers.test_config import default_timeout, running_timeout, restart_timeout
 '''
 59 seconds
 '''
+
+
 @pytest.mark.useRadiusTrue
 def test_check_radius_modal(clickOn, screenDiffChecker):
     clickOn('play')
-    time.sleep(5)
     assert screenDiffChecker('radius_modal.png') is None
 
 
@@ -21,19 +23,19 @@ def test_check_run_state(clickOn, screenDiffChecker):
 
 @pytest.mark.useRadiusTrue
 def test_check_run_active(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(default_timeout)
     assert screenDiffChecker('run_active.png') is None
 
 
 @pytest.mark.useRadiusTrue
 def test_check_run(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(default_timeout)
     assert screenDiffChecker('run.png') is None
 
 
 @pytest.mark.useRadiusTrue
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
-    time.sleep(6)
+    time.sleep(running_timeout)
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -41,5 +43,5 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
+    time.sleep(restart_timeout)
     assert screenDiffChecker('start.png') is None

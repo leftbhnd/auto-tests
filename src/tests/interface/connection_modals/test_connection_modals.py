@@ -3,6 +3,7 @@
 import pytest
 import time
 
+from src.helpers.test_config import modals_timeout
 '''
 23.99 seconds
 '''
@@ -16,14 +17,14 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('connection')
-    time.sleep(5)
+    time.sleep(modals_timeout)
     assert screenDiffChecker('connection.png', (0, 40, 920, 150)) is None
 
 
 @pytest.mark.connection_modals
 def test_connection_info_modal(clickOn, screenDiffChecker):
     clickOn('connection_info')
-    time.sleep(5)
+    time.sleep(modals_timeout)
     assert screenDiffChecker(
         'connection_info_modal.png',
         (365, 292, 548, 212)
@@ -43,7 +44,7 @@ def test_connection_update_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.connection_modals
 def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
-    time.sleep(3)
+    time.sleep(modals_timeout)
     clickOn('random_wifi')
     clickOn('reset_input')
     clickOn('reset_input')
@@ -58,4 +59,4 @@ def test_reset(clickOn, screenDiffChecker):
     clickOn('wifi_pass_modal_close')
     clickOn('back')
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)

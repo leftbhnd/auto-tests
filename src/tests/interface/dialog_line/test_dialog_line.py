@@ -5,6 +5,7 @@ import time
 import uuid
 
 from src.helpers.messages import AsrTtsMsg
+from src.helpers.test_config import running_timeout, restart_timeout
 '''
 63.33 seconds
 '''
@@ -14,7 +15,7 @@ from src.helpers.messages import AsrTtsMsg
 def test_dialog_line(clickOn, node, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
-    time.sleep(15)
+    time.sleep(running_timeout)
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('тестовое правило с лопатой')
     node.asrPub(asr_msg)
@@ -30,5 +31,5 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
+    time.sleep(restart_timeout)
     assert screenDiffChecker('start.png') is None

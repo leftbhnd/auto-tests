@@ -3,6 +3,7 @@
 import pytest
 import time
 
+from src.helpers.test_config import modals_timeout
 '''
 19.80 seconds
 '''
@@ -78,4 +79,4 @@ def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('save_modal_yes')
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)

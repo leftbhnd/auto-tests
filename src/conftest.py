@@ -9,7 +9,8 @@ import rospy
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, failed_dir, faster_timeout, default_timeout
+from helpers.helpers import kb_symbols_dict, buttons_dict
+from helpers.test_config import screens_dir, failed_dir, faster_timeout, default_timeout
 from helpers.messages import JoyCmdMsg
 
 

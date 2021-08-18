@@ -4,7 +4,7 @@ import pytest
 import time
 
 from src.helpers.messages import AsrTtsMsg
-
+from src.helpers.test_config import running_timeout, restart_timeout
 '''
 168.00 seconds
 '''
@@ -14,7 +14,7 @@ from src.helpers.messages import AsrTtsMsg
 def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
-    time.sleep(10)
+    time.sleep(running_timeout)
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -128,5 +128,5 @@ def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
+    time.sleep(restart_timeout)
     assert screenDiffChecker('start.png') is None

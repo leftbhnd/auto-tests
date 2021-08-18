@@ -4,6 +4,7 @@ import pytest
 import time
 
 from src.helpers.messages import SwipeMsg
+from src.helpers.test_config import running_timeout, restart_timeout
 '''
 60.80 seconds
 '''
@@ -13,7 +14,7 @@ from src.helpers.messages import SwipeMsg
 def test_menu_open_button(clickOn, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
-    time.sleep(10)
+    time.sleep(running_timeout)
     clickOn('apps_menu_open')
     assert screenDiffChecker('apps_menu.png', (0, 40, 1280, 660)) is None
 
@@ -48,5 +49,5 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
+    time.sleep(restart_timeout)
     assert screenDiffChecker('start.png') is None

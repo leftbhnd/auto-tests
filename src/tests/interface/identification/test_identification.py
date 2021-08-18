@@ -3,6 +3,7 @@
 import pytest
 import time
 
+from src.helpers.test_config import modals_timeout
 '''
 39.94 seconds
 '''
@@ -69,9 +70,9 @@ def test_save_new_pass(clickOn, screenDiffChecker):
 
 @pytest.mark.identification
 def test_wrong_pass(clickOn, typeText, screenDiffChecker):
-    time.sleep(4)
+    time.sleep(modals_timeout)
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -101,6 +102,6 @@ def test_restore(clickOn, typeText, screenDiffChecker):
     clickOn('choose_numbers')
     typeText('123456')
     clickOn('kb_ident_modal_save')
-    time.sleep(4)
+    time.sleep(modals_timeout)
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)

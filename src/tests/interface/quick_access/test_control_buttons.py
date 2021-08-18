@@ -3,6 +3,7 @@
 import pytest
 import time
 
+from src.helpers.test_config import modals_timeout
 '''
 22.52 seconds
 '''
@@ -16,7 +17,7 @@ def test_connection(clickOn, typeText, screenDiffChecker):
     typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('connection')
-    time.sleep(5)
+    time.sleep(modals_timeout)
     assert screenDiffChecker('connection.png', (0, 40, 920, 150)) is None
 
 
@@ -45,7 +46,7 @@ def test_settings(clickOn, screenDiffChecker):
 def test_browser(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('browser')
-    time.sleep(5)
+    time.sleep(modals_timeout)
     assert screenDiffChecker('browser.png', (0, 40, 1280, 75)) is None
 
 
@@ -62,4 +63,4 @@ def test_identification(clickOn, screenDiffChecker):
 def test_restore(clickOn, screenDiffChecker):
     clickOn('ident_modal_close')
     clickOn('back')
-    time.sleep(4)
+    time.sleep(modals_timeout)
