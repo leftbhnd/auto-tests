@@ -58,3 +58,4 @@ def test_reset(clickOn, screenDiffChecker):
     clickOn('wifi_pass_modal_close')
     clickOn('back')
     clickOn('back')
+    time.sleep(4)
