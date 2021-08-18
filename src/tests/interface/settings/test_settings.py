@@ -73,3 +73,4 @@ def test_reset(clickOn):
     clickOn('back')
     clickOn('back')
     clickOn('back')
+    time.sleep(4)

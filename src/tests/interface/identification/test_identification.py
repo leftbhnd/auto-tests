@@ -103,3 +103,4 @@ def test_restore(clickOn, typeText, screenDiffChecker):
     clickOn('kb_ident_modal_save')
     time.sleep(4)
     clickOn('back')
+    time.sleep(4)

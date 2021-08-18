@@ -76,3 +76,4 @@ def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('save_modal_yes')
     clickOn('back')
+    time.sleep(4)

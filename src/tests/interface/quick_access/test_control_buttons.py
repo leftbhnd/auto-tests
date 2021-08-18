@@ -62,3 +62,4 @@ def test_identification(clickOn, screenDiffChecker):
 def test_restore(clickOn, screenDiffChecker):
     clickOn('ident_modal_close')
     clickOn('back')
+    time.sleep(4)

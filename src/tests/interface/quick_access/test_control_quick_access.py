@@ -77,3 +77,4 @@ def test_restore(clickOn, screenDiffChecker):
     clickOn('work_space')
     time.sleep(1)
     clickOn('back')
+    time.sleep(4)

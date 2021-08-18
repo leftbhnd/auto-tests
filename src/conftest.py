@@ -34,6 +34,9 @@ def screenDiffChecker():
             result.save(
                 failed_dir + 'failed_' + original_image
             )
+            # pyautogui.screenshot(
+            #     screens_dir + original_image, region=coordinates
+            # )
             return difference
     return _method
 
