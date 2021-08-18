@@ -20,7 +20,7 @@ sudo apt-get install -y scrot
 
 - Название тестов должно содержать: `*_test.py` или `test_*.py`
 - Внутри тестов функции должны содержать слово `test`
-- Использовать уникальный `@pytest.mark.X` внутри одного файла
+- Использовать уникальный `@pytest.mark.X_dir_name` внутри одного модуля
 
 # API класса main.py
 
@@ -113,7 +113,7 @@ def test_differ(question, answer):
 ### Остановка тестов после N сбоев:
 
 ```
-pytest test_example.py -v --maxfail = 3
+pytest test_example.py -v --maxfail=3
 
 Тест завершится после трех неудачных попыток
 ```

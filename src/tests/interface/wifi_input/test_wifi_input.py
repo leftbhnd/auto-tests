@@ -9,7 +9,7 @@ from src.helpers.test_config import modals_timeout
 '''
 
 
-@pytest.mark.interface
+@pytest.mark.interface_wifi_input
 def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
@@ -21,7 +21,7 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     screenDiffChecker('connection.png', (0, 40, 920, 150)) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_wifi_input
 def test_hide_input(clickOn, typeText, screenDiffChecker):
     time.sleep(modals_timeout)
     clickOn('random_wifi')
@@ -36,7 +36,7 @@ def test_hide_input(clickOn, typeText, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_wifi_input
 def test_visiable_input(clickOn, screenDiffChecker):
     clickOn('kb_wifi_pass_modal_eye')
     clickOn('reset_input')
@@ -47,7 +47,7 @@ def test_visiable_input(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_wifi_input
 def test_reset(clickOn, screenDiffChecker):
     clickOn('kb_wifi_pass_modal_close')
     clickOn('back')

@@ -9,32 +9,32 @@ from src.helpers.test_config import default_timeout, slower_timeout, running_tim
 '''
 
 
-@pytest.mark.interface
+@pytest.mark.interface_statuses_of_running
 def test_check_radius_modal(clickOn, screenDiffChecker):
     clickOn('play')
     time.sleep(slower_timeout)
     assert screenDiffChecker('radius_modal.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_statuses_of_running
 def test_check_run_state(clickOn, screenDiffChecker):
     clickOn('radius_modal_yes')
     assert screenDiffChecker('run_state.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_statuses_of_running
 def test_check_run_active(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker('run_active.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_statuses_of_running
 def test_check_run(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker('run.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_statuses_of_running
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     time.sleep(running_timeout)
     openPasswordModal()

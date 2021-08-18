@@ -9,7 +9,7 @@ from src.helpers.test_config import modals_timeout
 '''
 
 
-@pytest.mark.interface
+@pytest.mark.interface_connection_modals
 def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
@@ -21,7 +21,7 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('connection.png', (0, 40, 920, 150)) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_connection_modals
 def test_connection_info_modal(clickOn, screenDiffChecker):
     clickOn('connection_info')
     time.sleep(modals_timeout)
@@ -31,7 +31,7 @@ def test_connection_info_modal(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_connection_modals
 def test_connection_update_modal(clickOn, screenDiffChecker):
     clickOn('connection_info_modal_close')
     clickOn('connection_update')
@@ -42,7 +42,7 @@ def test_connection_update_modal(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_connection_modals
 def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
     time.sleep(modals_timeout)
     clickOn('random_wifi')
@@ -54,7 +54,7 @@ def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_connection_modals
 def test_reset(clickOn, screenDiffChecker):
     clickOn('wifi_pass_modal_close')
     clickOn('back')

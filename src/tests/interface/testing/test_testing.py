@@ -10,7 +10,7 @@ from src.helpers.test_config import running_timeout, restart_timeout
 '''
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
@@ -24,14 +24,14 @@ def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
     assert screenDiffChecker('testing_runned.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_rotate_head(clickOn, node):
     clickOn('test_rotate_head')
     node.scriptProcessListener()
     assert node.getScriptProcess() == ['test_rotate_head', True]
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_hand_left(clickOn, node):
     time.sleep(18)
     clickOn('test_hand_left')
@@ -39,7 +39,7 @@ def test_hand_left(clickOn, node):
     assert node.getScriptProcess() == ['test_hand_left', True]
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_hand_right(clickOn, node):
     time.sleep(8)
     clickOn('test_hand_right')
@@ -47,7 +47,7 @@ def test_hand_right(clickOn, node):
     assert node.getScriptProcess() == ['test_hand_right', True]
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_zero_all_servos(clickOn, node):
     time.sleep(8)
     clickOn('zero_all_servos')
@@ -55,7 +55,7 @@ def test_zero_all_servos(clickOn, node):
     assert node.getScriptProcess() == ['reset', True]
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(45)
     clickOn('testing_main_camera')
@@ -65,7 +65,7 @@ def test_main_camera(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_face_recognize(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_face_recognize')
@@ -75,7 +75,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_bottom_camera(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_bottom_camera')
@@ -85,7 +85,7 @@ def test_bottom_camera(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_fisheye_camera(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_fisheye_camera')
@@ -95,27 +95,27 @@ def test_fisheye_camera(clickOn, screenDiffChecker):
     ) is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_periphery_statuses(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('periphery_statuses')
     assert screenDiffChecker('periphery_statuses_modal.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_record_sound_start(clickOn, screenDiffChecker):
     clickOn('periphery_statuses_close')
     clickOn('testing_record_sound')
     assert screenDiffChecker('testing_record_sound_start.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_record_sound_finish(clickOn, screenDiffChecker):
     time.sleep(10)
     assert screenDiffChecker('testing_record_sound_finish.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_speech_recognize(clickOn, node, screenDiffChecker):
     clickOn('testing_speech_recognize')
     asr_msg = AsrTtsMsg('как дела робот')
@@ -123,7 +123,7 @@ def test_speech_recognize(clickOn, node, screenDiffChecker):
     assert screenDiffChecker('testing_speech_recognize.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_testing
 def test_reset(clickOn, screenDiffChecker):
     clickOn('back')
     clickOn('restart')

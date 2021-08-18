@@ -9,7 +9,7 @@ from src.helpers.test_config import modals_timeout
 '''
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_open_identification(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
@@ -22,7 +22,7 @@ def test_open_identification(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('identification.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_hide_input(clickOn, typeText, screenDiffChecker):
     clickOn('ident_modal_pass_input')
     clickOn('choose_numbers')
@@ -32,7 +32,7 @@ def test_hide_input(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('ident_hide_pass.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_visiable_input(clickOn, typeText, screenDiffChecker):
     clickOn('kb_ident_modal_pass_eye')
     clickOn('reset_input')
@@ -40,7 +40,7 @@ def test_visiable_input(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('ident_visiable_pass.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_confirm_hide_input_same(clickOn, typeText, screenDiffChecker):
     clickOn('kb_ident_modal_confirm_input')
     clickOn('choose_numbers')
@@ -50,7 +50,7 @@ def test_confirm_hide_input_same(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('ident_visiable_hide_pass_same.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_confirm_hide_input_not_same(clickOn, typeText, screenDiffChecker):
     clickOn('kb_ident_modal_confirm_input')
     clickOn('choose_numbers')
@@ -60,7 +60,7 @@ def test_confirm_hide_input_not_same(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('ident_visiable_hide_pass_not_same.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_save_new_pass(clickOn, screenDiffChecker):
     clickOn('kb_ident_modal_confirm_input')
     clickOn('delete')
@@ -68,7 +68,7 @@ def test_save_new_pass(clickOn, screenDiffChecker):
     assert screenDiffChecker('ident_pass_save.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_wrong_pass(clickOn, typeText, screenDiffChecker):
     time.sleep(modals_timeout)
     clickOn('back')
@@ -83,7 +83,7 @@ def test_wrong_pass(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('ident_wrong_pass.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_correct_new_pass(clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
@@ -92,7 +92,7 @@ def test_correct_new_pass(clickOn, typeText, screenDiffChecker):
     assert screenDiffChecker('control.png') is None
 
 
-@pytest.mark.interface
+@pytest.mark.interface_identification
 def test_restore(clickOn, typeText, screenDiffChecker):
     clickOn('identification')
     clickOn('ident_modal_pass_input')
