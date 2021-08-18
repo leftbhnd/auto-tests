@@ -17,6 +17,7 @@ def test_promo_open(clickOn, typeText, screenDiffChecker):
     typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('promo')
+    assert screenDiffChecker('promo.png', (0, 40, 1280, 100)) is None
 
 
 @pytest.mark.interface
