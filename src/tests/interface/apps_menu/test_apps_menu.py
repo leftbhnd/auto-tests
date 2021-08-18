@@ -50,4 +50,3 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     clickOn('restart')
     clickOn('restart_modal_yes')
     time.sleep(restart_timeout)
-    assert screenDiffChecker('start.png') is None

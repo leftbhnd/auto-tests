@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import default_timeout, running_timeout, restart_timeout 
+from src.helpers.test_config import default_timeout, running_timeout, restart_timeout
 '''
 97.35 seconds
 '''
@@ -52,4 +52,3 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     clickOn('restart')
     clickOn('restart_modal_yes')
     time.sleep(restart_timeout)
-    assert screenDiffChecker('start.png') is None
