@@ -2,8 +2,9 @@
 
 ```
 sudo apt-get install -y python-pytest
-pip install pyautogui
 sudo apt-get install -y scrot
+pip install pyautogui
+pip install xmltodict
 ```
 
 # Структура проекта:
@@ -62,7 +63,7 @@ sudo apt-get install -y scrot
 
 # Фикстуры
 
-- `screenDiffChecker('original_image', coordinates=(0, 40, 1280, 800))`
+- `screenDiffChecker('directory/original_image', coordinates=(0, 40, 1280, 800))`
 - `pressAndMove(SwipeMsg)`
 - `clickOn('button')`
 - `openPasswordModal()`
