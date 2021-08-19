@@ -19,26 +19,28 @@ m = PyMouse()
 
 @pytest.fixture
 def screenDiffChecker():
-    def _method(original_image, coordinates=(0, 40, 1280, 800)):
-        pyautogui.screenshot(
-            screens_dir + 'screen.png', region=coordinates
-        )
-        current = Image.open(
-            screens_dir + 'screen.png'
-        )
-        original = Image.open(
-            screens_dir + original_image
-        )
-        result = ImageChops.difference(current, original)
-        difference = result.getbbox()
-        if difference != None:
-            result.save(
-                failed_dir + 'failed_' + original_image
+    def _method(original_image, coordinates=(0, 40, 1280, 760)):
+        try:
+            pyautogui.screenshot(
+                screens_dir + 'screen.png', region=coordinates
             )
-            # pyautogui.screenshot(
-            #     screens_dir + original_image, region=coordinates
-            # )
+            current = Image.open(
+                screens_dir + 'screen.png'
+            )
+            original = Image.open(
+                screens_dir + original_image
+            )
+            result = ImageChops.difference(current, original)
+            difference = result.getbbox()
+            if difference != None:
+                result.save(
+                    failed_dir + 'failed_' + original_image
+                )
             return difference
+        except:
+            pyautogui.screenshot(
+                screens_dir + original_image, region=coordinates
+            )
     return _method
 
 
