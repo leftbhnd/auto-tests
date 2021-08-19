@@ -22,6 +22,13 @@ kb_symbols_dict = {
 buttons_dict = {
     # модалка пароля
     'pass_modal_close': (896, 178), 'pass_modal_ok': (823, 310), 'pass_modal_input': (407, 251),
+    # модалка Лог ответов
+    'answers_log_modal_close': (943, 400), 'answers_log_modal_clear': (810, 399),
+    # модалка настроек синтеза
+    'speech_settings': (1193, 659), 'speech_settings_close': (896, 351),
+    # модалка добавления лиц в базу
+    'facedb_select_folder': (1070, 401), 'adding_faces_modal_close': (937, 75),
+    'adding_faces_modal_ok': (644, 711),
     # модалка подключения к Wi-Fi
     'wifi_pass_modal_input': (415, 400), 'wifi_pass_modal_eye': (870, 397),
     'wifi_pass_modal_ok': (809, 444), 'wifi_pass_modal_close': (889, 319),
