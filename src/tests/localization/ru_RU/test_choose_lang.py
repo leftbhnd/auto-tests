@@ -8,7 +8,8 @@ from src.helpers.testConfig import modals_timeout
 X seconds
 '''
 
-@pytest.mark.localization_choose_ru_RU
+
+@pytest.mark.skip(reason="not ready")
 def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
@@ -17,4 +18,6 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_ok')
     clickOn('reset_input')
     clickOn('reset_input')
-    assert screenDiffChecker('localization/ru_RU/ru_wrong_pass_modal.png') is None
+    assert screenDiffChecker(
+        'localization/ru_RU/ru_wrong_pass_modal.png'
+    ) is None
