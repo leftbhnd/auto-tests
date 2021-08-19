@@ -4,7 +4,7 @@ import pytest
 import time
 
 from src.helpers.messages import AsrTtsMsg
-from src.helpers.test_config import running_timeout, restart_timeout
+from src.helpers.testConfig import running_timeout, restart_timeout
 '''
 159.15 seconds
 '''
@@ -21,7 +21,9 @@ def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
     typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('testing')
-    assert screenDiffChecker('testing_runned.png') is None
+    assert screenDiffChecker(
+        'interfaces/testing_runned.png'
+    ) is None
 
 
 @pytest.mark.interface_testing
@@ -60,7 +62,7 @@ def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(45)
     clickOn('testing_main_camera')
     assert screenDiffChecker(
-        'testing_main_camera_header.png',
+        'interfaces/testing_main_camera_header.png',
         (0, 40, 1280, 60)
     ) is None
 
@@ -70,7 +72,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_face_recognize')
     assert screenDiffChecker(
-        'testing_face_recognize_header.png',
+        'interfaces/testing_face_recognize_header.png',
         (0, 40, 1280, 60)
     ) is None
 
@@ -80,7 +82,7 @@ def test_bottom_camera(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_bottom_camera')
     assert screenDiffChecker(
-        'testing_bottom_camera_header.png',
+        'interfaces/testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
     ) is None
 
@@ -90,7 +92,7 @@ def test_fisheye_camera(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('testing_fisheye_camera')
     assert screenDiffChecker(
-        'testing_fisheye_camera_header.png',
+        'interfaces/testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
     ) is None
 
@@ -99,20 +101,26 @@ def test_fisheye_camera(clickOn, screenDiffChecker):
 def test_periphery_statuses(clickOn, screenDiffChecker):
     clickOn('testing_videostream_close')
     clickOn('periphery_statuses')
-    assert screenDiffChecker('periphery_statuses_modal.png') is None
+    assert screenDiffChecker(
+        'interfaces/periphery_statuses_modal.png'
+    ) is None
 
 
 @pytest.mark.interface_testing
 def test_record_sound_start(clickOn, screenDiffChecker):
     clickOn('periphery_statuses_close')
     clickOn('testing_record_sound')
-    assert screenDiffChecker('testing_record_sound_start.png') is None
+    assert screenDiffChecker(
+        'interfaces/testing_record_sound_start.png'
+    ) is None
 
 
 @pytest.mark.interface_testing
 def test_record_sound_finish(clickOn, screenDiffChecker):
     time.sleep(10)
-    assert screenDiffChecker('testing_record_sound_finish.png') is None
+    assert screenDiffChecker(
+        'interfaces/testing_record_sound_finish.png'
+    ) is None
 
 
 @pytest.mark.interface_testing
@@ -120,7 +128,9 @@ def test_speech_recognize(clickOn, node, screenDiffChecker):
     clickOn('testing_speech_recognize')
     asr_msg = AsrTtsMsg('как дела робот')
     node.asrPub(asr_msg)
-    assert screenDiffChecker('testing_speech_recognize.png') is None
+    assert screenDiffChecker(
+        'interfaces/testing_speech_recognize.png'
+    ) is None
 
 
 @pytest.mark.interface_testing

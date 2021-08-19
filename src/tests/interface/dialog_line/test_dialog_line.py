@@ -5,7 +5,7 @@ import time
 import uuid
 
 from src.helpers.messages import AsrTtsMsg
-from src.helpers.test_config import running_timeout, restart_timeout
+from src.helpers.testConfig import running_timeout, restart_timeout
 '''
 63.23 seconds
 '''
@@ -19,7 +19,9 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('тестовое правило с лопатой')
     node.asrPub(asr_msg)
-    screenDiffChecker('dialog_line.png') is None
+    screenDiffChecker(
+        'interfaces/dialog_line.png'
+    ) is None
 
 
 @pytest.mark.interface_dialog_line

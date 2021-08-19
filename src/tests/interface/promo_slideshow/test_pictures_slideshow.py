@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.test_config import modals_timeout
+from src.helpers.testConfig import modals_timeout
 '''
 21.44 seconds
 '''
@@ -17,7 +17,10 @@ def test_promo_open(clickOn, typeText, screenDiffChecker):
     typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('promo')
-    assert screenDiffChecker('promo.png', (0, 40, 1280, 100)) is None
+    assert screenDiffChecker(
+        'interfaces/promo.png',
+        (0, 40, 1280, 100)
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
@@ -27,7 +30,9 @@ def test_add_picture(clickOn, screenDiffChecker):
     clickOn('fs_promo_checkbox1')
     clickOn('promo_add')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('add_picture_slideshow.png') is None
+    assert screenDiffChecker(
+        'interfaces/add_picture_slideshow.png'
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
@@ -36,7 +41,9 @@ def test_add_two_pictures(clickOn, screenDiffChecker):
     clickOn('fs_promo_checkbox3')
     clickOn('promo_add')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('add_three_pictures_slideshow.png') is None
+    assert screenDiffChecker(
+        'interfaces/add_three_pictures_slideshow.png'
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
@@ -44,7 +51,9 @@ def test_add_all_pictures(clickOn, screenDiffChecker):
     clickOn('fs_promo_choose_all')
     clickOn('promo_add')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('add_all_pictures_slideshow.png') is None
+    assert screenDiffChecker(
+        'interfaces/add_all_pictures_slideshow.png'
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
@@ -52,7 +61,9 @@ def test_delete_picture(clickOn, screenDiffChecker):
     clickOn('robot_promo_checkbox1')
     clickOn('promo_delete')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('delete_picture_slideshow.png') is None
+    assert screenDiffChecker(
+        'interfaces/delete_picture_slideshow.png'
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
@@ -61,7 +72,9 @@ def test_delete_two_pictures(clickOn, screenDiffChecker):
     clickOn('robot_promo_checkbox3')
     clickOn('promo_delete')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('delete_two_pictures_slideshow.png') is None
+    assert screenDiffChecker(
+        'interfaces/delete_two_pictures_slideshow.png'
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
@@ -69,7 +82,9 @@ def test_delete_all_pictures(clickOn, screenDiffChecker):
     clickOn('robot_promo_choose_all')
     clickOn('promo_delete')
     clickOn('promo_modal_yes')
-    assert screenDiffChecker('delete_all_pictures_slideshow.png') is None
+    assert screenDiffChecker(
+        'interfaces/delete_all_pictures_slideshow.png'
+    ) is None
 
 
 @pytest.mark.interface_promo_slideshow
