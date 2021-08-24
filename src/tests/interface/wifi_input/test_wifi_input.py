@@ -18,7 +18,7 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('pass_modal_ok')
     clickOn('connection')
     time.sleep(modals_timeout)
-    screenDiffChecker(
+    assert screenDiffChecker(
         'interfaces/connection.png',
         (0, 40, 920, 150)
     ) is None
@@ -45,7 +45,7 @@ def test_visiable_input(clickOn, screenDiffChecker):
     clickOn('reset_input')
     clickOn('reset_input')
     assert screenDiffChecker(
-        'wifi_visiable_pass.png',
+        'interfaces/wifi_visiable_pass.png',
         (365, 162, 548, 200)
     ) is None
 

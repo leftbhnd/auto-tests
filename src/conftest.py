@@ -10,7 +10,7 @@ from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
 from helpers.helpers import kb_symbols_dict, buttons_dict
-from helpers.test_config import screens_dir, failed_dir, faster_timeout, default_timeout
+from helpers.testConfig import screens_dir, failed_dir, faster_timeout, default_timeout
 from helpers.messages import JoyCmdMsg
 
 
@@ -30,18 +30,21 @@ def screenDiffChecker():
             original = Image.open(
                 screens_dir + original_image
             )
-            result = ImageChops.difference(current, original)
-            difference = result.getbbox()
-            if difference != None:
-                result.save(
-                    failed_dir + 'failed_' + original_image
-                )
-            return difference
-        except:
+        except IOError:
             pyautogui.screenshot(
                 screens_dir + original_image, region=coordinates
             )
-            return 'made a screenshort'
+            original = Image.open(
+                screens_dir + original_image
+            )
+        result = ImageChops.difference(current, original)
+        difference = result.getbbox()
+        if difference != None:
+            result.save(
+                failed_dir + 'failed_' + original_image
+            )
+        print(difference)
+        return difference
     return _method
 
 
