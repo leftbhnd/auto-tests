@@ -10,7 +10,7 @@ from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
 from helpers.helpers import kb_symbols_dict, buttons_dict
-from helpers.testConfig import screens_dir, failed_dir, faster_timeout, default_timeout
+from helpers.config import screens_dir, failed_dir, faster_timeout, default_timeout
 from helpers.messages import JoyCmdMsg
 
 
