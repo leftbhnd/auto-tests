@@ -2,34 +2,35 @@
 # -*- coding: utf-8 -*-
 import pytest
 import time
+import uuid
 
 from src.helpers.messages import AsrTtsMsg
+from src.helpers.testConfig import running_timeout, restart_timeout
 '''
-63.33 seconds
+63.23 seconds
 '''
 
 
-@pytest.mark.dialogLine
+@pytest.mark.interface_dialog_line
 def test_dialog_line(clickOn, node, screenDiffChecker):
     clickOn('play')
     clickOn('radius_modal_yes')
-    time.sleep(15)
+    time.sleep(running_timeout)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('тестовое правило с лопатой',
-                        '1243c023-11a4-3344-bc21-0252ac131133'
-                        )
+    asr_msg = AsrTtsMsg('тестовое правило с лопатой')
     node.asrPub(asr_msg)
-    screenDiffChecker('dialog_line.png') is None
+    screenDiffChecker(
+        'interfaces/dialog_line.png'
+    ) is None
 
 
-@pytest.mark.dialogLine
+@pytest.mark.interface_dialog_line
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    time.sleep(restart_timeout)

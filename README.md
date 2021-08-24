@@ -2,8 +2,9 @@
 
 ```
 sudo apt-get install -y python-pytest
+sudo apt-get install -y scrot
 pip install pyautogui
-sudo apt-get install scrot
+pip install xmltodict
 ```
 
 # Структура проекта:
@@ -18,9 +19,9 @@ sudo apt-get install scrot
 
 # Test's codestyle
 
-- Название тестов должно содержать: `*_test.py` или `*test_*.py`
+- Название тестов должно содержать: `*_test.py` или `test_*.py`
 - Внутри тестов функции должны содержать слово `test`
-- Использовать уникальный `@pytest.mark.X` внутри одного файла
+- Использовать уникальный `@pytest.mark.X_dir_name` внутри одного модуля
 
 # API класса main.py
 
@@ -62,12 +63,11 @@ sudo apt-get install scrot
 
 # Фикстуры
 
-- `mouseClick(msg.x, msg.y)`
-- `screenDiffChecker('original_image', coordinates=(0, 40, 1280, 800))`
-- `pressAndMove([(x1, y1), (x2, y2)])`
+- `screenDiffChecker('directory/original_image', coordinates=(0, 40, 1280, 800))`
+- `pressAndMove(SwipeMsg)`
 - `clickOn('button')`
 - `openPasswordModal()`
-- `typeText(['привет'])`
+- `typeText('привет')`
 - `node`
 - `joy`
 
@@ -114,7 +114,7 @@ def test_differ(question, answer):
 ### Остановка тестов после N сбоев:
 
 ```
-pytest test_example.py -v --maxfail = 3
+pytest test_example.py -v --maxfail=3
 
 Тест завершится после трех неудачных попыток
 ```

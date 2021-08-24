@@ -4,7 +4,7 @@
 import pyautogui
 
 
-def test(image, coordinates=(0, 40, 1280, 800)):
+def test(image, coordinates=(0, 40, 1280, 760)):
     pyautogui.screenshot(
         '/home/promobot/.tests/screens/%s.png' % (image), region=coordinates
     )

@@ -3,51 +3,56 @@
 import pytest
 import time
 
+from src.helpers.testConfig import modals_timeout
 '''
-17.66 seconds
+21.72 seconds
 '''
 
 
-@pytest.mark.wifi_input
+@pytest.mark.interface_wifi_input
 def test_connection_open(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('connection')
-    time.sleep(5)
-    screenDiffChecker('connection.png', (0, 40, 920, 150)) is None
+    time.sleep(modals_timeout)
+    assert screenDiffChecker(
+        'interfaces/connection.png',
+        (0, 40, 920, 150)
+    ) is None
 
 
-@pytest.mark.wifi_input
+@pytest.mark.interface_wifi_input
 def test_hide_input(clickOn, typeText, screenDiffChecker):
-    time.sleep(3)
+    time.sleep(modals_timeout)
     clickOn('random_wifi')
     clickOn('wifi_pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['2', '2', '8', '1', '4', '8', '8'])
+    typeText('2281488')
     clickOn('reset_input')
     clickOn('reset_input')
     assert screenDiffChecker(
-        'wifi_hide_pass.png',
+        'interfaces/wifi_hide_pass.png',
         (365, 162, 548, 200)
     ) is None
 
 
-@pytest.mark.wifi_input
+@pytest.mark.interface_wifi_input
 def test_visiable_input(clickOn, screenDiffChecker):
     clickOn('kb_wifi_pass_modal_eye')
     clickOn('reset_input')
     clickOn('reset_input')
     assert screenDiffChecker(
-        'wifi_visiable_pass.png',
+        'interfaces/wifi_visiable_pass.png',
         (365, 162, 548, 200)
     ) is None
 
 
-@pytest.mark.wifi_input
+@pytest.mark.interface_wifi_input
 def test_reset(clickOn, screenDiffChecker):
     clickOn('kb_wifi_pass_modal_close')
     clickOn('back')
     clickOn('back')
+    time.sleep(modals_timeout)

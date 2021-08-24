@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import rospy
 import pytest
 import time
+import uuid
+
 
 from src.helpers.messages import AsrTtsMsg
 
 
+@pytest.mark.skip(reason="unit")
 def test_asr(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет', '1143c011-a2a4-12eb-bcbc-0242ac132200')
+    asr_msg = AsrTtsMsg('привет')
     node.asrPub(asr_msg)
     assert node.getAnswer() in [
         "Доброго времени суток!",
@@ -22,14 +24,15 @@ def test_asr(node):
     ]
 
 
+@pytest.mark.skip(reason="unit")
 def test_tts(node):
     time.sleep(10)
     node.cancelSpeechPub()
-    tts_msg = AsrTtsMsg('я робот ты робот',
-                        '11520092-a2a7-13eb-bcbc-0242ac132222')
+    tts_msg = AsrTtsMsg('я робот ты робот')
     node.ttsPub(tts_msg)
     assert node.getTts() == 'я робот ты робот'
 
 
+@pytest.mark.skip(reason="unit")
 def test_levels_order(node):
     assert node.getLevelsOrder() == ['0', '1', '2', '3', '4', '5', '6', '7']

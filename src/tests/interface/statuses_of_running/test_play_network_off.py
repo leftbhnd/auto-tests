@@ -3,51 +3,61 @@
 import pytest
 import time
 
+from src.helpers.testConfig import default_timeout, slower_timeout, running_timeout, restart_timeout
 '''
-97.35 seconds
+92.24 seconds
 '''
-@pytest.mark.networkOff
+
+
+@pytest.mark.interface_statuses_of_running
 def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
     clickOn('control')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(35)
+    time.sleep(30)
     clickOn('play')
-    time.sleep(5)
-    assert screenDiffChecker('no_connection_modal.png') is None
+    time.sleep(slower_timeout)
+    assert screenDiffChecker(
+        'interfaces/no_connection_modal.png'
+    ) is None
 
 
-@pytest.mark.networkOff
+@pytest.mark.interface_statuses_of_running
 def test_check_run_state(clickOn, screenDiffChecker):
     clickOn('no_connection_modal_yes')
     clickOn('radius_modal_yes')
-    assert screenDiffChecker('run_state.png') is None
+    assert screenDiffChecker(
+        'interfaces/run_state.png'
+    ) is None
 
 
-@pytest.mark.networkOff
+@pytest.mark.interface_statuses_of_running
 def test_check_run_active(screenDiffChecker):
     time.sleep(0.6)
-    assert screenDiffChecker('run_active.png') is None
+    assert screenDiffChecker(
+        'interfaces/run_active.png'
+    ) is None
 
 
-@pytest.mark.networkOff
+@pytest.mark.interface_statuses_of_running
 def test_check_run(screenDiffChecker):
     time.sleep(0.6)
-    assert screenDiffChecker('run.png') is None
+    assert screenDiffChecker(
+        'interfaces/run.png'
+    ) is None
 
 
-@pytest.mark.networkOff
+@pytest.mark.interface_statuses_of_running
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
-    time.sleep(6)
+    time.sleep(running_timeout)
     openPasswordModal()
     clickOn('pass_modal_input')
     clickOn('choose_numbers')
-    typeText(['1', '2', '3', '4', '5', '6'])
+    typeText('123456')
     clickOn('pass_modal_ok')
     clickOn('restart')
     clickOn('restart_modal_yes')
-    time.sleep(40)
-    assert screenDiffChecker('start.png') is None
+    time.sleep(restart_timeout)

@@ -9,7 +9,8 @@ import rospy
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.helpers import kb_symbols_dict, buttons_dict, screens_dir, faster_timeout, default_timeout
+from helpers.helpers import kb_symbols_dict, buttons_dict
+from helpers.config import screens_dir, failed_dir, faster_timeout, default_timeout
 from helpers.messages import JoyCmdMsg
 
 
@@ -17,38 +18,42 @@ m = PyMouse()
 
 
 @pytest.fixture
-def mouseClick():
-    def _method(msg):
-        m.click(msg.x, msg.y, 1)
-        time.sleep(default_timeout)
-    return _method
-
-
-@pytest.fixture
 def screenDiffChecker():
-    def _method(original_image, coordinates=(0, 40, 1280, 800)):
+    def _method(original_image, coordinates=(0, 40, 1280, 760)):
         pyautogui.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
-        current = Image.open(screens_dir + 'screen.png')
-        original = Image.open(
-            screens_dir + original_image
+        current = Image.open(
+            screens_dir + 'screen.png'
         )
-        difference = ImageChops.difference(current, original).getbbox()
+        try:
+            original = Image.open(
+                screens_dir + original_image
+            )
+        except IOError:
+            pyautogui.screenshot(
+                screens_dir + original_image, region=coordinates
+            )
+            original = Image.open(
+                screens_dir + original_image
+            )
+        result = ImageChops.difference(current, original)
+        difference = result.getbbox()
+        if difference != None:
+            result.save(
+                failed_dir + 'failed_' + original_image
+            )
+        print(difference)
         return difference
     return _method
 
 
 @pytest.fixture
 def pressAndMove():
-    def _method(twoPointsList):
-        startX = twoPointsList[0][0]
-        startY = twoPointsList[0][1]
-        finishX = twoPointsList[1][0]
-        finishY = twoPointsList[1][1]
-        m.press(startX, startY, 1)
+    def _method(msg):
+        m.press(msg.startX, msg.startY, 1)
         time.sleep(default_timeout)
-        m.release(finishX, finishY, 1)
+        m.release(msg.finishX, msg.finishY, 1)
         time.sleep(default_timeout)
     return _method
 
@@ -66,23 +71,17 @@ def clickOn():
 @pytest.fixture
 def openPasswordModal():
     def _method():
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
-        m.click(50, 50, 1)
-        time.sleep(faster_timeout)
+        for i in range(5):
+            m.click(50, 50, 1)
+            time.sleep(faster_timeout)
+        time.sleep(default_timeout)
     return _method
 
 
 @pytest.fixture
 def typeText():
-    def _method(list_of_symbols):
-        for symbol in list_of_symbols:
+    def _method(symbols):
+        for symbol in symbols:
             x = kb_symbols_dict[symbol][0]
             y = kb_symbols_dict[symbol][1]
             m.click(x, y, 1)

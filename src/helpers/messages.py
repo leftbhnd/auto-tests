@@ -1,14 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import uuid
+
+
 class AsrTtsMsg:
-    def __init__(self, text, uuid):
+    def __init__(self, text):
         self.text = text
-        self.uuid = uuid
+        self.uuid = str(uuid.uuid4())
 
 
-class ClickMsg:
-    def __init__(self, x, y, z):
-        self.x = x
-        self.y = y
-        self.z = z
+class SwipeMsg:
+    def __init__(self, start, finish):
+        # 2 кортежа, нажатие -> сдвиг
+        self.startX = start[0]
+        self.startY = start[1]
+        self.finishX = finish[0]
+        self.finishY = finish[1]
 
 
 class FaceMsg:

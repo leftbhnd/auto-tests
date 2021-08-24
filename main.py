@@ -3,13 +3,13 @@
 import rospy
 
 
-from src.modules.driving import DrivingService
-from src.modules.faceRecognize import FaceRecognizeService
-from src.modules.interaction import InteractionService
-from src.modules.joy import JoyService
-from src.modules.script import ScriptService
-from src.modules.servos import ServosService
-from src.modules.ttsAsr import TtsAsrService
+from src.services.driving import DrivingService
+from src.services.faceRecognize import FaceRecognizeService
+from src.services.interaction import InteractionService
+from src.services.joy import JoyService
+from src.services.script import ScriptService
+from src.services.servos import ServosService
+from src.services.ttsAsr import TtsAsrService
 
 
 class AutoTest(DrivingService, FaceRecognizeService, InteractionService, JoyService, ScriptService, ServosService, TtsAsrService):
