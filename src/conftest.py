@@ -20,13 +20,13 @@ m = PyMouse()
 @pytest.fixture
 def screenDiffChecker():
     def _method(original_image, coordinates=(0, 40, 1280, 760)):
+        pyautogui.screenshot(
+            screens_dir + 'screen.png', region=coordinates
+        )
+        current = Image.open(
+            screens_dir + 'screen.png'
+        )
         try:
-            pyautogui.screenshot(
-                screens_dir + 'screen.png', region=coordinates
-            )
-            current = Image.open(
-                screens_dir + 'screen.png'
-            )
             original = Image.open(
                 screens_dir + original_image
             )
@@ -41,6 +41,7 @@ def screenDiffChecker():
             pyautogui.screenshot(
                 screens_dir + original_image, region=coordinates
             )
+            return 'made a screenshort'
     return _method
 
 
