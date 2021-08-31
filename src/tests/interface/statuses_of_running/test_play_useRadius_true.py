@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.testConfig import default_timeout, slower_timeout, running_timeout, restart_timeout
+from src.helpers.config import default, slowly, running, restart, btn, modal
 '''
 58.51 seconds
 '''
@@ -11,8 +11,8 @@ from src.helpers.testConfig import default_timeout, slower_timeout, running_time
 
 @pytest.mark.interface_statuses_of_running
 def test_check_radius_modal(clickOn, screenDiffChecker):
-    clickOn('play')
-    time.sleep(slower_timeout)
+    clickOn(btn.play)
+    time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/radius_modal.png'
     ) is None
@@ -20,7 +20,7 @@ def test_check_radius_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_statuses_of_running
 def test_check_run_state(clickOn, screenDiffChecker):
-    clickOn('radius_modal_yes')
+    clickOn(modal.radius_yes)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -44,12 +44,12 @@ def test_check_run(screenDiffChecker):
 
 @pytest.mark.interface_statuses_of_running
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
-    time.sleep(running_timeout)
+    time.sleep(running)
     openPasswordModal()
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(restart_timeout)
+    clickOn(modal.pwd_ok)
+    clickOn(btn.restart)
+    clickOn(modal.restart_yes)
+    time.sleep(restart)

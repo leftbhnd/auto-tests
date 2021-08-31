@@ -51,6 +51,7 @@ pip install xmltodict
 - `node.getAnswer()`
 - `node.getTts()`
 - `node.getLevelsOrder()`
+- `node.getSystemLanguage()`
 - `node.getDriveMode()`
 - `node.getCurrentPoint()`
 - `node.getWheelsData()`
@@ -63,13 +64,15 @@ pip install xmltodict
 
 # Фикстуры
 
-- `screenDiffChecker('directory/original_image', coordinates=(0, 40, 1280, 800))`
+- `screenDiffChecker('directory/original_image', coordinates=screen_resolution)`
 - `pressAndMove(SwipeMsg)`
-- `clickOn('button')`
+- `clickOn(btn.X or modal.X)`
 - `openPasswordModal()`
 - `typeText('привет')`
-- `node`
-- `joy`
+- `node.initNode()`
+- `node.X()`
+- `node.killNode()`
+- `joy.X()`
 
 # Запуск тестов
 

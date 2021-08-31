@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.testConfig import modals_timeout
+from src.helpers.config import modals, btn, modal
 '''
 43.64 seconds
 '''
@@ -11,14 +11,14 @@ from src.helpers.testConfig import modals_timeout
 
 @pytest.mark.interface_identification
 def test_open_identification(clickOn, typeText, screenDiffChecker):
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('identification')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.ident)
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/identification.png'
     ) is None
@@ -26,11 +26,11 @@ def test_open_identification(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_hide_input(clickOn, typeText, screenDiffChecker):
-    clickOn('ident_modal_pass_input')
-    clickOn('choose_numbers')
+    clickOn(modal.ident_pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('111111')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/ident_hide_pass.png'
     ) is None
@@ -38,9 +38,9 @@ def test_hide_input(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_visiable_input(clickOn, typeText, screenDiffChecker):
-    clickOn('kb_ident_modal_pass_eye')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    clickOn(modal.ident_kb_pwd_eye)
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/ident_visiable_pass.png'
     ) is None
@@ -48,11 +48,11 @@ def test_visiable_input(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_confirm_hide_input_same(clickOn, typeText, screenDiffChecker):
-    clickOn('kb_ident_modal_confirm_input')
-    clickOn('choose_numbers')
+    clickOn(modal.ident_kb_confirm_input)
+    clickOn(btn.choose_numbers)
     typeText('111111')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/ident_visiable_hide_pass_same.png'
     ) is None
@@ -60,11 +60,11 @@ def test_confirm_hide_input_same(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_confirm_hide_input_not_same(clickOn, typeText, screenDiffChecker):
-    clickOn('kb_ident_modal_confirm_input')
-    clickOn('choose_numbers')
+    clickOn(modal.ident_kb_confirm_input)
+    clickOn(btn.choose_numbers)
     typeText('1')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/ident_visiable_hide_pass_not_same.png'
     ) is None
@@ -72,9 +72,9 @@ def test_confirm_hide_input_not_same(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_save_new_pass(clickOn, screenDiffChecker):
-    clickOn('kb_ident_modal_confirm_input')
-    clickOn('delete')
-    clickOn('kb_ident_modal_save')
+    clickOn(modal.ident_kb_confirm_input)
+    clickOn(btn.delete)
+    clickOn(modal.ident_kb_save)
     assert screenDiffChecker(
         'interfaces/ident_pass_save.png'
     ) is None
@@ -82,16 +82,16 @@ def test_save_new_pass(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_wrong_pass(clickOn, typeText, screenDiffChecker):
-    time.sleep(modals_timeout)
-    clickOn('back')
-    time.sleep(modals_timeout)
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    time.sleep(modals)
+    clickOn(btn.back)
+    time.sleep(modals)
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/ident_wrong_pass.png'
     ) is None
@@ -99,10 +99,10 @@ def test_wrong_pass(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_correct_new_pass(clickOn, typeText, screenDiffChecker):
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('111111')
-    clickOn('pass_modal_ok')
+    clickOn(modal.pwd_ok)
     assert screenDiffChecker(
         'interfaces/control.png'
     ) is None
@@ -110,14 +110,14 @@ def test_correct_new_pass(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_restore(clickOn, typeText, screenDiffChecker):
-    clickOn('identification')
-    clickOn('ident_modal_pass_input')
-    clickOn('choose_numbers')
+    clickOn(btn.ident)
+    clickOn(modal.ident_pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('kb_ident_modal_confirm_input')
-    clickOn('choose_numbers')
+    clickOn(modal.ident_kb_confirm_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('kb_ident_modal_save')
-    time.sleep(modals_timeout)
-    clickOn('back')
-    time.sleep(modals_timeout)
+    clickOn(modal.ident_kb_save)
+    time.sleep(modals)
+    clickOn(btn.back)
+    time.sleep(modals)

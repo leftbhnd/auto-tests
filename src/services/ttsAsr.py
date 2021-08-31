@@ -82,3 +82,9 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
         levels_order = rospy.get_param('answers/levels_order')
         return levels_order
+
+    
+    def getSystemLanguage(self):
+        rospy.sleep(self._timeout)
+        system_language = rospy.get_param('system/language')
+        return system_language

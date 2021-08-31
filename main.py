@@ -21,3 +21,9 @@ class AutoTest(DrivingService, FaceRecognizeService, InteractionService, JoyServ
         ScriptService.__init__(self)
         ServosService.__init__(self)
         TtsAsrService.__init__(self)
+
+    def initNode(self):
+        rospy.init_node('autoTest228')
+
+    def killNode(self):
+        rospy.signal_shutdown('test finished')
