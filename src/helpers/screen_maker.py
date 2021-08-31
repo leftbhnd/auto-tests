@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import pyautogui
+from src.helpers.config import screen_resolution
 
 
-def test(image, coordinates=(0, 40, 1280, 760)):
+def makeScreen(image, coordinates=screen_resolution):
     pyautogui.screenshot(
         '/home/promobot/.tests/screens/%s.png' % (image), region=coordinates
     )
@@ -22,6 +23,6 @@ if default == '1':
     top = raw_input('отступ сверху: ')
     right = raw_input('отступ справа: ')
     bottom = raw_input('отступ снизу: ')
-    test(screen_name, getTuple(left, top, right, bottom))
+    makeScreen(screen_name, getTuple(left, top, right, bottom))
 else:
-    test(screen_name)
+    makeScreen(screen_name)

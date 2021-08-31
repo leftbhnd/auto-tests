@@ -3,21 +3,32 @@
 import pytest
 import time
 
-from src.helpers.testConfig import modals_timeout
+from src.helpers.config import modals, btn, modal
 '''
-X seconds
+21.17 seconds
 '''
 
 
-@pytest.mark.skip(reason="not ready")
-def test_connection_open(clickOn, typeText, screenDiffChecker):
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
-    typeText('1234567')
-    clickOn('pass_modal_ok')
-    clickOn('reset_input')
-    clickOn('reset_input')
-    assert screenDiffChecker(
-        'localization/ru_RU/ru_wrong_pass_modal.png'
-    ) is None
+@pytest.mark.localization_ru_RU
+def test_choose_lang(clickOn, typeText, node):
+    node.initNode()
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lang_settings)
+    for i in range(12):
+        clickOn(btn.lang_down_arrow)
+    clickOn(btn.lang_ru_RU)
+    clickOn(btn.lang_set_default)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
+    clickOn(btn.back)
+    time.sleep(modals)
+    node.killNode()
+    assert node.getSystemLanguage() == 'ru_RU'

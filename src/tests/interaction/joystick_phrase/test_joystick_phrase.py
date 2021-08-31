@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.testConfig import running_timeout, restart_timeout
+from src.helpers.config import running, restart, btn, modal
 '''
 X seconds
 '''
@@ -11,9 +11,10 @@ X seconds
 
 @pytest.mark.interaction
 def test_activate_phrase_mode(clickOn, joy, node, screenDiffChecker):
-    clickOn('play')
-    clickOn('radius_modal_yes')
-    time.sleep(running_timeout)
+    node.initNode()
+    clickOn(btn.play)
+    clickOn(modal.radius_yes)
+    time.sleep(running)
     joy_msg = joy.phraseMode()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker('interfaces/joy_mode_on', (0, 40, 1280, 660)) is None
@@ -41,11 +42,12 @@ def test_previous_phrase(joy, node):
 
 
 @pytest.mark.interaction
-def test_reset(clickOn, typeText, openPasswordModal, screenDiffChecker):
+def test_reset(node, clickOn, typeText, openPasswordModal, screenDiffChecker):
+    node.killNode()
     openPasswordModal()
-    clickOn('choose_numbers')
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(restart_timeout)
+    clickOn(btn.restart)
+    clickOn(modal.restart_yes)
+    time.sleep(restart)
     assert screenDiffChecker('interfaces/start.png') is None

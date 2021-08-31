@@ -4,7 +4,7 @@ import pytest
 import time
 
 
-from src.helpers.testConfig import modals_timeout
+from src.helpers.config import modals, btn, modal
 '''
 22.41 seconds
 '''
@@ -12,12 +12,12 @@ from src.helpers.testConfig import modals_timeout
 
 @pytest.mark.interface_promo_printing
 def test_promo_open(clickOn, typeText, screenDiffChecker):
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('promo')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.promo)
     assert screenDiffChecker(
         'interfaces/promo.png',
         (0, 40, 1280, 100)
@@ -26,13 +26,13 @@ def test_promo_open(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_add_picture(clickOn, screenDiffChecker):
-    clickOn('promo_selector')
-    clickOn('promo_choose_print')
-    clickOn('promo_pictures')
-    clickOn('promo_pictures')
-    clickOn('fs_promo_checkbox1')
-    clickOn('promo_add')
-    clickOn('promo_modal_yes')
+    clickOn(btn.promo_selector)
+    clickOn(btn.promo_print)
+    clickOn(btn.promo_pictures)
+    clickOn(btn.promo_pictures)
+    clickOn(btn.promo_fs_checkbox1)
+    clickOn(btn.promo_add)
+    clickOn(modal.promo_yes)
     assert screenDiffChecker(
         'interfaces/add_picture_printshow.png'
     ) is None
@@ -40,10 +40,10 @@ def test_add_picture(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_add_two_pictures(clickOn, screenDiffChecker):
-    clickOn('fs_promo_checkbox2')
-    clickOn('fs_promo_checkbox3')
-    clickOn('promo_add')
-    clickOn('promo_modal_yes')
+    clickOn(btn.promo_fs_checkbox2)
+    clickOn(btn.promo_fs_checkbox3)
+    clickOn(btn.promo_add)
+    clickOn(modal.promo_yes)
     assert screenDiffChecker(
         'interfaces/add_three_pictures_printshow.png'
     ) is None
@@ -51,9 +51,9 @@ def test_add_two_pictures(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_add_all_pictures(clickOn, screenDiffChecker):
-    clickOn('fs_promo_choose_all')
-    clickOn('promo_add')
-    clickOn('promo_modal_yes')
+    clickOn(btn.promo_fs_choose_all)
+    clickOn(btn.promo_add)
+    clickOn(modal.promo_yes)
     assert screenDiffChecker(
         'interfaces/add_all_pictures_printshow.png'
     ) is None
@@ -61,9 +61,9 @@ def test_add_all_pictures(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_delete_picture(clickOn, screenDiffChecker):
-    clickOn('robot_promo_checkbox1')
-    clickOn('promo_delete')
-    clickOn('promo_modal_yes')
+    clickOn(btn.promo_robot_checkbox1)
+    clickOn(btn.promo_delete)
+    clickOn(modal.promo_yes)
     assert screenDiffChecker(
         'interfaces/delete_picture_printshow.png'
     ) is None
@@ -71,10 +71,10 @@ def test_delete_picture(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_delete_two_pictures(clickOn, screenDiffChecker):
-    clickOn('robot_promo_checkbox2')
-    clickOn('robot_promo_checkbox3')
-    clickOn('promo_delete')
-    clickOn('promo_modal_yes')
+    clickOn(btn.promo_robot_checkbox2)
+    clickOn(btn.promo_robot_checkbox3)
+    clickOn(btn.promo_delete)
+    clickOn(modal.promo_yes)
     assert screenDiffChecker(
         'interfaces/delete_two_pictures_printshow.png'
     ) is None
@@ -82,9 +82,9 @@ def test_delete_two_pictures(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_delete_all_pictures(clickOn, screenDiffChecker):
-    clickOn('robot_promo_choose_all')
-    clickOn('promo_delete')
-    clickOn('promo_modal_yes')
+    clickOn(btn.promo_robot_choose_all)
+    clickOn(btn.promo_delete)
+    clickOn(modal.promo_yes)
     assert screenDiffChecker(
         'interfaces/delete_all_pictures_printshow.png'
     ) is None
@@ -92,7 +92,7 @@ def test_delete_all_pictures(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_promo_printing
 def test_reset(clickOn, screenDiffChecker):
-    clickOn('back')
-    clickOn('save_modal_yes')
-    clickOn('back')
-    time.sleep(modals_timeout)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    clickOn(btn.back)
+    time.sleep(modals)

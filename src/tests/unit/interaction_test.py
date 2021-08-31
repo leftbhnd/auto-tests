@@ -10,6 +10,7 @@ from src.helpers.messages import InteractionMsg
 
 @pytest.mark.skip(reason="unit")
 def test_interaction_speech_true(node):
+    node.initNode()
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     assert node.getInteraction() == [True, 0]
@@ -62,3 +63,8 @@ def test_interaction_hark_false(node):
     interaction_msg = InteractionMsg(False, 3)
     node.interactionPub(interaction_msg)
     assert node.getInteraction() == [False, 3]
+
+
+@pytest.mark.skip(reason="unit")
+def test_finish(node):
+    node.killNode()

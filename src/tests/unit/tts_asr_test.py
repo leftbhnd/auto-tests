@@ -10,6 +10,7 @@ from src.helpers.messages import AsrTtsMsg
 
 @pytest.mark.skip(reason="unit")
 def test_asr(node):
+    node.initNode()
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('привет')
     node.asrPub(asr_msg)
@@ -26,7 +27,6 @@ def test_asr(node):
 
 @pytest.mark.skip(reason="unit")
 def test_tts(node):
-    time.sleep(10)
     node.cancelSpeechPub()
     tts_msg = AsrTtsMsg('я робот ты робот')
     node.ttsPub(tts_msg)
@@ -36,3 +36,8 @@ def test_tts(node):
 @pytest.mark.skip(reason="unit")
 def test_levels_order(node):
     assert node.getLevelsOrder() == ['0', '1', '2', '3', '4', '5', '6', '7']
+
+
+@pytest.mark.skip(reason="unit")
+def test_finish(node):
+    node.killNode()

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.testConfig import default_timeout, modals_timeout, running_timeout, restart_timeout
+from src.helpers.config import default, modals, running, restart, btn, modal
 '''
 115.20 seconds
 '''
@@ -11,26 +11,27 @@ from src.helpers.testConfig import default_timeout, modals_timeout, running_time
 
 @pytest.mark.interface_statuses_of_running
 def test_disable_radius(node, clickOn, typeText):
-    clickOn('control')
-    clickOn('choose_numbers')
+    node.initNode()
+    clickOn(btn.control)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('settings')
-    clickOn('navigation')
-    clickOn('useRadius')
-    clickOn('back')
-    clickOn('save_modal_yes')
-    time.sleep(modals_timeout)
-    clickOn('back')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(restart_timeout)
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.nav)
+    clickOn(btn.useRadius)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.restart)
+    clickOn(modal.restart_yes)
+    time.sleep(restart)
     assert node.getUseRadius() == False
 
 
 @pytest.mark.interface_statuses_of_running
 def test_check_run_state(clickOn, screenDiffChecker):
-    clickOn('play')
+    clickOn(btn.play)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -54,20 +55,21 @@ def test_check_run(screenDiffChecker):
 
 @pytest.mark.interface_statuses_of_running
 def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
-    time.sleep(running_timeout)
+    time.sleep(running)
     openPasswordModal()
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('settings')
-    clickOn('navigation')
-    clickOn('useRadius')
-    clickOn('back')
-    clickOn('save_modal_yes')
-    time.sleep(modals_timeout)
-    clickOn('back')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(restart_timeout)
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.nav)
+    clickOn(btn.useRadius)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.restart)
+    clickOn(modal.restart_yes)
+    time.sleep(restart)
+    node.killNode()
     assert node.getUseRadius() == True

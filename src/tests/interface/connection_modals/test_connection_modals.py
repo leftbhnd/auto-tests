@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.testConfig import modals_timeout
+from src.helpers.config import modals, btn, modal
 '''
 26.21 seconds
 '''
@@ -11,13 +11,13 @@ from src.helpers.testConfig import modals_timeout
 
 @pytest.mark.interface_connection_modals
 def test_connection_open(clickOn, typeText, screenDiffChecker):
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('connection')
-    time.sleep(modals_timeout)
+    clickOn(modal.pwd_ok)
+    clickOn(btn.connection)
+    time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/connection.png',
         (0, 40, 920, 150)
@@ -26,8 +26,8 @@ def test_connection_open(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.interface_connection_modals
 def test_connection_info_modal(clickOn, screenDiffChecker):
-    clickOn('connection_info')
-    time.sleep(modals_timeout)
+    clickOn(btn.connection_info)
+    time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/connection_info_modal.png',
         (365, 292, 548, 212)
@@ -36,8 +36,8 @@ def test_connection_info_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_connection_modals
 def test_connection_update_modal(clickOn, screenDiffChecker):
-    clickOn('connection_info_modal_close')
-    clickOn('connection_update')
+    clickOn(modal.connection_info_close)
+    clickOn(btn.connection_update)
     time.sleep(2)
     assert screenDiffChecker(
         'interfaces/connection_update_modal.png',
@@ -47,10 +47,10 @@ def test_connection_update_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_connection_modals
 def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
-    time.sleep(modals_timeout)
-    clickOn('random_wifi')
-    clickOn('reset_input')
-    clickOn('reset_input')
+    time.sleep(modals)
+    clickOn(btn.connection_choose_wifi)
+    clickOn(btn.reset_input)
+    clickOn(btn.reset_input)
     assert screenDiffChecker(
         'interfaces/wifi_pass_modal.png',
         (365, 292, 548, 212)
@@ -59,7 +59,7 @@ def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_connection_modals
 def test_reset(clickOn, screenDiffChecker):
-    clickOn('wifi_pass_modal_close')
-    clickOn('back')
-    clickOn('back')
-    time.sleep(modals_timeout)
+    clickOn(modal.wifi_pwd_close)
+    clickOn(btn.back)
+    clickOn(btn.back)
+    time.sleep(modals)

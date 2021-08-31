@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.testConfig import modals_timeout
+from src.helpers.config import modals, btn, modal
 '''
 32.84 seconds
 '''
@@ -11,12 +11,12 @@ from src.helpers.testConfig import modals_timeout
 
 @pytest.mark.interface_quick_access
 def test_charge_app(clickOn, typeText, screenDiffChecker):
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('send_to_charge')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.charge_app)
     time.sleep(2)
     assert screenDiffChecker(
         'interfaces/charge_app.png'
@@ -24,22 +24,15 @@ def test_charge_app(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.interface_quick_access
-def test_auto_tumbler_disable(clickOn, typeText, screenDiffChecker):
-    clickOn('send_to_charge_close')
-    time.sleep(modals_timeout)
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+def test_auto_tumbler_enable(clickOn, typeText, screenDiffChecker):
+    clickOn(btn.charge_app_close)
+    time.sleep(modals)
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    assert screenDiffChecker(
-        'interfaces/control.png'
-    ) is None
-
-
-@pytest.mark.interface_quick_access
-def test_auto_tumbler_enable(clickOn, screenDiffChecker):
-    clickOn('auto_mode')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.auto_mode)
     assert screenDiffChecker(
         'interfaces/control_auto_mode_enable.png'
     ) is None
@@ -47,9 +40,9 @@ def test_auto_tumbler_enable(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_phrase_tumbler_enable(clickOn, screenDiffChecker):
-    clickOn('auto_mode')
-    clickOn('phrase_mode')
-    time.sleep(modals_timeout)
+    clickOn(btn.auto_mode)
+    clickOn(btn.phrase_mode)
+    time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/control_phrase_mode_enable.png'
     ) is None
@@ -57,9 +50,9 @@ def test_phrase_tumbler_enable(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_answerlog_tumbler_enable(clickOn, screenDiffChecker):
-    clickOn('phrase_mode')
-    time.sleep(modals_timeout)
-    clickOn('answers_log')
+    clickOn(btn.phrase_mode)
+    time.sleep(modals)
+    clickOn(btn.answers_log)
     assert screenDiffChecker(
         'interfaces/control_answers_log_enable.png'
     ) is None
@@ -67,8 +60,8 @@ def test_answerlog_tumbler_enable(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_restart_modal(clickOn, screenDiffChecker):
-    clickOn('answers_log')
-    clickOn('restart')
+    clickOn(btn.answers_log)
+    clickOn(btn.restart)
     assert screenDiffChecker(
         'interfaces/restart.png'
     ) is None
@@ -76,8 +69,8 @@ def test_restart_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_hide(clickOn, screenDiffChecker):
-    clickOn('restart_modal_no')
-    clickOn('hide')
+    clickOn(modal.restart_no)
+    clickOn(btn.hide)
     assert screenDiffChecker(
         'interfaces/ubuntu_screen.png',
         (150, 40, 1280, 800)
@@ -86,8 +79,8 @@ def test_hide(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_restore(clickOn, screenDiffChecker):
-    clickOn('activities')
-    clickOn('work_space')
-    clickOn('work_space')
-    clickOn('back')
-    time.sleep(modals_timeout)
+    clickOn(btn.activities)
+    clickOn(btn.work_space)
+    clickOn(btn.work_space)
+    clickOn(btn.back)
+    time.sleep(modals)

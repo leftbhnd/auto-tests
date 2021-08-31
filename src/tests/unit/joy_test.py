@@ -6,6 +6,7 @@ import time
 
 @pytest.mark.skip(reason="unit")
 def test_volume_up(node, joy):
+    node.initNode()
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
     time.sleep(3)
@@ -92,3 +93,8 @@ def test_auto_mode_disable(node, joy):
     time.sleep(3)
     assert node.getJoyCmd() == [(0.0, 0.0, 0.0, 0.0, 1.0, 1.0),
                                 (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+
+@pytest.mark.skip(reason="unit")
+def test_finish(node):
+    node.killNode()

@@ -3,26 +3,26 @@
 import pytest
 import time
 
-from src.helpers.testConfig import modals_timeout, running_timeout, restart_timeout
+from src.helpers.config import slowly, modals, running, restart, btn, modal
 from src.helpers.messages import AsrTtsMsg
 '''
-X seconds
+143.09 seconds
 '''
 
 
 @pytest.mark.localization_ru_RU
 def test_no_connection_modal(clickOn, typeText, screenDiffChecker):
-    clickOn('control')
-    clickOn('pass_modal_input')
-    clickOn('choose_numbers')
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('answers_log')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.answers_log)
+    clickOn(btn.restart)
+    clickOn(modal.restart_yes)
     time.sleep(30)
-    clickOn('play')
-    time.sleep(slower_timeout)
+    clickOn(btn.play)
+    time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ru_RU/ru_no_connection_modal.png'
     ) is None
@@ -30,8 +30,8 @@ def test_no_connection_modal(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_radius_modal(clickOn, screenDiffChecker):
-    clickOn('no_connection_modal_yes')
-    time.sleep(slower_timeout)
+    clickOn(modal.no_connection_yes)
+    time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ru_RU/ru_radius_modal.png'
     ) is None
@@ -39,7 +39,7 @@ def test_radius_modal(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_check_run_state(clickOn, screenDiffChecker):
-    clickOn('radius_modal_yes')
+    clickOn(modal.radius_yes)
     assert screenDiffChecker(
         'localization/ru_RU/ru_run_state.png'
     ) is None
@@ -62,12 +62,15 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_answer_log(node, screenDiffChecker):
-    time.sleep(running_timeout)
+def test_answer_log(clickOn, node, screenDiffChecker):
+    node.initNode()
+    time.sleep(running)
+    clickOn(modal.ans_log_clear)
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('тестовое правило с лопатой')
     node.asrPub(asr_msg)
-    screenDiffChecker(
+    node.killNode()
+    assert screenDiffChecker(
         'localization/ru_RU/ru_test_answers_log.png',
         (0, 40, 1280, 660)
     ) is None
@@ -75,9 +78,9 @@ def test_answer_log(node, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_speech_settings(clickOn, screenDiffChecker):
-    clickOn('answers_log_modal_close')
-    clickOn('speech_settings')
-    screenDiffChecker(
+    clickOn(modal.ans_log_close)
+    clickOn(btn.speech_settings)
+    assert screenDiffChecker(
         'localization/ru_RU/ru_speech_settings.png',
         (0, 40, 1280, 660)
     ) is None
@@ -85,27 +88,15 @@ def test_speech_settings(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker):
-    clickOn('speech_settings_close')
+    clickOn(modal.speech_settings_close)
     openPasswordModal()
-    clickOn('choose_numbers')
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('testing')
-    clickOn('test_hand_right')
-    screenDiffChecker(
-        'localization/ru_RU/ru_script_is_running.png'
-    ) is None
-
-
-@pytest.mark.localization_ru_RU
-def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker):
-    openPasswordModal()
-    clickOn('choose_numbers')
-    typeText('123456')
-    clickOn('pass_modal_ok')
-    clickOn('testing')
-    clickOn('test_hand_right')
-    screenDiffChecker(
+    clickOn(modal.pwd_ok)
+    clickOn(btn.testing)
+    clickOn(btn.test_hand_right)
+    assert screenDiffChecker(
         'localization/ru_RU/ru_script_is_running.png'
     ) is None
 
@@ -113,7 +104,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
 @pytest.mark.localization_ru_RU
 def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(8)
-    clickOn('testing_main_camera')
+    clickOn(btn.test_main_camera)
     assert screenDiffChecker(
         'localization/ru_RU/ru_testing_main_camera_header.png',
         (0, 40, 1280, 60)
@@ -122,8 +113,8 @@ def test_main_camera(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_face_recognize(clickOn, screenDiffChecker):
-    clickOn('testing_videostream_close')
-    clickOn('testing_face_recognize')
+    clickOn(btn.test_videostream_close)
+    clickOn(btn.test_fr)
     assert screenDiffChecker(
         'localization/ru_RU/ru_testing_face_recognize_header.png',
         (0, 40, 1280, 60)
@@ -132,8 +123,8 @@ def test_face_recognize(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_bottom_camera(clickOn, screenDiffChecker):
-    clickOn('testing_videostream_close')
-    clickOn('testing_bottom_camera')
+    clickOn(btn.test_videostream_close)
+    clickOn(btn.test_bottom)
     assert screenDiffChecker(
         'localization/ru_RU/ru_testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
@@ -142,8 +133,8 @@ def test_bottom_camera(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_fisheye_camera(clickOn, screenDiffChecker):
-    clickOn('testing_videostream_close')
-    clickOn('testing_fisheye_camera')
+    clickOn(btn.test_videostream_close)
+    clickOn(btn.test_fisheye)
     assert screenDiffChecker(
         'localization/ru_RU/ru_testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
@@ -152,8 +143,8 @@ def test_fisheye_camera(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_periphery_statuses(clickOn, screenDiffChecker):
-    clickOn('testing_videostream_close')
-    clickOn('periphery_statuses')
+    clickOn(btn.test_videostream_close)
+    clickOn(btn.test_periphery_statuses)
     assert screenDiffChecker(
         'localization/ru_RU/ru_periphery_statuses_modal.png'
     ) is None
@@ -161,8 +152,8 @@ def test_periphery_statuses(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_record_sound_start(clickOn, screenDiffChecker):
-    clickOn('periphery_statuses_close')
-    clickOn('testing_record_sound')
+    clickOn(btn.test_periphery_statuses_close)
+    clickOn(btn.test_record_sound)
     assert screenDiffChecker(
         'localization/ru_RU/ru_testing_record_sound_start.png'
     ) is None
@@ -178,34 +169,37 @@ def test_record_sound_finish(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ru_RU
 def test_auto_mode_popup(clickOn, typeText, screenDiffChecker):
-    clickOn('back')
-    clickOn('answers_log')
-    clickOn('restart')
-    clickOn('restart_modal_yes')
-    time.sleep(restart_timeout)
-    clickOn('control')
+    clickOn(btn.back)
+    clickOn(btn.restart)
+    clickOn(modal.restart_yes)
+    time.sleep(restart)
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_yes')
-    clickOn('auto_mode')
-    clickOn('back')
-    screenDiffChecker(
+    clickOn(modal.pwd_ok)
+    clickOn(btn.auto_mode)
+    clickOn(btn.back)
+    assert screenDiffChecker(
         'localization/ru_RU/ru_automode_popup.png'
     ) is None
 
 
 @pytest.mark.localization_ru_RU
 def test_joy_mode_popup(clickOn, typeText, screenDiffChecker):
-    time.sleep(modals_timeout)
-    clickOn('control')
+    time.sleep(modals)
+    clickOn(btn.control)
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn('pass_modal_yes')
-    clickOn('auto_mode')
-    clickOn('back')
-    screenDiffChecker(
+    clickOn(modal.pwd_ok)
+    clickOn(btn.auto_mode)
+    clickOn(btn.back)
+    assert screenDiffChecker(
         'localization/ru_RU/ru_joy_mode_popup.png'
     ) is None
 
 
 @pytest.mark.localization_ru_RU
 def test_restore():
-    time.sleep(modals_timeout)
+    time.sleep(modals)
