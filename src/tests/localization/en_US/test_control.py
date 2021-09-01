@@ -19,7 +19,7 @@ def test_wrong_pass_modal(clickOn, typeText, screenDiffChecker):
     clickOn(btn.reset_input)
     clickOn(btn.reset_input)
     assert screenDiffChecker(
-        'localization/en_US/en_wrong_pass_modal.png'
+        'localization/en_US/wrong_pass_modal.png'
     ) is None
 
 
@@ -30,7 +30,7 @@ def test_control(clickOn, typeText, screenDiffChecker):
     typeText('123456')
     clickOn(modal.pwd_ok)
     assert screenDiffChecker(
-        'localization/en_US/en_control.png'
+        'localization/en_US/control.png'
     ) is None
 
 
@@ -39,7 +39,7 @@ def test_connection_open(clickOn, screenDiffChecker):
     clickOn(btn.connection)
     time.sleep(modals)
     assert screenDiffChecker(
-        'localization/en_US/en_connection.png',
+        'localization/en_US/connection.png',
         (0, 40, 920, 150)
     ) is None
 
@@ -49,7 +49,7 @@ def test_connection_info_modal(clickOn, screenDiffChecker):
     clickOn(btn.connection_info)
     time.sleep(modals)
     assert screenDiffChecker(
-        'localization/en_US/en_connection_info_modal.png',
+        'localization/en_US/connection_info_modal.png',
         (365, 292, 548, 212)
     ) is None
 
@@ -60,7 +60,7 @@ def test_connection_update_modal(clickOn, screenDiffChecker):
     clickOn(btn.connection_update)
     time.sleep(2)
     assert screenDiffChecker(
-        'localization/en_US/en_connection_update_modal.png',
+        'localization/en_US/connection_update_modal.png',
         (0, 40, 1280, 120)
     ) is None
 
@@ -72,7 +72,7 @@ def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
     clickOn(btn.reset_input)
     clickOn(btn.reset_input)
     assert screenDiffChecker(
-        'localization/en_US/en_wifi_pass_modal.png',
+        'localization/en_US/wifi_pass_modal.png',
         (365, 292, 548, 212)
     ) is None
 
@@ -83,7 +83,7 @@ def test_promo_open(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.promo)
     assert screenDiffChecker(
-        'localization/en_US/en_promo.png',
+        'localization/en_US/promo.png',
         (0, 40, 1280, 100)
     ) is None
 
@@ -95,7 +95,7 @@ def test_add_picture_modal(clickOn, screenDiffChecker):
     clickOn(btn.promo_fs_checkbox1)
     clickOn(btn.promo_add)
     assert screenDiffChecker(
-        'localization/en_US/en_add_picture_modal.png'
+        'localization/en_US/add_picture_modal.png'
     ) is None
 
 
@@ -103,7 +103,7 @@ def test_add_picture_modal(clickOn, screenDiffChecker):
 def test_added_picture(clickOn, screenDiffChecker):
     clickOn(modal.promo_yes)
     assert screenDiffChecker(
-        'localization/en_US/en_add_picture_slideshow.png'
+        'localization/en_US/add_picture_slideshow.png'
     ) is None
 
 
@@ -112,7 +112,7 @@ def test_delete_picture_modal(clickOn, screenDiffChecker):
     clickOn(btn.promo_robot_checkbox1)
     clickOn(btn.promo_delete)
     assert screenDiffChecker(
-        'localization/en_US/en_delete_picture_modal.png'
+        'localization/en_US/delete_picture_modal.png'
     ) is None
 
 
@@ -120,7 +120,7 @@ def test_delete_picture_modal(clickOn, screenDiffChecker):
 def test_deleted_picture(clickOn, screenDiffChecker):
     clickOn(modal.promo_yes)
     assert screenDiffChecker(
-        'localization/en_US/en_delete_picture_slideshow.png'
+        'localization/en_US/delete_picture_slideshow.png'
     ) is None
 
 
@@ -129,7 +129,7 @@ def test_printshow(clickOn, screenDiffChecker):
     clickOn(btn.promo_selector)
     clickOn(btn.promo_print)
     assert screenDiffChecker(
-        'localization/en_US/en_promo_printshow.png'
+        'localization/en_US/promo_printshow.png'
     ) is None
 
 
@@ -141,7 +141,7 @@ def test_identification(clickOn, screenDiffChecker):
     clickOn(btn.reset_input)
     clickOn(btn.reset_input)
     assert screenDiffChecker(
-        'localization/en_US/en_identification.png'
+        'localization/en_US/identification.png'
     ) is None
 
 
@@ -151,7 +151,7 @@ def test_charge_app(clickOn, screenDiffChecker):
     clickOn(btn.charge_app)
     time.sleep(2)
     assert screenDiffChecker(
-        'localization/en_US/en_charge_app.png'
+        'localization/en_US/charge_app.png'
     ) is None
 
 
@@ -166,7 +166,7 @@ def test_phrase_mode_on(clickOn, typeText, screenDiffChecker):
     clickOn(modal.pwd_ok)
     clickOn(btn.phrase_mode)
     assert screenDiffChecker(
-        'localization/en_US/en_control_phrase_mode_on.png'
+        'localization/en_US/control_phrase_mode_on.png'
     ) is None
 
 
@@ -175,7 +175,7 @@ def test_phrase_mode_off(clickOn, screenDiffChecker):
     time.sleep(modals)
     clickOn(btn.phrase_mode)
     assert screenDiffChecker(
-        'localization/en_US/en_control_phrase_mode_off.png'
+        'localization/en_US/control_phrase_mode_off.png'
     ) is None
 
 
@@ -186,7 +186,7 @@ def test_volume(joy, node, screenDiffChecker):
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
-        'localization/en_US/en_control_volume.png'
+        'localization/en_US/control_volume.png'
     ) is None
 
 
@@ -199,7 +199,7 @@ def test_mic(joy, node, screenDiffChecker):
     joy_msg = joy.upMic()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
-        'localization/en_US/en_control_mic.png'
+        'localization/en_US/control_mic.png'
     ) is None
 
 
@@ -212,7 +212,7 @@ def test_restart_modal(clickOn, joy, node, screenDiffChecker):
     node.killNode()
     clickOn(btn.restart)
     assert screenDiffChecker(
-        'localization/en_US/en_restart_modal.png'
+        'localization/en_US/restart_modal.png'
     ) is None
 
 
