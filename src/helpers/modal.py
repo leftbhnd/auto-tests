@@ -52,6 +52,7 @@ class RobotModal(enum.Enum):
     ident_close = (936, 294)
     ident_close_en = (892, 296)
     ident_close_az = (893, 300)
+    ident_close_cs = (888, 294)
     ident_kb_pwd_input = (675, 247)
     ident_kb_pwd_eye = (919, 248)
     ident_kb_confirm_input = (666, 287)

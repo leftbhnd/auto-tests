@@ -147,7 +147,7 @@ def test_identification(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_cs_CZ
 def test_charge_app(clickOn, screenDiffChecker):
-    clickOn(modal.ident_close)
+    clickOn(modal.ident_close_cs)
     clickOn(btn.charge_app)
     time.sleep(2)
     assert screenDiffChecker(
