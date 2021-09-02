@@ -4,6 +4,7 @@ import rospy
 
 from sensor_msgs.msg import Joy
 from std_msgs.msg import Empty
+from std_msgs.msg import Bool
 
 
 class JoyService:
@@ -24,11 +25,16 @@ class JoyService:
         rospy.Subscriber(
             'joy', Joy, self._joyListener
         )
+
+        rospy.Subscriber(
+            'joy/speech', Bool, self._joySpeechListener
+        )
         '''
         переменные для геттеров
         '''
         self._joy_axes = []
         self._joy_buttons = []
+        self._joy_speech = False
 
         self._timeout = 0.5
 
@@ -53,3 +59,9 @@ class JoyService:
 
     def getJoyCmd(self):
         return [self._joy_axes, self._joy_buttons]
+
+    def _joySpeechListener(self, joy_speech):
+        self._joy_speech = joy_speech.data
+
+    def getJoySpeech(self):
+        return self._joy_speech

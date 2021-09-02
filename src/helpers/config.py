@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from src.helpers.button import RobotButton
 from src.helpers.modal import RobotModal
+from src.helpers.params import RobotParams
 from src.helpers.keyboard import robot_keyboard
 
 fast = 0.1
@@ -15,4 +16,5 @@ screens_dir = '/home/promobot/.tests/screens/'
 failed_dir = '/home/promobot/.tests/screens/test_failed/'
 btn = RobotButton
 modal = RobotModal
+params = RobotParams
 keyboard = robot_keyboard

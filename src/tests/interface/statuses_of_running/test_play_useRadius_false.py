@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, modals, running, restart, btn, modal
+from src.helpers.config import default, modals, running, restart, btn, modal, params
 '''
 115.20 seconds
 '''
@@ -18,7 +18,7 @@ def test_disable_radius(node, clickOn, typeText):
     clickOn(modal.pwd_ok)
     clickOn(btn.settings)
     clickOn(btn.nav)
-    clickOn(btn.useRadius)
+    clickOn(params.useRadius)
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -63,7 +63,7 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
     clickOn(modal.pwd_ok)
     clickOn(btn.settings)
     clickOn(btn.nav)
-    clickOn(btn.useRadius)
+    clickOn(params.useRadius)
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
