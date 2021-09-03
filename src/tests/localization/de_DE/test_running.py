@@ -95,6 +95,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
     typeText('123456')
     clickOn(modal.pwd_ok)
     clickOn(btn.testing)
+    time.sleep(modals)
     clickOn(btn.test_hand_right)
     assert screenDiffChecker(
         'localization/de_DE/script_is_running.png'
