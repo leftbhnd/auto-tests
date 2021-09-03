@@ -82,10 +82,10 @@ def screenDiffChecker():
             #     screens_dir + original_image
             # ))
             hash2 = hash(original.tobytes())
-            
+
         result = ImageChops.difference(current, original)
         # difference = result.getbbox()
-        difference = hash1 - hash2
+        difference = [hash1 - hash2, hash1, hash2]
         #if difference != None:
         if math.fabs(difference) > 1:
             result.save(
