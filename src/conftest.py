@@ -79,7 +79,7 @@ def screenDiffChecker():
             hash2 = imagehash.average_hash(Image.open(
                 screens_dir + original_image
             ))
-        # result = ImageChops.difference(current, original)
+        result = ImageChops.difference(current, original)
         # difference = result.getbbox()
         difference = hash1 - hash2
         #if difference != None:

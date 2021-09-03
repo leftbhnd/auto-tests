@@ -5,6 +5,7 @@ sudo apt-get install -y python-pytest
 sudo apt-get install -y scrot
 pip install pyautogui
 pip install xmltodict
+pip install imagehash
 ```
 
 # Структура проекта:
