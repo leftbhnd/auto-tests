@@ -8,6 +8,10 @@ class RobotModal(enum.Enum):
     pwd_close = (896, 178)
     pwd_ok = (823, 310)
     pwd_input = (407, 251)
+    # у немецкого языка доп строка, модалка съехала
+    pwd_wrong_input_de = (412, 268)
+    pwd_wrong_close_de = (893, 171)
+    pwd_wrong_ok_de = (832, 328)
     # модальное окно лога ответов
     ans_log_close = (943, 400)
     ans_log_clear = (810, 399)
