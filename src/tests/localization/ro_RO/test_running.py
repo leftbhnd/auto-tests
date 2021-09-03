@@ -69,7 +69,7 @@ def test_answer_log(clickOn, node, screenDiffChecker):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('regula de testare a lopatei')
     node.asrPub(asr_msg)
-    node.killNode()
+    time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ro_RO/test_answers_log.png',
         (0, 40, 1280, 660)
@@ -95,6 +95,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
     typeText('123456')
     clickOn(modal.pwd_ok)
     clickOn(btn.testing)
+    time.sleep(modals)
     clickOn(btn.test_hand_right)
     assert screenDiffChecker(
         'localization/ro_RO/script_is_running.png'
@@ -201,5 +202,6 @@ def test_joy_mode_popup(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.localization_ro_RO
-def test_restore():
+def test_restore(node):
+    node.killNode()
     time.sleep(modals)

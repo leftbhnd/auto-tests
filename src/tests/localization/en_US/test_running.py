@@ -6,7 +6,7 @@ import time
 from src.helpers.config import slowly, modals, running, restart, btn, modal
 from src.helpers.messages import AsrTtsMsg
 '''
-143.78 seconds
+146.66 seconds
 '''
 
 

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import slowly, modals, btn, modal
 '''
 X seconds
 '''
@@ -48,6 +48,7 @@ def test_connection_open(clickOn, screenDiffChecker):
 def test_connection_info_modal(clickOn, screenDiffChecker):
     clickOn(btn.connection_info)
     time.sleep(modals)
+    time.sleep(slowly)
     assert screenDiffChecker(
         'localization/sv_SE/connection_info_modal.png',
         (365, 292, 548, 212)
