@@ -56,19 +56,21 @@ def screenDiffChecker():
         pyautogui.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
-        hash1 = imagehash.average_hash(Image.open(
-            screens_dir + 'screen.png'
-        ))
+        # hash1 = imagehash.average_hash(Image.open(
+        #     screens_dir + 'screen.png'
+        # ))
         current = Image.open(
             screens_dir + 'screen.png'
         )
+        hash1 = hash(current.tobytes())
         try:
             original = Image.open(
                 screens_dir + original_image
             )
-            hash2 = imagehash.average_hash(Image.open(
-                screens_dir + original_image
-            ))
+            # hash2 = imagehash.average_hash(Image.open(
+            #     screens_dir + original_image
+            # ))
+            hash2 = hash(original.tobytes())
         except IOError:
             pyautogui.screenshot(
                 screens_dir + original_image, region=coordinates
@@ -76,9 +78,11 @@ def screenDiffChecker():
             original = Image.open(
                 screens_dir + original_image
             )
-            hash2 = imagehash.average_hash(Image.open(
-                screens_dir + original_image
-            ))
+            # hash2 = imagehash.average_hash(Image.open(
+            #     screens_dir + original_image
+            # ))
+            hash2 = hash(original.tobytes())
+            
         result = ImageChops.difference(current, original)
         # difference = result.getbbox()
         difference = hash1 - hash2
