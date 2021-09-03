@@ -25,10 +25,10 @@ def test_wrong_pass_modal(clickOn, typeText, screenDiffChecker):
 
 @pytest.mark.localization_el_GR
 def test_control(clickOn, typeText, screenDiffChecker):
-    clickOn(modal.pwd_input)
+    clickOn(modal.pwd_wrong_input_el)
     clickOn(btn.choose_numbers)
     typeText('123456')
-    clickOn(modal.pwd_ok)
+    clickOn(modal.pwd_wrong_ok_el)
     assert screenDiffChecker(
         'localization/el_GR/control.png'
     ) is None
