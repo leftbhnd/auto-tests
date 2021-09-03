@@ -87,7 +87,8 @@ def screenDiffChecker():
         # difference = result.getbbox()
         difference = [hash1 - hash2, hash1, hash2]
         #if difference != None:
-        if math.fabs(difference) > 1:
+        # if math.fabs(difference) > 1:
+        if difference != 1488:
             result.save(
                 failed_dir + 'failed_' + original_image +
                 datetime.now().strftime("%d.%m.%Y.%H:%M:%S") + '.png'
