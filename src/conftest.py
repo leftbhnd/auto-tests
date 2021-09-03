@@ -5,8 +5,6 @@ import pytest
 import time
 import pyautogui
 import rospy
-import imagehash
-import math
 
 from datetime import datetime
 from PIL import Image, ImageChops
@@ -19,58 +17,19 @@ from helpers.messages import JoyCmdMsg
 m = PyMouse()
 
 
-# @pytest.fixture
-# def screenDiffChecker():
-#     def _method(original_image, coordinates=screen_resolution):
-#         pyautogui.screenshot(
-#             screens_dir + 'screen.png', region=coordinates
-#         )
-#         current = Image.open(
-#             screens_dir + 'screen.png'
-#         )
-#         try:
-#             original = Image.open(
-#                 screens_dir + original_image
-#             )
-#         except IOError:
-#             pyautogui.screenshot(
-#                 screens_dir + original_image, region=coordinates
-#             )
-#             original = Image.open(
-#                 screens_dir + original_image
-#             )
-#         result = ImageChops.difference(current, original)
-#         difference = result.getbbox()
-#         if difference != None:
-#             result.save(
-#                 failed_dir + 'failed_' + original_image +
-#                 datetime.now().strftime("%d.%m.%Y.%H:%M:%S") + '.png'
-#             )
-#         return difference
-#     return _method
-
-
 @pytest.fixture
 def screenDiffChecker():
     def _method(original_image, coordinates=screen_resolution):
         pyautogui.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
-        # hash1 = imagehash.average_hash(Image.open(
-        #     screens_dir + 'screen.png'
-        # ))
         current = Image.open(
             screens_dir + 'screen.png'
         )
-        hash1 = hash(current.tobytes())
         try:
             original = Image.open(
                 screens_dir + original_image
             )
-            # hash2 = imagehash.average_hash(Image.open(
-            #     screens_dir + original_image
-            # ))
-            hash2 = hash(original.tobytes())
         except IOError:
             pyautogui.screenshot(
                 screens_dir + original_image, region=coordinates
@@ -78,17 +37,9 @@ def screenDiffChecker():
             original = Image.open(
                 screens_dir + original_image
             )
-            # hash2 = imagehash.average_hash(Image.open(
-            #     screens_dir + original_image
-            # ))
-            hash2 = hash(original.tobytes())
-
         result = ImageChops.difference(current, original)
-        # difference = result.getbbox()
-        difference = [hash1 - hash2, hash1, hash2]
-        #if difference != None:
-        # if math.fabs(difference) > 1:
-        if difference != 1488:
+        difference = result.getbbox()
+        if difference != None:
             result.save(
                 failed_dir + 'failed_' + original_image +
                 datetime.now().strftime("%d.%m.%Y.%H:%M:%S") + '.png'
