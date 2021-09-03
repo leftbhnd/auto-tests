@@ -69,7 +69,7 @@ def test_answer_log(clickOn, node, screenDiffChecker):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('shovel test rule')
     node.asrPub(asr_msg)
-    node.killNode()
+    time.sleep(slowly)
     assert screenDiffChecker(
         'localization/en_US/test_answers_log.png',
         (0, 40, 1280, 660)
@@ -201,5 +201,6 @@ def test_joy_mode_popup(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.localization_en_US
-def test_restore():
+def test_restore(node):
+    node.killNode()
     time.sleep(modals)
