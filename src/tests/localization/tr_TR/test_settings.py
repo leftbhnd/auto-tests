@@ -138,6 +138,7 @@ def test_lingvo_sources(clickOn, screenDiffChecker):
 def test_language_settings(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.lang_settings)
+    time.sleep(default)
     assert screenDiffChecker(
         'localization/tr_TR/language_settings.png'
     ) is None
