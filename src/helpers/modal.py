@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import enum
-[{'wr_inp': }, {'wr_ok': }, {'wr_close': }, {'ident_close': }]
 
 
 class RobotModal(enum.Enum):
