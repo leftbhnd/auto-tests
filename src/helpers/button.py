@@ -105,6 +105,7 @@ class RobotButton(enum.Enum):
     system_menu_panel = (148, 460)
     system_mic_array = (132, 518)
     system_reset = (60, 584)
+    system_reset_uk = (143, 553)
     # настройки -> приложения
     apps_main = (198, 193)
     apps_applications = (160, 241)

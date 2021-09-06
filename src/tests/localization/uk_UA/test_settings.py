@@ -56,7 +56,7 @@ def test_system_mic_array(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_system_reset(clickOn, screenDiffChecker):
-    clickOn(btn.system_reset)
+    clickOn(btn.system_reset_uk)
     assert screenDiffChecker(
         'localization/uk_UA/system_reset.png'
     ) is None
