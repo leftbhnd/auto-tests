@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import enum
+[{'wr_inp': }, {'wr_ok': }, {'wr_close': }, {'ident_close': }]
 
 
 class RobotModal(enum.Enum):
@@ -16,6 +17,10 @@ class RobotModal(enum.Enum):
     pwd_wrong_input_el = (431, 274)
     pwd_wrong_close_el = (889, 160)
     pwd_wrong_ok_el = (833, 334)
+    # pt_PT
+    pwd_wrong_input_pt = (403, 271)
+    pwd_wrong_close_pt = (890, 166)
+    pwd_wrong_ok_pt = (821, 329)
     # модальное окно лога ответов
     ans_log_close = (943, 400)
     ans_log_clear = (810, 399)
@@ -64,6 +69,7 @@ class RobotModal(enum.Enum):
     ident_close_de = (955, 291)
     ident_close_el = (1057, 292)
     ident_close_nb = (911, 291)
+    ident_close_pt = (889, 290)
     ident_kb_pwd_input = (675, 247)
     ident_kb_pwd_eye = (919, 248)
     ident_kb_confirm_input = (666, 287)
