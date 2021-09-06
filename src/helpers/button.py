@@ -86,6 +86,7 @@ class RobotButton(enum.Enum):
     test_fr = (508, 315)
     test_bottom = (496, 375)
     test_fisheye = (501, 451)
+    test_fisheye_uk = (448, 370)
     test_videostream_close = (1210, 66)
     test_periphery_statuses = (781, 233)
     # на шведском верстка едет

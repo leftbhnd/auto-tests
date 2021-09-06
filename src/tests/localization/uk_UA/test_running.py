@@ -6,7 +6,7 @@ import time
 from src.helpers.config import slowly, modals, running, restart, btn, modal
 from src.helpers.messages import AsrTtsMsg
 '''
-X seconds
+146.58 seconds
 '''
 
 
@@ -135,7 +135,7 @@ def test_bottom_camera(clickOn, screenDiffChecker):
 @pytest.mark.localization_uk_UA
 def test_fisheye_camera(clickOn, screenDiffChecker):
     clickOn(btn.test_videostream_close)
-    clickOn(btn.test_fisheye)
+    clickOn(btn.test_fisheye_uk)
     assert screenDiffChecker(
         'localization/uk_UA/testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
