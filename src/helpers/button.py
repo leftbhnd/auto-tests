@@ -80,6 +80,7 @@ class RobotButton(enum.Enum):
     # тестирование
     test_rotate_head = (190, 234)
     test_hand_right = (180, 378)
+    test_hand_right_zn = (174, 344)
     test_hand_left = (194, 307)
     test_zero_all_servos = (199, 454)
     test_main_camera = (499, 228)
@@ -90,6 +91,10 @@ class RobotButton(enum.Enum):
     test_fr_uk = (433, 273)
     test_bottom_uk = (444, 319)
     test_fisheye_uk = (448, 370)
+    test_main_camera_zn = (482, 232)
+    test_fr_zn = (483, 291)
+    test_bottom_zn = (494, 346)
+    test_fisheye_zn = (475, 405)
     test_videostream_close = (1210, 66)
     test_periphery_statuses = (781, 233)
     # на шведском верстка едет
