@@ -114,7 +114,7 @@ def test_main_camera(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_zh_CN
 def test_face_recognize(clickOn, screenDiffChecker):
-    clickOn(btn.test_videostream_close_)
+    clickOn(btn.test_videostream_close)
     clickOn(btn.test_fr_zn)
     assert screenDiffChecker(
         'localization/zh_CN/testing_face_recognize_header.png',
