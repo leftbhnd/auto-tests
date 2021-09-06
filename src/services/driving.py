@@ -88,6 +88,7 @@ class DrivingService:
         rospy.sleep(self._timeout)
 
     def _driveModeListener(self, drive_mode):
+        rospy.sleep(self._timeout)
         self._current_drive_mode = drive_mode.data
 
     def getDriveMode(self):
@@ -101,6 +102,7 @@ class DrivingService:
         rospy.sleep(self._timeout)
 
     def _pointListener(self, point):
+        rospy.sleep(self._timeout)
         self._current_point = point.data
 
     def getCurrentPoint(self):
@@ -108,9 +110,11 @@ class DrivingService:
 
     # /rwheel /lwheel
     def _rwheelListener(self, rwheel_value):
+        rospy.sleep(self._timeout)
         self._rwheel_data = rwheel_value.data
 
     def _lwheelListener(self, lwheel_value):
+        rospy.sleep(self._timeout)
         self._lwheel_data = lwheel_value.data
 
     def getWheelsData(self):
@@ -130,6 +134,7 @@ class DrivingService:
         rospy.sleep(self._timeout)
 
     def _drivePauseListener(self, pause):
+        rospy.sleep(self._timeout)
         self._drive_pause_state = pause.data
 
     def getDrivePause(self):
@@ -148,6 +153,7 @@ class DrivingService:
         rospy.sleep(self._timeout)
 
     def _driveStationListener(self, drive_station):
+        rospy.sleep(self._timeout)
         self._drive_station_state = drive_station.data
 
     def getDriveStationStatus(self):
@@ -155,6 +161,7 @@ class DrivingService:
 
     # /drive/status
     def _driveStatusListener(self, drive_status):
+        rospy.sleep(self._timeout)
         self._drive_status = drive_status.data
 
     def getDriveStatus(self):
@@ -162,6 +169,7 @@ class DrivingService:
 
     # /charge/state
     def _chargeStateListenerCallback(self, charge_state):
+        rospy.sleep(self._timeout)
         self._charge_state = charge_state.data
 
     def getChargeState(self):
