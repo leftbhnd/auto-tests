@@ -132,7 +132,7 @@ class RobotButton(enum.Enum):
     # настройки -> языковые настройки
     lang_settings_choose = (135, 188)
     lang_settings_synthesis = (150, 246)
-    lang_set_default = (515, 349)
+    lang_set_default = (439, 353)
     lang_add_lang = (455, 256)
     lang_delete_lang = (458, 302)
     lang_up_arrow = (685, 400)
