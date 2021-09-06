@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from button import RobotButton
-from modal import RobotModal
+from src.helpers.button import RobotButton
+from src.helpers.modal import RobotModal
 from params import RobotParams
 from keyboard import robot_keyboard
 
