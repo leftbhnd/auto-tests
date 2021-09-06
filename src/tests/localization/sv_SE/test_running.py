@@ -145,7 +145,7 @@ def test_fisheye_camera(clickOn, screenDiffChecker):
 @pytest.mark.localization_sv_SE
 def test_periphery_statuses(clickOn, screenDiffChecker):
     clickOn(btn.test_videostream_close)
-    clickOn(btn.test_periphery_statuses)
+    clickOn(btn.test_periphery_statuses_sv)
     assert screenDiffChecker(
         'localization/sv_SE/periphery_statuses_modal.png'
     ) is None
