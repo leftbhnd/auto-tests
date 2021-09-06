@@ -16,7 +16,7 @@ class FaceRecognizeService:
             'face/info/array', FaceArray, latch=True, queue_size=10
         )
 
-        self._timeout = 0.5
+        self._fr_timeout = 0.5
 
     def facePub(self, data):
         face_array = FaceArray()
@@ -39,8 +39,8 @@ class FaceRecognizeService:
         # чистим массив лиц перед отправкой
         face_array.faces = []
         self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._fr_timeout)
         # публикуем нужное лицо
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._fr_timeout)

@@ -37,7 +37,7 @@ class TtsAsrService:
         self._robot_answer = ''
         self._robot_speech = ''
 
-        self._timeout = 0.8
+        self._asr_timeout = 0.8
 
     def asrPub(self, data):
         asr_result = ASRResult()
@@ -49,20 +49,20 @@ class TtsAsrService:
         asr_result.final = 1
         asr_result.conf = 1.0
         self._pub_text_to_asr.publish(asr_result)
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
 
     def _answersListener(self, answer):
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
         self._robot_answer = answer.replica.text
 
     def getAnswer(self):
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
         return self._robot_answer
 
     def cancelSpeechPub(self):
         empty_msg = Empty()
         self._pub_cancel_speech.publish(empty_msg)
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
 
     def ttsPub(self, data):
         tts_command = TTSCommand()
@@ -71,21 +71,21 @@ class TtsAsrService:
         tts_command.uuid = data.uuid
         tts_command.ignore_saving = False
         self._pub_text_to_tts.publish(tts_command)
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
 
     def _ttsListener(self, speech):
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
         self._robot_speech = speech.text
 
     def getTts(self):
         return self._robot_speech
 
     def getLevelsOrder(self):
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
         levels_order = rospy.get_param('answers/levels_order')
         return levels_order
 
     def getSystemLanguage(self):
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._asr_timeout)
         system_language = rospy.get_param('system/language')
         return system_language

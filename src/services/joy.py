@@ -36,12 +36,12 @@ class JoyService:
         self._joy_buttons = []
         self._joy_speech = False
 
-        self._timeout = 0.5
+        self._joy_timeout = 0.5
 
     def joyPhraseModePub(self):
         empty_msg = Empty()
         self._pub_joy_phrase_mode.publish(empty_msg)
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._joy_timeout)
 
     def joyCommandPub(self, commands):
         for command in commands:
@@ -51,10 +51,10 @@ class JoyService:
             joy.axes = command['axes']
             joy.buttons = command['buttons']
             self._pub_joy_cmd.publish(joy)
-            rospy.sleep(self._timeout)
+            rospy.sleep(self._joy_timeout)
 
     def _joyListener(self, joy_cmd):
-        rospy.sleep(self._timeout)
+        rospy.sleep(self._joy_timeout)
         self._joy_axes = joy_cmd.axes
         self._joy_buttons = joy_cmd.buttons
 
