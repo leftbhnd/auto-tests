@@ -96,7 +96,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
     clickOn(modal.pwd_ok)
     clickOn(btn.testing)
     time.sleep(modals)
-    clickOn(btn.test_hand_right)
+    clickOn(btn.test_hand_right_zn)
     assert screenDiffChecker(
         'localization/zh_CN/script_is_running.png'
     ) is None
@@ -105,7 +105,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
 @pytest.mark.localization_zh_CN
 def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(8)
-    clickOn(btn.test_main_camera)
+    clickOn(btn.test_main_camera_zn)
     assert screenDiffChecker(
         'localization/zh_CN/testing_main_camera_header.png',
         (0, 40, 1280, 60)
@@ -114,8 +114,8 @@ def test_main_camera(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_zh_CN
 def test_face_recognize(clickOn, screenDiffChecker):
-    clickOn(btn.test_videostream_close)
-    clickOn(btn.test_fr)
+    clickOn(btn.test_videostream_close_)
+    clickOn(btn.test_fr_zn)
     assert screenDiffChecker(
         'localization/zh_CN/testing_face_recognize_header.png',
         (0, 40, 1280, 60)
@@ -125,7 +125,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
 @pytest.mark.localization_zh_CN
 def test_bottom_camera(clickOn, screenDiffChecker):
     clickOn(btn.test_videostream_close)
-    clickOn(btn.test_bottom)
+    clickOn(btn.test_bottom_zn)
     assert screenDiffChecker(
         'localization/zh_CN/testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
@@ -135,7 +135,7 @@ def test_bottom_camera(clickOn, screenDiffChecker):
 @pytest.mark.localization_zh_CN
 def test_fisheye_camera(clickOn, screenDiffChecker):
     clickOn(btn.test_videostream_close)
-    clickOn(btn.test_fisheye)
+    clickOn(btn.test_fisheye_zn)
     assert screenDiffChecker(
         'localization/zh_CN/testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
