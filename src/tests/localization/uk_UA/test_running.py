@@ -105,7 +105,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
 @pytest.mark.localization_uk_UA
 def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(8)
-    clickOn(btn.test_main_camera)
+    clickOn(btn.test_main_camera_uk)
     assert screenDiffChecker(
         'localization/uk_UA/testing_main_camera_header.png',
         (0, 40, 1280, 60)
@@ -115,7 +115,7 @@ def test_main_camera(clickOn, screenDiffChecker):
 @pytest.mark.localization_uk_UA
 def test_face_recognize(clickOn, screenDiffChecker):
     clickOn(btn.test_videostream_close)
-    clickOn(btn.test_fr)
+    clickOn(btn.test_fr_uk)
     assert screenDiffChecker(
         'localization/uk_UA/testing_face_recognize_header.png',
         (0, 40, 1280, 60)
@@ -125,7 +125,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
 @pytest.mark.localization_uk_UA
 def test_bottom_camera(clickOn, screenDiffChecker):
     clickOn(btn.test_videostream_close)
-    clickOn(btn.test_bottom)
+    clickOn(btn.test_bottom_uk)
     assert screenDiffChecker(
         'localization/uk_UA/testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
