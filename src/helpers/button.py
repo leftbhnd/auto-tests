@@ -18,6 +18,7 @@ class RobotButton(enum.Enum):
     browser = (183, 530)
     browser_close = (1195, 77)
     ident = (191, 607)
+    ident_zn = (157, 650)
     charge_app = (1173, 454)
     charge_app_close = (1237, 73)
     auto_mode = (1169, 507)

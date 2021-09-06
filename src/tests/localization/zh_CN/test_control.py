@@ -138,7 +138,7 @@ def test_printshow(clickOn, screenDiffChecker):
 def test_identification(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(modal.save_no)
-    clickOn(btn.ident)
+    clickOn(btn.ident_zn)
     clickOn(btn.reset_input)
     clickOn(btn.reset_input)
     assert screenDiffChecker(
