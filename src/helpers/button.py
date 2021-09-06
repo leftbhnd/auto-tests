@@ -46,6 +46,7 @@ class RobotButton(enum.Enum):
     connection_info = (795, 731)
     connection_info_zn = (912, 726)
     connection_update = (359, 729)
+    connection_update_zn = (337, 731)
     connection_choose_wifi = (437, 234)
     # промо
     promo_pictures = (735, 239)

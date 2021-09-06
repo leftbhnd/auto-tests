@@ -58,7 +58,7 @@ def test_connection_info_modal(clickOn, screenDiffChecker):
 @pytest.mark.localization_zh_CN
 def test_connection_update_modal(clickOn, screenDiffChecker):
     clickOn(modal.connection_info_close)
-    clickOn(btn.connection_update)
+    clickOn(btn.connection_update_zn)
     time.sleep(2)
     assert screenDiffChecker(
         'localization/zh_CN/connection_update_modal.png',
