@@ -67,7 +67,7 @@ def test_answer_log(clickOn, node, screenDiffChecker):
     time.sleep(running)
     clickOn(modal.inv_ans_log_clear)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('тестовое правило с лопатой')
+    asr_msg = AsrTtsMsg('חוק בדיקת אתים')
     node.asrPub(asr_msg)
     time.sleep(slowly)
     assert screenDiffChecker(
