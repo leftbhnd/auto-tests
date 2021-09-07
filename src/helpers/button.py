@@ -172,6 +172,7 @@ class RobotButton(enum.Enum):
     test_bottom_fi = (466, 349)
     test_fisheye_fi = (470, 397)
     test_record_sound_fi = (1151, 222)
+    system_reset_fi = (119, 552)
     # sv_SE
     test_periphery_statuses_sv = (903, 219)
     # uk_UA
