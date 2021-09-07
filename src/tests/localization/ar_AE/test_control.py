@@ -13,6 +13,7 @@ X seconds
 def test_wrong_pass_modal(clickOn, typeText, screenDiffChecker):
     clickOn(btn.control)
     clickOn(modal.pwd_input)
+    clickOn(btn.change_lang)
     clickOn(btn.choose_numbers)
     typeText('1234567')
     clickOn(modal.inv_pwd_ok)
@@ -26,6 +27,7 @@ def test_wrong_pass_modal(clickOn, typeText, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_control(clickOn, typeText, screenDiffChecker):
     clickOn(modal.pwd_input)
+    clickOn(btn.change_lang)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.inv_pwd_ok)
@@ -162,6 +164,7 @@ def test_phrase_mode_on(clickOn, typeText, screenDiffChecker):
     time.sleep(modals)
     clickOn(btn.control)
     clickOn(modal.pwd_input)
+    clickOn(btn.change_lang)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.inv_pwd_ok)

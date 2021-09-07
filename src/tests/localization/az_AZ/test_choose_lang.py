@@ -14,6 +14,7 @@ def test_choose_lang(clickOn, typeText, node):
     node.initNode()
     clickOn(btn.control)
     clickOn(modal.pwd_input)
+    clickOn(btn.change_lang)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.inv_pwd_ok)

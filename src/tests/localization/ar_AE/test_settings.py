@@ -13,6 +13,7 @@ X seconds
 def test_settings(clickOn, typeText, screenDiffChecker):
     clickOn(btn.control)
     clickOn(modal.pwd_input)
+    clickOn(btn.change_lang)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.inv_pwd_ok)

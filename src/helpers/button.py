@@ -6,6 +6,7 @@ import enum
 class RobotButton(enum.Enum):
     # клавиатура TODO попробовать метод для клавы
     choose_numbers = (299, 758)
+    change_lang = (401, 767)
     delete = (996, 563)
     # стартовый экран
     control = (617, 671)
