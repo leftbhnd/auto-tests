@@ -82,6 +82,10 @@ class RobotModal(enum.Enum):
     # en_US
     ident_close_en = (892, 296)
     # fi_FI
+    pwd_wrong_input_fi = (400, 273)
+    pwd_wrong_close_fi = (890, 168)
+    pwd_wrong_ok_fi = (827, 330)
+    ident_close_el = (1057, 292)
     ident_close_fi = (908, 296)
     # nb_NO
     ident_close_nb = (911, 291)
