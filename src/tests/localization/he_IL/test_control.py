@@ -41,7 +41,7 @@ def test_connection_open(clickOn, screenDiffChecker):
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/he_IL/connection.png',
-        (0, 40, 920, 150)
+        (450, 40, 830, 150)
     ) is None
 
 
