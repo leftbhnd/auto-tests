@@ -18,7 +18,6 @@ class RobotButton(enum.Enum):
     browser = (183, 530)
     browser_close = (1195, 77)
     ident = (191, 607)
-    ident_zn = (157, 650)
     charge_app = (1173, 454)
     charge_app_close = (1237, 73)
     auto_mode = (1169, 507)
@@ -45,9 +44,7 @@ class RobotButton(enum.Enum):
     update = (1025, 574)
     # подключение
     connection_info = (795, 731)
-    connection_info_zn = (912, 726)
     connection_update = (359, 729)
-    connection_update_zn = (337, 731)
     connection_choose_wifi = (437, 234)
     # промо
     promo_pictures = (735, 239)
@@ -83,25 +80,14 @@ class RobotButton(enum.Enum):
     # тестирование
     test_rotate_head = (190, 234)
     test_hand_right = (180, 378)
-    test_hand_right_zn = (174, 344)
     test_hand_left = (194, 307)
     test_zero_all_servos = (199, 454)
     test_main_camera = (499, 228)
     test_fr = (508, 315)
     test_bottom = (496, 375)
     test_fisheye = (501, 451)
-    test_main_camera_uk = (453, 225)
-    test_fr_uk = (433, 273)
-    test_bottom_uk = (444, 319)
-    test_fisheye_uk = (448, 370)
-    test_main_camera_zn = (482, 232)
-    test_fr_zn = (483, 291)
-    test_bottom_zn = (494, 346)
-    test_fisheye_zn = (475, 405)
     test_videostream_close = (1210, 66)
     test_periphery_statuses = (781, 233)
-    # на шведском верстка едет
-    test_periphery_statuses_sv = (903, 219)
     test_record_sound = (1061, 232)
     test_speech_recognize = (1072, 387)
     test_periphery_statuses_close = (1130, 271)
@@ -113,7 +99,6 @@ class RobotButton(enum.Enum):
     system_menu_panel = (148, 460)
     system_mic_array = (132, 518)
     system_reset = (60, 584)
-    system_reset_uk = (143, 553)
     # настройки -> приложения
     apps_main = (198, 193)
     apps_applications = (160, 241)
@@ -176,3 +161,30 @@ class RobotButton(enum.Enum):
     # ubuntu
     activities = (33, 13)
     work_space = (1263, 152)
+    '''
+    кастомные кнопки языков
+    '''
+    # fi_FI
+    test_main_camera_fi = (482, 226)
+    test_fr_fi = (469, 282)
+    test_bottom_fi = (466, 349)
+    test_fisheye_fi = (470, 397)
+    test_record_sound_fi = (1151, 222)
+    # sv_SE
+    test_periphery_statuses_sv = (903, 219)
+    # uk_UA
+    test_main_camera_uk = (453, 225)
+    test_fr_uk = (433, 273)
+    test_bottom_uk = (444, 319)
+    test_fisheye_uk = (448, 370)
+    system_reset_uk = (143, 553)
+    # zn_CN
+    ident_zn = (157, 650)
+    connection_info_zn = (912, 726)
+    connection_update_zn = (337, 731)
+    test_hand_right_zn = (174, 344)
+    test_main_camera_zn = (482, 232)
+    test_fr_zn = (483, 291)
+    test_bottom_zn = (494, 346)
+    test_fisheye_zn = (475, 405)
+    test_main_camera_zn = (482, 232)

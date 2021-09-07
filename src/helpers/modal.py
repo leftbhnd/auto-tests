@@ -8,18 +8,6 @@ class RobotModal(enum.Enum):
     pwd_close = (896, 178)
     pwd_ok = (823, 310)
     pwd_input = (407, 251)
-    # de_DE
-    pwd_wrong_input_de = (412, 268)
-    pwd_wrong_close_de = (893, 171)
-    pwd_wrong_ok_de = (832, 328)
-    # el_Gr
-    pwd_wrong_input_el = (431, 274)
-    pwd_wrong_close_el = (889, 160)
-    pwd_wrong_ok_el = (833, 334)
-    # pt_PT
-    pwd_wrong_input_pt = (403, 271)
-    pwd_wrong_close_pt = (890, 166)
-    pwd_wrong_ok_pt = (821, 329)
     # модальное окно лога ответов
     ans_log_close = (943, 400)
     ans_log_clear = (810, 399)
@@ -31,7 +19,7 @@ class RobotModal(enum.Enum):
     # модальное окно подключения к Wi-Fi
     wifi_pwd_input = (415, 400)
     wifi_pwd_eye = (870, 397)
-    wifi_pwd__ok = (809, 444)
+    wifi_pwd_ok = (809, 444)
     wifi_pwd_close = (889, 319)
     wifi_kb_pwd_input = (407, 264)
     wifi_kb_pwd_ok = (816, 299)
@@ -62,17 +50,6 @@ class RobotModal(enum.Enum):
     ident_confirm_eye = (917, 413)
     ident_save = (846, 464)
     ident_close = (936, 294)
-    ident_close_en = (892, 296)
-    ident_close_az = (893, 300)
-    ident_close_cs = (888, 294)
-    ident_close_de = (955, 291)
-    ident_close_el = (1057, 292)
-    ident_close_nb = (911, 291)
-    ident_close_pt = (889, 290)
-    ident_close_ro = (903, 293)
-    ident_close_sv = (914, 289)
-    ident_close_tr = (892, 289)
-    ident_close_zn = (892, 279)
     ident_kb_pwd_input = (675, 247)
     ident_kb_pwd_eye = (919, 248)
     ident_kb_confirm_input = (666, 287)
@@ -85,3 +62,39 @@ class RobotModal(enum.Enum):
     promo_close = (909, 194)
     promo_no = (661, 583)
     promo_yes = (833, 589)
+    '''
+    кастомные кнопки языков
+    '''
+    # az_AE
+    ident_close_az = (893, 300)
+    # cs_CZ
+    ident_close_cs = (888, 294)
+    # de_DE
+    pwd_wrong_input_de = (412, 268)
+    pwd_wrong_close_de = (893, 171)
+    pwd_wrong_ok_de = (832, 328)
+    ident_close_de = (955, 291)
+    # el_Gr
+    pwd_wrong_input_el = (431, 274)
+    pwd_wrong_close_el = (889, 160)
+    pwd_wrong_ok_el = (833, 334)
+    ident_close_el = (1057, 292)
+    # en_US
+    ident_close_en = (892, 296)
+    # fi_FI
+    ident_close_fi = (908, 296)
+    # nb_NO
+    ident_close_nb = (911, 291)
+    # pt_PT
+    pwd_wrong_input_pt = (403, 271)
+    pwd_wrong_close_pt = (890, 166)
+    pwd_wrong_ok_pt = (821, 329)
+    ident_close_pt = (889, 290)
+    # ro_RO
+    ident_close_ro = (903, 293)
+    # sv_SE
+    ident_close_sv = (914, 289)
+    # tr_TR
+    ident_close_tr = (892, 289)
+    # zh_CN
+    ident_close_zn = (892, 279)
