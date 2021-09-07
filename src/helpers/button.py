@@ -166,6 +166,7 @@ class RobotButton(enum.Enum):
     '''
     # fi_FI
     connection_info_fi = (864, 730)
+    connection_update_fi = (330, 726)
     test_main_camera_fi = (482, 226)
     test_fr_fi = (469, 282)
     test_bottom_fi = (466, 349)
