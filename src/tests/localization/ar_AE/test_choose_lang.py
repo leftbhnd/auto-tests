@@ -19,7 +19,6 @@ def test_choose_lang(clickOn, typeText, node):
     clickOn(modal.pwd_ok)
     clickOn(btn.settings)
     clickOn(btn.lang_settings)
-    clickOn(btn.lang_down_arrow)
     clickOn(btn.lang_ar_AE)
     clickOn(btn.lang_set_default)
     clickOn(btn.back)
