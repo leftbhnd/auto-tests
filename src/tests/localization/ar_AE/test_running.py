@@ -68,7 +68,7 @@ def test_answer_log(clickOn, node, screenDiffChecker):
     time.sleep(running)
     clickOn(modal.inv_ans_log_clear)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('חוק בדיקת אתים')
+    asr_msg = AsrTtsMsg('حكم اختبار مجرفة')
     node.asrPub(asr_msg)
     time.sleep(slowly)
     assert screenDiffChecker(
@@ -98,7 +98,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
     clickOn(modal.inv_pwd_ok)
     clickOn(btn.inv_testing)
     time.sleep(modals)
-    clickOn(btn.inv_test_hand_right)
+    clickOn(btn.inv_test_hand_right_ae)
     assert screenDiffChecker(
         'localization/ar_AE/script_is_running.png'
     ) is None
@@ -107,7 +107,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
 @pytest.mark.localization_ar_AE
 def test_main_camera(clickOn, screenDiffChecker):
     time.sleep(8)
-    clickOn(btn.inv_test_main_camera)
+    clickOn(btn.inv_test_main_camera_ae)
     assert screenDiffChecker(
         'localization/ar_AE/testing_main_camera_header.png',
         (0, 40, 1280, 60)
@@ -117,7 +117,7 @@ def test_main_camera(clickOn, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_face_recognize(clickOn, screenDiffChecker):
     clickOn(btn.inv_test_videostream_close)
-    clickOn(btn.inv_test_fr)
+    clickOn(btn.inv_test_fr_ae)
     assert screenDiffChecker(
         'localization/ar_AE/testing_face_recognize_header.png',
         (0, 40, 1280, 60)
@@ -127,7 +127,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_bottom_camera(clickOn, screenDiffChecker):
     clickOn(btn.inv_test_videostream_close)
-    clickOn(btn.inv_test_bottom)
+    clickOn(btn.inv_test_bottom_ae)
     assert screenDiffChecker(
         'localization/ar_AE/testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
@@ -137,7 +137,7 @@ def test_bottom_camera(clickOn, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_fisheye_camera(clickOn, screenDiffChecker):
     clickOn(btn.inv_test_videostream_close)
-    clickOn(btn.inv_test_fisheye)
+    clickOn(btn.inv_test_fisheye_ae)
     assert screenDiffChecker(
         'localization/ar_AE/testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
