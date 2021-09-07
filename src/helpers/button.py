@@ -221,7 +221,7 @@ class RobotButton(enum.Enum):
     inv_nav = (258, 290)
     inv_lingvo = (1025, 574)
     inv_lang_settings = (759, 587)
-    inv_internet = (749, 581)
+    inv_internet = (508, 571)
     inv_update = (265, 574)
     # подключение
     inv_connection_info = (932, 735)
