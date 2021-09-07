@@ -5,7 +5,7 @@ import time
 
 from src.helpers.config import slowly, modals, btn, modal
 '''
-X seconds
+76.97 seconds
 '''
 
 
