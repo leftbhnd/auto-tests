@@ -246,6 +246,7 @@ class RobotButton(enum.Enum):
     inv_lingvo_sources = (1157, 243)
     # настройки -> языковые настройки
     inv_lang_set_default = (837, 351)
+    inv_lang_down_arrow = (685, 713)
     # настройки -> интернет службы
     inv_internet_sip = (1170, 239)
     inv_internet_ya_disk = (1160, 291)
