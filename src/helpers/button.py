@@ -10,7 +10,7 @@ class RobotButton(enum.Enum):
     # стартовый экран
     control = (617, 671)
     play = (635, 413)
-    # управления
+    # управление
     connection = (206, 195)
     promo = (205, 279)
     testing = (206, 366)
@@ -149,8 +149,6 @@ class RobotButton(enum.Enum):
     internet_email = (155, 185)
     internet_sip = (160, 241)
     internet_ya_disk = (184, 301)
-    # параметры робота
-    useRadius = (1016, 205)
     # управление гуи
     back = (97, 91)
     reset_input = (612, 62)
@@ -191,3 +189,70 @@ class RobotButton(enum.Enum):
     test_bottom_zn = (494, 346)
     test_fisheye_zn = (475, 405)
     test_main_camera_zn = (482, 232)
+    '''
+    inverted for ar_AE he_IL
+    '''
+    # управление
+    inv_connection = (1128, 198)
+    inv_promo = (1121, 279)
+    inv_testing = (1128, 362)
+    inv_settings = (1126, 442)
+    inv_ident = (1119, 605)
+    inv_charge_app = (96, 454)
+    inv_charge_app_close = (37, 68)
+    inv_auto_mode = (99, 508)
+    inv_phrase_mode = (134, 546)
+    inv_answers_log = (103, 605)
+    inv_restart = (106, 714)
+    # тестирование
+    inv_test_hand_right = (1080, 360)
+    inv_test_main_camera = (780, 226)
+    inv_test_fr = (780, 283)
+    inv_test_bottom = (775, 355)
+    inv_test_fisheye = (780, 434)
+    inv_test_videostream_close = (65, 66)
+    inv_test_periphery_statuses = (487, 225)
+    inv_test_record_sound = (196, 226)
+    inv_test_periphery_statuses_close = (140, 277)
+    # настройки
+    inv_system = (258, 290)
+    inv_apps = (501, 290)
+    inv_fr = (754, 297)
+    inv_nav = (1008, 288)
+    inv_lingvo = (265, 574)
+    inv_lang_settings = (749, 581)
+    inv_internet = (759, 587)
+    inv_update = (1025, 574)
+    # подключение
+    inv_connection_info = (932, 735)
+    inv_connection_update = (661, 728)
+    # промо
+    inv_promo_pictures = (579, 232)
+    inv_promo_add = (702, 681)
+    inv_promo_delete = (541, 683)
+    inv_promo_selector = (973, 180)
+    inv_promo_print = (923, 242)
+    inv_promo_fs_checkbox1 = (123, 303)
+    inv_promo_robot_checkbox1 = (672, 248)
+    # настройки -> система
+    inv_system_interaction = (1138, 400)
+    inv_system_menu_panel = (1142, 446)
+    inv_system_mic_array = (1131, 504)
+    inv_system_reset = (1157, 550)
+    # настройки -> распознавание лиц
+    inv_fr_facedb = (1146, 293)
+    inv_fr_facedb_select_folder = (166, 406)
+    # настройки -> лингвобаза
+    inv_lingvo_sources = (1157, 243)
+    # настройки -> языковые настройки
+    inv_lang_set_default = (837, 351)
+    # настройки -> интернет службы
+    inv_internet_sip = (1170, 239)
+    inv_internet_ya_disk = (1160, 291)
+    # вторая группа языков
+    inv_lang_it_IT = (801, 636)
+    inv_lang_az_AZ = (794, 465)
+    # управление гуи
+    inv_back = (1186, 98)
+    # запущенная гуи
+    inv_speech_settings = (86, 659)

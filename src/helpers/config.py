@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from src.helpers.button import RobotButton
 from src.helpers.modal import RobotModal
-from params import RobotParams
+from src.helpers.params import RobotParams
 from keyboard import robot_keyboard
 
 fast = 0.1

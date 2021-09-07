@@ -102,3 +102,35 @@ class RobotModal(enum.Enum):
     ident_close_tr = (892, 289)
     # zh_CN
     ident_close_zn = (892, 279)
+    '''
+    inverted for ar_AE he_IL
+    '''
+    # модальное окно ввода пароля
+    inv_pwd_ok = (443, 315)
+    # модальное окно лога ответов
+    inv_ans_log_close = (334, 405)
+    inv_ans_log_clear = (468, 401)
+    # модальное окно настроек синтеза речи
+    inv_speech_settings_close = (388, 355)
+    # модальное окно добавления лиц в базу
+    inv_add_faces_close = (346, 73)
+    # модальное окно подключения к Wi-Fi
+    inv_wifi_pwd_close = (386, 306)
+    # модальное окно сохранения настроек
+    inv_save_yes = (459, 439)
+    inv_save_no = (628, 439)
+    inv_save_close = (382, 341)
+    # модальное окно перезапуска интерфейса
+    inv_restart_yes = (457, 459)
+    inv_restart_no = (626, 455)
+    inv_restart_close = (382, 320)
+    # модальное окно радиуса
+    inv_radius_yes = (451, 467)
+    # модальное окно отсутствия подключения
+    inv_no_connection_yes = (454, 455)
+    # модальное окно смены пароля
+    inv_ident_close = (388, 291)
+    # модальное окно инфо о подключении
+    inv_connection_info_close = (386, 311)
+    # модальное окно раздела промо
+    inv_promo_yes = (466, 579)
