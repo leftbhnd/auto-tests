@@ -21,7 +21,7 @@ def test_no_connection_modal(clickOn, typeText, screenDiffChecker):
     clickOn(btn.inv_answers_log)
     clickOn(btn.inv_restart)
     clickOn(modal.inv_restart_yes)
-    time.sleep(30)
+    time.sleep(35)
     clickOn(btn.play)
     time.sleep(slowly)
     assert screenDiffChecker(

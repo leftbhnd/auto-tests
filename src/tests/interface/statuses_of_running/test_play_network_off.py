@@ -17,7 +17,7 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
     clickOn(modal.pwd_ok)
     clickOn(btn.restart)
     clickOn(modal.restart_yes)
-    time.sleep(30)
+    time.sleep(35)
     clickOn(btn.play)
     time.sleep(slowly)
     assert screenDiffChecker(
