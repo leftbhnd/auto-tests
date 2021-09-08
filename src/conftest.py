@@ -100,5 +100,5 @@ def node():
 @pytest.fixture
 def joy():
     joy = JoyCmdMsg()
-    time.sleep(default)
+    time.sleep(fast)
     return joy
