@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import slowly, modals, running, restart, btn, modal
+from src.helpers.config import default, slowly, modals, running, restart, btn, modal
 from src.helpers.messages import AsrTtsMsg
 '''
 148.49 seconds
@@ -98,6 +98,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
     clickOn(btn.inv_testing)
     time.sleep(modals)
     clickOn(btn.inv_test_hand_right_ae)
+    time.sleep(default)
     assert screenDiffChecker(
         'localization/ar_AE/script_is_running.png'
     ) is None
