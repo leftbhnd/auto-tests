@@ -19,10 +19,10 @@ class ScriptService:
         self._script_name = ''
         self._script_state = False
 
-        self._scr_timeout = 0.5
+        self._timeout = 0.5
 
     def _scriptProcessListener(self, script):
-        rospy.sleep(self._scr_timeout)
+        rospy.sleep(self._timeout)
         self._script_state = script.process
         self._script_name = script.name
 

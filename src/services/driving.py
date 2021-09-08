@@ -72,23 +72,23 @@ class DrivingService:
         self._drive_status = 0
         self._charge_state = False
 
-        self._dr_timeout = 0.9
+        self._timeout = 0.9
 
     # /drive/mode
     def autoModePub(self):
         autoMsg = UInt16()
         autoMsg.data = 1
         self._pub_drive_mode.publish(autoMsg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def joyModePub(self):
         joyMsg = UInt16()
         joyMsg.data = 0
         self._pub_drive_mode.publish(joyMsg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def _driveModeListener(self, drive_mode):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._current_drive_mode = drive_mode.data
 
     def getDriveMode(self):
@@ -99,10 +99,10 @@ class DrivingService:
         pointMsg = UInt16()
         pointMsg.data = point
         self._pub_to_point.publish(pointMsg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def _pointListener(self, point):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._current_point = point.data
 
     def getCurrentPoint(self):
@@ -110,11 +110,11 @@ class DrivingService:
 
     # /rwheel /lwheel
     def _rwheelListener(self, rwheel_value):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._rwheel_data = rwheel_value.data
 
     def _lwheelListener(self, lwheel_value):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._lwheel_data = lwheel_value.data
 
     def getWheelsData(self):
@@ -125,16 +125,16 @@ class DrivingService:
         boolMsg = Bool()
         boolMsg.data = True
         self._pub_drive_pause.publish(boolMsg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def disableDrivePausePub(self):
         boolMsg = Bool()
         boolMsg.data = False
         self._pub_drive_pause.publish(boolMsg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def _drivePauseListener(self, pause):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._drive_pause_state = pause.data
 
     def getDrivePause(self):
@@ -144,16 +144,16 @@ class DrivingService:
     def chargeAppPub(self):
         empty_msg = Empty()
         self._pub_charge_app.publish(empty_msg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def driveStationPub(self):
         boolMsg = Bool()
         boolMsg.data = True
         self._pub_drive_station.publish(boolMsg)
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
 
     def _driveStationListener(self, drive_station):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._drive_station_state = drive_station.data
 
     def getDriveStationStatus(self):
@@ -161,7 +161,7 @@ class DrivingService:
 
     # /drive/status
     def _driveStatusListener(self, drive_status):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._drive_status = drive_status.data
 
     def getDriveStatus(self):
@@ -169,7 +169,7 @@ class DrivingService:
 
     # /charge/state
     def _chargeStateListenerCallback(self, charge_state):
-        rospy.sleep(self._dr_timeout)
+        rospy.sleep(self._timeout)
         self._charge_state = charge_state.data
 
     def getChargeState(self):
