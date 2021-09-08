@@ -64,7 +64,6 @@ def test_check_run(screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_answer_log(clickOn, node, screenDiffChecker):
-    node.initNode()
     time.sleep(running)
     clickOn(modal.inv_ans_log_clear)
     node.cancelSpeechPub()
@@ -206,6 +205,5 @@ def test_joy_mode_popup(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_restore(node):
-    node.killNode()
+def test_restore():
     time.sleep(modals)

@@ -91,6 +91,7 @@ def typeText():
 
 @pytest.fixture
 def node():
+    rospy.init_node('autotest')
     node = AutoTest()
     time.sleep(default)
     return node

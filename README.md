@@ -69,9 +69,7 @@ pip install xmltodict
 - `clickOn(btn.X or modal.X)`
 - `openPasswordModal()`
 - `typeText('привет')`
-- `node.initNode()`
 - `node.X()`
-- `node.killNode()`
 - `joy.X()`
 
 # Запуск тестов

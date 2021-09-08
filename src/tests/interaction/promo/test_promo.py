@@ -11,7 +11,6 @@ X seconds
 
 @pytest.mark.interaction_promo
 def test_check_interaction(clickOn, node):
-    node.initNode()
     clickOn(btn.back)
     clickOn(btn.back)
     time.sleep(modals)
@@ -19,8 +18,7 @@ def test_check_interaction(clickOn, node):
 
 
 @pytest.mark.interaction_promo
-def test_first_pictures(screenDiffChecker, node):
-    node.killNode()
+def test_first_pictures(screenDiffChecker):
     assert screenDiffChecker(
         'interaction/promo1.png',
         (0, 40, 1280, 660)

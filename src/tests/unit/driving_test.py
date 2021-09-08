@@ -6,7 +6,6 @@ import time
 
 @pytest.mark.skip(reason="unit")
 def test_enable_joy_mode(node):
-    node.initNode()
     node.joyModePub()
     assert node.getDriveMode() == 0
 
@@ -72,8 +71,3 @@ def test_enable_joy_mode(node):
 @pytest.mark.skip(reason="unit")
 def test_use_radius(node):
     assert node.getUseRadius() in [True, False]
-
-
-@pytest.mark.skip(reason="unit")
-def test_finish(node):
-    node.killNode()

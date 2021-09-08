@@ -11,7 +11,6 @@ X seconds
 
 @pytest.mark.interaction_joy_phrase
 def test_activate_phrase_mode(joy, node):
-    node.initNode()
     joy_msg = joy.phraseMode()
     node.joyCommandPub(joy_msg)
     assert node.getJoySpeech() == True
@@ -42,5 +41,4 @@ def test_previous_phrase(joy, node):
 def test_reset(node, joy):
     joy_msg = joy.phraseMode()
     node.joyCommandPub(joy_msg)
-    node.killNode()
     assert node.getJoySpeech() == False

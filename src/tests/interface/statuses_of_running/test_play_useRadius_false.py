@@ -11,7 +11,6 @@ from src.helpers.config import default, modals, running, restart, btn, modal, pa
 
 @pytest.mark.interface_statuses_of_running
 def test_disable_radius(node, clickOn, typeText):
-    node.initNode()
     clickOn(btn.control)
     clickOn(btn.choose_numbers)
     typeText('123456')
@@ -71,5 +70,4 @@ def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker, node):
     clickOn(btn.restart)
     clickOn(modal.restart_yes)
     time.sleep(restart)
-    node.killNode()
     assert node.getUseRadius() == True

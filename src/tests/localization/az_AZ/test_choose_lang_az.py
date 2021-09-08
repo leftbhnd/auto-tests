@@ -11,7 +11,6 @@ X seconds
 
 @pytest.mark.localization_az_AZ
 def test_choose_lang(clickOn, typeText, node):
-    node.initNode()
     clickOn(btn.control)
     clickOn(modal.pwd_input)
     clickOn(btn.change_lang)
@@ -29,5 +28,4 @@ def test_choose_lang(clickOn, typeText, node):
     clickOn(btn.back)
     clickOn(btn.back)
     time.sleep(modals)
-    node.killNode()
     assert node.getSystemLanguage() == 'az_AZ'

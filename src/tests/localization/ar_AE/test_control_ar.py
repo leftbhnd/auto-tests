@@ -185,7 +185,6 @@ def test_phrase_mode_off(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_volume(joy, node, screenDiffChecker):
-    node.initNode()
     time.sleep(modals)
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
@@ -213,7 +212,6 @@ def test_restart_modal(clickOn, joy, node, screenDiffChecker):
     joy_msg = joy.downMic()
     node.joyCommandPub(joy_msg)
     time.sleep(modals)
-    node.killNode()
     clickOn(btn.inv_restart)
     assert screenDiffChecker(
         'localization/ar_AE/restart_modal.png'

@@ -15,11 +15,9 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    node.initNode()
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('тестовое правило с лопатой')
     node.asrPub(asr_msg)
-    node.killNode()
     assert screenDiffChecker(
         'interfaces/dialog_line.png'
     ) is None

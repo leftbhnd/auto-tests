@@ -182,7 +182,6 @@ def test_phrase_mode_off(clickOn, screenDiffChecker):
 
 @pytest.mark.localization_ro_RO
 def test_volume(joy, node, screenDiffChecker):
-    node.initNode()
     time.sleep(modals)
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
@@ -210,7 +209,6 @@ def test_restart_modal(clickOn, joy, node, screenDiffChecker):
     joy_msg = joy.downMic()
     node.joyCommandPub(joy_msg)
     time.sleep(modals)
-    node.killNode()
     clickOn(btn.restart)
     assert screenDiffChecker(
         'localization/ro_RO/restart_modal.png'

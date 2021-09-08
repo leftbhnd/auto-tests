@@ -11,7 +11,6 @@ from src.helpers.config import modals, btn, modal
 
 @pytest.mark.localization_ro_RO
 def test_choose_lang(clickOn, typeText, node):
-    node.initNode()
     clickOn(btn.control)
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
@@ -30,5 +29,4 @@ def test_choose_lang(clickOn, typeText, node):
     clickOn(btn.back)
     clickOn(btn.back)
     time.sleep(modals)
-    node.killNode()
     assert node.getSystemLanguage() == 'ro_RO'

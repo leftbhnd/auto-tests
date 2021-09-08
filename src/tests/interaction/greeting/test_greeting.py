@@ -13,7 +13,6 @@ X seconds
 
 @pytest.mark.interaction_greeting
 def test_greeting_unknown(node):
-    node.initNode()
     face_msg = FaceMsg(2, False, 21, 211, 0.9)
     node.facePub(face_msg)
     assert node.getTts() == 'тестовый привет незнакомец'
@@ -23,7 +22,6 @@ def test_greeting_unknown(node):
 def test_greeting_known(node):
     face_msg = FaceMsg(3, False, 21, X, 0.9)
     node.facePub(face_msg)
-    node.killNode()
     assert node.getTts() == 'тестовый привет Дмитрий'
 
 

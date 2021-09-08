@@ -29,7 +29,6 @@ def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_rotate_head(clickOn, node):
-    node.initNode()
     clickOn(btn.test_rotate_head)
     assert node.getScriptProcess() == ['test_rotate_head', True]
 
@@ -126,7 +125,6 @@ def test_speech_recognize(clickOn, node, screenDiffChecker):
     clickOn(btn.test_speech_recognize)
     asr_msg = AsrTtsMsg('как дела робот')
     node.asrPub(asr_msg)
-    node.killNode()
     assert screenDiffChecker(
         'interfaces/testing_speech_recognize.png'
     ) is None
