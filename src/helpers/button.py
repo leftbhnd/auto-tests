@@ -163,6 +163,8 @@ class RobotButton(enum.Enum):
     '''
     кастомные кнопки языков
     '''
+    # el_GR
+    test_hand_right_el = (185, 377)
     # fi_FI
     connection_info_fi = (864, 730)
     connection_update_fi = (330, 726)
