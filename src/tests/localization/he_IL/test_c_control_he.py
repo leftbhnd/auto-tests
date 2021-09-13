@@ -38,7 +38,7 @@ def test_control(clickOn, typeText, screenDiffChecker):
 def test_connection_open(clickOn, screenDiffChecker):
     clickOn(btn.inv_connection)
     time.sleep(modals)
-    time.sleep(slowly)
+    time.sleep(modals)
     assert screenDiffChecker(
         'localization/he_IL/con_connection.png',
         (450, 40, 830, 150)

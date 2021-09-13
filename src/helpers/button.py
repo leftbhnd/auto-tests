@@ -165,6 +165,7 @@ class RobotButton(enum.Enum):
     '''
     # el_GR
     test_hand_right_el = (185, 377)
+    system_reset_el = (136, 555)
     # fi_FI
     connection_info_fi = (864, 730)
     connection_update_fi = (330, 726)
@@ -174,6 +175,10 @@ class RobotButton(enum.Enum):
     test_fisheye_fi = (470, 397)
     test_record_sound_fi = (1151, 222)
     system_reset_fi = (119, 552)
+    # it_IT
+    system_reset_it = (125, 552)
+    # nb_NO
+    system_reset_nb = (124, 555)
     # sv_SE
     test_periphery_statuses_sv = (903, 219)
     # uk_UA
