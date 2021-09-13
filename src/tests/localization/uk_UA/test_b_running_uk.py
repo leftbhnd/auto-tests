@@ -95,7 +95,7 @@ def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker)
     clickOn(modal.pwd_ok)
     clickOn(btn.testing)
     time.sleep(modals)
-    clickOn(btn.test_hand_right)
+    clickOn(btn.test_hand_right_uk)
     time.sleep(default)
     assert screenDiffChecker(
         'localization/uk_UA/run_script_is_running.png'

@@ -182,6 +182,7 @@ class RobotButton(enum.Enum):
     # sv_SE
     test_periphery_statuses_sv = (903, 219)
     # uk_UA
+    test_hand_right_uk = (147, 322)
     test_main_camera_uk = (453, 225)
     test_fr_uk = (433, 273)
     test_bottom_uk = (444, 319)
