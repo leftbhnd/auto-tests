@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import slowly, modals, btn, modal
+from src.helpers.config import slowly, modals, connection, btn, modal
 '''
 78.66 seconds
 '''
@@ -39,7 +39,7 @@ def test_control(clickOn, typeText, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_connection_open(clickOn, screenDiffChecker):
     clickOn(btn.inv_connection)
-    time.sleep(modals)
+    time.sleep(connection)
     time.sleep(modals)
     assert screenDiffChecker(
         'localization/ar_AE/con_connection.png',
@@ -61,6 +61,7 @@ def test_connection_info_modal(clickOn, screenDiffChecker):
 def test_connection_update_modal(clickOn, screenDiffChecker):
     clickOn(modal.inv_connection_info_close)
     clickOn(btn.inv_connection_update)
+    time.sleep(connection)
     time.sleep(2)
     assert screenDiffChecker(
         'localization/ar_AE/con_connection_update_modal.png',
