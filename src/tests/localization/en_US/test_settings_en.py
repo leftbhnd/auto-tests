@@ -26,7 +26,7 @@ def test_settings(clickOn, typeText, screenDiffChecker):
 def test_system(clickOn, typeText, screenDiffChecker):
     clickOn(btn.system)
     assert screenDiffChecker(
-        'localization/en_US/system.png'
+        'localization/en_US/set_system.png'
     ) is None
 
 
@@ -34,7 +34,7 @@ def test_system(clickOn, typeText, screenDiffChecker):
 def test_system_interaction(clickOn, screenDiffChecker):
     clickOn(btn.system_interaction)
     assert screenDiffChecker(
-        'localization/en_US/system_interaction.png'
+        'localization/en_US/set_system_interaction.png'
     ) is None
 
 
@@ -42,7 +42,7 @@ def test_system_interaction(clickOn, screenDiffChecker):
 def test_system_menu_panel(clickOn, screenDiffChecker):
     clickOn(btn.system_menu_panel)
     assert screenDiffChecker(
-        'localization/en_US/system_menu_panel.png'
+        'localization/en_US/set_system_menu_panel.png'
     ) is None
 
 
@@ -50,7 +50,7 @@ def test_system_menu_panel(clickOn, screenDiffChecker):
 def test_system_mic_array(clickOn, screenDiffChecker):
     clickOn(btn.system_mic_array)
     assert screenDiffChecker(
-        'localization/en_US/system_mic_array.png'
+        'localization/en_US/set_system_mic_array.png'
     ) is None
 
 
@@ -58,7 +58,7 @@ def test_system_mic_array(clickOn, screenDiffChecker):
 def test_system_reset(clickOn, screenDiffChecker):
     clickOn(btn.system_reset)
     assert screenDiffChecker(
-        'localization/en_US/system_reset.png'
+        'localization/en_US/set_system_reset.png'
     ) is None
 
 
@@ -67,7 +67,7 @@ def test_applications(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.apps)
     assert screenDiffChecker(
-        'localization/en_US/applications.png'
+        'localization/en_US/set_applications.png'
     ) is None
 
 
@@ -76,7 +76,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.fr)
     assert screenDiffChecker(
-        'localization/en_US/face_recognize.png'
+        'localization/en_US/set_face_recognize.png'
     ) is None
 
 
@@ -84,7 +84,7 @@ def test_face_recognize(clickOn, screenDiffChecker):
 def test_fr_facedb(clickOn, screenDiffChecker):
     clickOn(btn.fr_facedb)
     assert screenDiffChecker(
-        'localization/en_US/face_recognize_facedb.png'
+        'localization/en_US/set_face_recognize_facedb.png'
     ) is None
 
 
@@ -92,7 +92,7 @@ def test_fr_facedb(clickOn, screenDiffChecker):
 def test_fr_adding_faces_modal(clickOn, screenDiffChecker):
     clickOn(btn.fr_facedb_select_folder)
     assert screenDiffChecker(
-        'localization/en_US/adding_faces_modal.png'
+        'localization/en_US/set_adding_faces_modal.png'
     ) is None
 
 
@@ -102,7 +102,7 @@ def test_navigation(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.nav)
     assert screenDiffChecker(
-        'localization/en_US/navigation.png'
+        'localization/en_US/set_navigation.png'
     ) is None
 
 
@@ -113,7 +113,7 @@ def test_save_parameters(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(modal.save_yes)
     assert screenDiffChecker(
-        'localization/en_US/save_parameters.png'
+        'localization/en_US/set_save_parameters.png'
     ) is None
 
 
@@ -122,7 +122,7 @@ def test_lingvo(clickOn, screenDiffChecker):
     time.sleep(modals)
     clickOn(btn.lingvo)
     assert screenDiffChecker(
-        'localization/en_US/lingvo.png'
+        'localization/en_US/set_lingvo.png'
     ) is None
 
 
@@ -130,7 +130,7 @@ def test_lingvo(clickOn, screenDiffChecker):
 def test_lingvo_sources(clickOn, screenDiffChecker):
     clickOn(btn.lingvo_sources)
     assert screenDiffChecker(
-        'localization/en_US/lingvo_sources.png'
+        'localization/en_US/set_lingvo_sources.png'
     ) is None
 
 
@@ -139,7 +139,7 @@ def test_language_settings(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.lang_settings)
     assert screenDiffChecker(
-        'localization/en_US/language_settings.png'
+        'localization/en_US/set_language_settings.png'
     ) is None
 
 
@@ -148,7 +148,7 @@ def test_internet_services(clickOn, screenDiffChecker):
     clickOn(btn.back)
     clickOn(btn.internet)
     assert screenDiffChecker(
-        'localization/en_US/internet_services.png'
+        'localization/en_US/set_internet_services.png'
     ) is None
 
 
@@ -157,7 +157,7 @@ def test_internet_services_sip(clickOn, screenDiffChecker):
     clickOn(btn.internet_sip)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/en_US/internet_services_sip.png'
+        'localization/en_US/set_internet_services_sip.png'
     ) is None
 
 
@@ -166,7 +166,7 @@ def test_internet_services_ya_disk(clickOn, screenDiffChecker):
     clickOn(btn.internet_ya_disk)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/en_US/internet_services_ya_disk.png'
+        'localization/en_US/set_internet_services_ya_disk.png'
     ) is None
 
 
@@ -176,7 +176,7 @@ def test_update(clickOn, screenDiffChecker):
     time.sleep(default)
     clickOn(btn.update)
     assert screenDiffChecker(
-        'localization/en_US/update.png',
+        'localization/en_US/set_update.png',
         (0, 215, 1280, 585)
     ) is None
 
