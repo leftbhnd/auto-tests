@@ -6,11 +6,12 @@ import enum
 class RobotButton(enum.Enum):
     # клавиатура TODO попробовать метод для клавы
     choose_numbers = (299, 758)
+    change_lang = (401, 767)
     delete = (996, 563)
     # стартовый экран
     control = (617, 671)
     play = (635, 413)
-    # управления
+    # управление
     connection = (206, 195)
     promo = (205, 279)
     testing = (206, 366)
@@ -117,7 +118,7 @@ class RobotButton(enum.Enum):
     # настройки -> языковые настройки
     lang_settings_choose = (135, 188)
     lang_settings_synthesis = (150, 246)
-    lang_set_default = (515, 349)
+    lang_set_default = (439, 353)
     lang_add_lang = (455, 256)
     lang_delete_lang = (458, 302)
     lang_up_arrow = (685, 400)
@@ -149,8 +150,6 @@ class RobotButton(enum.Enum):
     internet_email = (155, 185)
     internet_sip = (160, 241)
     internet_ya_disk = (184, 301)
-    # параметры робота
-    useRadius = (1016, 205)
     # управление гуи
     back = (97, 91)
     reset_input = (612, 62)
@@ -161,3 +160,114 @@ class RobotButton(enum.Enum):
     # ubuntu
     activities = (33, 13)
     work_space = (1263, 152)
+    '''
+    кастомные кнопки языков
+    '''
+    # el_GR
+    test_hand_right_el = (185, 377)
+    system_reset_el = (136, 555)
+    # fi_FI
+    connection_info_fi = (864, 730)
+    connection_update_fi = (330, 726)
+    test_main_camera_fi = (482, 226)
+    test_fr_fi = (469, 282)
+    test_bottom_fi = (466, 349)
+    test_fisheye_fi = (470, 397)
+    test_record_sound_fi = (1151, 222)
+    system_reset_fi = (119, 552)
+    # it_IT
+    system_reset_it = (125, 552)
+    # nb_NO
+    system_reset_nb = (124, 555)
+    # sv_SE
+    test_periphery_statuses_sv = (903, 219)
+    # uk_UA
+    test_hand_right_uk = (147, 322)
+    test_main_camera_uk = (453, 225)
+    test_fr_uk = (433, 273)
+    test_bottom_uk = (444, 319)
+    test_fisheye_uk = (448, 370)
+    system_reset_uk = (143, 553)
+    # zn_CN
+    ident_zn = (157, 650)
+    connection_info_zn = (912, 726)
+    connection_update_zn = (337, 731)
+    test_hand_right_zn = (174, 344)
+    test_main_camera_zn = (482, 232)
+    test_fr_zn = (483, 291)
+    test_bottom_zn = (494, 346)
+    test_fisheye_zn = (475, 405)
+    test_main_camera_zn = (482, 232)
+    '''
+    inverted for ar_AE he_IL
+    '''
+    # управление
+    inv_connection = (1128, 198)
+    inv_promo = (1121, 279)
+    inv_testing = (1128, 362)
+    inv_settings = (1126, 442)
+    inv_ident = (1119, 605)
+    inv_charge_app = (96, 454)
+    inv_charge_app_close = (37, 68)
+    inv_auto_mode = (99, 508)
+    inv_phrase_mode = (134, 546)
+    inv_answers_log = (103, 605)
+    inv_restart = (106, 714)
+    # тестирование
+    inv_test_hand_right = (1080, 360)
+    inv_test_hand_right_ae = (1095, 380)
+    inv_test_main_camera = (780, 226)
+    inv_test_main_camera_ae = (775, 244)
+    inv_test_fr = (780, 283)
+    inv_test_fr_ae = (778, 310)
+    inv_test_bottom = (775, 355)
+    inv_test_bottom_ae = (773, 387)
+    inv_test_fisheye = (780, 434)
+    inv_test_fisheye_ae = (776, 451)
+    inv_test_videostream_close = (65, 66)
+    inv_test_periphery_statuses = (487, 225)
+    inv_test_record_sound = (196, 226)
+    inv_test_periphery_statuses_close = (140, 277)
+    # настройки
+    inv_system = (1008, 288)
+    inv_apps = (754, 297)
+    inv_fr = (501, 290)
+    inv_nav = (258, 290)
+    inv_lingvo = (1025, 574)
+    inv_lang_settings = (759, 587)
+    inv_internet = (508, 571)
+    inv_update = (265, 574)
+    # подключение
+    inv_connection_info = (932, 735)
+    inv_connection_update = (661, 728)
+    # промо
+    inv_promo_pictures = (579, 232)
+    inv_promo_add = (702, 681)
+    inv_promo_delete = (541, 683)
+    inv_promo_selector = (973, 180)
+    inv_promo_print = (923, 242)
+    inv_promo_fs_checkbox1 = (123, 303)
+    inv_promo_robot_checkbox1 = (672, 248)
+    # настройки -> система
+    inv_system_interaction = (1138, 400)
+    inv_system_menu_panel = (1142, 446)
+    inv_system_mic_array = (1131, 504)
+    inv_system_reset = (1157, 550)
+    # настройки -> распознавание лиц
+    inv_fr_facedb = (1146, 293)
+    inv_fr_facedb_select_folder = (166, 406)
+    # настройки -> лингвобаза
+    inv_lingvo_sources = (1157, 243)
+    # настройки -> языковые настройки
+    inv_lang_set_default = (837, 351)
+    inv_lang_down_arrow = (594, 714)
+    # настройки -> интернет службы
+    inv_internet_sip = (1170, 239)
+    inv_internet_ya_disk = (1160, 291)
+    # вторая группа языков
+    inv_lang_it_IT = (801, 636)
+    inv_lang_az_AZ = (794, 465)
+    # управление гуи
+    inv_back = (1186, 98)
+    # запущенная гуи
+    inv_speech_settings = (86, 659)

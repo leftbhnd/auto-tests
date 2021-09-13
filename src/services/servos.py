@@ -21,6 +21,7 @@ class ServosService:
         self._timeout = 0.5
 
     def _servoStateListener(self, servos):
+        rospy.sleep(self._timeout)
         self._servos_state = servos.states
 
     def getServosState(self):

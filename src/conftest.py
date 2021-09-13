@@ -44,7 +44,6 @@ def screenDiffChecker():
                 failed_dir + 'failed_' + original_image +
                 datetime.now().strftime("%d.%m.%Y.%H:%M:%S") + '.png'
             )
-        print(difference)
         return difference
     return _method
 
@@ -92,6 +91,7 @@ def typeText():
 
 @pytest.fixture
 def node():
+    rospy.init_node('autotest')
     node = AutoTest()
     time.sleep(default)
     return node
@@ -100,5 +100,5 @@ def node():
 @pytest.fixture
 def joy():
     joy = JoyCmdMsg()
-    time.sleep(default)
+    time.sleep(fast)
     return joy

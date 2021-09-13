@@ -1,45 +1,77 @@
 #!/bin/sh
-echo 'start interface_apps_menu'
-pytest -v -m interface_apps_menu --junitxml="/home/promobot/.tests/result/interface_apps_menu.xml"
-sleep 65
-echo 'finish interface_apps_menu'
-echo 'start interface_connection_modals'
-pytest -v -m interface_connection_modals --junitxml="/home/promobot/.tests/result/interface_connection_modals.xml"
-sleep 27
-echo 'finish interface_connection_modals'
-echo 'start interface_dialog_line'
-pytest -v -m interface_dialog_line --junitxml="/home/promobot/.tests/result/interface_dialog_line.xml"
-sleep 65
-echo 'finish interface_dialog_line'
-echo 'start interface_identification'
-pytest -v -m interface_identification --junitxml="/home/promobot/.tests/result/interface_identification.xml"
-sleep 45
-echo 'finish interface_identification'
-echo 'start interface_promo_printing'
-pytest -v -m interface_promo_printing --junitxml="/home/promobot/.tests/result/interface_promo_printing.xml"
-sleep 48
-echo 'finish interface_promo_printing'
-echo 'start interface_promo_slideshow'
-pytest -v -m interface_promo_slideshow --junitxml="/home/promobot/.tests/result/interface_promo_slideshow.xml"
-sleep 45
-echo 'finish interface_promo_slideshow'
-echo 'start interface_quick_access'
-pytest -v -m interface_quick_access --junitxml="/home/promobot/.tests/result/interface_quick_access.xml"
-sleep 59
-echo 'finish interface_quick_access'
-echo 'start interface_settings'
-pytest -v -m interface_settings --junitxml="/home/promobot/.tests/result/interface_settings.xml"
-sleep 50
-echo 'finish interface_settings'
-echo 'start interface_statuses_of_running'
-pytest -v -m interface_statuses_of_running --junitxml="/home/promobot/.tests/result/interface_statuses_of_running.xml"
-sleep 270
-echo 'finish interface_statuses_of_running'
-echo 'start interface_testing'
-pytest -v -m interface_testing --junitxml="/home/promobot/.tests/result/interface_testing.xml"
-sleep 163
-echo 'finish interface_testing'
-echo 'start interface_wifi_input'
-pytest -v -m interface_wifi_input --junitxml="/home/promobot/.tests/result/interface_wifi_input.xml"
-sleep 24
-echo 'finish interface_wifi_input'
+echo 'start localization_ar_AE'
+pytest -v -m localization_ar_AE --junitxml="/home/promobot/.tests/result/localization_ar_AE.xml"
+echo 'finish localization_ar_AE'
+sleep 15
+echo 'start localization_az_AZ'
+pytest -v -m localization_az_AZ --junitxml="/home/promobot/.tests/result/localization_az_AZ.xml"
+echo 'finish localization_az_AZ'
+sleep 15
+echo 'start localization_cs_CZ'
+pytest -v -m localization_cs_CZ --junitxml="/home/promobot/.tests/result/localization_cs_CZ.xml"
+echo 'finish localization_cs_CZ'
+sleep 15
+echo 'start localization_de_DE'
+pytest -v -m localization_de_DE --junitxml="/home/promobot/.tests/result/localization_de_DE.xml"
+echo 'finish localization_de_DE'
+sleep 15
+echo 'start localization_el_GR'
+pytest -v -m localization_el_GR --junitxml="/home/promobot/.tests/result/localization_el_GR.xml"
+echo 'finish localization_el_GR'
+sleep 15
+echo 'start localization_en_US'
+pytest -v -m localization_en_US --junitxml="/home/promobot/.tests/result/localization_en_US.xml"
+echo 'finish localization_en_US'
+sleep 15
+echo 'start localization_es_ES'
+pytest -v -m localization_es_ES --junitxml="/home/promobot/.tests/result/localization_es_ES.xml"
+echo 'finish localization_es_ES'
+sleep 15
+echo 'start localization_fi_FI'
+pytest -v -m localization_fi_FI --junitxml="/home/promobot/.tests/result/localization_fi_FI.xml"
+echo 'finish localization_fi_FI'
+sleep 15
+echo 'start localization_fr_FR'
+pytest -v -m localization_fr_FR --junitxml="/home/promobot/.tests/result/localization_fr_FR.xml"
+echo 'finish localization_fr_FR'
+sleep 15
+echo 'start localization_he_IL'
+pytest -v -m localization_he_IL --junitxml="/home/promobot/.tests/result/localization_he_IL.xml"
+echo 'finish localization_he_IL'
+sleep 15
+echo 'start localization_it_IT'
+pytest -v -m localization_it_IT --junitxml="/home/promobot/.tests/result/localization_it_IT.xml"
+echo 'finish localization_it_IT'
+sleep 15
+echo 'start localization_nb_NO'
+pytest -v -m localization_nb_NO --junitxml="/home/promobot/.tests/result/localization_nb_NO.xml"
+echo 'finish localization_nb_NO'
+sleep 15
+echo 'start localization_pt_PT'
+pytest -v -m localization_pt_PT --junitxml="/home/promobot/.tests/result/localization_pt_PT.xml"
+echo 'finish localization_pt_PT'
+sleep 15
+echo 'start localization_ro_RO'
+pytest -v -m localization_ro_RO --junitxml="/home/promobot/.tests/result/localization_ro_RO.xml"
+echo 'finish localization_ro_RO'
+sleep 15
+echo 'start localization_ru_RU'
+pytest -v -m localization_ru_RU --junitxml="/home/promobot/.tests/result/localization_ru_RU.xml"
+echo 'finish localization_ru_RU'
+sleep 15
+echo 'start localization_sv_SE'
+pytest -v -m localization_sv_SE --junitxml="/home/promobot/.tests/result/localization_sv_SE.xml"
+echo 'finish localization_sv_SE'
+sleep 15
+echo 'start localization_tr_TR'
+pytest -v -m localization_tr_TR --junitxml="/home/promobot/.tests/result/localization_tr_TR.xml"
+echo 'finish localization_tr_TR'
+sleep 15
+echo 'start localization_uk_UA'
+pytest -v -m localization_uk_UA --junitxml="/home/promobot/.tests/result/localization_uk_UA.xml"
+echo 'finish localization_uk_UA'
+sleep 15
+echo 'start localization_zh_CN'
+pytest -v -m localization_zh_CN --junitxml="/home/promobot/.tests/result/localization_zh_CN.xml"
+echo 'finish localization_zh_CN'
+sleep 15

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pyautogui
-from src.helpers.config import screen_resolution
+from config import screen_resolution
 
 
 def makeScreen(image, coordinates=screen_resolution):
