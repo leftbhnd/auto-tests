@@ -157,6 +157,8 @@ class RobotButton(enum.Enum):
     apps_menu_open = (95, 646)
     apps_menu_close = (101, 107)
     speech_settings = (1193, 659)
+    take_photo = (643, 659)
+    print_photo = (1127, 659)
     # ubuntu
     activities = (33, 13)
     work_space = (1263, 152)
