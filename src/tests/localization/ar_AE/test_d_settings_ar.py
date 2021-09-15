@@ -24,7 +24,7 @@ def test_settings(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_system(clickOn, typeText, screenDiffChecker):
+def test_system(clickOn, screenDiffChecker):
     clickOn(btn.inv_system)
     assert screenDiffChecker(
         'localization/ar_AE/set_system.png'

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, params
+from src.helpers.config import btn, modal, modals, params
 from src.helpers.messages import FaceMsg
 '''
 TODO добполнить тест

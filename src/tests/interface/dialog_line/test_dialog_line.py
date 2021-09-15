@@ -24,7 +24,7 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
 
 
 @pytest.mark.interface_dialog_line
-def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
+def test_restore(openPasswordModal, clickOn, typeText):
     openPasswordModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)

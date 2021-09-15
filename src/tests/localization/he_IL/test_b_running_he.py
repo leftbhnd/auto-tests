@@ -161,7 +161,7 @@ def test_record_sound_start(clickOn, screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_record_sound_finish(clickOn, screenDiffChecker):
+def test_record_sound_finish(screenDiffChecker):
     time.sleep(10)
     assert screenDiffChecker(
         'localization/he_IL/run_testing_record_sound_finish.png'

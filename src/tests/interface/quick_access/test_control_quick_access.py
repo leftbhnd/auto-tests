@@ -78,7 +78,7 @@ def test_hide(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_quick_access
-def test_restore(clickOn, screenDiffChecker):
+def test_restore(clickOn):
     clickOn(btn.activities)
     clickOn(btn.work_space)
     clickOn(btn.work_space)

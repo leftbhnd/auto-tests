@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import running, resetAnchor, interaction
+from src.helpers.config import running, interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 '''
 X seconds

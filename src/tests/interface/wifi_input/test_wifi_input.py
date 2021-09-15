@@ -51,7 +51,7 @@ def test_visiable_input(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_wifi_input
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn(modal.wifi_kb_pwd_close)
     clickOn(btn.back)
     clickOn(btn.back)

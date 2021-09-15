@@ -113,7 +113,7 @@ def test_record_sound_start(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_testing
-def test_record_sound_finish(clickOn, screenDiffChecker):
+def test_record_sound_finish(screenDiffChecker):
     time.sleep(10)
     assert screenDiffChecker(
         'interfaces/testing_record_sound_finish.png'
@@ -131,7 +131,7 @@ def test_speech_recognize(clickOn, node, screenDiffChecker):
 
 
 @pytest.mark.interface_testing
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn(btn.back)
     clickOn(btn.restart)
     clickOn(modal.restart_yes)

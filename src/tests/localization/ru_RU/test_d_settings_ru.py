@@ -23,7 +23,7 @@ def test_settings(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_system(clickOn, typeText, screenDiffChecker):
+def test_system(clickOn, screenDiffChecker):
     clickOn(btn.system)
     assert screenDiffChecker(
         'localization/ru_RU/set_system.png'

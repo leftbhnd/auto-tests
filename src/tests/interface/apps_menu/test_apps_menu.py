@@ -56,7 +56,7 @@ def test_menu_close_button(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_apps_menu
-def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
+def test_restore(openPasswordModal, clickOn, typeText):
     openPasswordModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
