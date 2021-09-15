@@ -3,7 +3,6 @@
 import rospy
 
 from promobot_msgs.msg import Interaction
-from src.helpers.messages import InteractionMsg
 
 
 class InteractionService:

@@ -6,7 +6,6 @@ from promobot_msgs.msg import ASRResult
 from promobot_msgs.msg import Answer
 from promobot_msgs.msg import TTSCommand
 from std_msgs.msg import Empty
-from src.helpers.messages import AsrTtsMsg
 
 
 class TtsAsrService:
@@ -41,13 +40,12 @@ class TtsAsrService:
         self._timeout = 0.8
 
     def asrPub(self, data):
-        asr_msg = AsrTtsMsg(data)
         asr_result = ASRResult()
         asr_result.header.frame_id = "asr"
         asr_result.header.stamp = rospy.get_rostime()
         asr_result.source = 0
-        asr_result.uuid = asr_msg.uuid
-        asr_result.text = asr_msg.text
+        asr_result.uuid = data.uuid
+        asr_result.text = data.text
         asr_result.final = 1
         asr_result.conf = 1.0
         self._pub_text_to_asr.publish(asr_result)
@@ -67,11 +65,10 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
 
     def ttsPub(self, data):
-        tts_msg = AsrTtsMsg(data)
         tts_command = TTSCommand()
-        tts_command.text = tts_msg.text
+        tts_command.text = data.text
         tts_command.terminate = False
-        tts_command.uuid = tts_msg.uuid
+        tts_command.uuid = data.uuid
         tts_command.ignore_saving = False
         self._pub_text_to_tts.publish(tts_command)
         rospy.sleep(self._timeout)
