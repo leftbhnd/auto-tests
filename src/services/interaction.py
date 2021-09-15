@@ -3,6 +3,7 @@
 import rospy
 
 from promobot_msgs.msg import Interaction
+from src.helpers.messages import InteractionMsg
 
 
 class InteractionService:
@@ -21,17 +22,18 @@ class InteractionService:
         )
 
         '''
-        переменные для геттеров 
+        переменные для геттеров
         '''
         self._interaction_state = False
         self._interaction_reason = 0
 
         self._timeout = 0.5
 
-    def interactionPub(self, data):
+    def interactionPub(self, state, reason):
+        interaction_msg = InteractionMsg(state, reason)
         interaction = Interaction()
-        interaction.state = data.state
-        interaction.reason = data.reason
+        interaction.state = interaction_msg.state
+        interaction.reason = interaction_msg.reason
         self._pub_interaction.publish(interaction)
         rospy.sleep(self._timeout)
 
