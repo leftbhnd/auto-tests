@@ -29,11 +29,10 @@ class InteractionService:
 
         self._timeout = 0.5
 
-    def interactionPub(self, state, reason):
-        interaction_msg = InteractionMsg(state, reason)
+    def interactionPub(self, data):
         interaction = Interaction()
-        interaction.state = interaction_msg.state
-        interaction.reason = interaction_msg.reason
+        interaction.state = data.state
+        interaction.reason = data.reason
         self._pub_interaction.publish(interaction)
         rospy.sleep(self._timeout)
 
