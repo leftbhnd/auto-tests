@@ -11,6 +11,7 @@ default = 0.5
 restart = 40
 running = 10
 modals = 3
+internet = 5
 connection = 10
 interaction = 15
 resetAnchor = 10
