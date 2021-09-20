@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import interaction, internet
+from src.helpers.config import interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 '''
 X seconds
@@ -30,7 +30,6 @@ def test_second_macros(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('макрос')
     node.asrPub(asr_msg)
-    time.sleep(internet)
     assert node.getAnswer() == '{RSS[news.yandex.ru/health.rss]}'
 
 
