@@ -67,7 +67,7 @@ pip install xmltodict
 - `screenDiffChecker('directory/original_image', coordinates=screen_resolution)`
 - `dNd(SwipeMsg)`
 - `clickOn(btn.X or modal.X)`
-- `openPasswordModal()`
+- `openPwdModal()`
 - `typeText('привет')`
 - `node.X()`
 - `joy.X()`

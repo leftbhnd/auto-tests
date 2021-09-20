@@ -10,8 +10,8 @@ X seconds
 
 
 @pytest.mark.interaction_print_setup
-def test_add_promo(clickOn, typeText, openPasswordModal, screenDiffChecker):
-    openPasswordModal()
+def test_add_promo(clickOn, typeText, openPwdModal, screenDiffChecker):
+    openPwdModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')

@@ -69,7 +69,7 @@ def clickOn():
 
 
 @pytest.fixture
-def openPasswordModal():
+def openPwdModal():
     def _method():
         for i in range(5):
             m.click(50, 50, 1)

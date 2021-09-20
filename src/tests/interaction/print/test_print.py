@@ -36,10 +36,10 @@ def test_check_printshow(screenDiffChecker):
 
 
 @pytest.mark.interaction_print
-def test_delete_pictures(clickOn, openPasswordModal, typeText, screenDiffChecker):
+def test_delete_pictures(clickOn, openPwdModal, typeText, screenDiffChecker):
     # TODO посчитать таймаут
     time.sleep(30)
-    openPasswordModal()
+    openPwdModal()
     clickOn(modal.pwd_input)
     typeText('123456')
     clickOn(modal.pwd_ok)

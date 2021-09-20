@@ -11,11 +11,11 @@ from src.helpers.config import running, restart, modals, btn, modal
 
 
 @pytest.mark.interface_testing
-def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
+def test_testing_open(clickOn, typeText, openPwdModal, screenDiffChecker):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    openPasswordModal()
+    openPwdModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')

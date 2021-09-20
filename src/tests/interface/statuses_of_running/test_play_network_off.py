@@ -51,9 +51,9 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_restore(openPasswordModal, clickOn, typeText):
+def test_restore(openPwdModal, clickOn, typeText):
     time.sleep(running)
-    openPasswordModal()
+    openPwdModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')

@@ -10,8 +10,8 @@ X seconds
 
 
 @pytest.mark.interaction_greeting_setup
-def test_set_greeting_timeout(clickOn, typeText, openPasswordModal):
-    openPasswordModal()
+def test_set_greeting_timeout(clickOn, typeText, openPwdModal):
+    openPwdModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')

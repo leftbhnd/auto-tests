@@ -26,8 +26,8 @@ def test_greeting_known(node):
 
 
 @pytest.mark.interaction_greeting
-def test_restore(clickOn, typeText, openPasswordModal):
-    openPasswordModal()
+def test_restore(clickOn, typeText, openPwdModal):
+    openPwdModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')

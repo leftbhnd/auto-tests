@@ -86,9 +86,9 @@ def test_speech_settings(clickOn, screenDiffChecker):
 
 
 @pytest.mark.localization_ro_RO
-def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker):
+def test_testing_script(openPwdModal, clickOn, typeText, screenDiffChecker):
     clickOn(modal.speech_settings_close)
-    openPasswordModal()
+    openPwdModal()
     clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')

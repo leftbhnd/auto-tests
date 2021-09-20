@@ -35,8 +35,8 @@ def test_second_picture(screenDiffChecker):
 
 
 @pytest.mark.interaction_promo
-def test_delete_pictures(clickOn, openPasswordModal, typeText, screenDiffChecker):
-    openPasswordModal()
+def test_delete_pictures(clickOn, openPwdModal, typeText, screenDiffChecker):
+    openPwdModal()
     clickOn(modal.pwd_input)
     typeText('123456')
     clickOn(modal.pwd_ok)
