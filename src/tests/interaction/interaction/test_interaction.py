@@ -29,6 +29,7 @@ def test_activate_speech(openPwdModal, typeText, clickOn):
     time.sleep(modals)
     clickOn(btn.back)
     clickOn(btn.back)
+    time.sleep(interaction)
 
 
 @pytest.mark.interaction_interaction
@@ -100,13 +101,7 @@ def test_activate_face(openPwdModal, typeText, clickOn):
     time.sleep(modals)
     clickOn(btn.back)
     clickOn(btn.back)
-
-
-@pytest.mark.interaction_interaction
-def test_start_by_face(node):
-    face_msg = FaceMsg(2, False, 23, 229, 0.9)
-    node.facePub(face_msg)
-    assert node.getInteraction() == [True, 1]
+    time.sleep(interaction)
 
 
 @pytest.mark.interaction_interaction
