@@ -5,7 +5,7 @@ import time
 
 from src.helpers.config import interaction
 '''
-X seconds
+30.37 seconds
 '''
 
 

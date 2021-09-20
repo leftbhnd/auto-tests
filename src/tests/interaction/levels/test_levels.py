@@ -10,6 +10,7 @@ from src.helpers.messages import SwipeMsg, InteractionMsg, AsrTtsMsg
 @pytest.fixture
 def change_level(clickOn, typeText, openPwdModal, dNd):
     openPwdModal()
+    clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.pwd_ok)
@@ -107,6 +108,7 @@ def test_unrecognized(change_level, node):
 @pytest.mark.interaction_levels
 def test_restore(clickOn, typeText, openPwdModal, dNd, node):
     openPwdModal()
+    clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.pwd_ok)
