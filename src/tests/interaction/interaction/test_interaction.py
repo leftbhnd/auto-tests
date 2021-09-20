@@ -68,7 +68,7 @@ def test_update_by_speech(node):
     node.asrPub(asr_msg)
     node.cancelSpeechPub()
     time.sleep(10)
-    assert node.getInteraction() == in_interaction == [True, 0]
+    assert node.getInteraction() == in_interaction
 
 
 @pytest.mark.interaction_interaction
@@ -142,7 +142,7 @@ def test_update_by_face(node):
     face_msg = FaceMsg(2, False, 25, 231, 0.9)
     node.facePub(face_msg)
     time.sleep(10)
-    assert node.getInteraction() == in_interaction == [True, 1]
+    assert node.getInteraction() == in_interaction
 
 
 @pytest.mark.interaction_interaction
