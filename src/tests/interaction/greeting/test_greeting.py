@@ -20,7 +20,7 @@ def test_greeting_unknown(node):
 
 @pytest.mark.interaction_greeting
 def test_greeting_known(node):
-    face_msg = FaceMsg(3, False, 21, X, 0.9)
+    face_msg = FaceMsg(3, False, 21, 1632114331, 0.9)
     node.facePub(face_msg)
     assert node.getTts() == 'тестовый привет, Дмитрий'
 
