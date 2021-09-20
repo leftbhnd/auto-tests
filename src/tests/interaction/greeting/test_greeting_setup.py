@@ -28,4 +28,5 @@ def test_set_greeting_timeout(clickOn, typeText, openPwdModal):
     clickOn(modal.save_yes)
     time.sleep(modals)
     clickOn(btn.back)
+    clickOn(btn.back)
     time.sleep(modals)
