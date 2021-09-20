@@ -30,7 +30,7 @@ def test_second_macros(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('макрос')
     node.asrPub(asr_msg)
-    assert node.getAnswer() == 'макрос'
+    assert node.getAnswer() == '{RSS[news.yandex.ru/health.rss]}'
 
 
 @pytest.mark.interaction_macros
