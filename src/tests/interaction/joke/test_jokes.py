@@ -33,7 +33,7 @@ def test_second_joke(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('расскажи анекдот')
     node.asrPub(asr_msg)
-    assert ((node.getAnswer() in jokes) and (answer == node.getAnswer()))
+    assert ((node.getAnswer() in jokes) and (answer != node.getAnswer()))
 
 
 @pytest.mark.interaction_jokes
