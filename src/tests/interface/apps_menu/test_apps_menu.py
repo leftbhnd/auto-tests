@@ -24,9 +24,9 @@ def test_menu_open_button(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_apps_menu
-def test_menu_close_swipe(pressAndMove, screenDiffChecker):
+def test_menu_close_swipe(dNd, screenDiffChecker):
     swipe_msg = SwipeMsg((616, 62), (608, 734))
-    pressAndMove(swipe_msg)
+    dNd(swipe_msg)
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/gui.png',
@@ -35,9 +35,9 @@ def test_menu_close_swipe(pressAndMove, screenDiffChecker):
 
 
 @pytest.mark.interface_apps_menu
-def test_menu_open_swipe(pressAndMove, screenDiffChecker):
+def test_menu_open_swipe(dNd, screenDiffChecker):
     swipe_msg = SwipeMsg((608, 734), (616, 62))
-    pressAndMove(swipe_msg)
+    dNd(swipe_msg)
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/apps_menu.png',

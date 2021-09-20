@@ -49,7 +49,7 @@ def screenDiffChecker():
 
 
 @pytest.fixture
-def pressAndMove():
+def dNd():
     def _method(msg):
         m.press(msg.startX, msg.startY, 1)
         time.sleep(default)

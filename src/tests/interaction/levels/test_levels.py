@@ -8,7 +8,7 @@ from src.helpers.messages import SwipeMsg, InteractionMsg, AsrTtsMsg
 
 
 @pytest.fixture
-def change_level(clickOn, typeText, openPasswordModal, pressAndMove):
+def change_level(clickOn, typeText, openPasswordModal, dNd):
     openPasswordModal()
     clickOn(btn.choose_numbers)
     typeText('123456')
@@ -17,7 +17,7 @@ def change_level(clickOn, typeText, openPasswordModal, pressAndMove):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     swipe_msg = SwipeMsg((446, 233), (446, 655))
-    pressAndMove(swipe_msg)
+    dNd(swipe_msg)
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -105,7 +105,7 @@ def test_unrecognized(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_restore(clickOn, typeText, openPasswordModal, pressAndMove, node):
+def test_restore(clickOn, typeText, openPasswordModal, dNd, node):
     openPasswordModal()
     clickOn(btn.choose_numbers)
     typeText('123456')
@@ -115,7 +115,7 @@ def test_restore(clickOn, typeText, openPasswordModal, pressAndMove, node):
     clickOn(btn.lingvo_sources)
     swipe_msg = SwipeMsg((446, 233), (446, 655))
     for i in range(8):
-        pressAndMove(swipe_msg)
+        dNd(swipe_msg)
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
