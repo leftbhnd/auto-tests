@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import interaction
+from src.helpers.config import interaction, internet
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 '''
 X seconds
@@ -22,7 +22,7 @@ def test_first_macros(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('макрос')
     node.asrPub(asr_msg)
-    assert node.getAnswer() == 'до повтора {repeat} после повтора'
+    assert node.getAnswer() == 'до повтора {repeat} после повтора '
 
 
 @pytest.mark.interaction_macros
@@ -30,6 +30,7 @@ def test_second_macros(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('макрос')
     node.asrPub(asr_msg)
+    time.sleep(internet)
     assert node.getAnswer() == '{RSS[news.yandex.ru/health.rss]}'
 
 
