@@ -22,7 +22,7 @@ def test_first_macros(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('макрос')
     node.asrPub(asr_msg)
-    assert node.getAnswer() == 'до повтора {repeat} после повтора '
+    assert node.getAnswer() == 'макрос'
 
 
 @pytest.mark.interaction_macros
