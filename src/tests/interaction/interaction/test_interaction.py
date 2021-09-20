@@ -6,6 +6,7 @@ import rospy
 
 from src.helpers.config import btn, modal, params, modals, interaction
 from src.helpers.messages import FaceMsg, AsrTtsMsg
+from main import AutoTest
 '''
 X seconds
 '''
