@@ -6,7 +6,7 @@ import time
 from src.helpers.config import internet, interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 '''
-X seconds
+73.28 seconds
 '''
 
 
