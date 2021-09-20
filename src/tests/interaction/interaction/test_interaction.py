@@ -2,16 +2,12 @@
 # -*- coding: utf-8 -*-
 import pytest
 import time
-import rospy
 
 from src.helpers.config import btn, modal, params, modals, interaction
 from src.helpers.messages import FaceMsg, AsrTtsMsg
-from main import AutoTest
 '''
 X seconds
 '''
-rospy.init_node('autotest')
-node = AutoTest()
 
 @pytest.mark.interaction_interaction
 def test_activate_speech(openPwdModal, typeText, clickOn):
@@ -36,7 +32,7 @@ def test_activate_speech(openPwdModal, typeText, clickOn):
 
 
 @pytest.mark.interaction_interaction
-def test_start_by_speech():
+def test_start_by_speech(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('привет')
     node.asrPub(asr_msg)
@@ -44,14 +40,14 @@ def test_start_by_speech():
 
 
 @pytest.mark.interaction_interaction
-def test_clear_interaction_start_by_speech():
+def test_clear_interaction_start_by_speech(node):
     node.cancelSpeechPub()
     time.sleep(interaction)
     assert node.getInteraction() == [False, 0]
 
 
 @pytest.mark.interaction_interaction
-def test_setup_update_by_speech():
+def test_setup_update_by_speech(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('привет')
     node.asrPub(asr_msg)
@@ -61,17 +57,22 @@ def test_setup_update_by_speech():
 
 
 @pytest.mark.interaction_interaction
-def test_update_by_speech():
+def test_update_by_speech(node):
     node.cancelSpeechPub()
+    asr_msg = AsrTtsMsg('привет')
+    node.asrPub(asr_msg)
+    node.cancelSpeechPub()
+    time.sleep(10)
+    in_interaction = node.getInteraction()
     asr_msg = AsrTtsMsg('как дела?')
     node.asrPub(asr_msg)
     node.cancelSpeechPub()
-    time.sleep(5)
-    assert node.getInteraction() == [True, 0]
+    time.sleep(10)
+    assert node.getInteraction() == in_interaction == [True, 0]
 
 
 @pytest.mark.interaction_interaction
-def test_start_by_face_disabled():
+def test_start_by_face_disabled(node):
     node.cancelSpeechPub()
     time.sleep(interaction)
     face_msg = FaceMsg(2, False, 22, 228, 0.9)
@@ -108,21 +109,21 @@ def test_activate_face(openPwdModal, typeText, clickOn):
 
 
 @pytest.mark.interaction_interaction
-def test_start_by_face():
+def test_start_by_face(node):
     face_msg = FaceMsg(2, False, 23, 229, 0.9)
     node.facePub(face_msg)
     assert node.getInteraction() == [True, 1]
 
 
 @pytest.mark.interaction_interaction
-def test_clear_interaction_start_by_face():
+def test_clear_interaction_start_by_face(node):
     node.cancelSpeechPub()
     time.sleep(interaction)
     assert node.getInteraction() == [False, 1]
 
 
 @pytest.mark.interaction_interaction
-def test_setup_update_by_face():
+def test_setup_update_by_face(node):
     node.cancelSpeechPub()
     face_msg = FaceMsg(2, False, 24, 230, 0.9)
     node.facePub(face_msg)
@@ -131,16 +132,21 @@ def test_setup_update_by_face():
 
 
 @pytest.mark.interaction_interaction
-def test_update_by_face():
+def test_update_by_face(node):
     node.cancelSpeechPub()
+    face_msg = FaceMsg(2, False, 24, 230, 0.9)
+    node.facePub(face_msg)
+    node.cancelSpeechPub()
+    time.sleep(10)
+    in_interaction = node.getInteraction()
     face_msg = FaceMsg(2, False, 25, 231, 0.9)
     node.facePub(face_msg)
-    time.sleep(5)
-    assert node.getInteraction() == [True, 1]
+    time.sleep(10)
+    assert node.getInteraction() == in_interaction == [True, 1]
 
 
 @pytest.mark.interaction_interaction
-def test_start_by_speech_disabled():
+def test_start_by_speech_disabled(node):
     node.cancelSpeechPub()
     time.sleep(interaction)
     asr_msg = AsrTtsMsg('привет')
