@@ -6,7 +6,7 @@ import time
 from src.helpers.config import btn, modal, params, modals, interaction
 from src.helpers.messages import FaceMsg, AsrTtsMsg
 '''
-X seconds
+249.59 seconds
 '''
 
 @pytest.mark.interaction_interaction
