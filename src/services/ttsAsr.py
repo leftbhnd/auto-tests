@@ -73,7 +73,6 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
 
     def _ttsListener(self, speech):
-        rospy.sleep(self._timeout)
         self._robot_speech = speech.text
 
     def getTts(self):
