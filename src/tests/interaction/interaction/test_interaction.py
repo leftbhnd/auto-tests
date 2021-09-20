@@ -53,7 +53,7 @@ def test_setup_update_by_speech(node):
     asr_msg = AsrTtsMsg('привет')
     node.asrPub(asr_msg)
     node.cancelSpeechPub()
-    time.sleep(10)
+    time.sleep(5)
     assert node.getInteraction() == [True, 0]
 
 
@@ -63,7 +63,7 @@ def test_update_by_speech(node):
     asr_msg = AsrTtsMsg('как дела?')
     node.asrPub(asr_msg)
     node.cancelSpeechPub()
-    time.sleep(10)
+    time.sleep(5)
     assert node.getInteraction() == [True, 0]
 
 
@@ -123,7 +123,7 @@ def test_setup_update_by_face(node):
     node.cancelSpeechPub()
     face_msg = FaceMsg(2, False, 24, 230, 0.9)
     node.facePub(face_msg)
-    time.sleep(10)
+    time.sleep(5)
     assert node.getInteraction() == [True, 1]
 
 
@@ -132,7 +132,7 @@ def test_update_by_face(node):
     node.cancelSpeechPub()
     face_msg = FaceMsg(2, False, 25, 231, 0.9)
     node.facePub(face_msg)
-    time.sleep(10)
+    time.sleep(5)
     assert node.getInteraction() == [True, 1]
 
 
