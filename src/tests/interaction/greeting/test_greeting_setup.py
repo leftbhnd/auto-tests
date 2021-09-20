@@ -19,7 +19,7 @@ def test_set_greeting_timeout(clickOn, typeText, openPwdModal):
     clickOn(btn.settings)
     clickOn(btn.system)
     clickOn(btn.system_dialog)
-    clickOn(btn.system_dialog_down_arr)
+    clickOn(btn.system_dialog_down_arrow)
     for i in range(5):
         clickOn(params.timeRecently_decrease)
     for i in range(2):
