@@ -32,7 +32,8 @@ def test_internet_type_401(node):
     asr_msg = AsrTtsMsg('лучшие комедии')
     node.asrPub(asr_msg)
     time.sleep(internet)
-    assert node.getAnswer() == 'Популярные комедии: Ведьмы, Круэлла, Космический джем: Новое поколение и другие.'
+    assert node.getAnswer(
+    ) == 'Популярные комедии: Ведьмы, Круэлла, Космический джем: Новое поколение и другие.'
 
 
 @pytest.mark.interaction_internet_answer
@@ -77,25 +78,7 @@ def test_internet_type_13(node):
     asr_msg = AsrTtsMsg('miro')
     node.asrPub(asr_msg)
     time.sleep(internet)
-    assert node.getAnswer() == ''
-
-
-@pytest.mark.interaction_internet_answer
-def test_internet_type_14(node):
-    node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('300 долларов в рублях')
-    node.asrPub(asr_msg)
-    time.sleep(internet)
-    assert node.getAnswer() == ''
-
-
-@pytest.mark.interaction_internet_answer
-def test_internet_type_15(node):
-    node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('какое время в Перми')
-    node.asrPub(asr_msg)
-    time.sleep(internet)
-    assert node.getAnswer() == ''
+    assert node.getAnswer() == 'Miro — платформа для совместной работы распределенных команд, разработанная в России и вышедшая на международный рынок.'
 
 
 @pytest.mark.interaction_internet_answer
