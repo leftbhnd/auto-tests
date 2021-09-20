@@ -6,7 +6,7 @@ import time
 from src.helpers.config import resetAnchor, interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 '''
-X seconds
+42.76 seconds
 '''
 
 
