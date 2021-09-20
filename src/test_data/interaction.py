@@ -28,3 +28,10 @@ surprises = [
     'это тебя удивит',
     'смотри и учись'
 ]
+
+macroses = [
+    'меня зовут {name} {pause:1} сегодня {date} я из города {city} владелец {user} компания {company} погода {weather} со мной говорили {visitors} на темы {themes} итнернет {internet} уровень заряда {battery} меня создали {dateofcreation} число перезагрузок {reboot_count} время работы {uptime}',
+    'макрос',
+    '{RSS[news.yandex.ru/health.rss]}',
+    'до повтора {repeat} после повтора'
+]
