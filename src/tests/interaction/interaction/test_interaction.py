@@ -13,6 +13,7 @@ X seconds
 @pytest.mark.interaction_interaction
 def test_activate_speech(openPwdModal, typeText, clickOn):
     openPwdModal()
+    clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.pwd_ok)
@@ -77,6 +78,7 @@ def test_start_by_face_disabled(node):
 @pytest.mark.interaction_interaction
 def test_activate_face(openPwdModal, typeText, clickOn):
     openPwdModal()
+    clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.pwd_ok)
@@ -151,6 +153,7 @@ def test_start_by_speech_disabled(node):
 @pytest.mark.interaction_interaction
 def test_restore(openPwdModal, typeText, clickOn):
     openPwdModal()
+    clickOn(modal.pwd_input)
     clickOn(btn.choose_numbers)
     typeText('123456')
     clickOn(modal.pwd_ok)
