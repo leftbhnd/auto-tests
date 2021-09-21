@@ -41,11 +41,11 @@ pip install xmltodict
 - `node.driveStationPub(msg)`
 - `node.joyPhraseModePub(msg)`
 - `node.joyCommandPub(msg)`
+- `node.cancelScriptPub(msg)`
 
 ### Getters:
 
 - `node.getInteraction()`
-- `node.getScriptProcess()`
 - `node.getScriptProcess()`
 - `node.getServosState()`
 - `node.getAnswer()`
