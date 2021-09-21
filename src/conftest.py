@@ -86,11 +86,15 @@ def openServiceMenu():
     def _method():
         for i in range(5):
             p.leftClick(50, 50)
-        time.sleep(default)
-        clickOn(modal.pwd_input)
-        clickOn(btn.choose_numbers)
-        typeText('123456')
-        clickOn(modal.pwd_ok)
+        p.leftClick(407, 251)
+        p.leftClick(299, 758)
+        p.leftClick(285, 565)
+        p.leftClick(358, 565)
+        p.leftClick(425, 565)
+        p.leftClick(502, 565)
+        p.leftClick(574, 565)
+        p.leftClick(641, 565)
+        p.leftClick((823, 310))
     return _method
 
 

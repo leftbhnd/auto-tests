@@ -10,7 +10,7 @@ from src.helpers.config import modals, btn, modal, promo, interaction
 
 
 @pytest.mark.interaction_promo
-def test_add_promo(clickOn, typeText, openServiceMenu, screenDiffChecker):
+def test_add_promo(clickOn, openServiceMenu, screenDiffChecker):
     #openPwdModal()
     openServiceMenu()
     # clickOn(modal.pwd_input)
