@@ -19,7 +19,7 @@ m = PyMouse()
 @pytest.fixture
 def screenDiffChecker():
     def _method(original_image, coordinates=screen_resolution):
-        pyautogui.screenshot(
+        p.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
         current = Image.open(
@@ -30,7 +30,7 @@ def screenDiffChecker():
                 screens_dir + original_image
             )
         except IOError:
-            pyautogui.screenshot(
+            p.screenshot(
                 screens_dir + original_image, region=coordinates
             )
             original = Image.open(
@@ -51,12 +51,7 @@ def screenDiffChecker():
 def dNd():
     def _method(msg):
         p.leftClick(msg.startX, msg.startY, 0.5)
-        #pyautogui.dragTo(msg.startX, msg.startY, button='left')
         p.dragTo(msg.finishX, msg.finishY, 0.5, button='left')
-        # m.press(msg.startX, msg.startY, 1)
-        # time.sleep(default)
-        # m.release(msg.finishX, msg.finishY, 1)
-        # time.sleep(default)
     return _method
 
 
@@ -65,7 +60,7 @@ def clickOn():
     def _method(button):
         x = button.value[0]
         y = button.value[1]
-        m.click(x, y, 1)
+        p.leftClick(x, y)
         time.sleep(default)
     return _method
 
@@ -74,7 +69,7 @@ def clickOn():
 def openPwdModal():
     def _method():
         for i in range(5):
-            m.click(50, 50, 1)
+            p.leftClick(50, 50)
             time.sleep(fast)
         time.sleep(default)
     return _method
@@ -86,7 +81,7 @@ def typeText():
         for symbol in symbols:
             x = keyboard[symbol][0]
             y = keyboard[symbol][1]
-            m.click(x, y, 1)
+            p.leftClick(x, y)
             time.sleep(fast)
     return _method
 
