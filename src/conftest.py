@@ -8,12 +8,9 @@ import rospy
 
 from datetime import datetime
 from PIL import Image, ImageChops
-from pymouse import PyMouse
 from main import AutoTest
 from helpers.config import screens_dir, failed_dir, fast, default, slowly, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
-
-m = PyMouse()
 
 
 @pytest.fixture
