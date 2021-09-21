@@ -53,7 +53,7 @@ def dNd():
     def _method(msg):
         m.press(msg.startX, msg.startY, 1)
         time.sleep(slowly)
-        m.move(msg.finishX, msg.finishY, 1)
+        m.move(msg.finishX, msg.finishY)
         time.sleep(slowly)
         m.release(msg.finishX, msg.finishY, 1)
         time.sleep(slowly)
