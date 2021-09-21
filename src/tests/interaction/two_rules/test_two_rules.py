@@ -38,11 +38,11 @@ def test_first_rule(node):
 
 @pytest.mark.interaction_two_rules
 def test_second_rule(node):
-    time.sleep(20)
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('давай другую руку')
     node.asrPub(asr_msg)
     node.cancelSpeechPub()
+    node.cancelScriptPub()
     asr_msg = AsrTtsMsg('другую руку')
     node.asrPub(asr_msg)
     assert node.getScriptProcess() == ['get_hand_boy_dr', True]
@@ -51,4 +51,5 @@ def test_second_rule(node):
 @pytest.mark.interaction_two_rules
 def test_reset(node):
     node.cancelSpeechPub()
+    node.cancelScriptPub()
     time.sleep(interaction)
