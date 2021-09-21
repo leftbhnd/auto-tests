@@ -51,11 +51,12 @@ def test_second_picture(screenDiffChecker):
 
 
 @pytest.mark.interaction_promo
-def test_delete_pictures(clickOn, openPwdModal, typeText, screenDiffChecker):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
+def test_delete_pictures(clickOn, openServiceMenu, screenDiffChecker):
+    # openPwdModal()
+    # clickOn(modal.pwd_input)
+    # clickOn(btn.choose_numbers)
+    # typeText('123456')
+    openServiceMenu()
     clickOn(modal.pwd_ok)
     clickOn(btn.promo)
     clickOn(btn.promo_robot_choose_all)
