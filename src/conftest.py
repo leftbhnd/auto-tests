@@ -51,9 +51,9 @@ def screenDiffChecker():
 @pytest.fixture
 def dNd():
     def _method(msg):
-        m.drag(msg.startX, msg.startY)
+        m.press(msg.startX, msg.startY, 1)
         time.sleep(slowly)
-        m.release(msg.finishX, msg.finishY, 1)
+        m.drag(msg.finishX, msg.finishY)
         time.sleep(slowly)
     return _method
 
