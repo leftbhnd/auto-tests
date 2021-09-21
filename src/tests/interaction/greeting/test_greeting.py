@@ -42,6 +42,10 @@ def test_greeting_known(node):
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
 
+@pytest.mark.interaction_greeting
+def test_restore(node):
+    node.clearFacePub()
+
 # @pytest.mark.interaction_greeting
 # def test_restore(clickOn, openServiceMenu, node):
 #     node.clearFacePub()
