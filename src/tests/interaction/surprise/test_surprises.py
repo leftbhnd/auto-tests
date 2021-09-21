@@ -7,7 +7,7 @@ from src.helpers.config import interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 from src.test_data.interaction import surprises
 '''
-X seconds
+24.44 seconds
 '''
 
 answer = ''
@@ -20,7 +20,7 @@ def test_start_interaction(node):
 
 
 @pytest.mark.interaction_surprises
-def test_first_joke(node):
+def test_first_surprise(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('удиви меня')
     node.asrPub(asr_msg)
@@ -29,7 +29,7 @@ def test_first_joke(node):
 
 
 @pytest.mark.interaction_surprises
-def test_second_joke(node):
+def test_second_surprise(node):
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('удиви меня')
     node.asrPub(asr_msg)

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import running, interaction
+from src.helpers.config import interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 '''
 X seconds
@@ -38,7 +38,7 @@ def test_first_rule(node):
 
 @pytest.mark.interaction_two_rules
 def test_second_rule(node):
-    time.sleep(running)
+    time.sleep(20)
     node.cancelSpeechPub()
     asr_msg = AsrTtsMsg('давай другую руку')
     node.asrPub(asr_msg)
