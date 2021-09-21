@@ -82,8 +82,8 @@ def openPwdModal():
 
 
 @pytest.fixture
-def openServiceMenu(clickOn):
-    def _method():
+def openServiceMenu():
+    def _method(clickOn, typeText):
         for i in range(5):
             p.leftClick(50, 50)
         time.sleep(default)
