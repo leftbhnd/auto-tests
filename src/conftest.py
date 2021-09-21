@@ -10,7 +10,7 @@ from datetime import datetime
 from PIL import Image, ImageChops
 from pymouse import PyMouse
 from main import AutoTest
-from helpers.config import screens_dir, failed_dir, fast, default, screen_resolution, keyboard
+from helpers.config import screens_dir, failed_dir, fast, default, slowly, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
 
@@ -52,9 +52,9 @@ def screenDiffChecker():
 def dNd():
     def _method(msg):
         m.press(msg.startX, msg.startY, 1)
-        time.sleep(default)
+        time.sleep(slowly)
         m.release(msg.finishX, msg.finishY, 1)
-        time.sleep(default)
+        time.sleep(slowly)
     return _method
 
 
