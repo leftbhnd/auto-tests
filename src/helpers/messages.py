@@ -19,11 +19,12 @@ class SwipeMsg:
 
 
 class FaceMsg:
-    def __init__(self, type, is_tracking, id, track_id, score):
+    def __init__(self, type, is_tracking, id, track_id, source, score):
         self.type = type
         self.is_tracking = is_tracking
         self.id = id
         self.track_id = track_id
+        self.source = source
         self.score = score
 
 

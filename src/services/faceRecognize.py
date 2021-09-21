@@ -25,7 +25,8 @@ class FaceRecognizeService:
         face_score = FaceScore()
         face_msg = FaceMsg(
             data.type, data.is_tracking,
-            data.id, data.track_id, data.score
+            data.id, data.track_id,
+            data.source, data.score
         )
         # имитируем нераспознанное лицо
         face.type = 1
@@ -46,7 +47,7 @@ class FaceRecognizeService:
         face.is_tracking = face_msg.is_tracking
         face.track_id = face_msg.track_id
         face.id = face_msg.id
-        face_score.source = 2
+        face_score.source = face_msg.source
         face_score.personSource = 1
         face_score.id = data.id
         face_score.score = data.score
@@ -58,7 +59,7 @@ class FaceRecognizeService:
     def clearFacePub(self):
         face_array = FaceArray()
         face = Face()
-        # имитируем нераспознанное лицо
+        # имитируем лицо, вышедшее из кадра
         face.type = 0
         face.source = 1
         face.is_tracking = False
