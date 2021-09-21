@@ -23,6 +23,10 @@ class FaceRecognizeService:
         face_array = FaceArray()
         face = Face()
         face_score = FaceScore()
+        # чистим массив лиц перед отправкой
+        face_array.faces = []
+        self._pub_face_to_faceArray.publish(face_array)
+        rospy.sleep(self._timeout)
         # имитируем нераспознанное лицо
         face.type = 1
         face.source = 1
@@ -33,8 +37,7 @@ class FaceRecognizeService:
         face.age = 0.0
         face.emotion = ''
         face.liveness_type = 0
-        # чистим массив лиц перед отправкой
-        face_array.faces = []
+        face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
         # публикуем нужное лицо
