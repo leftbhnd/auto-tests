@@ -14,8 +14,8 @@ from helpers.messages import JoyCmdMsg
 
 
 @pytest.fixture
-def screenDiffChecker(original_image, coordinates=screen_resolution):
-    def _method():
+def screenDiffChecker():
+    def _method(original_image, coordinates=screen_resolution):
         p.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
@@ -45,16 +45,16 @@ def screenDiffChecker(original_image, coordinates=screen_resolution):
 
 
 @pytest.fixture
-def dNd(msg):
-    def _method():
+def dNd():
+    def _method(msg):
         p.leftClick(msg.startX, msg.startY, 0.5)
         p.dragTo(msg.finishX, msg.finishY, 0.5, button='left')
     return _method
 
 
 @pytest.fixture
-def clickOn(button):
-    def _method():
+def clickOn():
+    def _method(button):
         x = button.value[0]
         y = button.value[1]
         p.leftClick(x, y)
@@ -63,8 +63,8 @@ def clickOn(button):
 
 
 @pytest.fixture
-def typeText(symbols):
-    def _method():
+def typeText():
+    def _method(symbols):
         for symbol in symbols:
             x = keyboard[symbol][0]
             y = keyboard[symbol][1]
