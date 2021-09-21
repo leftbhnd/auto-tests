@@ -56,12 +56,8 @@ def test_menu_close_button(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_apps_menu
-def test_restore(openPwdModal, clickOn, typeText):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_restore(clickOn, openServiceMenu):
+    openServiceMenu()
     clickOn(btn.restart)
     clickOn(modal.restart_yes)
     time.sleep(restart)

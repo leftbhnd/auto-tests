@@ -86,13 +86,9 @@ def test_speech_settings(clickOn, screenDiffChecker):
 
 
 @pytest.mark.localization_uk_UA
-def test_testing_script(openPwdModal, clickOn, typeText, screenDiffChecker):
+def test_testing_script(clickOn, openServiceMenu, screenDiffChecker):
     clickOn(modal.speech_settings_close)
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+    openServiceMenu()
     clickOn(btn.testing)
     time.sleep(modals)
     clickOn(btn.test_hand_right_uk)

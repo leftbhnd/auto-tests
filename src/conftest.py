@@ -9,7 +9,7 @@ import rospy
 from datetime import datetime
 from PIL import Image, ImageChops
 from main import AutoTest
-from helpers.config import btn, modal, screens_dir, failed_dir, fast, default, screen_resolution, keyboard
+from helpers.config import screens_dir, failed_dir, fast, default, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
 

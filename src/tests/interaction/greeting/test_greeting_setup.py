@@ -10,12 +10,8 @@ from src.helpers.config import modals, btn, modal, params
 
 
 @pytest.mark.interaction_greeting_setup
-def test_set_greeting_timeout(clickOn, typeText, openPwdModal):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_set_greeting_timeout(clickOn, openServiceMenu):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.system)
     clickOn(btn.system_dialog)

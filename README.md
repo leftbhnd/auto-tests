@@ -68,6 +68,7 @@ pip install xmltodict
 - `dNd(SwipeMsg)`
 - `clickOn(btn.X or modal.X)`
 - `openPwdModal()`
+- `openServiceModal()`
 - `typeText('привет')`
 - `node.X()`
 - `joy.X()`

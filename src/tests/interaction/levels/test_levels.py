@@ -20,12 +20,8 @@ def test_robot_base(node):
 
 
 @pytest.mark.interaction_levels
-def test_owner_base(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_owner_base(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -50,12 +46,8 @@ def test_owner_base(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_robot_base_low(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_robot_base_low(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -80,12 +72,8 @@ def test_robot_base_low(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_owner_base_low(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_owner_base_low(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -110,12 +98,8 @@ def test_owner_base_low(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_common_base(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_common_base(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -140,12 +124,8 @@ def test_common_base(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_internet_base(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_internet_base(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -170,12 +150,8 @@ def test_internet_base(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_common_base_low(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_common_base_low(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -200,12 +176,8 @@ def test_common_base_low(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_unrecognized(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_unrecognized(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
@@ -230,12 +202,8 @@ def test_unrecognized(clickOn, typeText, openPwdModal, dNd, node):
 
 
 @pytest.mark.interaction_levels
-def test_restore(clickOn, typeText, openPwdModal, dNd, node):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_restore(clickOn, dNd, openServiceMenu, node):
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)

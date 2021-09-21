@@ -53,13 +53,9 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_restore(openPwdModal, clickOn, typeText, node):
+def test_restore(clickOn, openServiceMenu, node):
     time.sleep(running)
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+    openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.nav)
     clickOn(params.useRadius)
