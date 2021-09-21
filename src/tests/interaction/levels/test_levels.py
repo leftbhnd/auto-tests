@@ -37,8 +37,23 @@ def test_robot_base(node):
 
 
 @pytest.mark.interaction_levels
-def test_owner_base(change_level, node):
-    change_level()
+def test_owner_base(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -47,8 +62,23 @@ def test_owner_base(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_robot_base_low(change_level, node):
-    change_level()
+def test_robot_base_low(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -57,8 +87,23 @@ def test_robot_base_low(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_owner_base_low(change_level, node):
-    change_level()
+def test_owner_base_low(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -67,8 +112,23 @@ def test_owner_base_low(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_common_base(change_level, node):
-    change_level()
+def test_common_base(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -77,8 +137,23 @@ def test_common_base(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_internet_base(change_level, node):
-    change_level()
+def test_internet_base(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -87,8 +162,23 @@ def test_internet_base(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_common_base_low(change_level, node):
-    change_level()
+def test_common_base_low(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -97,8 +187,23 @@ def test_common_base_low(change_level, node):
 
 
 @pytest.mark.interaction_levels
-def test_unrecognized(change_level, node):
-    change_level()
+def test_unrecognized(clickOn, typeText, openPwdModal, dNd, node):
+    openPwdModal()
+    clickOn(modal.pwd_input)
+    clickOn(btn.choose_numbers)
+    typeText('123456')
+    clickOn(modal.pwd_ok)
+    clickOn(btn.settings)
+    clickOn(btn.lingvo)
+    clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
+    swipe_msg = SwipeMsg((446, 233), (446, 655))
+    dNd(swipe_msg)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
     interaction_msg = InteractionMsg(True, 0)
     node.interactionPub(interaction_msg)
     asr_msg = AsrTtsMsg('порядок')
@@ -116,9 +221,9 @@ def test_restore(clickOn, typeText, openPwdModal, dNd, node):
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
     swipe_msg = SwipeMsg((446, 233), (446, 655))
-    for i in range(8):
-        dNd(swipe_msg)
+    dNd(swipe_msg)
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
