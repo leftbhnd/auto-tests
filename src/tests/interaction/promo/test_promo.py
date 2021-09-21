@@ -3,18 +3,10 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import modals, btn, modal, promo, interaction
 '''
 X seconds
 '''
-
-
-@pytest.mark.interaction_promo
-def test_check_interaction(clickOn, node):
-    clickOn(btn.back)
-    clickOn(btn.back)
-    time.sleep(modals)
-    assert node.getInteraction() == [False, 0]
 
 
 @pytest.mark.interaction_promo
@@ -27,7 +19,7 @@ def test_first_pictures(screenDiffChecker):
 
 @pytest.mark.interaction_promo
 def test_second_picture(screenDiffChecker):
-    time.sleep(15)
+    time.sleep(promo)
     assert screenDiffChecker(
         'interaction/promo2.png',
         (0, 40, 1280, 660)
@@ -54,4 +46,4 @@ def test_restore(clickOn):
     clickOn(btn.back)
     clickOn(modal.save_yes)
     clickOn(btn.back)
-    time.sleep(modals)
+    time.sleep(interaction)

@@ -12,6 +12,7 @@ restart = 40
 running = 10
 modals = 3
 internet = 5
+promo = 10
 connection = 10
 interaction = 15
 resetAnchor = 10

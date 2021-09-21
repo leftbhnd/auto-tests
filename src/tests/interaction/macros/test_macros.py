@@ -7,7 +7,7 @@ from src.helpers.config import interaction
 from src.helpers.messages import InteractionMsg, AsrTtsMsg
 from src.test_data.interaction import macroses
 '''
-X seconds
+29.47 seconds
 '''
 
 
