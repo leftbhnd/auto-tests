@@ -5,7 +5,7 @@ import rospy
 from promobot_msgs.msg import FaceArray
 from promobot_msgs.msg import Face
 from promobot_msgs.msg import FaceScore
-from src.helpers.messages import FaceMsg
+#from src.helpers.messages import FaceMsg
 
 
 class FaceRecognizeService:
@@ -19,15 +19,10 @@ class FaceRecognizeService:
 
         self._timeout = 0.5
 
-    def facePub(self, data):
+    def facePub(self, type, is_tracking, track_id, id, source, score):
         face_array = FaceArray()
         face = Face()
         face_score = FaceScore()
-        face_msg = FaceMsg(
-            data.type, data.is_tracking,
-            data.id, data.track_id,
-            data.source, data.score
-        )
         # имитируем нераспознанное лицо
         face.type = 1
         face.source = 1
@@ -43,14 +38,14 @@ class FaceRecognizeService:
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
         # публикуем нужное лицо
-        face.type = face_msg.type
-        face.is_tracking = face_msg.is_tracking
-        face.track_id = face_msg.track_id
-        face.id = face_msg.id
-        face_score.source = face_msg.source
+        face.type = type
+        face.is_tracking = is_tracking
+        face.track_id = track_id
+        face.id = id
+        face_score.source = source
         face_score.personSource = 1
-        face_score.id = data.id
-        face_score.score = data.score
+        face_score.id = id
+        face_score.score = score
         face.persons = [face_score]
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
