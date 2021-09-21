@@ -51,10 +51,12 @@ def screenDiffChecker():
 @pytest.fixture
 def dNd():
     def _method(msg):
-        m.press(msg.startX, msg.startY, 1)
-        time.sleep(slowly)
-        m.drag(msg.finishX, msg.finishY)
-        time.sleep(slowly)
+        pyautogui.dragTo(msg.startX, msg.startY)
+        pyautogui.dragRel(msg.finishX, msg.finishY)
+        # m.press(msg.startX, msg.startY, 1)
+        # time.sleep(default)
+        # m.release(msg.finishX, msg.finishY, 1)
+        # time.sleep(default)
     return _method
 
 
