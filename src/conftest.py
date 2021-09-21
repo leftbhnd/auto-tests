@@ -13,7 +13,7 @@ from main import AutoTest
 from helpers.config import screens_dir, failed_dir, fast, default, slowly, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
-p = pyautogui()
+p = pyautogui
 m = PyMouse()
 
 
