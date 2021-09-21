@@ -17,6 +17,7 @@ def change_level(clickOn, typeText, openPwdModal, dNd):
     clickOn(btn.settings)
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
+    clickOn(btn.lingvo_first_level)
     swipe_msg = SwipeMsg((446, 233), (446, 655))
     dNd(swipe_msg)
     clickOn(btn.back)

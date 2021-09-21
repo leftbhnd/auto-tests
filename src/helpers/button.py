@@ -117,6 +117,7 @@ class RobotButton(enum.Enum):
     # настройки -> лингвобаза
     lingvo_answers = (141, 197)
     lingvo_sources = (129, 239)
+    lingvo_first_level = (446, 233)
     # настройки -> языковые настройки
     lang_settings_choose = (135, 188)
     lang_settings_synthesis = (150, 246)
