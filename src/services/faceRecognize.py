@@ -67,6 +67,9 @@ class FaceRecognizeService:
         face.age = 0.0
         face.emotion = ''
         face.liveness_type = 0
+        face_array.faces.append(face)
+        self._pub_face_to_faceArray.publish(face_array)
+        rospy.sleep(self._timeout)
         face_array.faces = []
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
