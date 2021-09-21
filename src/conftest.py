@@ -51,7 +51,7 @@ def screenDiffChecker():
 @pytest.fixture
 def dNd():
     def _method(msg):
-        pyautogui.leftClick(msg.startX, msg.startY, 0.1)
+        pyautogui.leftClick(msg.startX, msg.startY, 0.5)
         #pyautogui.dragTo(msg.startX, msg.startY, button='left')
         pyautogui.dragTo(msg.finishX, msg.finishY, 1, button='left')
         # m.press(msg.startX, msg.startY, 1)
