@@ -3,7 +3,7 @@
 
 import pytest
 import time
-import pyautogui
+import pyautogui as p
 import rospy
 
 from datetime import datetime
@@ -13,7 +13,6 @@ from main import AutoTest
 from helpers.config import screens_dir, failed_dir, fast, default, slowly, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
-p = pyautogui
 m = PyMouse()
 
 
