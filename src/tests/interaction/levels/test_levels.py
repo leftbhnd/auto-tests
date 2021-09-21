@@ -5,26 +5,9 @@ import time
 
 from src.helpers.config import btn, modal, modals, interaction, running, restart
 from src.helpers.messages import SwipeMsg, InteractionMsg, AsrTtsMsg
-
-
-# @pytest.fixture
-# def change_level(clickOn, typeText, openPwdModal, dNd):
-#     openPwdModal()
-#     clickOn(modal.pwd_input)
-#     clickOn(btn.choose_numbers)
-#     typeText('123456')
-#     clickOn(modal.pwd_ok)
-#     clickOn(btn.settings)
-#     clickOn(btn.lingvo)
-#     clickOn(btn.lingvo_sources)
-#     clickOn(btn.lingvo_first_level)
-#     swipe_msg = SwipeMsg((446, 233), (446, 655))
-#     dNd(swipe_msg)
-#     clickOn(btn.back)
-#     clickOn(modal.save_yes)
-#     time.sleep(modals)
-#     clickOn(btn.back)
-#     clickOn(btn.back)
+'''
+750 seconds
+'''
 
 
 @pytest.mark.interaction_levels

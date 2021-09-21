@@ -10,12 +10,13 @@ from src.helpers.config import modals, btn, modal, promo, interaction
 
 
 @pytest.mark.interaction_promo
-def test_add_promo(clickOn, typeText, openPwdModal, screenDiffChecker):
-    openPwdModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+def test_add_promo(clickOn, typeText, openServiceMenu, screenDiffChecker):
+    #openPwdModal()
+    openServiceMenu()
+    # clickOn(modal.pwd_input)
+    # clickOn(btn.choose_numbers)
+    # typeText('123456')
+    # clickOn(modal.pwd_ok)
     clickOn(btn.promo)
     clickOn(btn.promo_pictures)
     clickOn(btn.promo_pictures)

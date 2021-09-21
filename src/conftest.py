@@ -9,7 +9,7 @@ import rospy
 from datetime import datetime
 from PIL import Image, ImageChops
 from main import AutoTest
-from helpers.config import screens_dir, failed_dir, fast, default, slowly, screen_resolution, keyboard
+from helpers.config import btn, modal, screens_dir, failed_dir, fast, default, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
 
@@ -63,23 +63,34 @@ def clickOn():
 
 
 @pytest.fixture
-def openPwdModal():
-    def _method():
-        for i in range(5):
-            p.leftClick(50, 50)
-            time.sleep(fast)
-        time.sleep(default)
-    return _method
-
-
-@pytest.fixture
 def typeText():
     def _method(symbols):
         for symbol in symbols:
             x = keyboard[symbol][0]
             y = keyboard[symbol][1]
             p.leftClick(x, y)
-            time.sleep(fast)
+    return _method
+
+
+@pytest.fixture
+def openPwdModal():
+    def _method():
+        for i in range(5):
+            p.leftClick(50, 50)
+        time.sleep(default)
+    return _method
+
+
+@pytest.fixture
+def openServiceMenu(clickOn):
+    def _method():
+        for i in range(5):
+            p.leftClick(50, 50)
+        time.sleep(default)
+        clickOn(modal.pwd_input)
+        clickOn(btn.choose_numbers)
+        typeText('123456')
+        clickOn(modal.pwd_ok)
     return _method
 
 
