@@ -94,7 +94,7 @@ def openServiceMenu():
         p.leftClick(502, 565)
         p.leftClick(574, 565)
         p.leftClick(641, 565)
-        p.leftClick((823, 310))
+        p.leftClick(823, 310)
     return _method
 
 
