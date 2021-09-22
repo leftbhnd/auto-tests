@@ -18,16 +18,6 @@ class SwipeMsg:
         self.finishY = finish[1]
 
 
-class FaceMsg:
-    def __init__(self, type, is_tracking, id, track_id, source, score):
-        self.type = type
-        self.is_tracking = is_tracking
-        self.id = id
-        self.track_id = track_id
-        self.source = source
-        self.score = score
-
-
 class JoyCmdMsg:
     def __init__(self):
         '''
