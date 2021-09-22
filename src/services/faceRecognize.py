@@ -5,7 +5,6 @@ import rospy
 from promobot_msgs.msg import FaceArray
 from promobot_msgs.msg import Face
 from promobot_msgs.msg import FaceScore
-#from src.helpers.messages import FaceMsg
 
 
 class FaceRecognizeService:
@@ -19,15 +18,11 @@ class FaceRecognizeService:
 
         self._timeout = 0.5
 
-    def facePub(self, type, is_tracking, track_id, id, source, score):
+    def facePub(self, type, track_id, id, source, score):
         face_array = FaceArray()
         face = Face()
         face_score = FaceScore()
-        # чистим массив лиц перед отправкой
-        face_array.faces = []
-        self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
-        # имитируем нераспознанное лицо
+        # имитируем появление нераспознанного лица
         face.type = 1
         face.source = 1
         face.is_tracking = True
@@ -37,12 +32,13 @@ class FaceRecognizeService:
         face.age = 0.0
         face.emotion = ''
         face.liveness_type = 0
+        face.persons = []
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
         # публикуем нужное лицо
         face.type = type
-        face.is_tracking = is_tracking
+        face.is_tracking = True
         face.track_id = track_id
         face.id = id
         face_score.source = source
@@ -67,9 +63,7 @@ class FaceRecognizeService:
         face.age = 0.0
         face.emotion = ''
         face.liveness_type = 0
+        face.persons = []
         face_array.faces.append(face)
-        self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
-        face_array.faces = []
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
