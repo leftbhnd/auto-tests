@@ -5,13 +5,12 @@ import time
 
 from src.helpers.config import btn, modal, modals, params, interaction
 '''
-TODO добполнить тест
 X seconds
 '''
 
 
 @pytest.mark.interaction_greeting
-def test_set_greeting_timeout(clickOn, openServiceMenu):
+def test_set_zero_greeting_timeout(clickOn, openServiceMenu):
     openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.system)
@@ -30,13 +29,29 @@ def test_set_greeting_timeout(clickOn, openServiceMenu):
 
 
 @pytest.mark.interaction_greeting
-def test_greeting_unknown(node):
+def test_greeting_unknown_first(node):
     node.facePub(3, 0, 0, 3, 1.0)
     assert node.getTts() == 'тестовый привет, незнакомец'
 
 
 @pytest.mark.interaction_greeting
-def test_greeting_known(node):
+def test_greeting_unknown_second(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(3, 0, 0, 3, 1.0)
+    assert node.getTts() == 'тестовый привет, незнакомец'
+
+
+@pytest.mark.interaction_greeting
+def test_greeting_unknown_third(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(3, 0, 0, 3, 1.0)
+    assert node.getTts() == 'тестовый привет, незнакомец'
+
+
+@pytest.mark.interaction_greeting
+def test_greeting_known_first(node):
     node.cancelSpeechPub()
     node.clearFacePub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
@@ -44,8 +59,23 @@ def test_greeting_known(node):
 
 
 @pytest.mark.interaction_greeting
-def test_restore(clickOn, openServiceMenu, node):
+def test_greeting_known_second(node):
+    node.cancelSpeechPub()
     node.clearFacePub()
+    node.facePub(2, 1, 1632114331, 2, 0.9)
+    assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
+
+
+@pytest.mark.interaction_greeting
+def test_greeting_known_third(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(2, 1, 1632114331, 2, 0.9)
+    assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
+
+
+@pytest.mark.interaction_greeting
+def test_set_default_greeting_timeout(clickOn, openServiceMenu):
     openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.system)
@@ -60,4 +90,43 @@ def test_restore(clickOn, openServiceMenu, node):
     time.sleep(modals)
     clickOn(btn.back)
     clickOn(btn.back)
+    time.sleep(modals)
+
+
+@pytest.mark.interaction_greeting
+def test_first_success_greeting_unknown(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(3, 0, 0, 3, 1.0)
+    assert node.getTts() == 'тестовый привет, незнакомец'
+
+
+@pytest.mark.interaction_greeting
+def test_second_failed_greeting_unknown(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(3, 0, 0, 3, 1.0)
+    assert node.getTts() == 'тестовый привет, незнакомец'
+
+
+@pytest.mark.interaction_greeting
+def test_first_success_greeting_known(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(2, 1, 1632114331, 2, 0.9)
+    assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
+
+
+@pytest.mark.interaction_greeting
+def test_second_failed_greeting_known(node):
+    node.cancelSpeechPub()
+    node.clearFacePub()
+    node.facePub(2, 1, 1632114331, 2, 0.9)
+    assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
+
+
+@pytest.mark.interaction_greeting
+def test_restore(node):
+    node.clearFacePub()
+    node.cancelSpeechPub()
     time.sleep(interaction)
