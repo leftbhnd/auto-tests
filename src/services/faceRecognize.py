@@ -16,7 +16,7 @@ class FaceRecognizeService:
             'face/info/array', FaceArray, latch=True, queue_size=10
         )
 
-        self._timeout = 1
+        self._timeout = 0.5
 
     def facePub(self, type, track_id, id, source, score):
         face_array = FaceArray()
