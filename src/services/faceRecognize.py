@@ -35,7 +35,6 @@ class FaceRecognizeService:
         face.persons = []
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
         # публикуем нужное лицо
         face.type = type
         face.is_tracking = True
@@ -48,7 +47,6 @@ class FaceRecognizeService:
         face.persons = [face_score]
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
 
     def clearFacePub(self):
         face_array = FaceArray()
@@ -66,4 +64,3 @@ class FaceRecognizeService:
         face.persons = []
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
-        rospy.sleep(self._timeout)
