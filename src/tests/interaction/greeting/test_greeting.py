@@ -76,6 +76,7 @@ def test_greeting_known_third(node):
 
 @pytest.mark.interaction_greeting
 def test_set_default_greeting_timeout(clickOn, openServiceMenu):
+    node.clearFacePub()
     openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.system)
@@ -96,7 +97,6 @@ def test_set_default_greeting_timeout(clickOn, openServiceMenu):
 @pytest.mark.interaction_greeting
 def test_first_success_greeting_unknown(node):
     node.cancelSpeechPub()
-    node.clearFacePub()
     node.facePub(3, 0, 0, 3, 1.0)
     assert node.getTts() == 'тестовый привет, незнакомец'
 
