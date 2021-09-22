@@ -31,12 +31,13 @@ def test_success_greeting_known_first(node):
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
 
+# параметр кол-ва обращений по имени
 @pytest.mark.interaction_greeting
 def test_failed_greeting_known_second(node):
     node.cancelSpeechPub()
     node.clearFacePub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
-    assert node.getTts() == ''
+    assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
 
 @pytest.mark.interaction_greeting
