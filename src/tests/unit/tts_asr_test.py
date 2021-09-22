@@ -3,7 +3,7 @@
 import pytest
 
 
-@pytest.mark.skip(reason="unit")
+@pytest.mark.unit
 def test_asr(node):
     node.cancelSpeechPub()
     node.asrPub('привет')
@@ -18,13 +18,13 @@ def test_asr(node):
     ]
 
 
-@pytest.mark.skip(reason="unit")
+@pytest.mark.unit
 def test_tts(node):
     node.cancelSpeechPub()
     node.ttsPub('я робот ты робот')
     assert node.getTts() == 'я робот ты робот'
 
 
-@pytest.mark.skip(reason="unit")
+@pytest.mark.unit
 def test_levels_order(node):
     assert node.getLevelsOrder() == ['0', '1', '2', '3', '4', '5', '6', '7']
