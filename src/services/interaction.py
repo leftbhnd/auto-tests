@@ -21,7 +21,7 @@ class InteractionService:
         )
 
         '''
-        переменные для геттеров 
+        переменные для геттеров
         '''
         self._interaction_state = False
         self._interaction_reason = 0
@@ -36,7 +36,6 @@ class InteractionService:
         rospy.sleep(self._timeout)
 
     def _interactionListener(self, interaction):
-        rospy.sleep(self._timeout)
         self._interaction_state = interaction.state
         self._interaction_reason = interaction.reason
 

@@ -9,26 +9,23 @@ X seconds
 '''
 
 
-@pytest.mark.interaction_promo_setup
-def test_add_promo(clickOn, typeText, openPasswordModal, screenDiffChecker):
-    openPasswordModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+@pytest.mark.interaction_print_setup
+def test_add_promo(clickOn, openServiceMenu, screenDiffChecker):
+    openServiceMenu()
     clickOn(btn.promo)
+    clickOn(btn.promo_selector)
+    clickOn(btn.promo_print)
     clickOn(btn.promo_pictures)
     clickOn(btn.promo_pictures)
     clickOn(btn.promo_fs_checkbox1)
-    clickOn(btn.promo_fs_checkbox2)
     clickOn(btn.promo_add)
     clickOn(modal.promo_yes)
     assert screenDiffChecker(
-        'interaction/promo_pictures.png'
+        'interaction/added_picture.png'
     ) is None
 
 
-@pytest.mark.interaction_promo_setup
+@pytest.mark.interaction_print_setup
 def test_restore(clickOn):
     clickOn(btn.back)
     clickOn(modal.save_yes)

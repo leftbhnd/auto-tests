@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
 
 from src.helpers.messages import InteractionMsg
 
@@ -40,6 +39,7 @@ def test_interaction_face_false(node):
 def test_interaction_click_true(node):
     interaction_msg = InteractionMsg(True, 2)
     node.interactionPub(interaction_msg)
+    #node.interactionPub(True, 2)
     assert node.getInteraction() == [True, 2]
 
 

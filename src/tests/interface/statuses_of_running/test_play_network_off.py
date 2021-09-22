@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, slowly, running, restart, btn, modal
+from src.helpers.config import slowly, running, restart, btn, modal
 '''
 92.24 seconds
 '''
@@ -51,13 +51,9 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_restore(openPasswordModal, clickOn, typeText, screenDiffChecker):
+def test_restore(clickOn, openServiceMenu):
     time.sleep(running)
-    openPasswordModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+    openServiceMenu()
     clickOn(btn.restart)
     clickOn(modal.restart_yes)
     time.sleep(restart)

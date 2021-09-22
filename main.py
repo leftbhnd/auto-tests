@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import rospy
-
-
 from src.services.driving import DrivingService
 from src.services.faceRecognize import FaceRecognizeService
 from src.services.interaction import InteractionService

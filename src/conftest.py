@@ -3,24 +3,20 @@
 
 import pytest
 import time
-import pyautogui
+import pyautogui as p
 import rospy
 
 from datetime import datetime
 from PIL import Image, ImageChops
-from pymouse import PyMouse
 from main import AutoTest
 from helpers.config import screens_dir, failed_dir, fast, default, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
 
-m = PyMouse()
-
-
 @pytest.fixture
 def screenDiffChecker():
     def _method(original_image, coordinates=screen_resolution):
-        pyautogui.screenshot(
+        p.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
         current = Image.open(
@@ -31,7 +27,7 @@ def screenDiffChecker():
                 screens_dir + original_image
             )
         except IOError:
-            pyautogui.screenshot(
+            p.screenshot(
                 screens_dir + original_image, region=coordinates
             )
             original = Image.open(
@@ -49,12 +45,10 @@ def screenDiffChecker():
 
 
 @pytest.fixture
-def pressAndMove():
+def dNd():
     def _method(msg):
-        m.press(msg.startX, msg.startY, 1)
-        time.sleep(default)
-        m.release(msg.finishX, msg.finishY, 1)
-        time.sleep(default)
+        p.leftClick(msg.startX, msg.startY, 0.5)
+        p.dragTo(msg.finishX, msg.finishY, 0.5, button='left')
     return _method
 
 
@@ -63,17 +57,7 @@ def clickOn():
     def _method(button):
         x = button.value[0]
         y = button.value[1]
-        m.click(x, y, 1)
-        time.sleep(default)
-    return _method
-
-
-@pytest.fixture
-def openPasswordModal():
-    def _method():
-        for i in range(5):
-            m.click(50, 50, 1)
-            time.sleep(fast)
+        p.leftClick(x, y)
         time.sleep(default)
     return _method
 
@@ -84,8 +68,33 @@ def typeText():
         for symbol in symbols:
             x = keyboard[symbol][0]
             y = keyboard[symbol][1]
-            m.click(x, y, 1)
-            time.sleep(fast)
+            p.leftClick(x, y)
+    return _method
+
+
+@pytest.fixture
+def openPwdModal():
+    def _method():
+        for i in range(5):
+            p.leftClick(50, 50)
+        time.sleep(default)
+    return _method
+
+
+@pytest.fixture
+def openServiceMenu():
+    def _method():
+        for i in range(5):
+            p.leftClick(50, 50)
+        p.leftClick(407, 251)
+        p.leftClick(299, 758)
+        p.leftClick(285, 565)
+        p.leftClick(358, 565)
+        p.leftClick(425, 565)
+        p.leftClick(502, 565)
+        p.leftClick(574, 565)
+        p.leftClick(641, 565)
+        p.leftClick((823, 310))
     return _method
 
 

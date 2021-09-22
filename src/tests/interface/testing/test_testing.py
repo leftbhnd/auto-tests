@@ -11,15 +11,11 @@ from src.helpers.config import running, restart, modals, btn, modal
 
 
 @pytest.mark.interface_testing
-def test_testing_open(clickOn, typeText, openPasswordModal, screenDiffChecker):
+def test_testing_open(clickOn, openServiceMenu, screenDiffChecker):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    openPasswordModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+    openServiceMenu()
     clickOn(btn.testing)
     time.sleep(modals)
     assert screenDiffChecker(
@@ -113,7 +109,7 @@ def test_record_sound_start(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_testing
-def test_record_sound_finish(clickOn, screenDiffChecker):
+def test_record_sound_finish(screenDiffChecker):
     time.sleep(10)
     assert screenDiffChecker(
         'interfaces/testing_record_sound_finish.png'
@@ -131,7 +127,7 @@ def test_speech_recognize(clickOn, node, screenDiffChecker):
 
 
 @pytest.mark.interface_testing
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn(btn.back)
     clickOn(btn.restart)
     clickOn(modal.restart_yes)

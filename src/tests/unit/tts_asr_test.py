@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
-import uuid
 
 
 from src.helpers.messages import AsrTtsMsg

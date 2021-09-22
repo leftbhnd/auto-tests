@@ -75,7 +75,7 @@ def test_identification(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_quick_access
-def test_restore(clickOn, screenDiffChecker):
+def test_restore(clickOn):
     clickOn(modal.ident_close)
     clickOn(btn.back)
     time.sleep(modals)

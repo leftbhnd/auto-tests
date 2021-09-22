@@ -86,13 +86,9 @@ def test_speech_settings(clickOn, screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_testing_script(openPasswordModal, clickOn, typeText, screenDiffChecker):
+def test_testing_script(clickOn, openServiceMenu, screenDiffChecker):
     clickOn(modal.speech_settings_close)
-    openPasswordModal()
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
+    openServiceMenu()
     clickOn(btn.testing)
     time.sleep(modals)
     clickOn(btn.test_hand_right)
@@ -161,7 +157,7 @@ def test_record_sound_start(clickOn, screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_record_sound_finish(clickOn, screenDiffChecker):
+def test_record_sound_finish(screenDiffChecker):
     time.sleep(10)
     assert screenDiffChecker(
         'localization/ru_RU/run_testing_record_sound_finish.png'

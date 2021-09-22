@@ -100,6 +100,8 @@ class RobotButton(enum.Enum):
     system_menu_panel = (148, 460)
     system_mic_array = (132, 518)
     system_reset = (60, 584)
+    system_interaction_down_arrow = (1198, 720)
+    system_dialog_down_arrow = (1200, 722)
     # настройки -> приложения
     apps_main = (198, 193)
     apps_applications = (160, 241)
@@ -115,6 +117,7 @@ class RobotButton(enum.Enum):
     # настройки -> лингвобаза
     lingvo_answers = (141, 197)
     lingvo_sources = (129, 239)
+    lingvo_first_level = (446, 233)
     # настройки -> языковые настройки
     lang_settings_choose = (135, 188)
     lang_settings_synthesis = (150, 246)
@@ -157,6 +160,8 @@ class RobotButton(enum.Enum):
     apps_menu_open = (95, 646)
     apps_menu_close = (101, 107)
     speech_settings = (1193, 659)
+    take_photo = (643, 659)
+    print_photo = (1127, 659)
     # ubuntu
     activities = (33, 13)
     work_space = (1263, 152)

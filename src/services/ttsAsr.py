@@ -52,7 +52,6 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
 
     def _answersListener(self, answer):
-        rospy.sleep(self._timeout)
         self._robot_answer = answer.replica.text
 
     def getAnswer(self):
@@ -74,7 +73,6 @@ class TtsAsrService:
         rospy.sleep(self._timeout)
 
     def _ttsListener(self, speech):
-        rospy.sleep(self._timeout)
         self._robot_speech = speech.text
 
     def getTts(self):

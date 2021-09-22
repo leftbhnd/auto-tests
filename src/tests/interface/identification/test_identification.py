@@ -109,7 +109,7 @@ def test_correct_new_pass(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_restore(clickOn, typeText, screenDiffChecker):
+def test_restore(clickOn, typeText):
     clickOn(btn.ident)
     clickOn(modal.ident_pwd_input)
     clickOn(btn.choose_numbers)

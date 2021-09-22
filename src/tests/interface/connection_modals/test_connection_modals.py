@@ -58,7 +58,7 @@ def test_connection_wifi_pass_modal(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_connection_modals
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn(modal.wifi_pwd_close)
     clickOn(btn.back)
     clickOn(btn.back)

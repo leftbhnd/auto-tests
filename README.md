@@ -41,11 +41,11 @@ pip install xmltodict
 - `node.driveStationPub(msg)`
 - `node.joyPhraseModePub(msg)`
 - `node.joyCommandPub(msg)`
+- `node.cancelScriptPub(msg)`
 
 ### Getters:
 
 - `node.getInteraction()`
-- `node.getScriptProcess()`
 - `node.getScriptProcess()`
 - `node.getServosState()`
 - `node.getAnswer()`
@@ -65,9 +65,10 @@ pip install xmltodict
 # Фикстуры
 
 - `screenDiffChecker('directory/original_image', coordinates=screen_resolution)`
-- `pressAndMove(SwipeMsg)`
+- `dNd(SwipeMsg)`
 - `clickOn(btn.X or modal.X)`
-- `openPasswordModal()`
+- `openPwdModal()`
+- `openServiceModal()`
 - `typeText('привет')`
 - `node.X()`
 - `joy.X()`

@@ -8,9 +8,11 @@ from keyboard import robot_keyboard
 fast = 0.1
 slowly = 1
 default = 0.5
-restart = 40
+restart = 50
 running = 10
 modals = 3
+internet = 5
+promo = 10
 connection = 10
 interaction = 15
 resetAnchor = 10

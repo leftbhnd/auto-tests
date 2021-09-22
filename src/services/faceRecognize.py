@@ -18,29 +18,51 @@ class FaceRecognizeService:
 
         self._timeout = 0.5
 
-    def facePub(self, data):
+    def facePub(self, type, track_id, id, source, score):
         face_array = FaceArray()
         face = Face()
         face_score = FaceScore()
-        face.type = data.type
+        # имитируем появление нераспознанного лица
+        face.type = 1
         face.source = 1
-        face.is_tracking = data.is_tracking
-        face.track_id = data.track_id
-        face.id = data.id
+        face.is_tracking = True
+        face.track_id = 0
+        face.id = -1
         face.gender = 0
         face.age = 0.0
         face.emotion = ''
         face.liveness_type = 0
-        face_score.source = 3
+        face.persons = []
+        face_array.faces.append(face)
+        self._pub_face_to_faceArray.publish(face_array)
+        # публикуем нужное лицо
+        face.type = type
+        face.is_tracking = True
+        face.track_id = track_id
+        face.id = id
+        face_score.source = source
         face_score.personSource = 1
-        face_score.id = data.id
-        face_score.score = data.score
+        face_score.id = id
+        face_score.score = score
         face.persons = [face_score]
-        # чистим массив лиц перед отправкой
-        face_array.faces = []
+        face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
-        # публикуем нужное лицо
+
+    def clearFacePub(self):
+        face_array = FaceArray()
+        face = Face()
+        # имитируем лицо, вышедшее из кадра
+        face.type = 0
+        face.source = 1
+        face.is_tracking = False
+        face.track_id = 0
+        face.id = -2
+        face.gender = 0
+        face.age = 0.0
+        face.emotion = ''
+        face.liveness_type = 0
+        face.persons = []
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)

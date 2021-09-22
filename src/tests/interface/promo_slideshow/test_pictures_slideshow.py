@@ -88,7 +88,7 @@ def test_delete_all_pictures(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_promo_slideshow
-def test_reset(clickOn, screenDiffChecker):
+def test_reset(clickOn):
     clickOn(btn.back)
     clickOn(modal.save_yes)
     clickOn(btn.back)

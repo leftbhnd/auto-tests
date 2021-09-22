@@ -54,7 +54,6 @@ class JoyService:
             rospy.sleep(self._timeout)
 
     def _joyListener(self, joy_cmd):
-        rospy.sleep(self._timeout)
         self._joy_axes = joy_cmd.axes
         self._joy_buttons = joy_cmd.buttons
 
