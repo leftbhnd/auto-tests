@@ -9,69 +9,104 @@ pip install xmltodict
 
 # Структура проекта:
 
-`main.py` - класс управления топиками робота
+`main.py` - класс с методами управления топиками робота
 
-`src/conftest.py` - функции, которые можно использовать без импорта в тестах
+`src/conftest.py` - фикстуры
 
-`src/helpers/*` - вспомогательные скрипты/конфиги
+`src/helpers/*` - скрипты, конфиги, классы с сообщениями/координатами кнопок
 
 `src/tests/*` - unit и e2e тесты
 
+`src/test_data/*` - тестовые данные
+
 # Test's codestyle
 
-- Название тестов должно содержать: `*_test.py` или `test_*.py`
+- Название тестов должно содержать: `test_*.py`
 - Внутри тестов функции должны содержать слово `test`
-- Использовать уникальный `@pytest.mark.X_dir_name` внутри одного модуля
+- Использовать уникальный `@pytest.mark.X` внутри одного модуля
 
 # API класса main.py
 
 ### Publishers:
 
-- `node.facePub(msg)`
-- `node.interactionPub(msg)`
-- `node.asrPub(msg)`
-- `node.cancelSpeechPub(msg)`
-- `node.ttsPub(msg)`
-- `node.autoModePub(msg)`
-- `node.joyModePub(msg)`
-- `node.toPointPub()`
-- `node.enableDrivePausePub(msg)`
-- `node.disableDrivePausePub(msg)`
-- `node.chargeAppPub(msg)`
-- `node.driveStationPub(msg)`
-- `node.joyPhraseModePub(msg)`
-- `node.joyCommandPub(msg)`
-- `node.cancelScriptPub(msg)`
+- `node.autoModePub()`
+- `node.joyModePub()`
+- `node.toPointPub(int)`
+- `node.enableDrivePausePub()`
+- `node.disableDrivePausePub()`
+- `node.chargeAppPub()`
+- `node.driveStationPub()`
+
+#
+
+- `node.facePub(type, track_id, id, source, score)`
+- `node.clearFacePub()`
+
+#
+
+- `node.interactionPub(state, reason)`
+
+#
+
+- `node.joyPhraseModePub()`
+- `node.joyCommandPub(joy_msg)`
+
+#
+
+- `node.cancelScriptPub()`
+
+#
+
+- `node.asrPub(str)`
+- `node.ttsPub(str)`
+- `node.cancelSpeechPub()`
 
 ### Getters:
 
-- `node.getInteraction()`
-- `node.getScriptProcess()`
-- `node.getServosState()`
-- `node.getAnswer()`
-- `node.getTts()`
-- `node.getLevelsOrder()`
-- `node.getSystemLanguage()`
-- `node.getDriveMode()`
-- `node.getCurrentPoint()`
-- `node.getWheelsData()`
-- `node.getDrivePause()`
-- `node.getDriveStationStatus()`
-- `node.getDriveStatus()`
-- `node.getChargeState()`
-- `node.getUseRadius()`
-- `node.getJoyCmd()`
+- `node.getDriveMode()` -> X = int
+- `node.getCurrentPoint()` -> X = int
+- `node.getWheelsData()` -> [rwheel, lwheel] = [int, int]
+- `node.getDrivePause()` -> True|False = bool
+- `node.getDriveStationStatus()` -> True|False = bool
+- `node.getDriveStatus()` -> X = int
+- `node.getChargeState()` -> True|False = bool
+- `node.getUseRadius()` -> True|False = bool
+
+#
+
+- `node.getInteraction()` -> [State, Reason] = [bool, int]
+
+#
+
+- `node.getJoyCmd()` -> [[0.0, 0.0, 0.0, 0.0, RT, LT], [A, B, 0, X, Y, 0, LB, RB, 0, 0, 0, start, 0, 0, 0, back, 0, up, right, down, left]]
+- `node.getJoySpeech()` -> True|False = bool
+
+#
+
+- `node.getScriptProcess()` -> [Process, Name] = [bool, str]
+
+#
+
+- `node.getServosState()` -> [servos]
+
+#
+
+- `node.getAnswer()` -> 'текст ответа' = str
+- `node.getTts()` -> 'текст произношения' = str
+- `node.getLevelsOrder()` -> ['0', '1', '2', '3', '4', '5', '6', '7']
+- `node.getSystemLanguage()` -> 'выбранный язык системы' = str
 
 # Фикстуры
 
 - `screenDiffChecker('directory/original_image', coordinates=screen_resolution)`
-- `dNd(SwipeMsg)`
-- `clickOn(btn.X or modal.X)`
+- `dNd((start[0], start[1]), (finish[0], finish[1]))`
+- `clickOn(btn.X|modal.X|params.X)`
 - `openPwdModal()`
-- `openServiceModal()`
+- `openServiceMenu()`
 - `typeText('привет')`
-- `node.X()`
-- `joy.X()`
+- `node.getX()`
+- `node.XPub(data|empty)`
+- `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()`
 
 # Запуск тестов
 
@@ -87,13 +122,7 @@ pytest -v
 pytest test_name.py -v
 ```
 
-### Запуск нескольких тестов с однотипным словом в названии:
-
-```
-pytest -k word_in_test -v
-```
-
-### Вызов тестовых функций отдельных тестов:
+### Запуск тестов по маркеру:
 
 ```
 Для запуска всех тестов с маркировкой driving необходимо выполнить команду:
