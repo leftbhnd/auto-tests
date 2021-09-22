@@ -3,7 +3,7 @@
 import pytest
 
 
-@pytest.mark.skip(reason="unit")
+@pytest.mark.unit
 def test_face_recognize(node):
     node.facePub(3, 0, 0, 3, 1.0)
     node.clearFacePub()
