@@ -37,7 +37,7 @@ def test_greeting_unknown(node):
 
 @pytest.mark.interaction_greeting
 def test_greeting_known(node):
-    node.cancelSpeech()
+    node.cancelSpeechPub()
     node.clearFacePub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
