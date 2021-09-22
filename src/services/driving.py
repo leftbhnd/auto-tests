@@ -66,7 +66,7 @@ class DrivingService:
         self._current_drive_mode = 0
         self._rwheel_data = 0
         self._lwheel_data = 0
-        self._current_point = ''
+        self._current_point = 0
         self._drive_pause_state = True
         self._drive_station_state = False
         self._drive_status = 0

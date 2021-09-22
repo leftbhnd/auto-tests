@@ -4,10 +4,11 @@ import pytest
 import time
 
 from src.helpers.config import btn, modal, params, modals, interaction
-from src.helpers.messages import FaceMsg, AsrTtsMsg
+from src.helpers.messages import AsrTtsMsg
 '''
 249.59 seconds
 '''
+
 
 @pytest.mark.interaction_interaction
 def test_activate_speech(clickOn, openServiceMenu):
@@ -71,13 +72,13 @@ def test_update_by_speech(node):
 def test_start_by_face_disabled(node):
     node.cancelSpeechPub()
     time.sleep(interaction)
-    face_msg = FaceMsg(2, False, 22, 228, 0.9)
-    node.facePub(face_msg)
+    node.facePub(3, 0, 0, 3, 1.0)
     assert node.getInteraction() == [False, 0]
 
 
 @pytest.mark.interaction_interaction
-def test_activate_face(clickOn, openServiceMenu):
+def test_activate_face(clickOn, openServiceMenu, node):
+    node.clearFacePub()
     openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.system)
@@ -102,13 +103,13 @@ def test_activate_face(clickOn, openServiceMenu):
 
 @pytest.mark.interaction_interaction
 def test_start_by_face(node):
-    face_msg = FaceMsg(2, False, 23, 229, 0.9)
-    node.facePub(face_msg)
+    node.facePub(3, 0, 0, 3, 1.0)
     assert node.getInteraction() == [True, 1]
 
 
 @pytest.mark.interaction_interaction
 def test_clear_interaction_start_by_face(node):
+    node.clearFacePub()
     node.cancelSpeechPub()
     time.sleep(interaction)
     assert node.getInteraction() == [False, 1]
@@ -116,9 +117,10 @@ def test_clear_interaction_start_by_face(node):
 
 @pytest.mark.interaction_interaction
 def test_setup_update_by_face(node):
+    node.clearFacePub()
     node.cancelSpeechPub()
-    face_msg = FaceMsg(2, False, 24, 230, 0.9)
-    node.facePub(face_msg)
+    node.facePub(3, 0, 0, 3, 1.0)
+    node.clearFacePub()
     time.sleep(5)
     assert node.getInteraction() == [True, 1]
 
@@ -126,13 +128,13 @@ def test_setup_update_by_face(node):
 @pytest.mark.interaction_interaction
 def test_update_by_face(node):
     node.cancelSpeechPub()
-    face_msg = FaceMsg(2, False, 24, 230, 0.9)
-    node.facePub(face_msg)
+    node.facePub(3, 0, 0, 3, 1.0)
+    node.clearFacePub()
     node.cancelSpeechPub()
     time.sleep(10)
     in_interaction = node.getInteraction()
-    face_msg = FaceMsg(2, False, 25, 231, 0.9)
-    node.facePub(face_msg)
+    node.facePub(3, 0, 0, 3, 1.0)
+    node.clearFacePub()
     time.sleep(10)
     assert node.getInteraction() == in_interaction
 
