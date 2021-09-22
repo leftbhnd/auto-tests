@@ -10,23 +10,23 @@ X seconds
 '''
 
 
-# @pytest.mark.interaction_greeting
-# def test_set_greeting_timeout(clickOn, openServiceMenu):
-#     openServiceMenu()
-#     clickOn(btn.settings)
-#     clickOn(btn.system)
-#     clickOn(btn.system_dialog)
-#     clickOn(btn.system_dialog_down_arrow)
-#     for i in range(5):
-#         clickOn(params.timeRecently_decrease)
-#     for i in range(2):
-#         clickOn(params.timeRecentlyUnknown_decrease)
-#     clickOn(btn.back)
-#     clickOn(modal.save_yes)
-#     time.sleep(modals)
-#     clickOn(btn.back)
-#     clickOn(btn.back)
-#     time.sleep(modals)
+@pytest.mark.interaction_greeting
+def test_set_greeting_timeout(clickOn, openServiceMenu):
+    openServiceMenu()
+    clickOn(btn.settings)
+    clickOn(btn.system)
+    clickOn(btn.system_dialog)
+    clickOn(btn.system_dialog_down_arrow)
+    for i in range(5):
+        clickOn(params.timeRecently_decrease)
+    for i in range(2):
+        clickOn(params.timeRecentlyUnknown_decrease)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
+    time.sleep(modals)
 
 
 @pytest.mark.interaction_greeting
