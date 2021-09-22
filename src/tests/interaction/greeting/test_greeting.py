@@ -75,7 +75,7 @@ def test_greeting_known_third(node):
 
 
 @pytest.mark.interaction_greeting
-def test_set_default_greeting_timeout(clickOn, openServiceMenu):
+def test_set_default_greeting_timeout(clickOn, openServiceMenu, node):
     node.clearFacePub()
     openServiceMenu()
     clickOn(btn.settings)
