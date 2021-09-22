@@ -6,16 +6,8 @@ import pytest
 @pytest.mark.unit
 def test_asr(node):
     node.cancelSpeechPub()
-    node.asrPub('привет')
-    assert node.getAnswer() in [
-        "Доброго времени суток!",
-        "Доброго времени суток! Добро пожаловать в {company}.",
-        "Приветики! Добро пожаловать в {company}.",
-        "И вам привет! Как поживаете?",
-        "Какая честь! Как поживаете?",
-        "Приветики! Как поживаете?",
-        "Приветики!"
-    ]
+    node.asrPub('нет')
+    assert node.getAnswer() == 'тестовое правило с нет'
 
 
 @pytest.mark.unit
