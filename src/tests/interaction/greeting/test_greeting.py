@@ -106,7 +106,7 @@ def test_second_failed_greeting_unknown(node):
     node.cancelSpeechPub()
     node.clearFacePub()
     node.facePub(3, 0, 0, 3, 1.0)
-    assert node.getTts() == 'тестовый привет, незнакомец'
+    assert node.getTts() == ''
 
 
 @pytest.mark.interaction_greeting
@@ -122,7 +122,7 @@ def test_second_failed_greeting_known(node):
     node.cancelSpeechPub()
     node.clearFacePub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
-    assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
+    assert node.getTts() == ''
 
 
 @pytest.mark.interaction_greeting
