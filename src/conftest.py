@@ -46,9 +46,9 @@ def screenDiffChecker():
 
 @pytest.fixture
 def dNd():
-    def _method(msg):
-        p.leftClick(msg.startX, msg.startY, 0.5)
-        p.dragTo(msg.finishX, msg.finishY, 0.5, button='left')
+    def _method(start, finish):
+        p.leftClick(start[0], start[1], 0.5)
+        p.dragTo(finish[0], finish[1], 0.5, button='left')
     return _method
 
 

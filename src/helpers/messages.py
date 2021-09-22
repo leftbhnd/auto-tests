@@ -9,15 +9,6 @@ class AsrTtsMsg:
         self.uuid = str(uuid.uuid4())
 
 
-class SwipeMsg:
-    def __init__(self, start, finish):
-        # 2 кортежа, нажатие -> сдвиг
-        self.startX = start[0]
-        self.startY = start[1]
-        self.finishX = finish[0]
-        self.finishY = finish[1]
-
-
 class JoyCmdMsg:
     def __init__(self):
         '''

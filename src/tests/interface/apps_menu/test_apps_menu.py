@@ -3,7 +3,6 @@
 import pytest
 import time
 
-from src.helpers.messages import SwipeMsg
 from src.helpers.config import default, running, restart, btn, modal
 '''
 65.54 seconds
@@ -25,8 +24,7 @@ def test_menu_open_button(clickOn, screenDiffChecker):
 
 @pytest.mark.interface_apps_menu
 def test_menu_close_swipe(dNd, screenDiffChecker):
-    swipe_msg = SwipeMsg((616, 62), (608, 734))
-    dNd(swipe_msg)
+    dNd((616, 62), (608, 734))
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/gui.png',
@@ -36,8 +34,7 @@ def test_menu_close_swipe(dNd, screenDiffChecker):
 
 @pytest.mark.interface_apps_menu
 def test_menu_open_swipe(dNd, screenDiffChecker):
-    swipe_msg = SwipeMsg((608, 734), (616, 62))
-    dNd(swipe_msg)
+    dNd((608, 734), (616, 62))
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/apps_menu.png',
