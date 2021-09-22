@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from src.helpers.messages import FaceMsg
-
 
 @pytest.mark.skip(reason="unit")
 def test_face_recognize(node):
-    face_msg = FaceMsg(2, False, 21, 211, 0.9)
-    node.facePub(face_msg)
+    node.facePub(3, 0, 0, 3, 1.0)
+    node.clearFacePub()
     assert node.getInteraction() == [True, 1]

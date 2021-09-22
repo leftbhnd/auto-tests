@@ -3,7 +3,6 @@
 import pytest
 import time
 
-from src.helpers.messages import AsrTtsMsg
 from src.helpers.config import running, restart, modals, btn, modal
 '''
 163.8 seconds
@@ -26,28 +25,28 @@ def test_testing_open(clickOn, openServiceMenu, screenDiffChecker):
 @pytest.mark.interface_testing
 def test_rotate_head(clickOn, node):
     clickOn(btn.test_rotate_head)
-    assert node.getScriptProcess() == ['test_rotate_head', True]
+    assert node.getScriptProcess() == [True, 'test_rotate_head']
 
 
 @pytest.mark.interface_testing
 def test_hand_left(clickOn, node):
     time.sleep(18)
     clickOn(btn.test_hand_left)
-    assert node.getScriptProcess() == ['test_hand_left', True]
+    assert node.getScriptProcess() == [True, 'test_hand_left']
 
 
 @pytest.mark.interface_testing
 def test_hand_right(clickOn, node):
     time.sleep(8)
     clickOn(btn.test_hand_right)
-    assert node.getScriptProcess() == ['test_hand_right', True]
+    assert node.getScriptProcess() == [True, 'test_hand_right']
 
 
 @pytest.mark.interface_testing
 def test_zero_all_servos(clickOn, node):
     time.sleep(8)
     clickOn(btn.test_zero_all_servos)
-    assert node.getScriptProcess() == ['reset', True]
+    assert node.getScriptProcess() == [True, 'reset']
 
 
 @pytest.mark.interface_testing
@@ -119,8 +118,7 @@ def test_record_sound_finish(screenDiffChecker):
 @pytest.mark.interface_testing
 def test_speech_recognize(clickOn, node, screenDiffChecker):
     clickOn(btn.test_speech_recognize)
-    asr_msg = AsrTtsMsg('как дела робот')
-    node.asrPub(asr_msg)
+    node.asrPub('как дела робот')
     assert screenDiffChecker(
         'interfaces/testing_speech_recognize.png'
     ) is None

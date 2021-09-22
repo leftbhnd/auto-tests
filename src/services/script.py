@@ -5,6 +5,7 @@ import rospy
 from promobot_msgs.msg import ScriptProcess
 from std_msgs.msg import Empty
 
+
 class ScriptService:
     def __init__(self):
         '''
@@ -23,7 +24,7 @@ class ScriptService:
         переменные для геттеров
         '''
         self._script_name = ''
-        self._script_state = False
+        self._script_process = False
 
         self._timeout = 0.5
 
@@ -32,10 +33,9 @@ class ScriptService:
         self._pub_script_cancel.publish(empty_msg)
         rospy.sleep(self._timeout)
 
-
     def _scriptProcessListener(self, script):
-        self._script_state = script.process
+        self._script_process = script.process
         self._script_name = script.name
 
     def getScriptProcess(self):
-        return [self._script_name, self._script_state]
+        return [self._script_process, self._script_name, ]

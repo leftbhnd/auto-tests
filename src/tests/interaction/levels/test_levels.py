@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import btn, modal, modals, interaction, running, restart
-from src.helpers.messages import SwipeMsg, InteractionMsg, AsrTtsMsg
 '''
 750 seconds
 '''
@@ -12,10 +11,8 @@ from src.helpers.messages import SwipeMsg, InteractionMsg, AsrTtsMsg
 
 @pytest.mark.interaction_levels
 def test_robot_base(node):
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Робот высокий приоритет'
 
 
@@ -26,8 +23,7 @@ def test_owner_base(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -38,10 +34,8 @@ def test_owner_base(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Владелец высокий приоритет'
 
 
@@ -52,8 +46,7 @@ def test_robot_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -64,10 +57,8 @@ def test_robot_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Робот низкий приоритет'
 
 
@@ -78,8 +69,7 @@ def test_owner_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -90,10 +80,8 @@ def test_owner_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Владелец низкий приоритет'
 
 
@@ -104,8 +92,7 @@ def test_common_base(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -116,10 +103,8 @@ def test_common_base(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'common base'
 
 
@@ -130,8 +115,7 @@ def test_internet_base(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -142,10 +126,8 @@ def test_internet_base(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'internet'
 
 
@@ -156,8 +138,7 @@ def test_common_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -168,10 +149,8 @@ def test_common_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'common base low'
 
 
@@ -182,8 +161,7 @@ def test_unrecognized(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)
@@ -194,10 +172,8 @@ def test_unrecognized(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.play)
     clickOn(modal.radius_yes)
     time.sleep(running)
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.interactionPub(True, 0)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'нераспознанная фраза'
 
 
@@ -208,8 +184,7 @@ def test_restore(clickOn, dNd, openServiceMenu, node):
     clickOn(btn.lingvo)
     clickOn(btn.lingvo_sources)
     clickOn(btn.lingvo_first_level)
-    swipe_msg = SwipeMsg((446, 233), (446, 655))
-    dNd(swipe_msg)
+    dNd((446, 233), (446, 655))
     clickOn(btn.back)
     clickOn(modal.save_yes)
     time.sleep(modals)

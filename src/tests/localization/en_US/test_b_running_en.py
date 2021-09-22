@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import default, slowly, modals, running, restart, btn, modal
-from src.helpers.messages import AsrTtsMsg
 '''
 146.66 seconds
 '''
@@ -66,8 +65,7 @@ def test_answer_log(clickOn, node, screenDiffChecker):
     time.sleep(running)
     clickOn(modal.ans_log_clear)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('shovel test rule')
-    node.asrPub(asr_msg)
+    node.asrPub('shovel test rule')
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/en_US/run_test_answers_log.png',

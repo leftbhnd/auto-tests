@@ -5,7 +5,7 @@ import pytest
 
 @pytest.mark.skip(reason="unit")
 def test_script(node):
-    assert node.getScriptProcess() == ['test_rotate_head', True]
+    assert node.getScriptProcess() == [True, 'test_rotate_head']
 
 
 @pytest.mark.skip(reason="unit")

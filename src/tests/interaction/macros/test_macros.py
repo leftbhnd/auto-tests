@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import interaction
-from src.helpers.messages import InteractionMsg, AsrTtsMsg
 from src.test_data.interaction import macroses
 '''
 29.47 seconds
@@ -13,39 +12,34 @@ from src.test_data.interaction import macroses
 
 @pytest.mark.interaction_macros
 def test_start_interaction(node):
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
+    node.interactionPub(True, 0)
     assert node.getInteraction()  == [True, 0]
 
 
 @pytest.mark.interaction_macros
 def test_first_macros(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('макрос')
-    node.asrPub(asr_msg)
+    node.asrPub('макрос')
     assert node.getAnswer() in macroses
 
 
 @pytest.mark.interaction_macros
 def test_second_macros(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('макрос')
-    node.asrPub(asr_msg)
+    node.asrPub('макрос')
     assert node.getAnswer() in macroses
 
 
 @pytest.mark.interaction_macros
 def test_third_macros(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('макрос')
-    node.asrPub(asr_msg)
+    node.asrPub('макрос')
     assert node.getAnswer() in macroses
 
 @pytest.mark.interaction_macros
 def test_fourth_macros(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('макрос')
-    node.asrPub(asr_msg)
+    node.asrPub('макрос')
     assert node.getAnswer() in macroses
 
 

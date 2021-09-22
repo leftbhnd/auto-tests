@@ -17,16 +17,16 @@ def test_success_greeting_unknown_first(node):
 
 @pytest.mark.interaction_greeting
 def test_faild_greeting_unknown_second(node):
-    node.cancelSpeechPub()
     node.clearFacePub()
+    node.cancelSpeechPub()
     node.facePub(3, 0, 0, 3, 1.0)
     assert node.getTts() == ''
 
 
 @pytest.mark.interaction_greeting
 def test_success_greeting_known_first(node):
-    node.cancelSpeechPub()
     node.clearFacePub()
+    node.cancelSpeechPub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
@@ -34,8 +34,8 @@ def test_success_greeting_known_first(node):
 # параметр кол-ва обращений по имени
 @pytest.mark.interaction_greeting
 def test_failed_greeting_known_second(node):
-    node.cancelSpeechPub()
     node.clearFacePub()
+    node.cancelSpeechPub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
@@ -69,24 +69,24 @@ def test_first_greeting_unknown(node):
 
 @pytest.mark.interaction_greeting
 def test_second_greeting_unknown(node):
-    node.cancelSpeechPub()
     node.clearFacePub()
+    node.cancelSpeechPub()
     node.facePub(3, 0, 0, 3, 1.0)
     assert node.getTts() == 'тестовый привет, незнакомец'
 
 
 @pytest.mark.interaction_greeting
 def test_first_greeting_known(node):
-    node.cancelSpeechPub()
     node.clearFacePub()
+    node.cancelSpeechPub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
 
 @pytest.mark.interaction_greeting
 def test_second_greeting_known(node):
-    node.cancelSpeechPub()
     node.clearFacePub()
+    node.cancelSpeechPub()
     node.facePub(2, 1, 1632114331, 2, 0.9)
     assert node.getTts() == 'тестовый привет, ДМИТРИЙЙ'
 
@@ -94,7 +94,6 @@ def test_second_greeting_known(node):
 @pytest.mark.interaction_greeting
 def test_restore(clickOn, openServiceMenu, node):
     node.clearFacePub()
-    node.cancelSpeechPub()
     openServiceMenu()
     clickOn(btn.settings)
     clickOn(btn.system)

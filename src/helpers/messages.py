@@ -9,32 +9,6 @@ class AsrTtsMsg:
         self.uuid = str(uuid.uuid4())
 
 
-class SwipeMsg:
-    def __init__(self, start, finish):
-        # 2 кортежа, нажатие -> сдвиг
-        self.startX = start[0]
-        self.startY = start[1]
-        self.finishX = finish[0]
-        self.finishY = finish[1]
-
-
-class FaceMsg:
-    def __init__(self, type, is_tracking, id, track_id, source, score):
-        self.type = type
-        self.is_tracking = is_tracking
-        self.id = id
-        self.track_id = track_id
-        self.source = source
-        self.score = score
-
-
-class InteractionMsg:
-    def __init__(self, state, reason):
-        self.state = state
-        # reason's type: Speech = 0, Face = 1, Click = 2, Hark = 3
-        self.reason = reason
-
-
 class JoyCmdMsg:
     def __init__(self):
         '''
