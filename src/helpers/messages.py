@@ -28,13 +28,6 @@ class FaceMsg:
         self.score = score
 
 
-class InteractionMsg:
-    def __init__(self, state, reason):
-        self.state = state
-        # reason's type: Speech = 0, Face = 1, Click = 2, Hark = 3
-        self.reason = reason
-
-
 class JoyCmdMsg:
     def __init__(self):
         '''

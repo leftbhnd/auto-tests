@@ -4,7 +4,7 @@ import pytest
 import time
 
 from src.helpers.config import modals, btn, modal
-from src.helpers.messages import InteractionMsg, AsrTtsMsg
+from src.helpers.messages import AsrTtsMsg
 '''
 X seconds
 '''
@@ -12,8 +12,7 @@ X seconds
 
 @pytest.mark.interaction_print
 def test_start_interaction(clickOn, node):
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
+    node.interactionPub(True, 0)
     assert node.getInteraction() == [True, 0]
 
 

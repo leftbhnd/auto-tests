@@ -4,7 +4,7 @@ import pytest
 import time
 
 from src.helpers.config import interaction
-from src.helpers.messages import InteractionMsg, AsrTtsMsg
+from src.helpers.messages import AsrTtsMsg
 from src.test_data.interaction import jokes
 '''
 24.52 seconds
@@ -14,8 +14,7 @@ answer = ''
 
 @pytest.mark.interaction_jokes
 def test_start_interaction(node):
-    interaction_msg = InteractionMsg(True, 0)
-    node.interactionPub(interaction_msg)
+    node.interactionPub(True, 0)
     assert node.getInteraction() == [True, 0]
 
 
