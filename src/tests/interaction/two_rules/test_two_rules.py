@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import interaction
-from src.helpers.messages import AsrTtsMsg
 '''
 28.11 seconds
 '''
@@ -19,8 +18,7 @@ def test_start_interaction(node):
 @pytest.mark.interaction_two_rules
 def test_two_rules(node, screenDiffChecker):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('давай другую руку')
-    node.asrPub(asr_msg)
+    node.asrPub('давай другую руку')
     assert screenDiffChecker(
         'interaction/two_rules.png',
         (0, 40, 1280, 660)
@@ -30,20 +28,17 @@ def test_two_rules(node, screenDiffChecker):
 @pytest.mark.interaction_two_rules
 def test_first_rule(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('давай руку')
-    node.asrPub(asr_msg)
+    node.asrPub('давай руку')
     assert node.getScriptProcess() == [True, 'get_hand_boy']
 
 
 @pytest.mark.interaction_two_rules
 def test_second_rule(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('давай другую руку')
-    node.asrPub(asr_msg)
+    node.asrPub('давай другую руку')
     node.cancelSpeechPub()
     node.cancelScriptPub()
-    asr_msg = AsrTtsMsg('другую руку')
-    node.asrPub(asr_msg)
+    node.asrPub('другую руку')
     assert node.getScriptProcess() == [True, 'get_hand_boy_dr']
 
 

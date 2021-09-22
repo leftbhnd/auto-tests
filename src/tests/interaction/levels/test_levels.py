@@ -4,7 +4,7 @@ import pytest
 import time
 
 from src.helpers.config import btn, modal, modals, interaction, running, restart
-from src.helpers.messages import SwipeMsg, AsrTtsMsg
+from src.helpers.messages import SwipeMsg
 '''
 750 seconds
 '''
@@ -13,8 +13,7 @@ from src.helpers.messages import SwipeMsg, AsrTtsMsg
 @pytest.mark.interaction_levels
 def test_robot_base(node):
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Робот высокий приоритет'
 
 
@@ -38,8 +37,7 @@ def test_owner_base(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Владелец высокий приоритет'
 
 
@@ -63,8 +61,7 @@ def test_robot_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Робот низкий приоритет'
 
 
@@ -88,8 +85,7 @@ def test_owner_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'Владелец низкий приоритет'
 
 
@@ -113,8 +109,7 @@ def test_common_base(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'common base'
 
 
@@ -138,8 +133,7 @@ def test_internet_base(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'internet'
 
 
@@ -163,8 +157,7 @@ def test_common_base_low(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'common base low'
 
 
@@ -188,8 +181,7 @@ def test_unrecognized(clickOn, dNd, openServiceMenu, node):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.interactionPub(True, 0)
-    asr_msg = AsrTtsMsg('порядок')
-    node.asrPub(asr_msg)
+    node.asrPub('порядок')
     assert node.getAnswer() == 'нераспознанная фраза'
 
 

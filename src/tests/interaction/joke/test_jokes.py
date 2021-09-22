@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import interaction
-from src.helpers.messages import AsrTtsMsg
 from src.test_data.interaction import jokes
 '''
 24.52 seconds
@@ -21,8 +20,7 @@ def test_start_interaction(node):
 @pytest.mark.interaction_jokes
 def test_first_joke(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('расскажи анекдот')
-    node.asrPub(asr_msg)
+    node.asrPub('расскажи анекдот')
     answer = node.getAnswer()
     assert answer in jokes
 
@@ -30,8 +28,7 @@ def test_first_joke(node):
 @pytest.mark.interaction_jokes
 def test_second_joke(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('расскажи анекдот')
-    node.asrPub(asr_msg)
+    node.asrPub('расскажи анекдот')
     assert ((node.getAnswer() in jokes) and (answer != node.getAnswer()))
 
 

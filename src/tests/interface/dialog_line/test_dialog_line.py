@@ -3,7 +3,6 @@
 import pytest
 import time
 
-from src.helpers.messages import AsrTtsMsg
 from src.helpers.config import running, restart, btn, modal
 '''
 63.23 seconds
@@ -16,8 +15,7 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
     clickOn(modal.radius_yes)
     time.sleep(running)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('тестовое правило с лопатой')
-    node.asrPub(asr_msg)
+    node.asrPub('тестовое правило с лопатой')
     assert screenDiffChecker(
         'interfaces/dialog_line.png'
     ) is None

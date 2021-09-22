@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import modals, btn, modal
-from src.helpers.messages import AsrTtsMsg
 '''
 X seconds
 '''
@@ -19,8 +18,7 @@ def test_start_interaction(clickOn, node):
 @pytest.mark.interaction_print
 def test_run_photo_app(clickOn, node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('сделай фото')
-    node.asrPub(asr_msg)
+    node.asrPub('сделай фото')
     clickOn(btn.take_photo)
     time.sleep(modals)
     clickOn(btn.print_photo)

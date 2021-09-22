@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import default, slowly, modals, running, restart, btn, modal
-from src.helpers.messages import AsrTtsMsg
 '''
 148.84 seconds
 '''
@@ -66,8 +65,7 @@ def test_answer_log(clickOn, node, screenDiffChecker):
     time.sleep(running)
     clickOn(modal.ans_log_clear)
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('тестове правило з лопатою')
-    node.asrPub(asr_msg)
+    node.asrPub('тестове правило з лопатою')
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/uk_UA/run_test_answers_log.png',

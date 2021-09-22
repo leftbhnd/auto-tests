@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import btn, modal, params, modals, interaction
-from src.helpers.messages import AsrTtsMsg
 '''
 249.59 seconds
 '''
@@ -31,8 +30,7 @@ def test_activate_speech(clickOn, openServiceMenu):
 @pytest.mark.interaction_interaction
 def test_start_by_speech(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет')
-    node.asrPub(asr_msg)
+    node.asrPub('привет')
     assert node.getInteraction() == [True, 0]
 
 
@@ -46,8 +44,7 @@ def test_clear_interaction_start_by_speech(node):
 @pytest.mark.interaction_interaction
 def test_setup_update_by_speech(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет')
-    node.asrPub(asr_msg)
+    node.asrPub('привет')
     node.cancelSpeechPub()
     time.sleep(5)
     assert node.getInteraction() == [True, 0]
@@ -56,13 +53,11 @@ def test_setup_update_by_speech(node):
 @pytest.mark.interaction_interaction
 def test_update_by_speech(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет')
-    node.asrPub(asr_msg)
+    node.asrPub('привет')
     node.cancelSpeechPub()
     time.sleep(10)
     in_interaction = node.getInteraction()
-    asr_msg = AsrTtsMsg('как дела?')
-    node.asrPub(asr_msg)
+    node.asrPub('как дела?')
     node.cancelSpeechPub()
     time.sleep(10)
     assert node.getInteraction() == in_interaction
@@ -143,8 +138,7 @@ def test_update_by_face(node):
 def test_start_by_speech_disabled(node):
     node.cancelSpeechPub()
     time.sleep(interaction)
-    asr_msg = AsrTtsMsg('привет')
-    node.asrPub(asr_msg)
+    node.asrPub('привет')
     assert node.getInteraction() == [False, 1]
 
 

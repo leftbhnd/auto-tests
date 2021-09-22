@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import resetAnchor, interaction
-from src.helpers.messages import AsrTtsMsg
 '''
 42.76 seconds
 '''
@@ -19,39 +18,33 @@ def test_start_interaction(node):
 @pytest.mark.interaction_anchor
 def test_anchor(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('спой гимн')
-    node.asrPub(asr_msg)
+    node.asrPub('спой гимн')
     assert node.getAnswer() == 'Вы хотите, чтобы я спел?'
 
 
 @pytest.mark.interaction_anchor
 def test_anchor_yes(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('да')
-    node.asrPub(asr_msg)
+    node.asrPub('да')
     assert node.getAnswer() == 'хорошо'
 
 
 @pytest.mark.interaction_anchor
 def test_anchor_no(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('спой гимн')
-    node.asrPub(asr_msg)
+    node.asrPub('спой гимн')
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('нет')
-    node.asrPub(asr_msg)
+    node.asrPub('нет')
     assert node.getAnswer() == 'нет так нет'
 
 
 @pytest.mark.interaction_anchor
 def test_check_reset_anchor(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('спой гимн')
-    node.asrPub(asr_msg)
+    node.asrPub('спой гимн')
     node.cancelSpeechPub()
     time.sleep(resetAnchor)
-    asr_msg = AsrTtsMsg('нет')
-    node.asrPub(asr_msg)
+    node.asrPub('нет')
     assert node.getAnswer() == 'тестовое правило с нет'
 
 

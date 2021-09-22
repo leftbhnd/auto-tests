@@ -3,14 +3,10 @@
 import pytest
 
 
-from src.helpers.messages import AsrTtsMsg
-
-
 @pytest.mark.skip(reason="unit")
 def test_asr(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('привет')
-    node.asrPub(asr_msg)
+    node.asrPub('привет')
     assert node.getAnswer() in [
         "Доброго времени суток!",
         "Доброго времени суток! Добро пожаловать в {company}.",
@@ -25,8 +21,7 @@ def test_asr(node):
 @pytest.mark.skip(reason="unit")
 def test_tts(node):
     node.cancelSpeechPub()
-    tts_msg = AsrTtsMsg('я робот ты робот')
-    node.ttsPub(tts_msg)
+    node.ttsPub('я робот ты робот')
     assert node.getTts() == 'я робот ты робот'
 
 

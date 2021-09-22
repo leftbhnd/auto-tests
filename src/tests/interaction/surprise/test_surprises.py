@@ -4,7 +4,6 @@ import pytest
 import time
 
 from src.helpers.config import interaction
-from src.helpers.messages import AsrTtsMsg
 from src.test_data.interaction import surprises
 '''
 24.44 seconds
@@ -21,8 +20,7 @@ def test_start_interaction(node):
 @pytest.mark.interaction_surprises
 def test_first_surprise(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('удиви меня')
-    node.asrPub(asr_msg)
+    node.asrPub('удиви меня')
     answer = node.getAnswer()
     assert answer in surprises
 
@@ -30,8 +28,7 @@ def test_first_surprise(node):
 @pytest.mark.interaction_surprises
 def test_second_surprise(node):
     node.cancelSpeechPub()
-    asr_msg = AsrTtsMsg('удиви меня')
-    node.asrPub(asr_msg)
+    node.asrPub('удиви меня')
     assert ((node.getAnswer() in surprises) and (answer != node.getAnswer()))
 
 
