@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, modals, params
+from src.helpers.config import btn, modal, modals, params, interaction
 '''
 TODO добполнить тест
 X seconds
@@ -44,24 +44,20 @@ def test_greeting_known(node):
 
 
 @pytest.mark.interaction_greeting
-def test_restore(node):
+def test_restore(clickOn, openServiceMenu, node):
     node.clearFacePub()
-
-# @pytest.mark.interaction_greeting
-# def test_restore(clickOn, openServiceMenu, node):
-#     node.clearFacePub()
-#     openServiceMenu()
-#     clickOn(btn.settings)
-#     clickOn(btn.system)
-#     clickOn(btn.system_dialog)
-#     clickOn(btn.system_dialog_down_arrow)
-#     for i in range(5):
-#         clickOn(params.timeRecently_increase)
-#     for i in range(2):
-#         clickOn(params.timeRecentlyUnknown_increase)
-#     clickOn(btn.back)
-#     clickOn(modal.save_yes)
-#     time.sleep(modals)
-#     clickOn(btn.back)
-#     clickOn(btn.back)
-#     time.sleep(modals)
+    openServiceMenu()
+    clickOn(btn.settings)
+    clickOn(btn.system)
+    clickOn(btn.system_dialog)
+    clickOn(btn.system_dialog_down_arrow)
+    for i in range(5):
+        clickOn(params.timeRecently_increase)
+    for i in range(2):
+        clickOn(params.timeRecentlyUnknown_increase)
+    clickOn(btn.back)
+    clickOn(modal.save_yes)
+    time.sleep(modals)
+    clickOn(btn.back)
+    clickOn(btn.back)
+    time.sleep(interaction)
