@@ -10,8 +10,8 @@ from src.helpers.config import slowly, running, restart, btn, modal
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_radius_modal(clickOn, screenDiffChecker):
-    clickOn(btn.play)
+def test_check_radius_modal(click, screenDiffChecker):
+    click(btn.play)
     time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/radius_modal.png'
@@ -19,8 +19,8 @@ def test_check_radius_modal(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_state(clickOn, screenDiffChecker):
-    clickOn(modal.radius_yes)
+def test_check_run_state(click, screenDiffChecker):
+    click(modal.radius_yes)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -43,9 +43,9 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_restore(clickOn, openServiceMenu):
+def test_restore(click, openServiceMenu):
     time.sleep(running)
     openServiceMenu()
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(restart)

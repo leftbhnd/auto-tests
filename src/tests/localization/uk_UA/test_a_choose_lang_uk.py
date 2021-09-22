@@ -10,23 +10,23 @@ from src.helpers.config import modals, btn, modal
 
 
 @pytest.mark.localization_uk_UA
-def test_choose_lang(clickOn, typeText, node):
-    clickOn(btn.control)
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
-    clickOn(btn.settings)
-    clickOn(btn.lang_settings)
+def test_choose_lang(click, type, node):
+    click(btn.control)
+    click(modal.pwd_input)
+    click(btn.choose_numbers)
+    type('123456')
+    click(modal.pwd_ok)
+    click(btn.settings)
+    click(btn.lang_settings)
     for i in range(12):
-        clickOn(btn.lang_down_arrow)
-    clickOn(btn.lang_uk_UA)
-    clickOn(btn.lang_set_default)
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
+        click(btn.lang_down_arrow)
+    click(btn.lang_uk_UA)
+    click(btn.lang_set_default)
+    click(btn.back)
+    click(modal.save_yes)
     time.sleep(modals)
-    clickOn(btn.back)
-    clickOn(btn.back)
-    clickOn(btn.back)
+    click(btn.back)
+    click(btn.back)
+    click(btn.back)
     time.sleep(modals)
     assert node.getSystemLanguage() == 'uk_UA'

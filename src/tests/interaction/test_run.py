@@ -10,7 +10,7 @@ from src.helpers.config import running, btn, modal
 
 
 @pytest.mark.interaction_start
-def test_run(clickOn):
-    clickOn(btn.play)
-    clickOn(modal.radius_yes)
+def test_run(click):
+    click(btn.play)
+    click(modal.radius_yes)
     time.sleep(running)

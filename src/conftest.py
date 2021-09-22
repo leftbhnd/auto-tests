@@ -53,7 +53,7 @@ def dNd():
 
 
 @pytest.fixture
-def clickOn():
+def click():
     def _method(button):
         x = button.value[0]
         y = button.value[1]
@@ -63,7 +63,7 @@ def clickOn():
 
 
 @pytest.fixture
-def typeText():
+def type():
     def _method(symbols):
         for symbol in symbols:
             x = keyboard[symbol][0]

@@ -10,25 +10,25 @@ from src.helpers.config import modals, btn, modal, promo, interaction
 
 
 @pytest.mark.interaction_promo
-def test_add_promo(clickOn, openServiceMenu, screenDiffChecker):
+def test_add_promo(click, openServiceMenu, screenDiffChecker):
     openServiceMenu()
-    clickOn(btn.promo)
-    clickOn(btn.promo_pictures)
-    clickOn(btn.promo_pictures)
-    clickOn(btn.promo_fs_checkbox1)
-    clickOn(btn.promo_fs_checkbox2)
-    clickOn(btn.promo_add)
-    clickOn(modal.promo_yes)
+    click(btn.promo)
+    click(btn.promo_pictures)
+    click(btn.promo_pictures)
+    click(btn.promo_fs_checkbox1)
+    click(btn.promo_fs_checkbox2)
+    click(btn.promo_add)
+    click(modal.promo_yes)
     assert screenDiffChecker(
         'interaction/promo_pictures.png'
     ) is None
 
 
 @pytest.mark.interaction_promo
-def test_first_pictures(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
-    clickOn(btn.back)
+def test_first_pictures(click, screenDiffChecker):
+    click(btn.back)
+    click(modal.save_yes)
+    click(btn.back)
     time.sleep(modals)
     assert screenDiffChecker(
         'interaction/promo1.png',
@@ -46,20 +46,20 @@ def test_second_picture(screenDiffChecker):
 
 
 @pytest.mark.interaction_promo
-def test_delete_pictures(clickOn, openServiceMenu, screenDiffChecker):
+def test_delete_pictures(click, openServiceMenu, screenDiffChecker):
     openServiceMenu()
-    clickOn(btn.promo)
-    clickOn(btn.promo_robot_choose_all)
-    clickOn(btn.promo_delete)
-    clickOn(modal.promo_yes)
+    click(btn.promo)
+    click(btn.promo_robot_choose_all)
+    click(btn.promo_delete)
+    click(modal.promo_yes)
     assert screenDiffChecker(
         'interaction/deleted_pictures.png'
     ) is None
 
 
 @pytest.mark.interaction_promo
-def test_restore(clickOn):
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
-    clickOn(btn.back)
+def test_restore(click):
+    click(btn.back)
+    click(modal.save_yes)
+    click(btn.back)
     time.sleep(interaction)

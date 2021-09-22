@@ -10,15 +10,15 @@ from src.helpers.config import slowly, running, restart, btn, modal
 
 
 @pytest.mark.interface_statuses_of_running
-def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
-    clickOn(btn.control)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+def test_networkOff_modal(click, type, screenDiffChecker):
+    click(btn.control)
+    click(btn.choose_numbers)
+    type('123456')
+    click(modal.pwd_ok)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(35)
-    clickOn(btn.play)
+    click(btn.play)
     time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/no_connection_modal.png'
@@ -26,9 +26,9 @@ def test_networkOff_modal(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_state(clickOn, screenDiffChecker):
-    clickOn(modal.no_connection_yes)
-    clickOn(modal.radius_yes)
+def test_check_run_state(click, screenDiffChecker):
+    click(modal.no_connection_yes)
+    click(modal.radius_yes)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -51,9 +51,9 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_restore(clickOn, openServiceMenu):
+def test_restore(click, openServiceMenu):
     time.sleep(running)
     openServiceMenu()
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(restart)
