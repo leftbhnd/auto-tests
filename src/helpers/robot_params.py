@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from src.helpers.params.dialog_params import DialogParams
-from src.helpers.params.driving_params import DrivingParams
-from src.helpers.params.interaction_params import InteractionParams
+from params.dialog_params import DialogParams
+from params.driving_params import DrivingParams
+from params.interaction_params import InteractionParams
 
 
 class RobotParams:
