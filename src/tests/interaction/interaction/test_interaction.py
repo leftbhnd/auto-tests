@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, params, modals, interaction
+from src.helpers.config import btn, modal, param, modals, interaction
 '''
 249.59 seconds
 '''
@@ -12,18 +12,18 @@ from src.helpers.config import btn, modal, params, modals, interaction
 @pytest.mark.interaction_interaction
 def test_activate_speech(click, openServiceMenu):
     openServiceMenu()
-    click(btn.settings)
-    click(btn.system)
-    click(btn.system_interaction)
+    click(btn.control.settings)
+    click(btn.settings.system)
+    click(btn.system.interaction)
     for i in range(19):
-        click(btn.system_interaction_down_arrow)
-    click(params.startByFace)
-    click(params.startByFaceDisable)
-    click(btn.back)
-    click(modal.save_yes)
+        click(btn.system.interaction_down_arrow)
+    click(param.interaction.startByFace)
+    click(param.interaction.startByFaceDisable)
+    click(btn.handler.back)
+    click(modal.save.yes)
     time.sleep(modals)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(interaction)
 
 
@@ -75,24 +75,24 @@ def test_start_by_face_disabled(node):
 def test_activate_face(click, openServiceMenu, node):
     node.clearFacePub()
     openServiceMenu()
-    click(btn.settings)
-    click(btn.system)
-    click(btn.system_interaction)
-    click(params.startBySpeech)
-    click(params.startBySpeechDisable)
-    click(params.updateBySpeech)
-    click(params.updateBySpeechDisable)
+    click(btn.control.settings)
+    click(btn.settings.system)
+    click(btn.system.interaction)
+    click(param.interaction.startBySpeech)
+    click(param.interaction.startBySpeechDisable)
+    click(param.interaction.updateBySpeech)
+    click(param.interaction.updateBySpeechDisable)
     for i in range(19):
-        click(btn.system_interaction_down_arrow)
-    click(params.startByFace)
-    click(params.startByFaceEnable)
-    click(params.updateByFace)
-    click(params.updateByFaceEnable)
-    click(btn.back)
-    click(modal.save_yes)
+        click(btn.system.interaction_down_arrow)
+    click(param.interaction.startByFace)
+    click(param.interaction.startByFaceEnable)
+    click(param.interaction.updateByFace)
+    click(param.interaction.updateByFaceEnable)
+    click(btn.handler.back)
+    click(modal.save.yes)
     time.sleep(modals)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(interaction)
 
 
@@ -145,22 +145,22 @@ def test_start_by_speech_disabled(node):
 @pytest.mark.interaction_interaction
 def test_restore(click, openServiceMenu):
     openServiceMenu()
-    click(btn.settings)
-    click(btn.system)
-    click(btn.system_interaction)
-    click(params.startBySpeech)
-    click(params.startBySpeechEnable)
-    click(params.updateBySpeech)
-    click(params.updateBySpeechEnable)
+    click(btn.control.settings)
+    click(btn.settings.system)
+    click(btn.system.interaction)
+    click(param.interaction.startBySpeech)
+    click(param.interaction.startBySpeechEnable)
+    click(param.interaction.updateBySpeech)
+    click(param.interaction.updateBySpeechEnable)
     for i in range(19):
-        click(btn.system_interaction_down_arrow)
-    click(params.startByFace)
-    click(params.startByFaceEnable)
-    click(params.updateByFace)
-    click(params.updateByFaceDisable)
-    click(btn.back)
-    click(modal.save_yes)
+        click(btn.system.interaction_down_arrow)
+    click(param.interaction.startByFace)
+    click(param.interaction.startByFaceEnable)
+    click(param.interaction.updateByFace)
+    click(param.interaction.updateByFaceDisable)
+    click(btn.handler.back)
+    click(modal.save.yes)
     time.sleep(modals)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(interaction)

@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import btn, modal, modals
 '''
 X seconds
 '''
@@ -12,14 +12,14 @@ X seconds
 @pytest.mark.interaction_print_setup
 def test_add_promo(click, openServiceMenu, screenDiffChecker):
     openServiceMenu()
-    click(btn.promo)
-    click(btn.promo_selector)
-    click(btn.promo_print)
-    click(btn.promo_pictures)
-    click(btn.promo_pictures)
-    click(btn.promo_fs_checkbox1)
-    click(btn.promo_add)
-    click(modal.promo_yes)
+    click(btn.control.promo)
+    click(btn.promo.selector)
+    click(btn.promo.printshow)
+    click(btn.promo.pictures)
+    click(btn.promo.pictures)
+    click(btn.promo.fs_checkbox1)
+    click(btn.promo.add)
+    click(modal.promo.yes)
     assert screenDiffChecker(
         'interaction/added_picture.png'
     ) is None
@@ -27,7 +27,7 @@ def test_add_promo(click, openServiceMenu, screenDiffChecker):
 
 @pytest.mark.interaction_print_setup
 def test_restore(click):
-    click(btn.back)
-    click(modal.save_yes)
-    click(btn.back)
+    click(btn.handler.back)
+    click(modal.save.yes)
+    click(btn.handler.back)
     time.sleep(modals)
