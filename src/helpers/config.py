@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from src.helpers.robot_buttons import robot_buttons
 from src.helpers.robot_modals import robot_modals
-from src.helpers.robot_params import robot_params
+#from src.helpers.robot_params import robot_params
 from keyboard import robot_keyboard
 
 
@@ -22,5 +22,5 @@ screens_dir = '/home/promobot/.tests/screens/'
 failed_dir = '/home/promobot/.tests/screens/test_failed/'
 btn = robot_buttons
 modal = robot_modals
-param = robot_params
+#param = robot_params
 keyboard = robot_keyboard
