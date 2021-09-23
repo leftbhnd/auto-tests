@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import running, btn, modal
+from src.helpers.config import btn, modal, running
 '''
 11.02 seconds
 '''
@@ -11,6 +11,6 @@ from src.helpers.config import running, btn, modal
 
 @pytest.mark.interaction_start
 def test_run(click):
-    click(btn.play)
-    click(modal.radius_yes)
+    click(btn.start.play)
+    click(modal.radius.yes)
     time.sleep(running)

@@ -36,7 +36,7 @@ class RobotButtons:
         self.handler = Handlers
         self.kb = Keyboard
         self.lang = LanguageSettings
-        self.ling = LinguisticBase
+        self.lingvo = LinguisticBase
         self.nav = Navigation
         self.internet = Internet
         self.promo = Promo
