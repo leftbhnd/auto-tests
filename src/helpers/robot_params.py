@@ -12,6 +12,6 @@ class RobotParams:
         self.interaction = InteractionParams
 
 
-robot_parameters = RobotParams(
+robot_params = RobotParams(
     DialogParams, DrivingParams, InteractionParams
 )
