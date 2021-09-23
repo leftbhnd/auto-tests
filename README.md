@@ -100,7 +100,7 @@ pip install xmltodict
 
 - `screenDiffChecker('directory/original_image', coordinates=screen_resolution)`
 - `dNd((start[0], start[1]), (finish[0], finish[1]))`
-- `click(btn.X|modal.X|params.X)`
+- `click(btn.X.X|modal.X.X|param.X.X)`
 - `openPwdModal()`
 - `openServiceMenu()`
 - `type('привет')`
