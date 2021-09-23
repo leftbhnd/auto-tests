@@ -76,7 +76,7 @@ def type():
 def openPwdModal():
     def _method():
         for i in range(5):
-            p.leftClick(50, 50, _pause=False)
+            p.leftClick(50, 50)
         time.sleep(default)
     return _method
 
