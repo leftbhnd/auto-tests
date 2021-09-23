@@ -6,8 +6,8 @@ import enum
 class Promo(enum.Enum):
     selector = (228, 169)
     inv_selector = (973, 180)
-    print = (193, 240)
-    inv_print = (923, 242)
+    printshow = (193, 240)
+    inv_printshow = (923, 242)
     slideshow = (237, 144)
     pictures = (735, 239)
     inv_pictures = (579, 232)
