@@ -53,22 +53,22 @@ def dNd():
 
 
 @pytest.fixture
-def clickOn():
+def click():
     def _method(button):
         x = button.value[0]
         y = button.value[1]
-        p.leftClick(x, y)
+        p.leftClick(x, y, _pause=False)
         time.sleep(default)
     return _method
 
 
 @pytest.fixture
-def typeText():
+def type():
     def _method(symbols):
         for symbol in symbols:
             x = keyboard[symbol][0]
             y = keyboard[symbol][1]
-            p.leftClick(x, y)
+            p.leftClick(x, y, _pause=False)
     return _method
 
 
@@ -88,12 +88,12 @@ def openServiceMenu():
             p.leftClick(50, 50)
         p.leftClick(407, 251)
         p.leftClick(299, 758)
-        p.leftClick(285, 565)
-        p.leftClick(358, 565)
-        p.leftClick(425, 565)
-        p.leftClick(502, 565)
-        p.leftClick(574, 565)
-        p.leftClick(641, 565)
+        p.leftClick(285, 565, _pause=False)
+        p.leftClick(358, 565, _pause=False)
+        p.leftClick(425, 565, _pause=False)
+        p.leftClick(502, 565, _pause=False)
+        p.leftClick(574, 565, _pause=False)
+        p.leftClick(641, 565, _pause=False)
         p.leftClick(823, 310)
     return _method
 

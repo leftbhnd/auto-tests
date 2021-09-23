@@ -10,27 +10,27 @@ from src.helpers.config import modals, running, restart, btn, modal, params
 
 
 @pytest.mark.interface_statuses_of_running
-def test_disable_radius(node, clickOn, typeText):
-    clickOn(btn.control)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
-    clickOn(btn.settings)
-    clickOn(btn.nav)
-    clickOn(params.useRadius)
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
+def test_disable_radius(node, click, type):
+    click(btn.control)
+    click(btn.choose_numbers)
+    type('123456')
+    click(modal.pwd_ok)
+    click(btn.settings)
+    click(btn.nav)
+    click(params.useRadius)
+    click(btn.back)
+    click(modal.save_yes)
     time.sleep(modals)
-    clickOn(btn.back)
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+    click(btn.back)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(restart)
     assert node.getUseRadius() == False
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_state(clickOn, screenDiffChecker):
-    clickOn(btn.play)
+def test_check_run_state(click, screenDiffChecker):
+    click(btn.play)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -53,17 +53,17 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_restore(clickOn, openServiceMenu, node):
+def test_restore(click, openServiceMenu, node):
     time.sleep(running)
     openServiceMenu()
-    clickOn(btn.settings)
-    clickOn(btn.nav)
-    clickOn(params.useRadius)
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
+    click(btn.settings)
+    click(btn.nav)
+    click(params.useRadius)
+    click(btn.back)
+    click(modal.save_yes)
     time.sleep(modals)
-    clickOn(btn.back)
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+    click(btn.back)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(restart)
     assert node.getUseRadius() == True

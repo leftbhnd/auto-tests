@@ -41,22 +41,22 @@ def test_failed_greeting_known_second(node):
 
 
 @pytest.mark.interaction_greeting
-def test_set_zero_greeting_timeout(clickOn, openServiceMenu, node):
+def test_set_zero_greeting_timeout(click, openServiceMenu, node):
     node.clearFacePub()
     openServiceMenu()
-    clickOn(btn.settings)
-    clickOn(btn.system)
-    clickOn(btn.system_dialog)
-    clickOn(btn.system_dialog_down_arrow)
+    click(btn.settings)
+    click(btn.system)
+    click(btn.system_dialog)
+    click(btn.system_dialog_down_arrow)
     for i in range(5):
-        clickOn(params.timeRecently_decrease)
+        click(params.timeRecently_decrease)
     for i in range(2):
-        clickOn(params.timeRecentlyUnknown_decrease)
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
+        click(params.timeRecentlyUnknown_decrease)
+    click(btn.back)
+    click(modal.save_yes)
     time.sleep(modals)
-    clickOn(btn.back)
-    clickOn(btn.back)
+    click(btn.back)
+    click(btn.back)
     time.sleep(modals)
 
 
@@ -92,20 +92,20 @@ def test_second_greeting_known(node):
 
 
 @pytest.mark.interaction_greeting
-def test_restore(clickOn, openServiceMenu, node):
+def test_restore(click, openServiceMenu, node):
     node.clearFacePub()
     openServiceMenu()
-    clickOn(btn.settings)
-    clickOn(btn.system)
-    clickOn(btn.system_dialog)
-    clickOn(btn.system_dialog_down_arrow)
+    click(btn.settings)
+    click(btn.system)
+    click(btn.system_dialog)
+    click(btn.system_dialog_down_arrow)
     for i in range(5):
-        clickOn(params.timeRecently_increase)
+        click(params.timeRecently_increase)
     for i in range(2):
-        clickOn(params.timeRecentlyUnknown_increase)
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
+        click(params.timeRecentlyUnknown_increase)
+    click(btn.back)
+    click(modal.save_yes)
     time.sleep(modals)
-    clickOn(btn.back)
-    clickOn(btn.back)
+    click(btn.back)
+    click(btn.back)
     time.sleep(interaction)

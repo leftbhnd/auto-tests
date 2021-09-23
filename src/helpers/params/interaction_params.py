@@ -3,18 +3,7 @@
 import enum
 
 
-class RobotParams(enum.Enum):
-    # driving
-    useRadius = (1016, 205)
-    inv_useRadius = (260, 194)
-    # dialog
-    [{'u_i': (1117, 616)}, {'u_d': (895, 619)}, {'k_i': (1117, 668)}, {'k_d': (893, 667)}]
-
-    timeRecently_increase = (1117, 700)
-    timeRecently_decrease = (893, 700)
-    timeRecentlyUnknown_increase = (1117, 650)
-    timeRecentlyUnknown_decrease = (895, 650)
-    # interaction
+class InteractionParams(enum.Enum):
     startBySpeech = (1119, 201)
     startBySpeechEnable = (893, 253)
     startBySpeechDisable = (914, 146)

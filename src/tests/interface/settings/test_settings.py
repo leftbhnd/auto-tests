@@ -10,84 +10,84 @@ from src.helpers.config import default, modals, btn, modal
 
 
 @pytest.mark.interface_settings
-def test_settings_open(clickOn, typeText, screenDiffChecker):
-    clickOn(btn.control)
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
-    clickOn(btn.settings)
+def test_settings_open(click, type, screenDiffChecker):
+    click(btn.control)
+    click(modal.pwd_input)
+    click(btn.choose_numbers)
+    type('123456')
+    click(modal.pwd_ok)
+    click(btn.settings)
     assert screenDiffChecker(
         'interfaces/settings.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_system(clickOn, screenDiffChecker):
-    clickOn(btn.system)
+def test_system(click, screenDiffChecker):
+    click(btn.system)
     assert screenDiffChecker(
         'interfaces/system.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_applications(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(btn.apps)
+def test_applications(click, screenDiffChecker):
+    click(btn.back)
+    click(btn.apps)
     assert screenDiffChecker(
         'interfaces/applications.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_face_recognize(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(btn.fr)
+def test_face_recognize(click, screenDiffChecker):
+    click(btn.back)
+    click(btn.fr)
     assert screenDiffChecker(
         'interfaces/face_recognize.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_navigation(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(btn.nav)
+def test_navigation(click, screenDiffChecker):
+    click(btn.back)
+    click(btn.nav)
     assert screenDiffChecker(
         'interfaces/navigation.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_lingvo(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(btn.lingvo)
+def test_lingvo(click, screenDiffChecker):
+    click(btn.back)
+    click(btn.lingvo)
     assert screenDiffChecker(
         'interfaces/lingvo.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_language_settings(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(btn.lang_settings)
+def test_language_settings(click, screenDiffChecker):
+    click(btn.back)
+    click(btn.lang_settings)
     assert screenDiffChecker(
         'interfaces/language_settings.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_internet_services(clickOn, screenDiffChecker):
-    clickOn(btn.back)
-    clickOn(btn.internet)
+def test_internet_services(click, screenDiffChecker):
+    click(btn.back)
+    click(btn.internet)
     assert screenDiffChecker(
         'interfaces/internet_services.png'
     ) is None
 
 
 @pytest.mark.interface_settings
-def test_reset(clickOn):
-    clickOn(btn.back)
+def test_reset(click):
+    click(btn.back)
     time.sleep(default)
-    clickOn(btn.back)
-    clickOn(btn.back)
+    click(btn.back)
+    click(btn.back)
     time.sleep(modals)

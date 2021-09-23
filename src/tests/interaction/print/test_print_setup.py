@@ -10,24 +10,24 @@ X seconds
 
 
 @pytest.mark.interaction_print_setup
-def test_add_promo(clickOn, openServiceMenu, screenDiffChecker):
+def test_add_promo(click, openServiceMenu, screenDiffChecker):
     openServiceMenu()
-    clickOn(btn.promo)
-    clickOn(btn.promo_selector)
-    clickOn(btn.promo_print)
-    clickOn(btn.promo_pictures)
-    clickOn(btn.promo_pictures)
-    clickOn(btn.promo_fs_checkbox1)
-    clickOn(btn.promo_add)
-    clickOn(modal.promo_yes)
+    click(btn.promo)
+    click(btn.promo_selector)
+    click(btn.promo_print)
+    click(btn.promo_pictures)
+    click(btn.promo_pictures)
+    click(btn.promo_fs_checkbox1)
+    click(btn.promo_add)
+    click(modal.promo_yes)
     assert screenDiffChecker(
         'interaction/added_picture.png'
     ) is None
 
 
 @pytest.mark.interaction_print_setup
-def test_restore(clickOn):
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
-    clickOn(btn.back)
+def test_restore(click):
+    click(btn.back)
+    click(modal.save_yes)
+    click(btn.back)
     time.sleep(modals)

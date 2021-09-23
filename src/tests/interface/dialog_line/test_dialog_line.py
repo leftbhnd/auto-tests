@@ -10,9 +10,9 @@ from src.helpers.config import running, restart, btn, modal
 
 
 @pytest.mark.interface_dialog_line
-def test_dialog_line(clickOn, node, screenDiffChecker):
-    clickOn(btn.play)
-    clickOn(modal.radius_yes)
+def test_dialog_line(click, node, screenDiffChecker):
+    click(btn.play)
+    click(modal.radius_yes)
     time.sleep(running)
     node.cancelSpeechPub()
     node.asrPub('тестовое правило с лопатой')
@@ -22,8 +22,8 @@ def test_dialog_line(clickOn, node, screenDiffChecker):
 
 
 @pytest.mark.interface_dialog_line
-def test_restore(clickOn, openServiceMenu):
+def test_restore(click, openServiceMenu):
     openServiceMenu()
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(restart)

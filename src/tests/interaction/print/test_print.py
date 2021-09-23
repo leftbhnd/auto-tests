@@ -10,18 +10,18 @@ X seconds
 
 
 @pytest.mark.interaction_print
-def test_start_interaction(clickOn, node):
+def test_start_interaction(click, node):
     node.interactionPub(True, 0)
     assert node.getInteraction() == [True, 0]
 
 
 @pytest.mark.interaction_print
-def test_run_photo_app(clickOn, node):
+def test_run_photo_app(click, node):
     node.cancelSpeechPub()
     node.asrPub('сделай фото')
-    clickOn(btn.take_photo)
+    click(btn.take_photo)
     time.sleep(modals)
-    clickOn(btn.print_photo)
+    click(btn.print_photo)
 
 
 @pytest.mark.interaction_print
@@ -33,24 +33,24 @@ def test_check_printshow(screenDiffChecker):
 
 
 @pytest.mark.interaction_print
-def test_delete_pictures(clickOn, openServiceMenu, screenDiffChecker):
+def test_delete_pictures(click, openServiceMenu, screenDiffChecker):
     # TODO посчитать таймаут
     time.sleep(30)
     openServiceMenu()
-    clickOn(btn.promo)
-    clickOn(btn.promo_selector)
-    clickOn(btn.promo_print)
-    clickOn(btn.promo_robot_checkbox1)
-    clickOn(btn.promo_delete)
-    clickOn(modal.promo_yes)
+    click(btn.promo)
+    click(btn.promo_selector)
+    click(btn.promo_print)
+    click(btn.promo_robot_checkbox1)
+    click(btn.promo_delete)
+    click(modal.promo_yes)
     assert screenDiffChecker(
         'interaction/deleted_pictures.png'
     ) is None
 
 
 @pytest.mark.interaction_print
-def test_restore(clickOn):
-    clickOn(btn.back)
-    clickOn(modal.save_yes)
-    clickOn(btn.back)
+def test_restore(click):
+    click(btn.back)
+    click(modal.save_yes)
+    click(btn.back)
     time.sleep(modals)

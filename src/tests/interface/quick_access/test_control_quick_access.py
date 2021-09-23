@@ -10,13 +10,13 @@ from src.helpers.config import modals, btn, modal
 
 
 @pytest.mark.interface_quick_access
-def test_charge_app(clickOn, typeText, screenDiffChecker):
-    clickOn(btn.control)
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
-    clickOn(btn.charge_app)
+def test_charge_app(click, type, screenDiffChecker):
+    click(btn.control)
+    click(modal.pwd_input)
+    click(btn.choose_numbers)
+    type('123456')
+    click(modal.pwd_ok)
+    click(btn.charge_app)
     time.sleep(2)
     assert screenDiffChecker(
         'interfaces/charge_app.png'
@@ -24,24 +24,24 @@ def test_charge_app(clickOn, typeText, screenDiffChecker):
 
 
 @pytest.mark.interface_quick_access
-def test_auto_tumbler_enable(clickOn, typeText, screenDiffChecker):
-    clickOn(btn.charge_app_close)
+def test_auto_tumbler_enable(click, type, screenDiffChecker):
+    click(btn.charge_app_close)
     time.sleep(modals)
-    clickOn(btn.control)
-    clickOn(modal.pwd_input)
-    clickOn(btn.choose_numbers)
-    typeText('123456')
-    clickOn(modal.pwd_ok)
-    clickOn(btn.auto_mode)
+    click(btn.control)
+    click(modal.pwd_input)
+    click(btn.choose_numbers)
+    type('123456')
+    click(modal.pwd_ok)
+    click(btn.auto_mode)
     assert screenDiffChecker(
         'interfaces/control_auto_mode_enable.png'
     ) is None
 
 
 @pytest.mark.interface_quick_access
-def test_phrase_tumbler_enable(clickOn, screenDiffChecker):
-    clickOn(btn.auto_mode)
-    clickOn(btn.phrase_mode)
+def test_phrase_tumbler_enable(click, screenDiffChecker):
+    click(btn.auto_mode)
+    click(btn.phrase_mode)
     time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/control_phrase_mode_enable.png'
@@ -49,28 +49,28 @@ def test_phrase_tumbler_enable(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_quick_access
-def test_answerlog_tumbler_enable(clickOn, screenDiffChecker):
-    clickOn(btn.phrase_mode)
+def test_answerlog_tumbler_enable(click, screenDiffChecker):
+    click(btn.phrase_mode)
     time.sleep(modals)
-    clickOn(btn.answers_log)
+    click(btn.answers_log)
     assert screenDiffChecker(
         'interfaces/control_answers_log_enable.png'
     ) is None
 
 
 @pytest.mark.interface_quick_access
-def test_restart_modal(clickOn, screenDiffChecker):
-    clickOn(btn.answers_log)
-    clickOn(btn.restart)
+def test_restart_modal(click, screenDiffChecker):
+    click(btn.answers_log)
+    click(btn.restart)
     assert screenDiffChecker(
         'interfaces/restart.png'
     ) is None
 
 
 @pytest.mark.interface_quick_access
-def test_hide(clickOn, screenDiffChecker):
-    clickOn(modal.restart_no)
-    clickOn(btn.hide)
+def test_hide(click, screenDiffChecker):
+    click(modal.restart_no)
+    click(btn.hide)
     assert screenDiffChecker(
         'interfaces/ubuntu_screen.png',
         (150, 40, 1280, 800)
@@ -78,9 +78,9 @@ def test_hide(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_quick_access
-def test_restore(clickOn):
-    clickOn(btn.activities)
-    clickOn(btn.work_space)
-    clickOn(btn.work_space)
-    clickOn(btn.back)
+def test_restore(click):
+    click(btn.activities)
+    click(btn.work_space)
+    click(btn.work_space)
+    click(btn.back)
     time.sleep(modals)

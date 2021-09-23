@@ -10,11 +10,11 @@ from src.helpers.config import default, running, restart, btn, modal
 
 
 @pytest.mark.interface_apps_menu
-def test_menu_open_button(clickOn, screenDiffChecker):
-    clickOn(btn.play)
-    clickOn(modal.radius_yes)
+def test_menu_open_button(click, screenDiffChecker):
+    click(btn.play)
+    click(modal.radius_yes)
     time.sleep(running)
-    clickOn(btn.apps_menu_open)
+    click(btn.apps_menu_open)
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/apps_menu.png',
@@ -43,8 +43,8 @@ def test_menu_open_swipe(dNd, screenDiffChecker):
 
 
 @pytest.mark.interface_apps_menu
-def test_menu_close_button(clickOn, screenDiffChecker):
-    clickOn(btn.apps_menu_close)
+def test_menu_close_button(click, screenDiffChecker):
+    click(btn.apps_menu_close)
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/gui.png',
@@ -53,8 +53,8 @@ def test_menu_close_button(clickOn, screenDiffChecker):
 
 
 @pytest.mark.interface_apps_menu
-def test_restore(clickOn, openServiceMenu):
+def test_restore(click, openServiceMenu):
     openServiceMenu()
-    clickOn(btn.restart)
-    clickOn(modal.restart_yes)
+    click(btn.restart)
+    click(modal.restart_yes)
     time.sleep(restart)
