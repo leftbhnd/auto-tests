@@ -4,14 +4,14 @@ import enum
 
 
 class RobotButton(enum.Enum):
-    # клавиатура TODO попробовать метод для клавы
+    #клавиатура TODO попробовать метод для клавы
     choose_numbers = (299, 758)
     change_lang = (401, 767)
     delete = (996, 563)
-    # стартовый экран
+    #стартовый экран
     control = (617, 671)
     play = (635, 413)
-    # управление
+    #управление
     connection = (206, 195)
     promo = (205, 279)
     testing = (206, 366)
@@ -34,7 +34,7 @@ class RobotButton(enum.Enum):
     arrow_down_left = (482, 598)
     arrow_left = (488, 453)
     arrow_up_left = (485, 302)
-    # настройки
+    #настройки
     system = (258, 290)
     apps = (501, 290)
     fr = (754, 297)
@@ -43,11 +43,11 @@ class RobotButton(enum.Enum):
     lang_settings = (506, 593)
     internet = (759, 587)
     update = (1025, 574)
-    # подключение
+    #подключение
     connection_info = (795, 731)
     connection_update = (359, 729)
     connection_choose_wifi = (437, 234)
-    # промо
+    #промо
     promo_pictures = (735, 239)
     promo_videos = (726, 291)
     promo_add = (535, 682)
@@ -78,7 +78,7 @@ class RobotButton(enum.Enum):
     promo_robot_slider_top = (608, 240)
     promo_robot_slider_btm = (610, 632)
     promo_robot_choose_all = (557, 173)
-    # тестирование
+    #тестирование
     test_rotate_head = (190, 234)
     test_hand_right = (180, 378)
     test_hand_left = (194, 307)
@@ -92,7 +92,7 @@ class RobotButton(enum.Enum):
     test_record_sound = (1061, 232)
     test_speech_recognize = (1072, 387)
     test_periphery_statuses_close = (1130, 271)
-    # настройки -> система
+    #настройки -> система
     system_hardware = (147, 239)
     system_led = (109, 289)
     system_dialog = (124, 344)
@@ -102,23 +102,23 @@ class RobotButton(enum.Enum):
     system_reset = (60, 584)
     system_interaction_down_arrow = (1198, 720)
     system_dialog_down_arrow = (1200, 722)
-    # настройки -> приложения
+    #настройки -> приложения
     apps_main = (198, 193)
     apps_applications = (160, 241)
     apps_widgets = (150, 297)
-    # настройки -> распознавание лиц
+    #настройки -> распознавание лиц
     fr_settings = (157, 190)
     fr_tacker = (113, 237)
     fr_facedb = (108, 297)
     fr_facedb_select_folder = (1070, 401)
-    # настройки -> навигация
+    #настройки -> навигация
     nav_settings = (174, 194)
     nav_navigation = (152, 242)
-    # настройки -> лингвобаза
+    #настройки -> лингвобаза
     lingvo_answers = (141, 197)
     lingvo_sources = (129, 239)
     lingvo_first_level = (446, 233)
-    # настройки -> языковые настройки
+    #настройки -> языковые настройки
     lang_settings_choose = (135, 188)
     lang_settings_synthesis = (150, 246)
     lang_set_default = (439, 353)
@@ -126,37 +126,37 @@ class RobotButton(enum.Enum):
     lang_delete_lang = (458, 302)
     lang_up_arrow = (685, 400)
     lang_down_arrow = (685, 713)
-    # первая группа языков
+    #первая группа языков
     lang_ar_AE = (465, 411)
     lang_az_AZ = (453, 464)
     lang_cz_CZ = (459, 528)
     lang_de_DE = (472, 579)
     lang_el_GR = (467, 635)
     lang_en_US = (470, 700)
-    # вторая группа языков
+    #вторая группа языков
     lang_es_ES = (465, 411)
     lang_fi_FI = (453, 464)
     lang_fr_FR = (459, 528)
     lang_he_IL = (472, 579)
     lang_it_IT = (467, 635)
     lang_nb_NO = (470, 700)
-    # третья группа языков
+    #третья группа языков
     lang_pt_PT = (465, 411)
     lang_ro_RO = (453, 464)
     lang_ru_RU = (459, 528)
     lang_sv_SE = (472, 579)
     lang_tr_TR = (467, 635)
     lang_uk_UA = (470, 700)
-    # четвартая группа языков
+    #четвартая группа языков
     lang_zn_CN = (470, 700)
-    # настройки -> интернет службы
+    #настройки -> интернет службы
     internet_email = (155, 185)
     internet_sip = (160, 241)
     internet_ya_disk = (184, 301)
-    # управление гуи
+    #управление гуи
     back = (97, 91)
     reset_input = (612, 62)
-    # запущенная гуи
+    #запущенная гуи
     apps_menu_open = (95, 646)
     apps_menu_close = (101, 107)
     speech_settings = (1193, 659)
