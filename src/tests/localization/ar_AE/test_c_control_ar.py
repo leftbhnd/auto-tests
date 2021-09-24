@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, connection, btn, modal
+from src.helpers.config import btn, modal, modals, connection
 '''
 78.66 seconds
 '''
@@ -11,14 +11,14 @@ from src.helpers.config import modals, connection, btn, modal
 
 @pytest.mark.localization_ar_AE
 def test_con_wrong_pass_modal(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.change_lang)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.lang)
+    click(btn.kb.numbers)
     type('1234567')
-    click(modal.inv_pwd_ok)
-    click(btn.reset_input)
-    click(btn.reset_input)
+    click(modal.pwd.ok_ae)
+    click(btn.handler.reset)
+    click(btn.handler.reset)
     assert screenDiffChecker(
         'localization/ar_AE/con_wrong_pass_modal.png'
     ) is None
@@ -26,11 +26,11 @@ def test_con_wrong_pass_modal(click, type, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_control(click, type, screenDiffChecker):
-    click(modal.pwd_input)
-    click(btn.change_lang)
-    click(btn.choose_numbers)
+    click(modal.pwd.input)
+    click(btn.kb.lang)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.inv_pwd_ok)
+    click(modal.pwd.ok_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_control.png'
     ) is None
@@ -38,7 +38,7 @@ def test_control(click, type, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_connection_open(click, screenDiffChecker):
-    click(btn.inv_connection)
+    click(btn.control.connection_ae)
     time.sleep(connection)
     time.sleep(modals)
     assert screenDiffChecker(
@@ -49,7 +49,7 @@ def test_connection_open(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_connection_info_modal(click, screenDiffChecker):
-    click(btn.inv_connection_info)
+    click(btn.connection.info_ae)
     time.sleep(modals)
     assert screenDiffChecker(
         'localization/ar_AE/con_connection_info_modal.png',
@@ -59,8 +59,8 @@ def test_connection_info_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_connection_update_modal(click, screenDiffChecker):
-    click(modal.inv_connection_info_close)
-    click(btn.inv_connection_update)
+    click(modal.connection_info.close_ae)
+    click(btn.connection.update_ae)
     time.sleep(connection)
     time.sleep(2)
     assert screenDiffChecker(
@@ -72,9 +72,9 @@ def test_connection_update_modal(click, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_connection_wifi_pass_modal(click, screenDiffChecker):
     time.sleep(modals)
-    click(btn.connection_choose_wifi)
-    click(btn.reset_input)
-    click(btn.reset_input)
+    click(btn.connection.choose_wifi)
+    click(btn.handler.reset)
+    click(btn.handler.reset)
     assert screenDiffChecker(
         'localization/ar_AE/con_wifi_pass_modal.png',
         (365, 292, 548, 212)
@@ -83,9 +83,9 @@ def test_connection_wifi_pass_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_promo_open(click, screenDiffChecker):
-    click(modal.inv_wifi_pwd_close)
-    click(btn.inv_back)
-    click(btn.inv_promo)
+    click(modal.wifi_pwd.close_aeclose)
+    click(btn.handler.back_ae)
+    click(btn.control.promo_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_promo.png',
         (0, 40, 1280, 100)
@@ -94,10 +94,10 @@ def test_promo_open(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_add_picture_modal(click, screenDiffChecker):
-    click(btn.inv_promo_pictures)
-    click(btn.inv_promo_pictures)
-    click(btn.inv_promo_fs_checkbox1)
-    click(btn.inv_promo_add)
+    click(btn.promo.pictures_ae)
+    click(btn.promo.pictures_ae)
+    click(btn.promo.fs_checkbox1_ae)
+    click(btn.promo.add_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_add_picture_modal.png'
     ) is None
@@ -105,7 +105,7 @@ def test_add_picture_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_added_picture(click, screenDiffChecker):
-    click(modal.inv_promo_yes)
+    click(modal.promo.yes_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_add_picture_slideshow.png'
     ) is None
@@ -113,8 +113,8 @@ def test_added_picture(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_delete_picture_modal(click, screenDiffChecker):
-    click(btn.inv_promo_robot_checkbox1)
-    click(btn.inv_promo_delete)
+    click(btn.promo.robot_checkbox1_ae)
+    click(btn.promo.remove_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_delete_picture_modal.png'
     ) is None
@@ -122,7 +122,7 @@ def test_delete_picture_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_deleted_picture(click, screenDiffChecker):
-    click(modal.inv_promo_yes)
+    click(modal.promo.yes_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_delete_picture_slideshow.png'
     ) is None
@@ -130,8 +130,8 @@ def test_deleted_picture(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_printshow(click, screenDiffChecker):
-    click(btn.inv_promo_selector)
-    click(btn.inv_promo_print)
+    click(btn.promo.selector_ae)
+    click(btn.promo.printshow_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_promo_printshow.png'
     ) is None
@@ -139,11 +139,11 @@ def test_printshow(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_identification(click, screenDiffChecker):
-    click(btn.inv_back)
-    click(modal.inv_save_no)
-    click(btn.inv_ident)
-    click(btn.reset_input)
-    click(btn.reset_input)
+    click(btn.handler.back_ae)
+    click(modal.save.no_ae)
+    click(btn.control.ident_ae)
+    click(btn.handler.reset)
+    click(btn.handler.reset)
     assert screenDiffChecker(
         'localization/ar_AE/con_identification.png'
     ) is None
@@ -151,8 +151,8 @@ def test_identification(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_charge_app(click, screenDiffChecker):
-    click(modal.inv_ident_close)
-    click(btn.inv_charge_app)
+    click(modal.ident.close_ae)
+    click(btn.control.charge_app_ae)
     time.sleep(2)
     assert screenDiffChecker(
         'localization/ar_AE/con_charge_app.png'
@@ -161,15 +161,15 @@ def test_charge_app(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_phrase_mode_on(click, type, screenDiffChecker):
-    click(btn.inv_charge_app_close)
+    click(btn.control.charge_app_close_ae)
     time.sleep(modals)
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.change_lang)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.lang)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.inv_pwd_ok)
-    click(btn.inv_phrase_mode)
+    click(modal.pwd.ok_ae)
+    click(btn.control.phrase_mode_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_phrase_mode_on.png'
     ) is None
@@ -178,14 +178,14 @@ def test_phrase_mode_on(click, type, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_phrase_mode_off(click, screenDiffChecker):
     time.sleep(modals)
-    click(btn.inv_phrase_mode)
+    click(btn.control.phrase_mode_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_phrase_mode_off.png'
     ) is None
 
 
 @pytest.mark.localization_ar_AE
-def test_volume(joy, node, screenDiffChecker):
+def test_volume(screenDiffChecker, joy, node):
     time.sleep(modals)
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
@@ -195,7 +195,7 @@ def test_volume(joy, node, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_mic(joy, node, screenDiffChecker):
+def test_mic(screenDiffChecker, joy, node):
     time.sleep(modals)
     joy_msg = joy.downVolume()
     node.joyCommandPub(joy_msg)
@@ -208,12 +208,12 @@ def test_mic(joy, node, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_restart_modal(click, joy, node, screenDiffChecker):
+def test_restart_modal(click, screenDiffChecker, joy, node):
     time.sleep(modals)
     joy_msg = joy.downMic()
     node.joyCommandPub(joy_msg)
     time.sleep(modals)
-    click(btn.inv_restart)
+    click(btn.control.restart_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_restart_modal.png'
     ) is None
@@ -221,6 +221,6 @@ def test_restart_modal(click, joy, node, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_reset(click):
-    click(modal.inv_restart_no)
-    click(btn.inv_back)
+    click(modal.restart.no_ae)
+    click(btn.handler.back_ae)
     time.sleep(modals)

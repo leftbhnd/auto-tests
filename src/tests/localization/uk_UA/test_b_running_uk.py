@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, slowly, modals, running, restart, btn, modal
+from src.helpers.config import btn, modal, default, slowly, modals, running, restart
 '''
 148.84 seconds
 '''
@@ -11,16 +11,16 @@ from src.helpers.config import default, slowly, modals, running, restart, btn, m
 
 @pytest.mark.localization_uk_UA
 def test_no_connection_modal(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.answers_log)
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(modal.pwd.ok)
+    click(btn.control.answers_log)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(35)
-    click(btn.play)
+    click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/uk_UA/run_no_connection_modal.png'
@@ -29,7 +29,7 @@ def test_no_connection_modal(click, type, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_radius_modal(click, screenDiffChecker):
-    click(modal.no_connection_yes)
+    click(modal.no_connection.yes)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/uk_UA/run_radius_modal.png'
@@ -38,7 +38,7 @@ def test_radius_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_check_run_state(click, screenDiffChecker):
-    click(modal.radius_yes)
+    click(modal.radius.yes)
     assert screenDiffChecker(
         'localization/uk_UA/run_state.png'
     ) is None
@@ -61,9 +61,9 @@ def test_check_run(screenDiffChecker):
 
 
 @pytest.mark.localization_uk_UA
-def test_answer_log(click, node, screenDiffChecker):
+def test_answer_log(click, screenDiffChecker, node):
     time.sleep(running)
-    click(modal.ans_log_clear)
+    click(modal.ans_log.clear)
     node.cancelSpeechPub()
     node.asrPub('тестове правило з лопатою')
     time.sleep(slowly)
@@ -75,8 +75,8 @@ def test_answer_log(click, node, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_speech_settings(click, screenDiffChecker):
-    click(modal.ans_log_close)
-    click(btn.speech_settings)
+    click(modal.ans_log.close)
+    click(btn.gui.speech_settings)
     assert screenDiffChecker(
         'localization/uk_UA/run_speech_settings.png',
         (0, 40, 1280, 660)
@@ -85,11 +85,11 @@ def test_speech_settings(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_testing_script(click, openServiceMenu, screenDiffChecker):
-    click(modal.speech_settings_close)
+    click(modal.speech_settings.close)
     openServiceMenu()
-    click(btn.testing)
+    click(btn.control.testing)
     time.sleep(modals)
-    click(btn.test_hand_right_uk)
+    click(btn.testing.hand_right_uk)
     time.sleep(default)
     assert screenDiffChecker(
         'localization/uk_UA/run_script_is_running.png'
@@ -99,7 +99,7 @@ def test_testing_script(click, openServiceMenu, screenDiffChecker):
 @pytest.mark.localization_uk_UA
 def test_main_camera(click, screenDiffChecker):
     time.sleep(8)
-    click(btn.test_main_camera_uk)
+    click(btn.testing.main_camera_uk)
     assert screenDiffChecker(
         'localization/uk_UA/run_testing_main_camera_header.png',
         (0, 40, 1280, 60)
@@ -108,8 +108,8 @@ def test_main_camera(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_face_recognize(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_fr_uk)
+    click(modal.testing.videostream_close)
+    click(btn.testing.fr_uk)
     assert screenDiffChecker(
         'localization/uk_UA/run_testing_face_recognize_header.png',
         (0, 40, 1280, 60)
@@ -118,8 +118,8 @@ def test_face_recognize(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_bottom_camera(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_bottom_uk)
+    click(modal.testing.videostream_close)
+    click(btn.testing.bottom_uk)
     assert screenDiffChecker(
         'localization/uk_UA/run_testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
@@ -128,8 +128,8 @@ def test_bottom_camera(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_fisheye_camera(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_fisheye_uk)
+    click(modal.testing.videostream_close)
+    click(btn.testing.fisheye_uk)
     assert screenDiffChecker(
         'localization/uk_UA/run_testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
@@ -138,8 +138,8 @@ def test_fisheye_camera(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_periphery_statuses(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_periphery_statuses)
+    click(modal.testing.videostream_close)
+    click(btn.testing.periphery_statuses)
     assert screenDiffChecker(
         'localization/uk_UA/run_periphery_statuses_modal.png'
     ) is None
@@ -147,8 +147,8 @@ def test_periphery_statuses(click, screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_record_sound_start(click, screenDiffChecker):
-    click(btn.test_periphery_statuses_close)
-    click(btn.test_record_sound)
+    click(modal.testing.periphery_close)
+    click(btn.testing.record)
     assert screenDiffChecker(
         'localization/uk_UA/run_testing_record_sound_start.png'
     ) is None
@@ -164,17 +164,17 @@ def test_record_sound_finish(screenDiffChecker):
 
 @pytest.mark.localization_uk_UA
 def test_auto_mode_popup(click, type, screenDiffChecker):
-    click(btn.back)
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(btn.handler.back)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(restart)
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.auto_mode)
-    click(btn.back)
+    click(modal.pwd.ok)
+    click(btn.control.auto_mode)
+    click(btn.handler.back)
     assert screenDiffChecker(
         'localization/uk_UA/run_automode_popup.png'
     ) is None
@@ -183,13 +183,13 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
 @pytest.mark.localization_uk_UA
 def test_joy_mode_popup(click, type, screenDiffChecker):
     time.sleep(modals)
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.auto_mode)
-    click(btn.back)
+    click(modal.pwd.ok)
+    click(btn.control.auto_mode)
+    click(btn.handler.back)
     assert screenDiffChecker(
         'localization/uk_UA/run_joy_mode_popup.png'
     ) is None

@@ -11,4 +11,5 @@ class WifiPasswordModal(enum.Enum):
     kb_eye = (871, 257)
     close = (889, 319)
     kb_close = (892, 179)
-    inv_close = (386, 306)
+    close_ae = (386, 306)
+    close_he = (386, 306)
