@@ -26,7 +26,7 @@ def test_connection_open(click, type, screenDiffChecker):
 
 @pytest.mark.interface_connection_modals
 def test_connection_info_modal(click, screenDiffChecker):
-    click(btn.connection_info)
+    click(btn.connection.info)
     time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/connection_info_modal.png',
