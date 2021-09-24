@@ -133,7 +133,7 @@ def test_lingvo_sources(click, screenDiffChecker):
 @pytest.mark.interface_settings
 def test_language_settings_synthesis(click, screenDiffChecker):
     click(btn.handler.back)
-    click(btn.lang.set_lang)
+    click(btn.settings.lang)
     click(btn.lang.synthesis)
     assert screenDiffChecker(
         'interfaces/language_settings_synthesis.png'
