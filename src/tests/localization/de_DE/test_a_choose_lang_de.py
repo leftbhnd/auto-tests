@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import btn, modal, modals
 '''
 X seconds
 '''
@@ -11,20 +11,20 @@ X seconds
 
 @pytest.mark.localization_de_DE
 def test_choose_lang(click, type, node):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.settings)
-    click(btn.lang_settings)
-    click(btn.lang_de_DE)
-    click(btn.lang_set_default)
-    click(btn.back)
-    click(modal.save_yes)
+    click(modal.pwd.ok)
+    click(btn.control.settings)
+    click(btn.settings.lang)
+    click(btn.lang.de_DE)
+    click(btn.lang.set_default)
+    click(btn.handler.back)
+    click(modal.save.yes)
     time.sleep(modals)
-    click(btn.back)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(modals)
     assert node.getSystemLanguage() == 'de_DE'
