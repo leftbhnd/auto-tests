@@ -25,4 +25,4 @@ class System(enum.Enum):
     reset_nb = (124, 555)
     reset_uk = (143, 553)
     interaction_down_arrow = (1198, 720)
-    dialog_down_arrow = (1200, 722)
+    dialog_down_arr = (1200, 722)
