@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import slowly, running, restart, btn, modal
+from src.helpers.config import btn, modal, slowly, running, restart
 '''
 58.51 seconds
 '''
@@ -11,7 +11,7 @@ from src.helpers.config import slowly, running, restart, btn, modal
 
 @pytest.mark.interface_statuses_of_running
 def test_check_radius_modal(click, screenDiffChecker):
-    click(btn.play)
+    click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/radius_modal.png'
@@ -20,7 +20,7 @@ def test_check_radius_modal(click, screenDiffChecker):
 
 @pytest.mark.interface_statuses_of_running
 def test_check_run_state(click, screenDiffChecker):
-    click(modal.radius_yes)
+    click(modal.radius.yes)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -46,6 +46,6 @@ def test_check_run(screenDiffChecker):
 def test_restore(click, openServiceMenu):
     time.sleep(running)
     openServiceMenu()
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(restart)

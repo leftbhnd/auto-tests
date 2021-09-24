@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import slowly, running, restart, btn, modal
+from src.helpers.config import btn, modal, slowly, running, restart
 '''
 92.24 seconds
 '''
@@ -11,14 +11,14 @@ from src.helpers.config import slowly, running, restart, btn, modal
 
 @pytest.mark.interface_statuses_of_running
 def test_networkOff_modal(click, type, screenDiffChecker):
-    click(btn.control)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(modal.pwd.ok)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(35)
-    click(btn.play)
+    click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/no_connection_modal.png'
@@ -27,8 +27,8 @@ def test_networkOff_modal(click, type, screenDiffChecker):
 
 @pytest.mark.interface_statuses_of_running
 def test_check_run_state(click, screenDiffChecker):
-    click(modal.no_connection_yes)
-    click(modal.radius_yes)
+    click(modal.no_connection.yes)
+    click(modal.radius.yes)
     assert screenDiffChecker(
         'interfaces/run_state.png'
     ) is None
@@ -54,6 +54,6 @@ def test_check_run(screenDiffChecker):
 def test_restore(click, openServiceMenu):
     time.sleep(running)
     openServiceMenu()
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(restart)

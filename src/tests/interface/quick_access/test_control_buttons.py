@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import btn, modal, modals
 '''
 23.40 seconds
 '''
@@ -11,12 +11,12 @@ from src.helpers.config import modals, btn, modal
 
 @pytest.mark.interface_quick_access
 def test_connection(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.connection)
+    click(modal.pwd.ok)
+    click(btn.control.connection)
     time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/connection.png',
@@ -26,8 +26,8 @@ def test_connection(click, type, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_promo(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.promo)
+    click(btn.handler.back)
+    click(btn.control.promo)
     assert screenDiffChecker(
         'interfaces/promo.png',
         (0, 40, 1280, 100)
@@ -36,8 +36,8 @@ def test_promo(click, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_testing(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.testing)
+    click(btn.handler.back)
+    click(btn.control.testing)
     assert screenDiffChecker(
         'interfaces/testing.png'
     ) is None
@@ -45,8 +45,8 @@ def test_testing(click, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_settings(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.settings)
+    click(btn.handler.back)
+    click(btn.control.settings)
     assert screenDiffChecker(
         'interfaces/settings.png'
     ) is None
@@ -54,8 +54,8 @@ def test_settings(click, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_browser(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.browser)
+    click(btn.handler.back)
+    click(btn.control.browser)
     time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/browser.png',
@@ -65,10 +65,10 @@ def test_browser(click, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_identification(click, screenDiffChecker):
-    click(btn.browser_close)
-    click(btn.ident)
-    click(btn.reset_input)
-    click(btn.reset_input)
+    click(btn.control.browser_close)
+    click(btn.control.ident)
+    click(btn.handler.reset)
+    click(btn.handler.reset)
     assert screenDiffChecker(
         'interfaces/identification.png'
     ) is None
@@ -76,6 +76,6 @@ def test_identification(click, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_restore(click):
-    click(modal.ident_close)
-    click(btn.back)
+    click(modal.ident.close)
+    click(btn.handler.back)
     time.sleep(modals)

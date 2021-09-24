@@ -3,16 +3,16 @@
 import pytest
 import time
 
-from src.helpers.config import running, restart, btn, modal
+from src.helpers.config import btn, modal, running, restart
 '''
 63.23 seconds
 '''
 
 
 @pytest.mark.interface_dialog_line
-def test_dialog_line(click, node, screenDiffChecker):
-    click(btn.play)
-    click(modal.radius_yes)
+def test_dialog_line(click, screenDiffChecker, node):
+    click(btn.start.play)
+    click(modal.radius.yes)
     time.sleep(running)
     node.cancelSpeechPub()
     node.asrPub('тестовое правило с лопатой')
@@ -24,6 +24,6 @@ def test_dialog_line(click, node, screenDiffChecker):
 @pytest.mark.interface_dialog_line
 def test_restore(click, openServiceMenu):
     openServiceMenu()
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(restart)
