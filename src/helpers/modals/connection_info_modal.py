@@ -5,4 +5,5 @@ import enum
 
 class ConnectionInfoModal(enum.Enum):
     close = (889, 308)
-    inv_close = (386, 311)
+    close_ae = (386, 311)
+    close_he = (386, 311)

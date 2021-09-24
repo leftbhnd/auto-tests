@@ -5,5 +5,6 @@ import enum
 
 class Handlers(enum.Enum):
     back = (97, 91)
-    inv_back = (1186, 98)
+    back_ae = (1186, 98)
+    back_he = (1186, 98)
     reset = (612, 62)
