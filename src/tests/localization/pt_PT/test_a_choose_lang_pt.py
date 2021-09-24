@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import btn, modal, modals
 '''
 20.77 seconds
 '''
@@ -11,22 +11,22 @@ from src.helpers.config import modals, btn, modal
 
 @pytest.mark.localization_pt_PT
 def test_choose_lang(click, type, node):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.settings)
-    click(btn.lang_settings)
+    click(modal.pwd.ok)
+    click(btn.control.settings)
+    click(btn.settings.lang)
     for i in range(12):
-        click(btn.lang_down_arrow)
-    click(btn.lang_pt_PT)
-    click(btn.lang_set_default)
-    click(btn.back)
-    click(modal.save_yes)
+        click(btn.lang.down_arr)
+    click(btn.lang.pt_PT)
+    click(btn.lang.set_default)
+    click(btn.handler.back)
+    click(modal.save.yes)
     time.sleep(modals)
-    click(btn.back)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(modals)
     assert node.getSystemLanguage() == 'pt_PT'
