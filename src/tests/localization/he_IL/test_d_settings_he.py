@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, slowly, modals, btn, modal, params
+from src.helpers.config import btn, modal, param, default, slowly, modals
 '''
 32.89 seconds
 '''
@@ -11,12 +11,12 @@ from src.helpers.config import default, slowly, modals, btn, modal, params
 
 @pytest.mark.localization_he_IL
 def test_settings(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.inv_pwd_ok)
-    click(btn.inv_settings)
+    click(modal.pwd.ok_he)
+    click(btn.control.settings_he)
     assert screenDiffChecker(
         'localization/he_IL/settings.png'
     ) is None
@@ -24,7 +24,7 @@ def test_settings(click, type, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_system(click, screenDiffChecker):
-    click(btn.inv_system)
+    click(btn.settings.system_he)
     assert screenDiffChecker(
         'localization/he_IL/set_system.png'
     ) is None
@@ -32,7 +32,7 @@ def test_system(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_system_interaction(click, screenDiffChecker):
-    click(btn.inv_system_interaction)
+    click(btn.system.interaction_he)
     assert screenDiffChecker(
         'localization/he_IL/set_system_interaction.png'
     ) is None
@@ -40,7 +40,7 @@ def test_system_interaction(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_system_menu_panel(click, screenDiffChecker):
-    click(btn.inv_system_menu_panel)
+    click(btn.system.menu_panel_he)
     assert screenDiffChecker(
         'localization/he_IL/set_system_menu_panel.png'
     ) is None
@@ -48,7 +48,7 @@ def test_system_menu_panel(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_system_mic_array(click, screenDiffChecker):
-    click(btn.inv_system_mic_array)
+    click(btn.system.mic_array_he)
     assert screenDiffChecker(
         'localization/he_IL/set_system_mic_array.png'
     ) is None
@@ -56,7 +56,7 @@ def test_system_mic_array(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_system_reset(click, screenDiffChecker):
-    click(btn.inv_system_reset)
+    click(btn.system.reset_he)
     assert screenDiffChecker(
         'localization/he_IL/set_system_reset.png'
     ) is None
@@ -64,8 +64,8 @@ def test_system_reset(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_applications(click, screenDiffChecker):
-    click(btn.inv_back)
-    click(btn.inv_apps)
+    click(btn.handler.back_he)
+    click(btn.settings.apps_he)
     assert screenDiffChecker(
         'localization/he_IL/set_applications.png'
     ) is None
@@ -73,8 +73,8 @@ def test_applications(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_face_recognize(click, screenDiffChecker):
-    click(btn.inv_back)
-    click(btn.inv_fr)
+    click(btn.handler.back_he)
+    click(btn.settings.fr_he)
     assert screenDiffChecker(
         'localization/he_IL/set_face_recognize.png'
     ) is None
@@ -82,7 +82,7 @@ def test_face_recognize(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_fr_facedb(click, screenDiffChecker):
-    click(btn.inv_fr_facedb)
+    click(btn.fr.facedb_he)
     assert screenDiffChecker(
         'localization/he_IL/set_face_recognize_facedb.png'
     ) is None
@@ -90,7 +90,7 @@ def test_fr_facedb(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_fr_adding_faces_modal(click, screenDiffChecker):
-    click(btn.inv_fr_facedb_select_folder)
+    click(btn.fr.facedb_select_folder_he)
     assert screenDiffChecker(
         'localization/he_IL/set_adding_faces_modal.png'
     ) is None
@@ -98,9 +98,9 @@ def test_fr_adding_faces_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_navigation(click, screenDiffChecker):
-    click(modal.inv_add_faces_close)
-    click(btn.inv_back)
-    click(btn.inv_nav)
+    click(modal.add_face.close_he)
+    click(btn.handler.back_he)
+    click(btn.settings.nav_he)
     assert screenDiffChecker(
         'localization/he_IL/set_navigation.png'
     ) is None
@@ -108,10 +108,10 @@ def test_navigation(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_save_parameters(click, screenDiffChecker):
-    click(params.inv_useRadius)
-    click(params.inv_useRadius)
-    click(btn.inv_back)
-    click(modal.inv_save_yes)
+    click(param.driving.useRadius_he)
+    click(param.driving.useRadius_he)
+    click(btn.handler.back_he)
+    click(modal.save.yes_he)
     assert screenDiffChecker(
         'localization/he_IL/set_save_parameters.png'
     ) is None
@@ -120,7 +120,7 @@ def test_save_parameters(click, screenDiffChecker):
 @pytest.mark.localization_he_IL
 def test_lingvo(click, screenDiffChecker):
     time.sleep(modals)
-    click(btn.inv_lingvo)
+    click(btn.settings.lingvo_he)
     assert screenDiffChecker(
         'localization/he_IL/set_lingvo.png'
     ) is None
@@ -128,7 +128,7 @@ def test_lingvo(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_lingvo_sources(click, screenDiffChecker):
-    click(btn.inv_lingvo_sources)
+    click(btn.lingvo.sources_he)
     assert screenDiffChecker(
         'localization/he_IL/set_lingvo_sources.png'
     ) is None
@@ -136,8 +136,8 @@ def test_lingvo_sources(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_language_settings(click, screenDiffChecker):
-    click(btn.inv_back)
-    click(btn.inv_lang_settings)
+    click(btn.handler.back_he)
+    click(btn.settings.lang_he)
     assert screenDiffChecker(
         'localization/he_IL/set_language_settings.png'
     ) is None
@@ -145,8 +145,8 @@ def test_language_settings(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_internet_services(click, screenDiffChecker):
-    click(btn.inv_back)
-    click(btn.inv_internet)
+    click(btn.handler.back_he)
+    click(btn.settings.internet_he)
     assert screenDiffChecker(
         'localization/he_IL/set_internet_services.png'
     ) is None
@@ -154,7 +154,7 @@ def test_internet_services(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_internet_services_sip(click, screenDiffChecker):
-    click(btn.inv_internet_sip)
+    click(btn.internet.sip_he)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/he_IL/set_internet_services_sip.png'
@@ -163,7 +163,7 @@ def test_internet_services_sip(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_internet_services_ya_disk(click, screenDiffChecker):
-    click(btn.inv_internet_ya_disk)
+    click(btn.internet.ya_disk_he)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/he_IL/set_internet_services_ya_disk.png'
@@ -172,9 +172,9 @@ def test_internet_services_ya_disk(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_update(click, screenDiffChecker):
-    click(btn.inv_back)
+    click(btn.handler.back_he)
     time.sleep(default)
-    click(btn.inv_update)
+    click(btn.settings.update_he)
     assert screenDiffChecker(
         'localization/he_IL/set_update.png',
         (0, 215, 1280, 585)
@@ -183,7 +183,7 @@ def test_update(click, screenDiffChecker):
 
 @pytest.mark.localization_he_IL
 def test_reset(click):
-    click(btn.inv_back)
-    click(btn.inv_back)
-    click(btn.inv_back)
+    click(btn.handler.back_he)
+    click(btn.handler.back_he)
+    click(btn.handler.back_he)
     time.sleep(modals)
