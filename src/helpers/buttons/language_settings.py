@@ -18,6 +18,7 @@ class LanguageSettings(enum.Enum):
     # первая группа языков
     ar_AE = (465, 411)
     az_AZ = (453, 464)
+    az_AZ_ae = (794, 465)
     az_AZ = (794, 465)
     cz_CZ = (459, 528)
     de_DE = (472, 579)
