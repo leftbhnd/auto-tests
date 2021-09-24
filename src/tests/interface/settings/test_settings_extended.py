@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, slowly, modals, btn, modal
+from src.helpers.config import btn, modal, default, slowly, modals
 '''
 31.53 seconds
 '''
@@ -11,14 +11,14 @@ from src.helpers.config import default, slowly, modals, btn, modal
 
 @pytest.mark.interface_settings
 def test_system_hardware(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.settings)
-    click(btn.system)
-    click(btn.system_hardware)
+    click(modal.pwd.ok)
+    click(btn.control.settings)
+    click(btn.settings.system)
+    click(btn.system.hardware)
     assert screenDiffChecker(
         'interfaces/system_hardware.png'
     ) is None
@@ -26,7 +26,7 @@ def test_system_hardware(click, type, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system_led(click, screenDiffChecker):
-    click(btn.system_led)
+    click(btn.system.led)
     assert screenDiffChecker(
         'interfaces/system_led.png'
     ) is None
@@ -34,7 +34,7 @@ def test_system_led(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system_dialog(click, screenDiffChecker):
-    click(btn.system_dialog)
+    click(btn.system.dialog)
     assert screenDiffChecker(
         'interfaces/system_dialog.png'
     ) is None
@@ -42,7 +42,7 @@ def test_system_dialog(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system_interaction(click, screenDiffChecker):
-    click(btn.system_interaction)
+    click(btn.system.interaction)
     assert screenDiffChecker(
         'interfaces/system_interaction.png'
     ) is None
@@ -50,7 +50,7 @@ def test_system_interaction(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system_menu_panel(click, screenDiffChecker):
-    click(btn.system_menu_panel)
+    click(btn.system.menu_panel)
     assert screenDiffChecker(
         'interfaces/system_menu_panel.png'
     ) is None
@@ -58,7 +58,7 @@ def test_system_menu_panel(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system_reset(click, screenDiffChecker):
-    click(btn.system_reset)
+    click(btn.system.reset)
     assert screenDiffChecker(
         'interfaces/system_reset.png'
     ) is None
@@ -66,7 +66,7 @@ def test_system_reset(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system_mic_array(click, screenDiffChecker):
-    click(btn.system_mic_array)
+    click(btn.system.mic_array)
     assert screenDiffChecker(
         'interfaces/system_mic_array.png'
     ) is None
@@ -74,10 +74,10 @@ def test_system_mic_array(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_applications_apps(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.apps)
-    click(btn.apps_main)
-    click(btn.apps_applications)
+    click(btn.handler.back)
+    click(btn.settings.apps)
+    click(btn.apps.home)
+    click(btn.apps.applications)
     assert screenDiffChecker(
         'interfaces/applications_apps.png'
     ) is None
@@ -85,8 +85,8 @@ def test_applications_apps(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_applications_widgets(click, screenDiffChecker):
-    click(btn.apps_applications)
-    click(btn.apps_widgets)
+    click(btn.apps.applications)
+    click(btn.apps.widgets)
     assert screenDiffChecker(
         'interfaces/applications_widgets.png'
     ) is None
@@ -94,9 +94,9 @@ def test_applications_widgets(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_face_recognize_tracker(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.fr)
-    click(btn.fr_tacker)
+    click(btn.handler.back)
+    click(btn.settings.fr)
+    click(btn.fr.tacker)
     assert screenDiffChecker(
         'interfaces/face_recognize_tracker.png'
     ) is None
@@ -104,7 +104,7 @@ def test_face_recognize_tracker(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_face_recognize_facedb(click, screenDiffChecker):
-    click(btn.fr_facedb)
+    click(btn.fr.facedb)
     assert screenDiffChecker(
         'interfaces/face_recognize_facedb.png'
     ) is None
@@ -112,9 +112,9 @@ def test_face_recognize_facedb(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_navigation_navigation(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.nav)
-    click(btn.nav_navigation)
+    click(btn.handler.back)
+    click(btn.settings.nav)
+    click(btn.nav.navigation)
     assert screenDiffChecker(
         'interfaces/navigation_navigation.png'
     ) is None
@@ -122,9 +122,9 @@ def test_navigation_navigation(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_lingvo_sources(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.lingvo)
-    click(btn.lingvo_sources)
+    click(btn.handler.back)
+    click(btn.settings.lingvo)
+    click(btn.lingvo.sources)
     assert screenDiffChecker(
         'interfaces/lingvo_sources.png'
     ) is None
@@ -132,9 +132,9 @@ def test_lingvo_sources(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_language_settings_synthesis(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.lang_settings)
-    click(btn.lang_settings_synthesis)
+    click(btn.handler.back)
+    click(btn.lang.set_lang)
+    click(btn.lang.synthesis)
     assert screenDiffChecker(
         'interfaces/language_settings_synthesis.png'
     ) is None
@@ -142,9 +142,9 @@ def test_language_settings_synthesis(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_internet_services_sip(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.internet)
-    click(btn.internet_sip)
+    click(btn.handler.back)
+    click(btn.settings.internet)
+    click(btn.internet.sip)
     time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/internet_services_sip.png'
@@ -153,7 +153,7 @@ def test_internet_services_sip(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_internet_services_ya_disk(click, screenDiffChecker):
-    click(btn.internet_ya_disk)
+    click(btn.internet.ya_disk)
     time.sleep(slowly)
     assert screenDiffChecker(
         'interfaces/internet_services_ya_disk.png'
@@ -162,8 +162,8 @@ def test_internet_services_ya_disk(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_reset(click):
-    click(btn.back)
+    click(btn.handler.back)
     time.sleep(default)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(modals)

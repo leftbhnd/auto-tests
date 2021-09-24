@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, modals, btn, modal
+from src.helpers.config import btn, modal, default, modals
 '''
 17.87 seconds
 '''
@@ -11,12 +11,12 @@ from src.helpers.config import default, modals, btn, modal
 
 @pytest.mark.interface_settings
 def test_settings_open(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.settings)
+    click(modal.pwd.ok)
+    click(btn.control.settings)
     assert screenDiffChecker(
         'interfaces/settings.png'
     ) is None
@@ -24,7 +24,7 @@ def test_settings_open(click, type, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_system(click, screenDiffChecker):
-    click(btn.system)
+    click(btn.settings.system)
     assert screenDiffChecker(
         'interfaces/system.png'
     ) is None
@@ -32,8 +32,8 @@ def test_system(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_applications(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.apps)
+    click(btn.handler.back)
+    click(btn.setting.apps)
     assert screenDiffChecker(
         'interfaces/applications.png'
     ) is None
@@ -41,8 +41,8 @@ def test_applications(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_face_recognize(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.fr)
+    click(btn.handler.back)
+    click(btn.settings.fr)
     assert screenDiffChecker(
         'interfaces/face_recognize.png'
     ) is None
@@ -50,8 +50,8 @@ def test_face_recognize(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_navigation(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.nav)
+    click(btn.handler.back)
+    click(btn.settings.nav)
     assert screenDiffChecker(
         'interfaces/navigation.png'
     ) is None
@@ -59,8 +59,8 @@ def test_navigation(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_lingvo(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.lingvo)
+    click(btn.handler.back)
+    click(btn.settings.lingvo)
     assert screenDiffChecker(
         'interfaces/lingvo.png'
     ) is None
@@ -68,8 +68,8 @@ def test_lingvo(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_language_settings(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.lang_settings)
+    click(btn.handler.back)
+    click(btn.settings.lang)
     assert screenDiffChecker(
         'interfaces/language_settings.png'
     ) is None
@@ -77,8 +77,8 @@ def test_language_settings(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_internet_services(click, screenDiffChecker):
-    click(btn.back)
-    click(btn.internet)
+    click(btn.handler.back)
+    click(btn.settings.internet)
     assert screenDiffChecker(
         'interfaces/internet_services.png'
     ) is None
@@ -86,8 +86,8 @@ def test_internet_services(click, screenDiffChecker):
 
 @pytest.mark.interface_settings
 def test_reset(click):
-    click(btn.back)
+    click(btn.handler.back)
     time.sleep(default)
-    click(btn.back)
-    click(btn.back)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(modals)

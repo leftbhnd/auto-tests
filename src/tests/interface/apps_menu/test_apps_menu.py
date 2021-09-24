@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, running, restart, btn, modal
+from src.helpers.config import btn, modal, default, running, restart
 '''
 65.54 seconds
 '''
@@ -11,10 +11,10 @@ from src.helpers.config import default, running, restart, btn, modal
 
 @pytest.mark.interface_apps_menu
 def test_menu_open_button(click, screenDiffChecker):
-    click(btn.play)
-    click(modal.radius_yes)
+    click(btn.start.play)
+    click(modal.radius.yes)
     time.sleep(running)
-    click(btn.apps_menu_open)
+    click(btn.gui.apps_menu_open)
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/apps_menu.png',
@@ -44,7 +44,7 @@ def test_menu_open_swipe(dNd, screenDiffChecker):
 
 @pytest.mark.interface_apps_menu
 def test_menu_close_button(click, screenDiffChecker):
-    click(btn.apps_menu_close)
+    click(btn.gui.apps_menu_close)
     time.sleep(default)
     assert screenDiffChecker(
         'interfaces/gui.png',
@@ -55,6 +55,6 @@ def test_menu_close_button(click, screenDiffChecker):
 @pytest.mark.interface_apps_menu
 def test_restore(click, openServiceMenu):
     openServiceMenu()
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(restart)

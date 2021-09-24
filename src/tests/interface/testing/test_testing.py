@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import running, restart, modals, btn, modal
+from src.helpers.config import btn, modal, running, restart, modals
 '''
 163.8 seconds
 '''
@@ -11,11 +11,11 @@ from src.helpers.config import running, restart, modals, btn, modal
 
 @pytest.mark.interface_testing
 def test_testing_open(click, openServiceMenu, screenDiffChecker):
-    click(btn.play)
-    click(modal.radius_yes)
+    click(btn.start.play)
+    click(modal.radius.yes)
     time.sleep(running)
     openServiceMenu()
-    click(btn.testing)
+    click(btn.control.testing)
     time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/testing_runned.png'
@@ -24,35 +24,35 @@ def test_testing_open(click, openServiceMenu, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_rotate_head(click, node):
-    click(btn.test_rotate_head)
+    click(btn.testing.rotate_head)
     assert node.getScriptProcess() == [True, 'test_rotate_head']
 
 
 @pytest.mark.interface_testing
 def test_hand_left(click, node):
     time.sleep(18)
-    click(btn.test_hand_left)
+    click(btn.testing.hand_left)
     assert node.getScriptProcess() == [True, 'test_hand_left']
 
 
 @pytest.mark.interface_testing
 def test_hand_right(click, node):
     time.sleep(8)
-    click(btn.test_hand_right)
+    click(btn.testing.hand_right)
     assert node.getScriptProcess() == [True, 'test_hand_right']
 
 
 @pytest.mark.interface_testing
 def test_zero_all_servos(click, node):
     time.sleep(8)
-    click(btn.test_zero_all_servos)
+    click(btn.testing.zero_all_servos)
     assert node.getScriptProcess() == [True, 'reset']
 
 
 @pytest.mark.interface_testing
 def test_main_camera(click, screenDiffChecker):
     time.sleep(45)
-    click(btn.test_main_camera)
+    click(btn.testing.main_camera)
     assert screenDiffChecker(
         'interfaces/testing_main_camera_header.png',
         (0, 40, 1280, 60)
@@ -61,8 +61,8 @@ def test_main_camera(click, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_face_recognize(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_fr)
+    click(modal.testing.videostream_close)
+    click(btn.testing.fr)
     assert screenDiffChecker(
         'interfaces/testing_face_recognize_header.png',
         (0, 40, 1280, 60)
@@ -71,8 +71,8 @@ def test_face_recognize(click, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_bottom_camera(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_bottom)
+    click(modal.testing.videostream_close)
+    click(btn.testing.bottom)
     assert screenDiffChecker(
         'interfaces/testing_bottom_camera_header.png',
         (0, 40, 1280, 60)
@@ -81,8 +81,8 @@ def test_bottom_camera(click, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_fisheye_camera(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_fisheye)
+    click(modal.testing.videostream_close)
+    click(btn.testing.fisheye)
     assert screenDiffChecker(
         'interfaces/testing_fisheye_camera_header.png',
         (0, 40, 1280, 60)
@@ -91,8 +91,8 @@ def test_fisheye_camera(click, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_periphery_statuses(click, screenDiffChecker):
-    click(btn.test_videostream_close)
-    click(btn.test_periphery_statuses)
+    click(modal.testing.videostream_close)
+    click(btn.testing.periphery_statuses)
     assert screenDiffChecker(
         'interfaces/periphery_statuses_modal.png'
     ) is None
@@ -100,8 +100,8 @@ def test_periphery_statuses(click, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_record_sound_start(click, screenDiffChecker):
-    click(btn.test_periphery_statuses_close)
-    click(btn.test_record_sound)
+    click(modal.testing.periphery_close)
+    click(btn.testing.record)
     assert screenDiffChecker(
         'interfaces/testing_record_sound_start.png'
     ) is None
@@ -116,8 +116,8 @@ def test_record_sound_finish(screenDiffChecker):
 
 
 @pytest.mark.interface_testing
-def test_speech_recognize(click, node, screenDiffChecker):
-    click(btn.test_speech_recognize)
+def test_speech_recognize(click, screenDiffChecker, node):
+    click(btn.testing.speech_recognize)
     node.asrPub('как дела робот')
     assert screenDiffChecker(
         'interfaces/testing_speech_recognize.png'
@@ -126,7 +126,7 @@ def test_speech_recognize(click, node, screenDiffChecker):
 
 @pytest.mark.interface_testing
 def test_reset(click):
-    click(btn.back)
-    click(btn.restart)
-    click(modal.restart_yes)
+    click(btn.handler.back)
+    click(btn.control.restart)
+    click(modal.restart.yes)
     time.sleep(restart)

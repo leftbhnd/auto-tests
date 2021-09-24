@@ -50,7 +50,7 @@ def test_delete_pictures(click, openServiceMenu, screenDiffChecker):
     openServiceMenu()
     click(btn.control.promo)
     click(btn.promo.robot_choose_all)
-    click(btn.promo.delete)
+    click(btn.promo.remove)
     click(modal.promo.yes)
     assert screenDiffChecker(
         'interaction/deleted_pictures.png'

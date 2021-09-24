@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import modals, btn, modal
+from src.helpers.config import btn, modal, modals
 '''
 21.72 seconds
 '''
@@ -11,12 +11,12 @@ from src.helpers.config import modals, btn, modal
 
 @pytest.mark.interface_wifi_input
 def test_connection_open(click, type, screenDiffChecker):
-    click(btn.control)
-    click(modal.pwd_input)
-    click(btn.choose_numbers)
+    click(btn.start.control)
+    click(modal.pwd.input)
+    click(btn.kb.numbers)
     type('123456')
-    click(modal.pwd_ok)
-    click(btn.connection)
+    click(modal.pwd.ok)
+    click(btn.control.connection)
     time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/connection.png',
@@ -27,12 +27,12 @@ def test_connection_open(click, type, screenDiffChecker):
 @pytest.mark.interface_wifi_input
 def test_hide_input(click, type, screenDiffChecker):
     time.sleep(modals)
-    click(btn.connection_choose_wifi)
-    click(modal.wifi_pwd_input)
-    click(btn.choose_numbers)
+    click(btn.connection.choose_wifi)
+    click(modal.wifi_pwd.input)
+    click(btn.kb.numbers)
     type('2281488')
-    click(btn.reset_input)
-    click(btn.reset_input)
+    click(btn.handler.reset)
+    click(btn.handler.reset)
     assert screenDiffChecker(
         'interfaces/wifi_hide_pass.png',
         (365, 162, 548, 200)
@@ -41,9 +41,9 @@ def test_hide_input(click, type, screenDiffChecker):
 
 @pytest.mark.interface_wifi_input
 def test_visiable_input(click, screenDiffChecker):
-    click(modal.wifi_kb_pwd_eye)
-    click(btn.reset_input)
-    click(btn.reset_input)
+    click(modal.wifi_pwd.kb_eye)
+    click(btn.handler.reset)
+    click(btn.handler.reset)
     assert screenDiffChecker(
         'interfaces/wifi_visiable_pass.png',
         (365, 162, 548, 200)
@@ -52,7 +52,7 @@ def test_visiable_input(click, screenDiffChecker):
 
 @pytest.mark.interface_wifi_input
 def test_reset(click):
-    click(modal.wifi_kb_pwd_close)
-    click(btn.back)
-    click(btn.back)
+    click(modal.wifi_pwd.kb_close)
+    click(btn.handler.back)
+    click(btn.handler.back)
     time.sleep(modals)
