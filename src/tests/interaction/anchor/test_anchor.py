@@ -5,7 +5,7 @@ import time
 
 from src.helpers.config import resetAnchor, interaction
 '''
-42.76 seconds
+41.40 seconds
 '''
 
 
