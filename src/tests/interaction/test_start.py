@@ -9,7 +9,7 @@ from src.helpers.config import btn, modal, running
 '''
 
 
-@pytest.mark.interaction_start
+@pytest.mark.tests_interaction_start
 def test_run(click):
     click(btn.start.play)
     click(modal.radius.yes)
