@@ -218,7 +218,30 @@ def test_restart_modal(click, screenDiffChecker, joy, node):
 
 
 @pytest.mark.localization_ar_AE
-def test_reset(click):
+def test_auto_mode_popup(click, screenDiffChecker):
     click(modal.restart.no_ae)
+    click(btn.control.auto_mode_ae)
     click(btn.handler.back_ae)
+    assert screenDiffChecker(
+        'localization/ar_AE/con_automode_popup.png'
+    ) is None
+
+
+@pytest.mark.localization_ar_AE
+def test_joy_mode_popup(click, typeText, screenDiffChecker):
+    time.sleep(modals)
+    click(btn.start.control)
+    click(btn.kb.lang)
+    click(btn.kb.numbers)
+    typeText('123456')
+    click(modal.pwd.ok_ae)
+    click(btn.control.auto_mode_ae)
+    click(btn.handler.back_ae)
+    assert screenDiffChecker(
+        'localization/ar_AE/con_joy_mode_popup.png'
+    ) is None
+
+
+@pytest.mark.localization_ar_AE
+def test_reset():
     time.sleep(modals)
