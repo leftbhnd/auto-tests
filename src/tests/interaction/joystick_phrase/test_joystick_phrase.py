@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
-
-from src.helpers.config import interaction
 '''
 30.37 seconds
 '''
@@ -41,6 +38,4 @@ def test_previous_phrase(joy, node):
 def test_reset(node, joy):
     joy_msg = joy.phraseMode()
     node.joyCommandPub(joy_msg)
-    time.sleep(interaction)
     assert node.getJoySpeech() == False
-
