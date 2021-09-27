@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, modals, interaction, running, restart
+from src.helpers.config import btn, modal, modals, running, restart
 '''
 750 seconds
 '''
@@ -61,21 +61,21 @@ def test_owner_base_low(changeLevel, node):
 def test_common_base(changeLevel, node):
     changeLevel()
     node.asrPub('порядок')
-    assert node.getAnswer() == 'common base'
+    assert node.getAnswer() == 'нераспознанная фраза'
 
 
 @pytest.mark.interaction_levels
 def test_internet_base(changeLevel, node):
     changeLevel()
     node.asrPub('порядок')
-    assert node.getAnswer() == 'internet'
+    assert node.getAnswer() == 'нераспознанная фраза'
 
 
 @pytest.mark.interaction_levels
 def test_common_base_low(changeLevel, node):
     changeLevel()
     node.asrPub('порядок')
-    assert node.getAnswer() == 'common base low'
+    assert node.getAnswer() == 'нераспознанная фраза'
 
 
 @pytest.mark.interaction_levels
@@ -88,5 +88,4 @@ def test_unrecognized(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_restore(changeLevel, node):
     changeLevel()
-    time.sleep(interaction)
     assert node.getLevelsOrder() == ['0', '1', '2', '3', '4', '5', '6', '7']
