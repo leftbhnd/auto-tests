@@ -9,23 +9,24 @@ from src.helpers.config import btn, modal, modals, interaction, running, restart
 '''
 
 @pytest.fixture
-def changeLevel(click, dNd, openServiceMenu):
-    openServiceMenu()
-    click(btn.control.settings)
-    click(btn.settings.lingvo)
-    click(btn.lingvo.sources)
-    click(btn.lingvo.first_level)
-    dNd((446, 233), (446, 655))
-    click(btn.handler.back)
-    click(modal.save.yes)
-    time.sleep(modals)
-    click(btn.handler.back)
-    click(btn.control.restart)
-    click(modal.restart.yes)
-    time.sleep(restart)
-    click(btn.start.play)
-    click(modal.radius.yes)
-    time.sleep(running)
+def changeLevel():
+    def _method(click, dNd, openServiceMenu):
+        openServiceMenu()
+        click(btn.control.settings)
+        click(btn.settings.lingvo)
+        click(btn.lingvo.sources)
+        click(btn.lingvo.first_level)
+        dNd((446, 233), (446, 655))
+        click(btn.handler.back)
+        click(modal.save.yes)
+        time.sleep(modals)
+        click(btn.handler.back)
+        click(btn.control.restart)
+        click(modal.restart.yes)
+        time.sleep(restart)
+        click(btn.start.play)
+        click(modal.radius.yes)
+        time.sleep(running)
 
 
 @pytest.mark.interaction_levels
