@@ -10,11 +10,11 @@ from src.helpers.config import btn, modal, default, slowly, modals, running, res
 
 
 @pytest.mark.localization_he_IL
-def test_no_connection_modal(click, type, screenDiffChecker):
+def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.answers_log_he)
     click(btn.control.restart_he)
@@ -84,11 +84,11 @@ def test_speech_settings(click, screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_testing_script(click, type, openPwdModal, screenDiffChecker):
+def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
     click(modal.speech_settings.close_he)
     openPwdModal()
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.testing_he)
     time.sleep(modals)
@@ -166,7 +166,7 @@ def test_record_sound_finish(screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_auto_mode_popup(click, type, screenDiffChecker):
+def test_auto_mode_popup(click, typeText, screenDiffChecker):
     click(btn.handler.back_he)
     click(btn.control.restart_he)
     click(modal.restart.yes_he)
@@ -174,7 +174,7 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.auto_mode_he)
     click(btn.handler.back_he)
@@ -184,12 +184,12 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_joy_mode_popup(click, type, screenDiffChecker):
+def test_joy_mode_popup(click, typeText, screenDiffChecker):
     time.sleep(modals)
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.auto_mode_he)
     click(btn.handler.back_he)

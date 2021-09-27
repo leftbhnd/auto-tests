@@ -10,12 +10,12 @@ from src.helpers.config import btn, modal, default, slowly, modals, running, res
 
 
 @pytest.mark.localization_ar_AE
-def test_no_connection_modal(click, type, screenDiffChecker):
+def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_ae)
     click(btn.control.answers_log_ae)
     click(btn.control.restart_ae)
@@ -85,12 +85,12 @@ def test_speech_settings(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_testing_script(click, type, openPwdModal, screenDiffChecker):
+def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
     click(modal.speech_settings.close_ae)
     openPwdModal()
     click(btn.kb.lang)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_ae)
     click(btn.control.testing_ae)
     time.sleep(modals)
@@ -168,7 +168,7 @@ def test_record_sound_finish(screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_auto_mode_popup(click, type, screenDiffChecker):
+def test_auto_mode_popup(click, typeText, screenDiffChecker):
     click(btn.handler.back_ae)
     click(btn.control.restart_ae)
     click(modal.restart.yes_ae)
@@ -177,7 +177,7 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
     click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_ae)
     click(btn.control.auto_mode_ae)
     click(btn.handler.back_ae)
@@ -187,13 +187,13 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_joy_mode_popup(click, type, screenDiffChecker):
+def test_joy_mode_popup(click, typeText, screenDiffChecker):
     time.sleep(modals)
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_ae)
     click(btn.control.auto_mode_ae)
     click(btn.handler.back_ae)

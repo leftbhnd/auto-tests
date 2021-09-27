@@ -63,7 +63,7 @@ def click():
 
 
 @pytest.fixture
-def type():
+def typeText():
     def _method(symbols):
         for symbol in symbols:
             x = keyboard[symbol][0]

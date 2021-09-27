@@ -10,11 +10,11 @@ from src.helpers.config import btn, modal, modals, connection
 
 
 @pytest.mark.localization_he_IL
-def test_con_wrong_pass_modal(click, type, screenDiffChecker):
+def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('1234567')
+    typeText('1234567')
     click(modal.pwd.ok_he)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -24,10 +24,10 @@ def test_con_wrong_pass_modal(click, type, screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_control(click, type, screenDiffChecker):
+def test_control(click, typeText, screenDiffChecker):
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     assert screenDiffChecker(
         'localization/he_IL/con_control.png'
@@ -158,13 +158,13 @@ def test_charge_app(click, screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_phrase_mode_on(click, type, screenDiffChecker):
+def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close_he)
     time.sleep(modals)
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.phrase_mode_he)
     assert screenDiffChecker(

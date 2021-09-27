@@ -10,11 +10,11 @@ from src.helpers.config import btn, modal, modals
 
 
 @pytest.mark.interface_connection_modals
-def test_connection_open(click, type, screenDiffChecker):
+def test_connection_open(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.connection)
     time.sleep(modals)

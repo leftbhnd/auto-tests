@@ -10,11 +10,11 @@ from src.helpers.config import btn, modal, param, default, slowly, modals
 
 
 @pytest.mark.localization_zh_CN
-def test_settings(click, type, screenDiffChecker):
+def test_settings(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     assert screenDiffChecker(
@@ -182,7 +182,7 @@ def test_update(click, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_reset(click, type, node):
+def test_reset(click, typeText, node):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
@@ -190,7 +190,7 @@ def test_reset(click, type, node):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     click(btn.settings.lang)

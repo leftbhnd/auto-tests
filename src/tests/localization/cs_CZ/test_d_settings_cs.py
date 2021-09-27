@@ -10,11 +10,11 @@ X seconds
 
 
 @pytest.mark.localization_cs_CZ
-def test_settings(click, type, screenDiffChecker):
+def test_settings(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     assert screenDiffChecker(

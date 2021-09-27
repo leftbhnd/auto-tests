@@ -10,11 +10,11 @@ from src.helpers.config import btn, modal, default, slowly, modals, running, res
 
 
 @pytest.mark.localization_pt_PT
-def test_no_connection_modal(click, type, screenDiffChecker):
+def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.answers_log)
     click(btn.control.restart)
@@ -163,7 +163,7 @@ def test_record_sound_finish(screenDiffChecker):
 
 
 @pytest.mark.localization_pt_PT
-def test_auto_mode_popup(click, type, screenDiffChecker):
+def test_auto_mode_popup(click, typeText, screenDiffChecker):
     click(btn.handler.back)
     click(btn.control.restart)
     click(modal.restart.yes)
@@ -171,7 +171,7 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.auto_mode)
     click(btn.handler.back)
@@ -181,12 +181,12 @@ def test_auto_mode_popup(click, type, screenDiffChecker):
 
 
 @pytest.mark.localization_pt_PT
-def test_joy_mode_popup(click, type, screenDiffChecker):
+def test_joy_mode_popup(click, typeText, screenDiffChecker):
     time.sleep(modals)
     click(btn.start.control)
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.auto_mode)
     click(btn.handler.back)

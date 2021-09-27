@@ -103,7 +103,7 @@ pip install xmltodict
 - `click(btn.X.X|modal.X.X|param.X.X)`
 - `openPwdModal()`
 - `openServiceMenu()`
-- `type('привет')`
+- `typeText('привет')`
 - `node.getX()`
 - `node.XPub(data|empty)`
 - `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()`
