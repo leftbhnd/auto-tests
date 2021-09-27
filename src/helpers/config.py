@@ -9,7 +9,7 @@ from keyboard import robot_keyboard
 fast = 0.1
 slowly = 1
 default = 0.5
-restart = 50
+restart = 40
 running = 10
 modals = 3
 internet = 5
