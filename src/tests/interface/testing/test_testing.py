@@ -53,7 +53,7 @@ def test_zero_all_servos(click, node):
 
 
 @pytest.mark.interface_testing
-def test_main_camera(click, screenDiffChecker):
+def test_main_camera(click, screenDiffChecker, node):
     node.cancelScriptPub()
     time.sleep(modals)
     click(btn.testing.main_camera)
