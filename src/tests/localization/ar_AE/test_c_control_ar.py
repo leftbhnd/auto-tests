@@ -82,7 +82,7 @@ def test_connection_wifi_pass_modal(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_promo_open(click, screenDiffChecker):
-    click(modal.wifi_pwd.close_aeclose)
+    click(modal.wifi_pwd.close_ae)
     click(btn.handler.back_ae)
     click(btn.control.promo_ae)
     assert screenDiffChecker(
