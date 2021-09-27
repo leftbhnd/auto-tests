@@ -12,7 +12,6 @@ from src.helpers.config import btn, modal, default, slowly, modals
 @pytest.mark.interface_settings
 def test_system_hardware(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok)

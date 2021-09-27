@@ -12,7 +12,6 @@ from src.helpers.config import btn, modal, modals
 @pytest.mark.interface_identification
 def test_open_identification(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok)
@@ -86,7 +85,6 @@ def test_wrong_pass(click, typeText, screenDiffChecker):
     click(btn.handler.back)
     time.sleep(modals)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok)

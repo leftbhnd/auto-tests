@@ -12,7 +12,6 @@ from src.helpers.config import btn, modal, default, slowly, modals, running, res
 @pytest.mark.localization_he_IL
 def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok_he)
@@ -172,7 +171,6 @@ def test_auto_mode_popup(click, typeText, screenDiffChecker):
     click(modal.restart.yes_he)
     time.sleep(restart)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok_he)
@@ -187,7 +185,6 @@ def test_auto_mode_popup(click, typeText, screenDiffChecker):
 def test_joy_mode_popup(click, typeText, screenDiffChecker):
     time.sleep(modals)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok_he)

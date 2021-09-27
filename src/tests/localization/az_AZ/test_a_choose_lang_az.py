@@ -12,7 +12,6 @@ X seconds
 @pytest.mark.localization_az_AZ
 def test_choose_lang(click, typeText, node):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
     typeText('123456')

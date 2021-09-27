@@ -12,7 +12,6 @@ X seconds
 @pytest.mark.localization_az_AZ
 def test_settings(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok)

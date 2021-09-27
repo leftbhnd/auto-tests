@@ -12,7 +12,6 @@ from src.helpers.config import btn, modal, modals
 @pytest.mark.localization_nb_NO
 def test_choose_lang(click, typeText, node):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok)

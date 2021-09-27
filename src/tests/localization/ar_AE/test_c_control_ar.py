@@ -12,7 +12,6 @@ from src.helpers.config import btn, modal, modals, connection
 @pytest.mark.localization_ar_AE
 def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
     typeText('1234567')
@@ -164,7 +163,6 @@ def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close_ae)
     time.sleep(modals)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
     typeText('123456')
