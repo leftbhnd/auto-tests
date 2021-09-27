@@ -17,6 +17,7 @@ def test_connection_open(click, typeText, screenDiffChecker):
     click(modal.pwd.ok)
     click(btn.control.connection)
     time.sleep(connection)
+    time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/connection.png',
         (0, 40, 920, 150)
@@ -25,7 +26,6 @@ def test_connection_open(click, typeText, screenDiffChecker):
 
 @pytest.mark.interface_wifi_input
 def test_hide_input(click, typeText, screenDiffChecker):
-    time.sleep(modals)
     click(btn.connection.choose_wifi)
     click(modal.wifi_pwd.input)
     click(btn.kb.numbers)
