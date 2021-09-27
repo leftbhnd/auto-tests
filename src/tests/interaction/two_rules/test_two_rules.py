@@ -10,12 +10,6 @@ from src.helpers.config import interaction
 
 
 @pytest.mark.interaction_two_rules
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
-
-
-@pytest.mark.interaction_two_rules
 def test_two_rules(node, screenDiffChecker):
     node.cancelSpeechPub()
     node.asrPub('давай другую руку')

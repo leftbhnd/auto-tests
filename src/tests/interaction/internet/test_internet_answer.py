@@ -10,12 +10,6 @@ from src.helpers.config import internet, interaction
 
 
 @pytest.mark.interaction_internet_answer
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
-
-
-@pytest.mark.interaction_internet_answer
 def test_internet_type_4(node):
     node.cancelSpeechPub()
     node.asrPub('где снимался том круз')

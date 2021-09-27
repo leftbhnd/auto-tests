@@ -30,7 +30,6 @@ def changeLevel(click, dNd, openServiceMenu):
 
 @pytest.mark.interaction_levels
 def test_robot_base(node):
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'Робот высокий приоритет'
 
@@ -38,7 +37,6 @@ def test_robot_base(node):
 @pytest.mark.interaction_levels
 def test_owner_base(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'Владелец высокий приоритет'
 
@@ -46,7 +44,6 @@ def test_owner_base(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_robot_base_low(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'Робот низкий приоритет'
 
@@ -54,7 +51,6 @@ def test_robot_base_low(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_owner_base_low(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'Владелец низкий приоритет'
 
@@ -62,7 +58,6 @@ def test_owner_base_low(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_common_base(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'common base'
 
@@ -70,7 +65,6 @@ def test_common_base(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_internet_base(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'internet'
 
@@ -78,7 +72,6 @@ def test_internet_base(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_common_base_low(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'common base low'
 
@@ -86,7 +79,6 @@ def test_common_base_low(changeLevel, node):
 @pytest.mark.interaction_levels
 def test_unrecognized(changeLevel, node):
     changeLevel()
-    node.interactionPub(True, 0)
     node.asrPub('порядок')
     assert node.getAnswer() == 'нераспознанная фраза'
 

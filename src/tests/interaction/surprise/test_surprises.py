@@ -11,11 +11,6 @@ from src.test_data.interaction import surprises
 
 answer = ''
 
-@pytest.mark.interaction_surprises
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
-
 
 @pytest.mark.interaction_surprises
 def test_first_surprise(node):
