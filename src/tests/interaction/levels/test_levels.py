@@ -5,7 +5,7 @@ import time
 
 from src.helpers.config import btn, modal, modals, running, restart
 '''
-750 seconds
+548.02 seconds
 '''
 
 @pytest.fixture

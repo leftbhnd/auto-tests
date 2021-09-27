@@ -6,7 +6,7 @@ import time
 from src.helpers.config import interaction
 from src.test_data.interaction import macroses
 '''
-29.47 seconds
+28.30 seconds
 '''
 
 

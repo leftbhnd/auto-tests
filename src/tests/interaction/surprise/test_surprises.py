@@ -6,7 +6,7 @@ import time
 from src.helpers.config import interaction
 from src.test_data.interaction import surprises
 '''
-24.44 seconds
+23.18 seconds
 '''
 
 answer = ''
