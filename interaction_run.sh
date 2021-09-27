@@ -1,6 +1,6 @@
 #!/bin/sh
 echo 'start interaction test'
-pytest -v -m tests_interaction_start
+pytest -v -m test_interaction_start
 sleep 5
 echo 'start interaction_anchor'
 pytest -v -m interaction_anchor --junitxml="/home/promobot/.tests/result/interaction_anchor.xml"
@@ -47,5 +47,5 @@ pytest -v -m interaction_two_rules --junitxml="/home/promobot/.tests/result/inte
 echo 'finish interaction_two_rules'
 sleep 5
 echo 'finish interaction test'
-pytest -v -m tests_interaction_finish
+pytest -v -m test_interaction_finish
 sleep 5

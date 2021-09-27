@@ -9,8 +9,8 @@ from src.helpers.config import btn, modal, restart
 '''
 
 
-@pytest.mark.tests_interaction_finish
-def test_run(openServiceMenu, click):
+@pytest.mark.test_interaction_finish
+def test_finish(openServiceMenu, click):
     openServiceMenu()
     click(btn.control.restart)
     click(modal.restart.yes)
