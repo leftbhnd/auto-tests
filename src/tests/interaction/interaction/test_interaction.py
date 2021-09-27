@@ -35,25 +35,7 @@ def test_start_by_speech(node):
 
 
 @pytest.mark.interaction_interaction
-def test_clear_interaction_start_by_speech(node):
-    node.cancelSpeechPub()
-    time.sleep(interaction)
-    assert node.getInteraction() == [False, 0]
-
-
-@pytest.mark.interaction_interaction
-def test_setup_update_by_speech(node):
-    node.cancelSpeechPub()
-    node.asrPub('привет')
-    node.cancelSpeechPub()
-    time.sleep(5)
-    assert node.getInteraction() == [True, 0]
-
-
-@pytest.mark.interaction_interaction
 def test_update_by_speech(node):
-    node.cancelSpeechPub()
-    node.asrPub('привет')
     node.cancelSpeechPub()
     time.sleep(10)
     in_interaction = node.getInteraction()
@@ -65,7 +47,6 @@ def test_update_by_speech(node):
 
 @pytest.mark.interaction_interaction
 def test_start_by_face_disabled(node):
-    node.cancelSpeechPub()
     time.sleep(interaction)
     node.facePub(3, 0, 0, 3, 1.0)
     assert node.getInteraction() == [False, 0]
@@ -103,27 +84,7 @@ def test_start_by_face(node):
 
 
 @pytest.mark.interaction_interaction
-def test_clear_interaction_start_by_face(node):
-    node.clearFacePub()
-    node.cancelSpeechPub()
-    time.sleep(interaction)
-    assert node.getInteraction() == [False, 1]
-
-
-@pytest.mark.interaction_interaction
-def test_setup_update_by_face(node):
-    node.clearFacePub()
-    node.cancelSpeechPub()
-    node.facePub(3, 0, 0, 3, 1.0)
-    node.clearFacePub()
-    time.sleep(5)
-    assert node.getInteraction() == [True, 1]
-
-
-@pytest.mark.interaction_interaction
 def test_update_by_face(node):
-    node.cancelSpeechPub()
-    node.facePub(3, 0, 0, 3, 1.0)
     node.clearFacePub()
     node.cancelSpeechPub()
     time.sleep(10)
