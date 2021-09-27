@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal, modals, connection
 '''
 21.72 seconds
 '''
@@ -16,7 +16,7 @@ def test_connection_open(click, typeText, screenDiffChecker):
     typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.connection)
-    time.sleep(modals)
+    time.sleep(connection)
     assert screenDiffChecker(
         'interfaces/connection.png',
         (0, 40, 920, 150)
