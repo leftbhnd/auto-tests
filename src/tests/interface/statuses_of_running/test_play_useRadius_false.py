@@ -29,7 +29,7 @@ def test_disable_radius(click, typeText, node):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_state(click, screenDiffChecker):
+def test_run_state(click, screenDiffChecker):
     click(btn.start.play)
     assert screenDiffChecker(
         'interfaces/run_state.png'
@@ -37,7 +37,7 @@ def test_check_run_state(click, screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_active(screenDiffChecker):
+def test_run_active(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker(
         'interfaces/run_active.png'
@@ -45,7 +45,7 @@ def test_check_run_active(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run(screenDiffChecker):
+def test_run(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker(
         'interfaces/run.png'
