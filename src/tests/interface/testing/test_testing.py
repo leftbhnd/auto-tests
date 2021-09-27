@@ -30,28 +30,28 @@ def test_rotate_head(click, node):
 
 @pytest.mark.interface_testing
 def test_hand_left(click, node):
-    time.sleep(18)
+    node.cancelScriptPub()
     click(btn.testing.hand_left)
     assert node.getScriptProcess() == [True, 'test_hand_left']
 
 
 @pytest.mark.interface_testing
 def test_hand_right(click, node):
-    time.sleep(8)
+    node.cancelScriptPub()
     click(btn.testing.hand_right)
     assert node.getScriptProcess() == [True, 'test_hand_right']
 
 
 @pytest.mark.interface_testing
 def test_zero_all_servos(click, node):
-    time.sleep(8)
+    node.cancelScriptPub()
     click(btn.testing.zero_all_servos)
     assert node.getScriptProcess() == [True, 'reset']
 
 
 @pytest.mark.interface_testing
 def test_main_camera(click, screenDiffChecker):
-    time.sleep(45)
+    node.cancelScriptPub()
     click(btn.testing.main_camera)
     assert screenDiffChecker(
         'interfaces/testing_main_camera_header.png',
