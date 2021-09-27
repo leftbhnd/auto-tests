@@ -10,12 +10,6 @@ from src.helpers.config import resetAnchor, interaction
 
 
 @pytest.mark.interaction_anchor
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
-
-
-@pytest.mark.interaction_anchor
 def test_anchor(node):
     node.cancelSpeechPub()
     node.asrPub('спой гимн')
