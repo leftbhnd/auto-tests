@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, running, restart, modals
+from src.helpers.config import btn, modal, modals, running, restart
 '''
 163.8 seconds
 '''
@@ -31,6 +31,7 @@ def test_rotate_head(click, node):
 @pytest.mark.interface_testing
 def test_hand_left(click, node):
     node.cancelScriptPub()
+    time.sleep(modals)
     click(btn.testing.hand_left)
     assert node.getScriptProcess() == [True, 'test_hand_left']
 
@@ -38,6 +39,7 @@ def test_hand_left(click, node):
 @pytest.mark.interface_testing
 def test_hand_right(click, node):
     node.cancelScriptPub()
+    time.sleep(modals)
     click(btn.testing.hand_right)
     assert node.getScriptProcess() == [True, 'test_hand_right']
 
@@ -45,6 +47,7 @@ def test_hand_right(click, node):
 @pytest.mark.interface_testing
 def test_zero_all_servos(click, node):
     node.cancelScriptPub()
+    time.sleep(modals)
     click(btn.testing.zero_all_servos)
     assert node.getScriptProcess() == [True, 'reset']
 
@@ -52,6 +55,7 @@ def test_zero_all_servos(click, node):
 @pytest.mark.interface_testing
 def test_main_camera(click, screenDiffChecker):
     node.cancelScriptPub()
+    time.sleep(modals)
     click(btn.testing.main_camera)
     assert screenDiffChecker(
         'interfaces/testing_main_camera_header.png',
