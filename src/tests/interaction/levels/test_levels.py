@@ -9,8 +9,8 @@ from src.helpers.config import btn, modal, modals, interaction, running, restart
 '''
 
 @pytest.fixture
-def changeLevel():
-    def _method(click, dNd, openServiceMenu):
+def changeLevel(click, dNd, openServiceMenu):
+    def _method():
         openServiceMenu()
         click(btn.control.settings)
         click(btn.settings.lingvo)
