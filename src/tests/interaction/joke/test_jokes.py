@@ -6,7 +6,7 @@ import time
 from src.helpers.config import interaction
 from src.test_data.interaction import jokes
 '''
-24.52 seconds
+23.17 seconds
 '''
 
 answer = ''
