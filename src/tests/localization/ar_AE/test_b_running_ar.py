@@ -88,7 +88,6 @@ def test_speech_settings(click, screenDiffChecker):
 def test_testing_script(click, type, openPwdModal, screenDiffChecker):
     click(modal.speech_settings.close_ae)
     openPwdModal()
-    click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
     type('123456')
