@@ -27,6 +27,7 @@ def changeLevel():
         click(btn.start.play)
         click(modal.radius.yes)
         time.sleep(running)
+    return _method
 
 
 @pytest.mark.interaction_levels
