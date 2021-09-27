@@ -75,7 +75,7 @@ def type():
 @pytest.fixture
 def openPwdModal():
     def _method():
-        for i in range(5):
+        for i in range(4):
             p.leftClick(50, 50)
         time.sleep(default)
     return _method
@@ -84,9 +84,8 @@ def openPwdModal():
 @pytest.fixture
 def openServiceMenu():
     def _method():
-        for i in range(5):
+        for i in range(4):
             p.leftClick(50, 50)
-        p.leftClick(407, 251)
         p.leftClick(299, 758)
         p.leftClick(285, 565, _pause=False)
         p.leftClick(358, 565, _pause=False)
