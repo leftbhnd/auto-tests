@@ -47,7 +47,7 @@ def test_set_zero_greeting_timeout(click, openServiceMenu, node):
     click(btn.control.settings)
     click(btn.settings.system)
     click(btn.system.dialog)
-    click(btn.system.dialog_down_arr)
+    click(btn.handler.dialog_down_arr)
     for i in range(5):
         click(param.dialog.timeRecently_decrease)
     for i in range(2):
@@ -98,7 +98,7 @@ def test_restore(click, openServiceMenu, node):
     click(btn.control.settings)
     click(btn.settings.system)
     click(btn.system.dialog)
-    click(btn.system.dialog_down_arr)
+    click(btn.handler.dialog_down_arr)
     for i in range(5):
         click(param.dialog.timeRecently_increase)
     for i in range(2):

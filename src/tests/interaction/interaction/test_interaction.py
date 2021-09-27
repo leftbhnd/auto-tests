@@ -16,7 +16,7 @@ def test_activate_speech(click, openServiceMenu):
     click(btn.settings.system)
     click(btn.system.interaction)
     for i in range(19):
-        click(btn.system.interaction_down_arrow)
+        click(btn.handler.interaction_down_arr)
     click(param.interaction.startByFace)
     click(param.interaction.startByFaceDisable)
     click(btn.handler.back)
@@ -83,7 +83,7 @@ def test_activate_face(click, openServiceMenu, node):
     click(param.interaction.updateBySpeech)
     click(param.interaction.updateBySpeechDisable)
     for i in range(19):
-        click(btn.system.interaction_down_arrow)
+        click(btn.handler.interaction_down_arr)
     click(param.interaction.startByFace)
     click(param.interaction.startByFaceEnable)
     click(param.interaction.updateByFace)
@@ -153,7 +153,7 @@ def test_restore(click, openServiceMenu):
     click(param.interaction.updateBySpeech)
     click(param.interaction.updateBySpeechEnable)
     for i in range(19):
-        click(btn.system.interaction_down_arrow)
+        click(btn.handler.interaction_down_arr)
     click(param.interaction.startByFace)
     click(param.interaction.startByFaceEnable)
     click(param.interaction.updateByFace)

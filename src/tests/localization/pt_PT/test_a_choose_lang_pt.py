@@ -19,7 +19,7 @@ def test_choose_lang(click, type, node):
     click(btn.control.settings)
     click(btn.settings.lang)
     for i in range(12):
-        click(btn.lang.down_arr)
+        click(btn.handler.lang_down_arr)
     click(btn.lang.pt_PT)
     click(btn.lang.set_default)
     click(btn.handler.back)
