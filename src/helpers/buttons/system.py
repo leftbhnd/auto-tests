@@ -5,8 +5,14 @@ import enum
 
 class System(enum.Enum):
     hardware = (147, 239)
+    hardware_ae = (1179, 241)
+    hardware_he = (1179, 241)
     led = (109, 289)
+    led_ae = (1181, 287)
+    led_he = (1181, 287)
     dialog = (124, 344)
+    dialog_ae = (1185, 344)
+    dialog_he = (1185, 344)
     interaction = (144, 400)
     interaction_ae = (1138, 400)
     interaction_he = (1138, 400)
