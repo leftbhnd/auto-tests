@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal
 '''
 X seconds
 '''
@@ -22,9 +21,9 @@ def test_choose_lang(click, typeText, node):
     click(btn.lang.set_default_ae)
     click(btn.handler.back_ae)
     click(modal.save.yes_ae)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back_ae)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     assert node.getSystemLanguage() == 'az_AZ'
