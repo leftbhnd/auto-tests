@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, default, slowly, modals, running, restart
+from src.helpers.config import btn, modal, slowly, modals, running, restart
 '''
 137.40 seconds
 '''
@@ -94,7 +94,6 @@ def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
     click(btn.control.testing_ae)
     time.sleep(modals)
     click(btn.testing.hand_right_ae)
-    time.sleep(default)
     assert screenDiffChecker(
         'localization/ar_AE/run_script_is_running.png'
     ) is None
@@ -103,7 +102,7 @@ def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_main_camera(click, screenDiffChecker, node):
     node.cancelScriptPub()
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.testing.main_camera_ae)
     assert screenDiffChecker(
         'localization/ar_AE/run_testing_main_camera_header.png',
