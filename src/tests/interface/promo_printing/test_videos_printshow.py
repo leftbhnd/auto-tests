@@ -4,7 +4,7 @@ import pytest
 
 from src.helpers.config import btn, modal
 '''
-20.54 seconds
+18.08 seconds
 '''
 
 
