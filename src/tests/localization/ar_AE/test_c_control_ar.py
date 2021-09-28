@@ -175,7 +175,7 @@ def test_phrase_mode_on(click, typeText, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_phrase_mode_off(click, screenDiffChecker):
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.control.phrase_mode_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_phrase_mode_off.png'
