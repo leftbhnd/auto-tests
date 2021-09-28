@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, modals, running, restart
+from src.helpers.config import btn, modal, param, running, restart
 '''
 120.75 seconds
 '''
@@ -20,7 +20,7 @@ def test_disable_radius(click, typeText, node):
     click(param.driving.useRadius)
     click(btn.handler.back)
     click(modal.save.yes)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.restart)
     click(modal.restart.yes)
@@ -61,7 +61,7 @@ def test_restore(click, openServiceMenu, node):
     click(param.driving.useRadius)
     click(btn.handler.back)
     click(modal.save.yes)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.restart)
     click(modal.restart.yes)

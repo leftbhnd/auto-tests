@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal
 '''
 26.37 seconds
 '''
@@ -25,7 +25,7 @@ def test_charge_app(click, typeText, screenDiffChecker):
 @pytest.mark.interface_quick_access
 def test_auto_tumbler_enable(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
     click(btn.kb.numbers)
     typeText('123456')
@@ -40,7 +40,6 @@ def test_auto_tumbler_enable(click, typeText, screenDiffChecker):
 def test_phrase_tumbler_enable(click, screenDiffChecker):
     click(btn.control.auto_mode)
     click(btn.control.phrase_mode)
-    time.sleep(modals)
     assert screenDiffChecker(
         'interfaces/control_phrase_mode_enable.png'
     ) is None
@@ -48,8 +47,9 @@ def test_phrase_tumbler_enable(click, screenDiffChecker):
 
 @pytest.mark.interface_quick_access
 def test_answerlog_tumbler_enable(click, screenDiffChecker):
+    click(btn.handler.reset)
     click(btn.control.phrase_mode)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.control.answers_log)
     assert screenDiffChecker(
         'interfaces/control_answers_log_enable.png'
@@ -81,4 +81,4 @@ def test_restore(click):
     click(btn.ubuntu.work_space)
     click(btn.ubuntu.work_space)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)

@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal
 '''
 34.80 seconds
 '''
@@ -81,9 +80,9 @@ def test_save_new_pass(click, screenDiffChecker):
 
 @pytest.mark.interface_identification
 def test_wrong_pass(click, typeText, screenDiffChecker):
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
     click(btn.kb.numbers)
     typeText('123456')
@@ -116,6 +115,6 @@ def test_restore(click, typeText):
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.ident.kb_save)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)

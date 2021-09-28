@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal
 '''
 19.40 seconds
 '''
@@ -91,4 +90,4 @@ def test_reset(click):
     click(btn.handler.back)
     click(modal.save.yes)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)

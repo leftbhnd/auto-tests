@@ -54,4 +54,4 @@ def test_reset(click):
     click(modal.wifi_pwd.kb_close)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
