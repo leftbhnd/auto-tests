@@ -160,8 +160,7 @@ def test_charge_app(click, screenDiffChecker):
 def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close)
     click(btn.handler.reset)
-    click(btn.control)
-    click(modal.pwd.input)
+    click(btn.start.control)
     click(btn.kb.numbers)
     typeText('123456')
     click(modal.pwd.ok)
