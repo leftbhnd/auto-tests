@@ -25,7 +25,7 @@ class System(enum.Enum):
     reset = (60, 584)
     reset_ae = (1157, 550)
     reset_el = (136, 555)
-    reset_fi = (119, 5)
+    reset_fi = (119, 554)
     reset_he = (1157, 550)
     reset_it = (125, 552)
     reset_nb = (124, 555)
