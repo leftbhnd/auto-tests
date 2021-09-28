@@ -203,6 +203,18 @@ def test_mic(click, screenDiffChecker, joy, node):
 
 
 @pytest.mark.localization_el_GR
+def test_restart_modal(click, screenDiffChecker, joy, node):
+    click(btn.handler.reset)
+    joy_msg = joy.downMic()
+    node.joyCommandPub(joy_msg)
+    click(btn.handler.reset)
+    click(btn.control.restart)
+    assert screenDiffChecker(
+        'localization/el_GR/con_restart_modal.png'
+    ) is None
+
+
+@pytest.mark.localization_el_GR
 def test_auto_mode_popup(click, screenDiffChecker):
     click(modal.restart.no)
     click(btn.control.auto_mode)
