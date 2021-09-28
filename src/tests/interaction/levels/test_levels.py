@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, modals, running, restart
+from src.helpers.config import btn, modal, running, restart
 '''
 548.02 seconds
 '''
@@ -19,7 +19,7 @@ def changeLevel(click, dNd, openServiceMenu):
         dNd((446, 233), (446, 655))
         click(btn.handler.back)
         click(modal.save.yes)
-        time.sleep(modals)
+        click(btn.handler.reset)
         click(btn.handler.back)
         click(btn.control.restart)
         click(modal.restart.yes)
