@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, modals, connection
+from src.helpers.config import btn, modal, default, modals, connection
 '''
 106.58 seconds
 '''
@@ -61,7 +61,7 @@ def test_connection_update_modal(click, screenDiffChecker):
     click(modal.connection_info.close_ae)
     click(btn.connection.update_ae)
     time.sleep(connection)
-    time.sleep(2)
+    time.sleep(default)
     assert screenDiffChecker(
         'localization/ar_AE/con_connection_update_modal.png',
         (0, 40, 1280, 120)
@@ -161,7 +161,7 @@ def test_charge_app(click, screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close_ae)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
     click(btn.kb.lang)
     click(btn.kb.numbers)
@@ -183,8 +183,8 @@ def test_phrase_mode_off(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_volume(screenDiffChecker, joy, node):
-    time.sleep(modals)
+def test_volume(click, screenDiffChecker, joy, node):
+    click(btn.handler.reset)
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
@@ -193,11 +193,11 @@ def test_volume(screenDiffChecker, joy, node):
 
 
 @pytest.mark.localization_ar_AE
-def test_mic(screenDiffChecker, joy, node):
-    time.sleep(modals)
+def test_mic(click, screenDiffChecker, joy, node):
+    click(btn.handler.reset)
     joy_msg = joy.downVolume()
     node.joyCommandPub(joy_msg)
-    time.sleep(modals)
+    click(btn.handler.reset)
     joy_msg = joy.upMic()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
@@ -207,10 +207,10 @@ def test_mic(screenDiffChecker, joy, node):
 
 @pytest.mark.localization_ar_AE
 def test_restart_modal(click, screenDiffChecker, joy, node):
-    time.sleep(modals)
+    click(btn.handler.reset)
     joy_msg = joy.downMic()
     node.joyCommandPub(joy_msg)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.control.restart_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_restart_modal.png'
@@ -229,7 +229,7 @@ def test_auto_mode_popup(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_joy_mode_popup(click, typeText, screenDiffChecker):
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
     click(btn.kb.lang)
     click(btn.kb.numbers)
@@ -243,5 +243,5 @@ def test_joy_mode_popup(click, typeText, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_reset():
-    time.sleep(modals)
+def test_reset(click):
+    click(btn.handler.reset)
