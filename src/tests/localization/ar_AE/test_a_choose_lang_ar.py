@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
+import time
 
-from src.helpers.config import btn, modal
+from src.helpers.config import btn, modal, modals
 '''
 8.60 seconds
 '''
@@ -20,7 +21,7 @@ def test_choose_lang(click, typeText, node):
     click(btn.lang.set_default)
     click(btn.handler.back)
     click(modal.save.yes)
-    click(btn.handler.reset)
+    time.sleep(modals)
     click(btn.handler.back)
     click(btn.handler.back_ae)
     click(btn.handler.back_ae)
