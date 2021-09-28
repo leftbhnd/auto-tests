@@ -7,7 +7,7 @@ class Handlers(enum.Enum):
     back = (97, 91)
     back_ae = (1186, 98)
     back_he = (1186, 98)
-    reset = (612, 62)
+    reset = (1, 1)
     lang_up_arr = (685, 400)
     lang_down_arr = (685, 713)
     lang_down_arr_ae = (594, 714)
