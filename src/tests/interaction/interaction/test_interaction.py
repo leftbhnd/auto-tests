@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, modals, interaction
+from src.helpers.config import btn, modal, param, interaction
 '''
 191.12 seconds
 '''
