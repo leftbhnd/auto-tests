@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, default
+from src.helpers.config import btn, modal
 '''
 26.37 seconds
 '''
@@ -40,7 +40,6 @@ def test_auto_tumbler_enable(click, typeText, screenDiffChecker):
 def test_phrase_tumbler_enable(click, screenDiffChecker):
     click(btn.control.auto_mode)
     click(btn.control.phrase_mode)
-    time.sleep(default)
     assert screenDiffChecker(
         'interfaces/control_phrase_mode_enable.png'
     ) is None
