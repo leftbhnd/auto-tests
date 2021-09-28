@@ -5,7 +5,7 @@ import time
 
 from src.helpers.config import btn, modal, default, modals, connection
 '''
-90.98 seconds
+80.90 seconds
 '''
 
 
