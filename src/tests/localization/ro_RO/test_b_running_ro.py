@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, default, slowly, modals, running, restart
+from src.helpers.config import btn, modal, slowly, modals, running, restart
 '''
 146.50 seconds
 '''
@@ -89,15 +89,15 @@ def test_testing_script(click, openServiceMenu, screenDiffChecker):
     click(btn.control.testing)
     time.sleep(modals)
     click(btn.testing.hand_right)
-    time.sleep(default)
     assert screenDiffChecker(
         'localization/ro_RO/run_script_is_running.png'
     ) is None
 
 
 @pytest.mark.localization_ro_RO
-def test_main_camera(click, screenDiffChecker):
-    time.sleep(8)
+def test_main_camera(click, screenDiffChecker, node):
+    node.cancelScriptPub()
+    click(btn.handler.reset)
     click(btn.testing.main_camera)
     assert screenDiffChecker(
         'localization/ro_RO/run_testing_main_camera_header.png',
@@ -162,36 +162,8 @@ def test_record_sound_finish(screenDiffChecker):
 
 
 @pytest.mark.localization_ro_RO
-def test_auto_mode_popup(click, typeText, screenDiffChecker):
+def test_restore(click):
     click(btn.handler.back)
     click(btn.control.restart)
     click(modal.restart.yes)
     time.sleep(restart)
-    click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
-    click(modal.pwd.ok)
-    click(btn.control.auto_mode)
-    click(btn.handler.back)
-    assert screenDiffChecker(
-        'localization/ro_RO/run_automode_popup.png'
-    ) is None
-
-
-@pytest.mark.localization_ro_RO
-def test_joy_mode_popup(click, typeText, screenDiffChecker):
-    time.sleep(modals)
-    click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
-    click(modal.pwd.ok)
-    click(btn.control.auto_mode)
-    click(btn.handler.back)
-    assert screenDiffChecker(
-        'localization/ro_RO/run_joy_mode_popup.png'
-    ) is None
-
-
-@pytest.mark.localization_ro_RO
-def test_restore():
-    time.sleep(modals)

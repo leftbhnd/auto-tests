@@ -27,5 +27,5 @@ def test_choose_lang(click, typeText, node):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     assert node.getSystemLanguage() == 'pt_PT'

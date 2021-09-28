@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, default, slowly, modals
+from src.helpers.config import btn, modal, param, default, slowly
 '''
 32.65 seconds
 '''
@@ -26,6 +26,30 @@ def test_system(click, screenDiffChecker):
     click(btn.settings.system)
     assert screenDiffChecker(
         'localization/fr_FR/set_system.png'
+    ) is None
+
+
+@pytest.mark.localization_fr_FR
+def test_system_hardware(click, screenDiffChecker):
+    click(btn.system.hardware)
+    assert screenDiffChecker(
+        'localization/fr_FR/set_system_hardware.png'
+    ) is None
+
+
+@pytest.mark.localization_fr_FR
+def test_system_led(click, screenDiffChecker):
+    click(btn.system.led)
+    assert screenDiffChecker(
+        'localization/fr_FR/set_system_led.png'
+    ) is None
+
+
+@pytest.mark.localization_fr_FR
+def test_system_dialog(click, screenDiffChecker):
+    click(btn.system.dialog)
+    assert screenDiffChecker(
+        'localization/fr_FR/set_system_dialog.png'
     ) is None
 
 
@@ -118,7 +142,7 @@ def test_save_parameters(click, screenDiffChecker):
 
 @pytest.mark.localization_fr_FR
 def test_lingvo(click, screenDiffChecker):
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.settings.lingvo)
     assert screenDiffChecker(
         'localization/fr_FR/set_lingvo.png'
@@ -185,4 +209,4 @@ def test_reset(click):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
