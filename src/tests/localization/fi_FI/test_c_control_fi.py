@@ -74,7 +74,7 @@ def test_connection_wifi_pass_modal(click, screenDiffChecker):
 @pytest.mark.localization_fi_FI
 def test_connection_info_modal(click, screenDiffChecker):
     click(modal.wifi_pwd.close)
-    click(btn.connection.info_f)
+    click(btn.connection.info_fi)
     time.sleep(modals)
     assert screenDiffChecker(
         'localization/fi_FI/con_connection_info_modal.png',
