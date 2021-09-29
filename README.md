@@ -1,4 +1,4 @@
-# Настройка окружения
+# Настройка окружения на ubuntu 18.04
 
 ```
 sudo apt-get install -y python-pytest
@@ -9,17 +9,37 @@ pip install xmltodict
 
 # Структура проекта:
 
-`main.py` - класс с методами управления топиками робота
+`main.py` - класс объединяющий ros классы
 
-`src/conftest.py` - фикстуры
+`src/conftest.py` - вспомогательные функции, переиспользуемые в тестах
 
-`src/helpers/*` - скрипты, конфиги, классы с сообщениями/координатами кнопок
+`src/helpers/buttons/*` - координаты кнопок у соответствующего экрана
+
+`src/helpers/modals/*` - координаты кнопок у соответствующего модального окна
+
+`src/helpers/params/*` - координаты параметров у соответствующего экрана
+
+`src/helpers/config.py` - конфигурационный файл проекта (задается разрешение экрана, координаты и так далее)
+
+`src/helpers/keyboard.py` - объект с координатами экранной клавиатуры
+
+`src/helpers/messages.py` - классы для создания сообщений
+
+`src/helpers/mouse_position.py` - скрипт для получения текущей координаты
+
+`src/helpers/robot_*.py` - классы объединяющие общие сущности (кнопки, модалки, параметры)
+
+`src/helpers/screen_maker.py` - скрипт для создания скриншота
+
+`src/services/*` - классы управления ros
 
 `src/tests/*` - unit и e2e тесты
 
 `src/test_data/*` - тестовые данные
 
-# Test's codestyle
+`*_run.sh` - bash скрипты запуска тестов
+
+# Codestyle
 
 - Название тестов должно содержать: `test_*.py`
 - Внутри тестов функции должны содержать слово `test`
@@ -96,19 +116,56 @@ pip install xmltodict
 - `node.getLevelsOrder()` -> ['0', '1', '2', '3', '4', '5', '6', '7']
 - `node.getSystemLanguage()` -> 'выбранный язык системы' = str
 
-# Фикстуры
+# Фикстуры (вспомогательные функции)
 
-- `screenDiffChecker('directory/original_image', coordinates=screen_resolution)`
-- `dNd((start[0], start[1]), (finish[0], finish[1]))`
-- `click(btn.X.X|modal.X.X|param.X.X)`
-- `openPwdModal()`
-- `openServiceMenu()`
-- `typeText('привет')`
-- `node.getX()`
-- `node.XPub(data|empty)`
-- `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()`
+- `screenDiffChecker('dir/original_image', coordinates=screen_resolution)` - создает скриншот текущего экрана, сравнивает с оригиналом. Если нет оригинального скриншота - делает его
+- `dNd((start[0], start[1]), (finish[0], finish[1]))` - функция Drag And Drop
+- `click(btn.X.X|modal.X.X|param.X.X)` - функция клика на указанную координату (кнопку, модальное окно, параметр)
+- `openPwdModal()` - функция, открывающая модальное окно ввода пароля
+- `openServiceMenu()` - функция открывающая сервисное меню из запущенной gui
+- `typeText('привет')` - функция печати текста на экранной клавиатуре
+- `node.getX()` - методы полученния данных с топика
+- `node.XPub(data|empty)` - методы публикующие данные в топик
+- `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()` - методы имитации управления джойстиком
+
+# Пример теста
+
+```
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import pytest
+import time
+
+from src.helpers.config import btn, modal, running, restart #импорт кнопок, модалок, таймаутов
+
+
+@pytest.mark.interface # маркер для запуска
+def test_dialog_line(click, screenDiffChecker, node): # название тестовой функции с аргументами-фикстурами
+    click(btn.start.play) # клик на кнопку Play на стартовом экране
+    click(modal.radius.yes) # клик на кнопку ДА у модального окна радиуса
+    time.sleep(running) # таймаут для запуска
+    node.cancelSpeechPub() # прерывание текущей реплики робота
+    node.asrPub('тестовое правило') # публикация сообщения роботу для распознавания речи
+    assert screenDiffChecker(
+        'interfaces/dialog_line.png'
+    ) is None # сравнение скриншота текущего экрана с оригиналом
+
+
+@pytest.mark.interface
+def test_restore(click, openServiceMenu):
+    openServiceMenu() # фикстура открытия сервисного меню
+    click(btn.control.restart) # клик на кнопку перезапуска на экране "Управление"
+    click(modal.restart.yes) # клик на кнопку ДА у модального окна перезапуска
+    time.sleep(restart) # таймаут перезапуска
+```
 
 # Запуск тестов
+
+### Подготовка
+
+```
+export DISPLAY=:0
+```
 
 ### Запуск всех тестов:
 
