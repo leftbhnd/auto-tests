@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, default, slowly
+from src.helpers.config import btn, modal, param, default, slowly, modals
 '''
 32.60 seconds
 '''
@@ -222,7 +222,7 @@ def test_reset(click, typeText, node):
     click(btn.lang.set_default)
     click(btn.handler.back)
     click(modal.save.yes)
-    click(btn.handler.reset)
+    time.sleep(modals)
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
