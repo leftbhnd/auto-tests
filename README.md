@@ -122,10 +122,10 @@ pip install xmltodict
 - `dNd((start[0], start[1]), (finish[0], finish[1]))` - функция Drag And Drop
 - `click(btn.X.X|modal.X.X|param.X.X)` - функция клика на указанную координату (кнопку, модальное окно, параметр)
 - `openPwdModal()` - функция, открывающая модальное окно ввода пароля
-- `openServiceMenu()` - функция открывающая сервисное меню из запущенной gui
+- `openServiceMenu()` - функция, открывающая сервисное меню из запущенной gui
 - `typeText('привет')` - функция печати текста на экранной клавиатуре
-- `node.getX()` - методы полученния данных с топика
-- `node.XPub(data|empty)` - методы публикующие данные в топик
+- `node.getX()` - методы получения данных с топика
+- `node.XPub(data|empty)` - методы для публикации данных в топик
 - `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()` - методы имитации управления джойстиком
 
 # Пример теста
