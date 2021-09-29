@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, default, modals, connection
+from src.helpers.config import btn, modal, modals, connection
 '''
 80.36 seconds
 '''
@@ -36,7 +36,23 @@ def test_control(click, typeText, screenDiffChecker):
 @pytest.mark.localization_fi_FI
 def test_connection_open(click, screenDiffChecker):
     click(btn.control.connection)
+    assert screenDiffChecker(
+        'localization/fi_FI/con_connection_open.png',
+        (0, 40, 1280, 120)
+    ) is None
+
+
+@pytest.mark.localization_fi_FI
+def test_connection_update_modal(screenDiffChecker):
     time.sleep(connection)
+    assert screenDiffChecker(
+        'localization/fi_FI/con_connection_update_modal.png',
+        (0, 40, 1280, 120)
+    ) is None
+
+
+@pytest.mark.localization_fi_FI
+def test_connection(screenDiffChecker):
     time.sleep(modals)
     assert screenDiffChecker(
         'localization/fi_FI/con_connection.png',
@@ -45,30 +61,7 @@ def test_connection_open(click, screenDiffChecker):
 
 
 @pytest.mark.localization_fi_FI
-def test_connection_info_modal(click, screenDiffChecker):
-    click(btn.connection.info_fi)
-    time.sleep(modals)
-    assert screenDiffChecker(
-        'localization/fi_FI/con_connection_info_modal.png',
-        (365, 292, 548, 212)
-    ) is None
-
-
-@pytest.mark.localization_fi_FI
-def test_connection_update_modal(click, screenDiffChecker):
-    click(modal.connection_info.close)
-    click(btn.connection.update_fi)
-    time.sleep(connection)
-    time.sleep(default)
-    assert screenDiffChecker(
-        'localization/fi_FI/con_connection_update_modal.png',
-        (0, 40, 1280, 120)
-    ) is None
-
-
-@pytest.mark.localization_fi_FI
 def test_connection_wifi_pass_modal(click, screenDiffChecker):
-    time.sleep(modals)
     click(btn.connection.choose_wifi)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -79,8 +72,29 @@ def test_connection_wifi_pass_modal(click, screenDiffChecker):
 
 
 @pytest.mark.localization_fi_FI
-def test_promo_open(click, screenDiffChecker):
+def test_connection_info_modal(click, screenDiffChecker):
     click(modal.wifi_pwd.close)
+    click(btn.connection.info_f)
+    time.sleep(modals)
+    assert screenDiffChecker(
+        'localization/fi_FI/con_connection_info_modal.png',
+        (365, 292, 548, 212)
+    ) is None
+
+
+@pytest.mark.localization_fi_FI
+def test_connection_update(click, screenDiffChecker):
+    click(modal.connection_info.close)
+    click(btn.connection.update_fi)
+    assert screenDiffChecker(
+        'localization/fi_FI/con_connection_update.png',
+        (0, 40, 1280, 120)
+    ) is None
+
+
+@pytest.mark.localization_fi_FI
+def test_promo_open(click, screenDiffChecker):
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.promo)
     assert screenDiffChecker(
