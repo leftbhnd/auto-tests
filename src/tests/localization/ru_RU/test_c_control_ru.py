@@ -61,18 +61,7 @@ def test_connection(screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_connection_info_modal(click, screenDiffChecker):
-    click(btn.connection.info)
-    time.sleep(modals)
-    assert screenDiffChecker(
-        'localization/ru_RU/con_connection_info_modal.png',
-        (365, 292, 548, 212)
-    ) is None
-
-
-@pytest.mark.localization_ru_RU
 def test_connection_wifi_pass_modal(click, screenDiffChecker):
-    click(modal.connection_info.close)
     click(btn.connection.choose_wifi)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -83,8 +72,19 @@ def test_connection_wifi_pass_modal(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_connection_update(click, screenDiffChecker):
+def test_connection_info_modal(click, screenDiffChecker):
     click(modal.wifi_pwd.close)
+    click(btn.connection.info)
+    time.sleep(modals)
+    assert screenDiffChecker(
+        'localization/ru_RU/con_connection_info_modal.png',
+        (365, 292, 548, 212)
+    ) is None
+
+
+@pytest.mark.localization_ru_RU
+def test_connection_update(click, screenDiffChecker):
+    click(modal.connection_info.close)
     click(btn.connection.update)
     assert screenDiffChecker(
         'localization/ru_RU/con_connection_update.png',
