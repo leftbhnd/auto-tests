@@ -38,7 +38,7 @@ def test_connection_open(click, screenDiffChecker):
     click(btn.control.connection)
     assert screenDiffChecker(
         'localization/ru_RU/con_connection_open.png',
-        (0, 40, 920, 150)
+        (0, 40, 1280, 120)
     ) is None
 
 
@@ -47,7 +47,7 @@ def test_connection_update_modal(screenDiffChecker):
     time.sleep(connection)
     assert screenDiffChecker(
         'localization/ru_RU/con_connection_update_modal.png',
-        (0, 40, 920, 150)
+        (0, 40, 1280, 120)
     ) is None
 
 
@@ -88,7 +88,7 @@ def test_connection_update(click, screenDiffChecker):
     click(btn.connection.update)
     assert screenDiffChecker(
         'localization/ru_RU/con_connection_update.png',
-        (0, 40, 920, 150)
+        (0, 40, 1280, 120)
     ) is None
 
 
