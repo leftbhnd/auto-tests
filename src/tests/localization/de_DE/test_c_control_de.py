@@ -5,7 +5,7 @@ import time
 
 from src.helpers.config import btn, modal, modals, connection
 '''
-80.49 seconds
+66.89 seconds
 '''
 
 
@@ -38,7 +38,7 @@ def test_connection_open(click, screenDiffChecker):
     click(btn.control.connection)
     assert screenDiffChecker(
         'localization/de_DE/con_connection_open.png',
-        (0, 40, 1280, 120)
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -47,7 +47,7 @@ def test_connection_update_modal(screenDiffChecker):
     time.sleep(connection)
     assert screenDiffChecker(
         'localization/de_DE/con_connection_update_modal.png',
-        (0, 40, 1280, 120)
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -88,7 +88,7 @@ def test_connection_update(click, screenDiffChecker):
     click(btn.connection.update)
     assert screenDiffChecker(
         'localization/de_DE/con_connection_update.png',
-        (0, 40, 1280, 120)
+        (0, 40, 1280, 115)
     ) is None
 
 
