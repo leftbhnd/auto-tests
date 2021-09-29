@@ -5,16 +5,15 @@ import time
 
 from src.helpers.config import btn, modal, param, default, slowly, modals
 '''
-32.60 seconds
+46.15 seconds
 '''
 
 
 @pytest.mark.localization_zh_CN
-def test_settings(click, type, screenDiffChecker):
+def test_settings(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     assert screenDiffChecker(
@@ -27,6 +26,30 @@ def test_system(click, screenDiffChecker):
     click(btn.settings.system)
     assert screenDiffChecker(
         'localization/zh_CN/set_system.png'
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_system_hardware(click, screenDiffChecker):
+    click(btn.system.hardware)
+    assert screenDiffChecker(
+        'localization/zh_CN/set_system_hardware.png'
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_system_led(click, screenDiffChecker):
+    click(btn.system.led)
+    assert screenDiffChecker(
+        'localization/zh_CN/set_system_led.png'
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_system_dialog(click, screenDiffChecker):
+    click(btn.system.dialog)
+    assert screenDiffChecker(
+        'localization/zh_CN/set_system_dialog.png'
     ) is None
 
 
@@ -119,7 +142,7 @@ def test_save_parameters(click, screenDiffChecker):
 
 @pytest.mark.localization_zh_CN
 def test_lingvo(click, screenDiffChecker):
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.settings.lingvo)
     assert screenDiffChecker(
         'localization/zh_CN/set_lingvo.png'
@@ -182,20 +205,19 @@ def test_update(click, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_reset(click, type, node):
+def test_reset(click, typeText, node):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     click(btn.settings.lang)
     for i in range(12):
-        click(btn.lang.down_arr)
+        click(btn.handler.lang_down_arr)
     click(btn.lang.ru_RU)
     click(btn.lang.set_default)
     click(btn.handler.back)
@@ -204,5 +226,5 @@ def test_reset(click, type, node):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     assert node.getSystemLanguage() == 'ru_RU'

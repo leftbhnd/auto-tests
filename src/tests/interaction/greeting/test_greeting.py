@@ -3,9 +3,9 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, modals, interaction
+from src.helpers.config import btn, modal, param, interaction
 '''
-75.34 seconds
+57.86 seconds
 '''
 
 
@@ -47,17 +47,17 @@ def test_set_zero_greeting_timeout(click, openServiceMenu, node):
     click(btn.control.settings)
     click(btn.settings.system)
     click(btn.system.dialog)
-    click(btn.system.dialog_down_arr)
+    click(btn.handler.dialog_down_arr)
     for i in range(5):
         click(param.dialog.timeRecently_decrease)
     for i in range(2):
         click(param.dialog.timeRecentlyUnknown_decrease)
     click(btn.handler.back)
     click(modal.save.yes)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
 
 
 @pytest.mark.interaction_greeting
@@ -98,14 +98,14 @@ def test_restore(click, openServiceMenu, node):
     click(btn.control.settings)
     click(btn.settings.system)
     click(btn.system.dialog)
-    click(btn.system.dialog_down_arr)
+    click(btn.handler.dialog_down_arr)
     for i in range(5):
         click(param.dialog.timeRecently_increase)
     for i in range(2):
         click(param.dialog.timeRecentlyUnknown_increase)
     click(btn.handler.back)
     click(modal.save.yes)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.handler.back)
     time.sleep(interaction)

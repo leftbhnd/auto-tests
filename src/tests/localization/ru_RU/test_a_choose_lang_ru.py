@@ -5,21 +5,20 @@ import time
 
 from src.helpers.config import btn, modal, modals
 '''
-20.76 seconds
+17.12 seconds
 '''
 
 
 @pytest.mark.localization_ru_RU
-def test_choose_lang(click, type, node):
+def test_choose_lang(click, typeText, node):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     click(btn.settings.lang)
     for i in range(12):
-        click(btn.lang.down_arr)
+        click(btn.handler.lang_down_arr)
     click(btn.lang.ru_RU)
     click(btn.lang.set_default)
     click(btn.handler.back)
@@ -28,5 +27,5 @@ def test_choose_lang(click, type, node):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     assert node.getSystemLanguage() == 'ru_RU'

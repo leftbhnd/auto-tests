@@ -6,15 +6,10 @@ import time
 from src.helpers.config import interaction
 from src.test_data.interaction import surprises
 '''
-24.44 seconds
+23.18 seconds
 '''
 
 answer = ''
-
-@pytest.mark.interaction_surprises
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
 
 
 @pytest.mark.interaction_surprises

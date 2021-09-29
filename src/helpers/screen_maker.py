@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pyautogui
-from config import screen_resolution
+import pyautogui as p
 
 
-def makeScreen(image, coordinates=screen_resolution):
-    pyautogui.screenshot(
+def makeScreen(image, coordinates=(0, 40, 1280, 760)):
+    p.screenshot(
         '/home/promobot/.tests/screens/%s.png' % (image), region=coordinates
     )
 

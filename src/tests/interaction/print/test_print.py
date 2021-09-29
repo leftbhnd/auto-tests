@@ -10,12 +10,6 @@ X seconds
 
 
 @pytest.mark.interaction_print
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
-
-
-@pytest.mark.interaction_print
 def test_run_photo_app(click, node):
     node.cancelSpeechPub()
     node.asrPub('сделай фото')

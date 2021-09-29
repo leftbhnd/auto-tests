@@ -5,17 +5,16 @@ import time
 
 from src.helpers.config import btn, modal, modals
 '''
-X seconds
+11.56 seconds
 '''
 
 
 @pytest.mark.localization_az_AZ
-def test_choose_lang(click, type, node):
+def test_choose_lang(click, typeText, node):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.lang)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_ae)
     click(btn.control.settings_ae)
     click(btn.settings.lang_ae)
@@ -27,5 +26,5 @@ def test_choose_lang(click, type, node):
     click(btn.handler.back_ae)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     assert node.getSystemLanguage() == 'az_AZ'

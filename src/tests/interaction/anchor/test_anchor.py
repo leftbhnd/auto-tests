@@ -5,14 +5,8 @@ import time
 
 from src.helpers.config import resetAnchor, interaction
 '''
-42.76 seconds
+41.40 seconds
 '''
-
-
-@pytest.mark.interaction_anchor
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
 
 
 @pytest.mark.interaction_anchor

@@ -9,7 +9,7 @@ import rospy
 from datetime import datetime
 from PIL import Image, ImageChops
 from main import AutoTest
-from helpers.config import screens_dir, failed_dir, fast, default, screen_resolution, keyboard
+from helpers.config import screens_dir, failed_dir, default, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
 
@@ -63,7 +63,7 @@ def click():
 
 
 @pytest.fixture
-def type():
+def typeText():
     def _method(symbols):
         for symbol in symbols:
             x = keyboard[symbol][0]
@@ -75,7 +75,7 @@ def type():
 @pytest.fixture
 def openPwdModal():
     def _method():
-        for i in range(5):
+        for i in range(4):
             p.leftClick(50, 50)
         time.sleep(default)
     return _method
@@ -84,9 +84,8 @@ def openPwdModal():
 @pytest.fixture
 def openServiceMenu():
     def _method():
-        for i in range(5):
+        for i in range(4):
             p.leftClick(50, 50)
-        p.leftClick(407, 251)
         p.leftClick(299, 758)
         p.leftClick(285, 565, _pause=False)
         p.leftClick(358, 565, _pause=False)
@@ -109,5 +108,4 @@ def node():
 @pytest.fixture
 def joy():
     joy = JoyCmdMsg()
-    time.sleep(fast)
     return joy

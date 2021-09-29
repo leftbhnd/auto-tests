@@ -5,15 +5,15 @@ import time
 
 from src.helpers.config import btn, modal, slowly, running, restart
 '''
-92.24 seconds
+101.09 seconds
 '''
 
 
 @pytest.mark.interface_statuses_of_running
-def test_networkOff_modal(click, type, screenDiffChecker):
+def test_networkOff_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.restart)
     click(modal.restart.yes)
@@ -26,8 +26,16 @@ def test_networkOff_modal(click, type, screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_state(click, screenDiffChecker):
+def test_radius_modal(click, screenDiffChecker):
     click(modal.no_connection.yes)
+    time.sleep(slowly)
+    assert screenDiffChecker(
+        'interfaces/radius_modal.png'
+    ) is None
+
+
+@pytest.mark.interface_statuses_of_running
+def test_run_state(click, screenDiffChecker):
     click(modal.radius.yes)
     assert screenDiffChecker(
         'interfaces/run_state.png'
@@ -35,7 +43,7 @@ def test_check_run_state(click, screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_active(screenDiffChecker):
+def test_run_active(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker(
         'interfaces/run_active.png'
@@ -43,7 +51,7 @@ def test_check_run_active(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run(screenDiffChecker):
+def test_run(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker(
         'interfaces/run.png'

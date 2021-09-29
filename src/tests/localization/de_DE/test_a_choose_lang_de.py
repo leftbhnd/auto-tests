@@ -5,16 +5,15 @@ import time
 
 from src.helpers.config import btn, modal, modals
 '''
-X seconds
+11.05 seconds
 '''
 
 
 @pytest.mark.localization_de_DE
-def test_choose_lang(click, type, node):
+def test_choose_lang(click, typeText, node):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     click(btn.settings.lang)
@@ -26,5 +25,5 @@ def test_choose_lang(click, type, node):
     click(btn.handler.back)
     click(btn.handler.back)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     assert node.getSystemLanguage() == 'de_DE'

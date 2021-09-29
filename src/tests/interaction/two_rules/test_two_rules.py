@@ -5,14 +5,8 @@ import time
 
 from src.helpers.config import interaction
 '''
-28.11 seconds
+26.83 seconds
 '''
-
-
-@pytest.mark.interaction_two_rules
-def test_start_interaction(node):
-    node.interactionPub(True, 0)
-    assert node.getInteraction() == [True, 0]
 
 
 @pytest.mark.interaction_two_rules

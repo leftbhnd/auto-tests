@@ -5,16 +5,15 @@ import time
 
 from src.helpers.config import btn, modal, modals, connection
 '''
-77.57 seconds
+66.90 seconds
 '''
 
 
 @pytest.mark.localization_zh_CN
-def test_con_wrong_pass_modal(click, type, screenDiffChecker):
+def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('1234567')
+    typeText('1234567')
     click(modal.pwd.ok)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -24,10 +23,10 @@ def test_con_wrong_pass_modal(click, type, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_control(click, type, screenDiffChecker):
+def test_control(click, typeText, screenDiffChecker):
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     assert screenDiffChecker(
         'localization/zh_CN/con_control.png'
@@ -37,7 +36,23 @@ def test_control(click, type, screenDiffChecker):
 @pytest.mark.localization_zh_CN
 def test_connection_open(click, screenDiffChecker):
     click(btn.control.connection)
+    assert screenDiffChecker(
+        'localization/zh_CN/con_connection_open.png',
+        (0, 40, 1280, 110)
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_connection_update_modal(screenDiffChecker):
     time.sleep(connection)
+    assert screenDiffChecker(
+        'localization/zh_CN/con_connection_update_modal.png',
+        (0, 40, 1280, 110)
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_connection(screenDiffChecker):
     time.sleep(modals)
     assert screenDiffChecker(
         'localization/zh_CN/con_connection.png',
@@ -46,30 +61,7 @@ def test_connection_open(click, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_connection_info_modal(click, screenDiffChecker):
-    click(btn.connection.info_zn)
-    time.sleep(modals)
-    assert screenDiffChecker(
-        'localization/zh_CN/con_connection_info_modal.png',
-        (365, 292, 548, 212)
-    ) is None
-
-
-@pytest.mark.localization_zh_CN
-def test_connection_update_modal(click, screenDiffChecker):
-    click(modal.connection_info.close)
-    click(btn.connection.update_zn)
-    time.sleep(connection)
-    time.sleep(2)
-    assert screenDiffChecker(
-        'localization/zh_CN/con_connection_update_modal.png',
-        (0, 40, 1280, 120)
-    ) is None
-
-
-@pytest.mark.localization_zh_CN
 def test_connection_wifi_pass_modal(click, screenDiffChecker):
-    time.sleep(modals)
     click(btn.connection.choose_wifi)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -80,8 +72,29 @@ def test_connection_wifi_pass_modal(click, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_promo_open(click, screenDiffChecker):
+def test_connection_info_modal(click, screenDiffChecker):
     click(modal.wifi_pwd.close)
+    click(btn.connection.info_zn)
+    time.sleep(modals)
+    assert screenDiffChecker(
+        'localization/zh_CN/con_connection_info_modal.png',
+        (365, 292, 548, 212)
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_connection_update(click, screenDiffChecker):
+    click(modal.connection_info.close)
+    click(btn.connection.update_zn)
+    assert screenDiffChecker(
+        'localization/zh_CN/con_connection_update.png',
+        (0, 40, 1280, 110)
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_promo_open(click, screenDiffChecker):
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.promo)
     assert screenDiffChecker(
@@ -158,13 +171,12 @@ def test_charge_app(click, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_phrase_mode_on(click, type, screenDiffChecker):
+def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.phrase_mode)
     assert screenDiffChecker(
@@ -174,7 +186,7 @@ def test_phrase_mode_on(click, type, screenDiffChecker):
 
 @pytest.mark.localization_zh_CN
 def test_phrase_mode_off(click, screenDiffChecker):
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.control.phrase_mode)
     assert screenDiffChecker(
         'localization/zh_CN/con_phrase_mode_off.png'
@@ -182,8 +194,8 @@ def test_phrase_mode_off(click, screenDiffChecker):
 
 
 @pytest.mark.localization_zh_CN
-def test_volume(screenDiffChecker, joy, node):
-    time.sleep(modals)
+def test_volume(click, screenDiffChecker, joy, node):
+    click(btn.handler.reset)
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
@@ -192,11 +204,11 @@ def test_volume(screenDiffChecker, joy, node):
 
 
 @pytest.mark.localization_zh_CN
-def test_mic(screenDiffChecker, joy, node):
-    time.sleep(modals)
+def test_mic(click, screenDiffChecker, joy, node):
+    click(btn.handler.reset)
     joy_msg = joy.downVolume()
     node.joyCommandPub(joy_msg)
-    time.sleep(modals)
+    click(btn.handler.reset)
     joy_msg = joy.upMic()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
@@ -206,10 +218,10 @@ def test_mic(screenDiffChecker, joy, node):
 
 @pytest.mark.localization_zh_CN
 def test_restart_modal(click, screenDiffChecker, joy, node):
-    time.sleep(modals)
+    click(btn.handler.reset)
     joy_msg = joy.downMic()
     node.joyCommandPub(joy_msg)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.control.restart)
     assert screenDiffChecker(
         'localization/zh_CN/con_restart_modal.png'
@@ -217,7 +229,29 @@ def test_restart_modal(click, screenDiffChecker, joy, node):
 
 
 @pytest.mark.localization_zh_CN
-def test_reset(click):
+def test_auto_mode_popup(click, screenDiffChecker):
     click(modal.restart.no)
+    click(btn.control.auto_mode)
     click(btn.handler.back)
-    time.sleep(modals)
+    assert screenDiffChecker(
+        'localization/zh_CN/con_automode_popup.png'
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_joy_mode_popup(click, typeText, screenDiffChecker):
+    click(btn.handler.reset)
+    click(btn.start.control)
+    click(btn.kb.numbers)
+    typeText('123456')
+    click(modal.pwd.ok)
+    click(btn.control.auto_mode)
+    click(btn.handler.back)
+    assert screenDiffChecker(
+        'localization/zh_CN/con_joy_mode_popup.png'
+    ) is None
+
+
+@pytest.mark.localization_zh_CN
+def test_reset(click):
+    click(btn.handler.reset)

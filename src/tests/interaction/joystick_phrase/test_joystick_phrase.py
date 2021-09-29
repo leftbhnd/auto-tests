@@ -3,9 +3,9 @@
 import pytest
 import time
 
-from src.helpers.config import interaction
+from src.helpers.config import modals
 '''
-30.37 seconds
+18.31 seconds
 '''
 
 
@@ -41,6 +41,6 @@ def test_previous_phrase(joy, node):
 def test_reset(node, joy):
     joy_msg = joy.phraseMode()
     node.joyCommandPub(joy_msg)
-    time.sleep(interaction)
+    time.sleep(modals)
     assert node.getJoySpeech() == False
 

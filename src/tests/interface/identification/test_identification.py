@@ -1,20 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal
 '''
-35.53 seconds
+25.98 seconds
 '''
 
 
 @pytest.mark.interface_identification
-def test_open_identification(click, type, screenDiffChecker):
+def test_open_identification(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.ident)
     click(btn.handler.reset)
@@ -25,10 +23,10 @@ def test_open_identification(click, type, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_hide_input(click, type, screenDiffChecker):
+def test_hide_input(click, typeText, screenDiffChecker):
     click(modal.ident.input)
     click(btn.kb.numbers)
-    type('111111')
+    typeText('111111')
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
@@ -47,10 +45,10 @@ def test_visiable_input(click, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_confirm_hide_input_same(click, type, screenDiffChecker):
+def test_confirm_hide_input_same(click, typeText, screenDiffChecker):
     click(modal.ident.kb_confirm_input)
     click(btn.kb.numbers)
-    type('111111')
+    typeText('111111')
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
@@ -59,10 +57,10 @@ def test_confirm_hide_input_same(click, type, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_confirm_hide_input_not_same(click, type, screenDiffChecker):
+def test_confirm_hide_input_not_same(click, typeText, screenDiffChecker):
     click(modal.ident.kb_confirm_input)
     click(btn.kb.numbers)
-    type('1')
+    typeText('1')
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
@@ -81,14 +79,13 @@ def test_save_new_pass(click, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_wrong_pass(click, type, screenDiffChecker):
-    time.sleep(modals)
+def test_wrong_pass(click, typeText, screenDiffChecker):
+    click(btn.handler.reset)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -98,10 +95,10 @@ def test_wrong_pass(click, type, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_correct_new_pass(click, type, screenDiffChecker):
+def test_correct_new_pass(click, typeText, screenDiffChecker):
     click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('111111')
+    typeText('111111')
     click(modal.pwd.ok)
     assert screenDiffChecker(
         'interfaces/control.png'
@@ -109,15 +106,15 @@ def test_correct_new_pass(click, type, screenDiffChecker):
 
 
 @pytest.mark.interface_identification
-def test_restore(click, type):
+def test_restore(click, typeText):
     click(btn.control.ident)
     click(modal.ident.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.ident.kb_confirm_input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.ident.kb_save)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)

@@ -9,8 +9,8 @@ from src.helpers.config import btn, modal, running
 '''
 
 
-@pytest.mark.interaction_start
-def test_run(click):
+@pytest.mark.test_interaction_start
+def test_start(click):
     click(btn.start.play)
     click(modal.radius.yes)
     time.sleep(running)

@@ -11,10 +11,6 @@ class LanguageSettings(enum.Enum):
     set_default_he = (837, 351)
     add_lang = (455, 256)
     delete_lang = (458, 302)
-    up_arr = (685, 400)
-    down_arr= (685, 713)
-    down_arr_ae = (594, 714)
-    down_arr_he = (594, 714)
     # первая группа языков
     ar_AE = (465, 411)
     az_AZ = (453, 464)

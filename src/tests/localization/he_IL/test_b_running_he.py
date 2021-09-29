@@ -3,18 +3,17 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, default, slowly, modals, running, restart
+from src.helpers.config import btn, modal, slowly, modals, running, restart
 '''
-146.33 seconds
+133.44 seconds
 '''
 
 
 @pytest.mark.localization_he_IL
-def test_no_connection_modal(click, type, screenDiffChecker):
+def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.answers_log_he)
     click(btn.control.restart_he)
@@ -84,25 +83,24 @@ def test_speech_settings(click, screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_testing_script(click, type, openPwdModal, screenDiffChecker):
+def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
     click(modal.speech_settings.close_he)
     openPwdModal()
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok_he)
     click(btn.control.testing_he)
     time.sleep(modals)
     click(btn.testing.hand_right_he)
-    time.sleep(default)
     assert screenDiffChecker(
         'localization/he_IL/run_script_is_running.png'
     ) is None
 
 
 @pytest.mark.localization_he_IL
-def test_main_camera(click, screenDiffChecker):
-    time.sleep(8)
+def test_main_camera(click, screenDiffChecker, node):
+    node.cancelScriptPub()
+    click(btn.handler.reset)
     click(btn.testing.main_camera_he)
     assert screenDiffChecker(
         'localization/he_IL/run_testing_main_camera_header.png',
@@ -167,38 +165,8 @@ def test_record_sound_finish(screenDiffChecker):
 
 
 @pytest.mark.localization_he_IL
-def test_auto_mode_popup(click, type, screenDiffChecker):
+def test_restore(click):
     click(btn.handler.back_he)
     click(btn.control.restart_he)
     click(modal.restart.yes_he)
     time.sleep(restart)
-    click(btn.start.control)
-    click(modal.pwd.input)
-    click(btn.kb.numbers)
-    type('123456')
-    click(modal.pwd.ok_he)
-    click(btn.control.auto_mode_he)
-    click(btn.handler.back_he)
-    assert screenDiffChecker(
-        'localization/he_IL/run_automode_popup.png'
-    ) is None
-
-
-@pytest.mark.localization_he_IL
-def test_joy_mode_popup(click, type, screenDiffChecker):
-    time.sleep(modals)
-    click(btn.start.control)
-    click(modal.pwd.input)
-    click(btn.kb.numbers)
-    type('123456')
-    click(modal.pwd.ok_he)
-    click(btn.control.auto_mode_he)
-    click(btn.handler.back_he)
-    assert screenDiffChecker(
-        'localization/he_IL/run_joy_mode_popup.png'
-    ) is None
-
-
-@pytest.mark.localization_he_IL
-def test_restore():
-    time.sleep(modals)

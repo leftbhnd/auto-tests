@@ -3,24 +3,24 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, modals, running, restart
+from src.helpers.config import btn, modal, param, running, restart
 '''
-115.20 seconds
+115.68 seconds
 '''
 
 
 @pytest.mark.interface_statuses_of_running
-def test_disable_radius(click, type, node):
+def test_disable_radius(click, typeText, node):
     click(btn.start.control)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.settings)
     click(btn.settings.nav)
     click(param.driving.useRadius)
     click(btn.handler.back)
     click(modal.save.yes)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.restart)
     click(modal.restart.yes)
@@ -29,7 +29,7 @@ def test_disable_radius(click, type, node):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_state(click, screenDiffChecker):
+def test_run_state(click, screenDiffChecker):
     click(btn.start.play)
     assert screenDiffChecker(
         'interfaces/run_state.png'
@@ -37,7 +37,7 @@ def test_check_run_state(click, screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run_active(screenDiffChecker):
+def test_run_active(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker(
         'interfaces/run_active.png'
@@ -45,7 +45,7 @@ def test_check_run_active(screenDiffChecker):
 
 
 @pytest.mark.interface_statuses_of_running
-def test_check_run(screenDiffChecker):
+def test_run(screenDiffChecker):
     time.sleep(0.6)
     assert screenDiffChecker(
         'interfaces/run.png'
@@ -61,7 +61,7 @@ def test_restore(click, openServiceMenu, node):
     click(param.driving.useRadius)
     click(btn.handler.back)
     click(modal.save.yes)
-    time.sleep(modals)
+    click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.restart)
     click(modal.restart.yes)

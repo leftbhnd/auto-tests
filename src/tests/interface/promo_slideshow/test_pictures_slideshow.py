@@ -1,20 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pytest
-import time
 
-from src.helpers.config import btn, modal, modals
+from src.helpers.config import btn, modal
 '''
-21.44 seconds
+16.95 seconds
 '''
 
 
 @pytest.mark.interface_promo_slideshow
-def test_promo_open(click, type, screenDiffChecker):
+def test_promo_open(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(modal.pwd.input)
     click(btn.kb.numbers)
-    type('123456')
+    typeText('123456')
     click(modal.pwd.ok)
     click(btn.control.promo)
     assert screenDiffChecker(
@@ -92,4 +90,4 @@ def test_reset(click):
     click(btn.handler.back)
     click(modal.save.yes)
     click(btn.handler.back)
-    time.sleep(modals)
+    click(btn.handler.reset)
