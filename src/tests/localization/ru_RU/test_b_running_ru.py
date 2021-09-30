@@ -83,7 +83,9 @@ def test_speech_settings(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_testing_script(click, openServiceMenu, screenDiffChecker):
+def test_testing_script(click, openServiceMenu, screenDiffChecker, node):
+    node.cancelSpeechPub()
+    node.cancelScriptPub()
     click(modal.speech_settings.close)
     openServiceMenu()
     click(btn.control.testing)

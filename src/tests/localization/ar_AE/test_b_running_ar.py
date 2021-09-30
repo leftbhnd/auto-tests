@@ -84,7 +84,9 @@ def test_speech_settings(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
+def test_testing_script(click, typeText, openPwdModal, screenDiffChecker, node):
+    node.cancelSpeechPub()
+    node.cancelScriptPub()
     click(modal.speech_settings.close_ae)
     openPwdModal()
     click(btn.kb.lang)
