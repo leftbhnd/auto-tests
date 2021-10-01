@@ -32,7 +32,8 @@ def test_auto_tumbler_enable(click, typeText, screenDiffChecker):
     click(modal.pwd.ok)
     click(btn.control.auto_mode)
     assert screenDiffChecker(
-        'interfaces/control_auto_mode_enable.png'
+        'interfaces/control_auto_mode_enable.png',
+        (780, 400, 450, 380)
     ) is None
 
 
@@ -52,7 +53,8 @@ def test_answerlog_tumbler_enable(click, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.control.answers_log)
     assert screenDiffChecker(
-        'interfaces/control_answers_log_enable.png'
+        'interfaces/control_answers_log_enable.png',
+        (780, 400, 450, 380)
     ) is None
 
 
@@ -61,7 +63,8 @@ def test_restart_modal(click, screenDiffChecker):
     click(btn.control.answers_log)
     click(btn.control.restart)
     assert screenDiffChecker(
-        'interfaces/restart.png'
+        'interfaces/restart.png',
+        (350, 305, 580, 190)
     ) is None
 
 
