@@ -23,7 +23,8 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/ar_AE/run_no_connection_modal.png'
+        'localization/ar_AE/run_no_connection_modal.png',
+        (370, 310, 550, 180)
     ) is None
 
 
@@ -32,7 +33,8 @@ def test_radius_modal(click, screenDiffChecker):
     click(modal.no_connection.yes_ae)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/ar_AE/run_radius_modal.png'
+        'localization/ar_AE/run_radius_modal.png',
+        (370, 285, 540, 230)
     ) is None
 
 
