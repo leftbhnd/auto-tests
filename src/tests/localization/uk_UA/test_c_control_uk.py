@@ -18,7 +18,8 @@ def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
-        'localization/uk_UA/con_wrong_pass_modal.png'
+        'localization/uk_UA/con_wrong_pass_modal.png',
+        (365, 160, 545, 200)
     ) is None
 
 
@@ -156,7 +157,8 @@ def test_identification(click, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
-        'localization/uk_UA/con_identification.png'
+        'localization/uk_UA/con_identification.png',
+        (370, 275, 540, 240)
     ) is None
 
 
@@ -180,7 +182,8 @@ def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(modal.pwd.ok)
     click(btn.control.phrase_mode)
     assert screenDiffChecker(
-        'localization/uk_UA/con_phrase_mode_on.png'
+        'localization/uk_UA/con_phrase_mode_on.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -189,7 +192,8 @@ def test_phrase_mode_off(click, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.control.phrase_mode)
     assert screenDiffChecker(
-        'localization/uk_UA/con_phrase_mode_off.png'
+        'localization/uk_UA/con_phrase_mode_off.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -199,7 +203,8 @@ def test_volume(click, screenDiffChecker, joy, node):
     joy_msg = joy.upVolume()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
-        'localization/uk_UA/con_volume.png'
+        'localization/uk_UA/con_volume.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -212,7 +217,8 @@ def test_mic(click, screenDiffChecker, joy, node):
     joy_msg = joy.upMic()
     node.joyCommandPub(joy_msg)
     assert screenDiffChecker(
-        'localization/uk_UA/con_mic.png'
+        'localization/uk_UA/con_mic.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -224,7 +230,8 @@ def test_restart_modal(click, screenDiffChecker, joy, node):
     click(btn.handler.reset)
     click(btn.control.restart)
     assert screenDiffChecker(
-        'localization/uk_UA/con_restart_modal.png'
+        'localization/uk_UA/con_restart_modal.png',
+        (370, 310, 540, 180)
     ) is None
 
 
@@ -234,7 +241,8 @@ def test_auto_mode_popup(click, screenDiffChecker):
     click(btn.control.auto_mode)
     click(btn.handler.back)
     assert screenDiffChecker(
-        'localization/uk_UA/con_automode_popup.png'
+        'localization/uk_UA/con_automode_popup.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
@@ -248,7 +256,8 @@ def test_joy_mode_popup(click, typeText, screenDiffChecker):
     click(btn.control.auto_mode)
     click(btn.handler.back)
     assert screenDiffChecker(
-        'localization/uk_UA/con_joy_mode_popup.png'
+        'localization/uk_UA/con_joy_mode_popup.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
