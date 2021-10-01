@@ -24,7 +24,7 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ar_AE/run_no_connection_modal.png',
-        (370, 310, 550, 180)
+        (370, 310, 540, 180)
     ) is None
 
 
@@ -34,7 +34,7 @@ def test_radius_modal(click, screenDiffChecker):
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ar_AE/run_radius_modal.png',
-        (370, 285, 540, 230)
+        (370, 295, 540, 200)
     ) is None
 
 
@@ -65,9 +65,8 @@ def test_check_run(screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_answer_log(click, screenDiffChecker, node):
     time.sleep(running)
-    click(modal.ans_log.clear_ae)
     node.cancelSpeechPub()
-    node.asrPub('حكم اختبار مجرفة')
+    click(modal.ans_log.clear_ae)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ar_AE/run_test_answers_log.png',
