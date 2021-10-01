@@ -20,8 +20,8 @@ default = raw_input('задать координаты? 0 - пропустить
 if default == '1':
     left = raw_input('отступ слева: ')
     top = raw_input('отступ сверху: ')
-    right = raw_input('отступ справа: ')
-    bottom = raw_input('отступ снизу: ')
+    right = raw_input('ширина: ')
+    bottom = raw_input('высота: ')
     makeScreen(screen_name, getTuple(left, top, right, bottom))
 else:
     makeScreen(screen_name)
