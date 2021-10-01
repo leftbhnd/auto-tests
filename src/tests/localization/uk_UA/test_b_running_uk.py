@@ -23,7 +23,7 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/uk_UA/run_no_connection_modal.png',
-        (370, 310, 540, 180)
+        (330, 310, 620, 180)
     ) is None
 
 
@@ -33,7 +33,7 @@ def test_radius_modal(click, screenDiffChecker):
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/uk_UA/run_radius_modal.png',
-        (370, 300, 540, 200)
+        (370, 290, 540, 210)
     ) is None
 
 

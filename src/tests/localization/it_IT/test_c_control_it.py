@@ -158,7 +158,7 @@ def test_identification(click, screenDiffChecker):
     click(btn.handler.reset)
     assert screenDiffChecker(
         'localization/it_IT/con_identification.png',
-        (370, 275, 540, 240)
+        (340, 275, 590, 240)
     ) is None
 
 

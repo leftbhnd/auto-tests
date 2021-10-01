@@ -231,7 +231,7 @@ def test_restart_modal(click, screenDiffChecker, joy, node):
     click(btn.control.restart)
     assert screenDiffChecker(
         'localization/pt_PT/con_restart_modal.png',
-        (370, 310, 540, 180)
+        (340, 310, 600, 180)
     ) is None
 
 
