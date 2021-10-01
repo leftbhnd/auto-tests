@@ -158,7 +158,7 @@ def test_identification(click, screenDiffChecker):
     click(btn.handler.reset)
     assert screenDiffChecker(
         'localization/el_GR/con_identification.png',
-        (370, 275, 540, 240)
+        (200, 275, 880, 240)
     ) is None
 
 
@@ -231,7 +231,7 @@ def test_restart_modal(click, screenDiffChecker, joy, node):
     click(btn.control.restart)
     assert screenDiffChecker(
         'localization/el_GR/con_restart_modal.png',
-        (370, 310, 540, 180)
+        (360, 310, 560, 170)
     ) is None
 
 

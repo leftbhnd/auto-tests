@@ -23,7 +23,7 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/nb_NO/run_no_connection_modal.png',
-        (370, 310, 540, 180)
+        (370, 300, 540, 200)
     ) is None
 
 
