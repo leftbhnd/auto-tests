@@ -22,7 +22,8 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/it_IT/run_no_connection_modal.png'
+        'localization/it_IT/run_no_connection_modal.png',
+        (370, 310, 540, 180)
     ) is None
 
 
@@ -31,7 +32,8 @@ def test_radius_modal(click, screenDiffChecker):
     click(modal.no_connection.yes)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/it_IT/run_radius_modal.png'
+        'localization/it_IT/run_radius_modal.png',
+        (370, 300, 540, 200)
     ) is None
 
 
@@ -62,9 +64,8 @@ def test_check_run(screenDiffChecker):
 @pytest.mark.localization_it_IT
 def test_answer_log(click, screenDiffChecker, node):
     time.sleep(running)
-    click(modal.ans_log.clear)
     node.cancelSpeechPub()
-    node.asrPub('regola del test della pala')
+    click(modal.ans_log.clear_ae)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/it_IT/run_test_answers_log.png',
