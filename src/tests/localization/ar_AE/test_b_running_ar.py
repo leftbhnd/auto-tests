@@ -23,7 +23,8 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/ar_AE/run_no_connection_modal.png'
+        'localization/ar_AE/run_no_connection_modal.png',
+        (370, 310, 540, 180)
     ) is None
 
 
@@ -32,7 +33,8 @@ def test_radius_modal(click, screenDiffChecker):
     click(modal.no_connection.yes_ae)
     time.sleep(slowly)
     assert screenDiffChecker(
-        'localization/ar_AE/run_radius_modal.png'
+        'localization/ar_AE/run_radius_modal.png',
+        (370, 295, 540, 200)
     ) is None
 
 
@@ -63,9 +65,8 @@ def test_check_run(screenDiffChecker):
 @pytest.mark.localization_ar_AE
 def test_answer_log(click, screenDiffChecker, node):
     time.sleep(running)
-    click(modal.ans_log.clear_ae)
     node.cancelSpeechPub()
-    node.asrPub('حكم اختبار مجرفة')
+    click(modal.ans_log.clear_ae)
     time.sleep(slowly)
     assert screenDiffChecker(
         'localization/ar_AE/run_test_answers_log.png',
@@ -84,7 +85,9 @@ def test_speech_settings(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ar_AE
-def test_testing_script(click, typeText, openPwdModal, screenDiffChecker):
+def test_testing_script(click, typeText, openPwdModal, screenDiffChecker, node):
+    node.cancelSpeechPub()
+    node.cancelScriptPub()
     click(modal.speech_settings.close_ae)
     openPwdModal()
     click(btn.kb.lang)
