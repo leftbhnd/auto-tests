@@ -158,7 +158,7 @@ def test_identification(click, screenDiffChecker):
     click(btn.handler.reset)
     assert screenDiffChecker(
         'localization/az_AZ/con_identification.png',
-        (320, 275, 645, 250)
+        (370, 275, 540, 240)
     ) is None
 
 
@@ -192,7 +192,8 @@ def test_phrase_mode_off(click, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.control.phrase_mode)
     assert screenDiffChecker(
-        'localization/az_AZ/con_phrase_mode_off.png'
+        'localization/az_AZ/con_phrase_mode_off.png',
+        (0, 40, 1280, 115)
     ) is None
 
 
