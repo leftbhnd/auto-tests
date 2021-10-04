@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, modals, connection
 @pytest.mark.interface_wifi_input
 def test_connection_open(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.connection)
     time.sleep(connection)
@@ -28,8 +27,7 @@ def test_connection_open(click, typeText, screenDiffChecker):
 def test_hide_input(click, typeText, screenDiffChecker):
     click(btn.connection.choose_wifi)
     click(modal.wifi_pwd.input)
-    click(btn.kb.numbers)
-    typeText('2281488')
+    typeText(2281488)
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(

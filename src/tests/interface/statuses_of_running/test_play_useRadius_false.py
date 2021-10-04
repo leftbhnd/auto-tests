@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, param, running, restart
 @pytest.mark.interface_statuses_of_running
 def test_disable_radius(click, typeText, node):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.settings)
     click(btn.settings.nav)

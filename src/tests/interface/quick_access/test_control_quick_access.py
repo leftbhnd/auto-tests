@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal
 @pytest.mark.interface_quick_access
 def test_charge_app(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.charge_app)
     time.sleep(2)
@@ -27,8 +26,7 @@ def test_auto_tumbler_enable(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close)
     click(btn.handler.reset)
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.auto_mode)
     assert screenDiffChecker(
