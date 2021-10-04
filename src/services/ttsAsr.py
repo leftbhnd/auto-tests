@@ -5,7 +5,7 @@ import rospy
 from promobot_msgs.msg import ASRResult
 from promobot_msgs.msg import Answer
 from promobot_msgs.msg import TTSCommand
-from promobot_srvs.srvs import SetLinguoLevels
+from promobot_srvs.srv import SetLinguoLevels
 from std_msgs.msg import Empty
 from src.helpers.messages import AsrTtsMsg
 
@@ -95,5 +95,5 @@ class TtsAsrService:
     def changeLevel(self, levels):
         rospy.wait_for_service('answers/levels/set')
         set_params = rospy.ServiceProxy('answers/levels/set', SetLinguoLevels)
-        resp = set_params(levels)
+        resp = set_params([levels, False])
         return 'heeeellooooooo'
