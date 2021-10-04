@@ -95,5 +95,8 @@ class TtsAsrService:
     def changeLevel(self, levels):
         rospy.wait_for_service('answers/levels/set')
         set_params = rospy.ServiceProxy('answers/levels/set', SetLinguoLevels)
-        resp = set_params([levels, False])
+        test = SetLinguoLevels()
+        test.levels = levels
+        test.ignore_errors = False
+        set_params(test)
         return 'heeeellooooooo'
