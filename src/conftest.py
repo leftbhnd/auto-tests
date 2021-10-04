@@ -65,6 +65,9 @@ def click():
 @pytest.fixture
 def typeText():
     def _method(symbols):
+        if type(symbols) != str:
+            p.leftClick(299, 758, _pause=False)
+            symbols = str(symbols)
         for symbol in symbols:
             x = keyboard[symbol][0]
             y = keyboard[symbol][1]
