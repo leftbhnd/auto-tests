@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, slowly, modals, running, restart
 @pytest.mark.localization_he_IL
 def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok_he)
     click(btn.control.answers_log_he)
     click(btn.control.restart_he)
@@ -89,8 +88,7 @@ def test_testing_script(click, typeText, openPwdModal, screenDiffChecker, node):
     node.cancelScriptPub()
     click(modal.speech_settings.close_he)
     openPwdModal()
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok_he)
     click(btn.control.testing_he)
     time.sleep(modals)

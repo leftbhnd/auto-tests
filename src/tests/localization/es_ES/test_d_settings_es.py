@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, param, default, slowly
 @pytest.mark.localization_es_ES
 def test_settings(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.settings)
     assert screenDiffChecker(

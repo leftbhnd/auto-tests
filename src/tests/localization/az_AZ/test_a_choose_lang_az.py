@@ -13,8 +13,7 @@ from src.helpers.config import btn, modal, modals
 def test_choose_lang(click, typeText, node):
     click(btn.start.control)
     click(btn.kb.lang)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok_ae)
     click(btn.control.settings_ae)
     click(btn.settings.lang_ae)

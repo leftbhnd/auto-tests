@@ -13,8 +13,7 @@ from src.helpers.config import btn, modal, modals, connection
 def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
     click(btn.kb.lang)
-    click(btn.kb.numbers)
-    typeText('1234567')
+    typeText(1234567)
     click(modal.pwd.ok_ae)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -28,8 +27,7 @@ def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
 def test_control(click, typeText, screenDiffChecker):
     click(modal.pwd.input)
     click(btn.kb.lang)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_control.png'
@@ -180,8 +178,7 @@ def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.start.control)
     click(btn.kb.lang)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok_ae)
     click(btn.control.phrase_mode_ae)
     assert screenDiffChecker(
@@ -254,8 +251,7 @@ def test_joy_mode_popup(click, typeText, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.start.control)
     click(btn.kb.lang)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok_ae)
     click(btn.control.auto_mode_ae)
     click(btn.handler.back_ae)

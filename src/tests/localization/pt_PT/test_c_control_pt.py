@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, modals, connection
 @pytest.mark.localization_pt_PT
 def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('1234567')
+    typeText(1234567)
     click(modal.pwd.ok)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -26,8 +25,7 @@ def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
 @pytest.mark.localization_pt_PT
 def test_control(click, typeText, screenDiffChecker):
     click(modal.pwd.wr_input_pt)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.wr_ok_pt)
     assert screenDiffChecker(
         'localization/pt_PT/con_control.png'
@@ -177,8 +175,7 @@ def test_phrase_mode_on(click, typeText, screenDiffChecker):
     click(btn.control.charge_app_close)
     click(btn.handler.reset)
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.phrase_mode)
     assert screenDiffChecker(
@@ -250,8 +247,7 @@ def test_auto_mode_popup(click, screenDiffChecker):
 def test_joy_mode_popup(click, typeText, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.auto_mode)
     click(btn.handler.back)

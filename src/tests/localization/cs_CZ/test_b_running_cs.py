@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, slowly, modals, running, restart
 @pytest.mark.localization_cs_CZ
 def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.answers_log)
     click(btn.control.restart)
