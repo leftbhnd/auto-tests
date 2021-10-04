@@ -12,8 +12,7 @@ from src.helpers.config import btn, modal, slowly, running, restart
 @pytest.mark.interface_statuses_of_running
 def test_networkOff_modal(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.restart)
     click(modal.restart.yes)

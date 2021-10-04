@@ -11,8 +11,7 @@ from src.helpers.config import btn, modal
 @pytest.mark.interface_promo_printing
 def test_promo_open(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.promo)
     assert screenDiffChecker(

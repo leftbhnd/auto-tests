@@ -11,8 +11,7 @@ from src.helpers.config import btn, modal
 @pytest.mark.interface_identification
 def test_open_identification(click, typeText, screenDiffChecker):
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.control.ident)
     click(btn.handler.reset)
@@ -25,8 +24,7 @@ def test_open_identification(click, typeText, screenDiffChecker):
 @pytest.mark.interface_identification
 def test_hide_input(click, typeText, screenDiffChecker):
     click(modal.ident.input)
-    click(btn.kb.numbers)
-    typeText('111111')
+    typeText(111111)
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
@@ -47,8 +45,7 @@ def test_visiable_input(click, screenDiffChecker):
 @pytest.mark.interface_identification
 def test_confirm_hide_input_same(click, typeText, screenDiffChecker):
     click(modal.ident.kb_confirm_input)
-    click(btn.kb.numbers)
-    typeText('111111')
+    typeText(111111)
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
@@ -59,8 +56,7 @@ def test_confirm_hide_input_same(click, typeText, screenDiffChecker):
 @pytest.mark.interface_identification
 def test_confirm_hide_input_not_same(click, typeText, screenDiffChecker):
     click(modal.ident.kb_confirm_input)
-    click(btn.kb.numbers)
-    typeText('1')
+    typeText(1)
     click(btn.handler.reset)
     click(btn.handler.reset)
     assert screenDiffChecker(
@@ -84,8 +80,7 @@ def test_wrong_pass(click, typeText, screenDiffChecker):
     click(btn.handler.back)
     click(btn.handler.reset)
     click(btn.start.control)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.pwd.ok)
     click(btn.handler.reset)
     click(btn.handler.reset)
@@ -97,8 +92,7 @@ def test_wrong_pass(click, typeText, screenDiffChecker):
 @pytest.mark.interface_identification
 def test_correct_new_pass(click, typeText, screenDiffChecker):
     click(modal.pwd.input)
-    click(btn.kb.numbers)
-    typeText('111111')
+    typeText(111111)
     click(modal.pwd.ok)
     assert screenDiffChecker(
         'interfaces/control.png'
@@ -109,11 +103,9 @@ def test_correct_new_pass(click, typeText, screenDiffChecker):
 def test_restore(click, typeText):
     click(btn.control.ident)
     click(modal.ident.input)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.ident.kb_confirm_input)
-    click(btn.kb.numbers)
-    typeText('123456')
+    typeText(123456)
     click(modal.ident.kb_save)
     click(btn.handler.reset)
     click(btn.handler.back)
