@@ -23,6 +23,12 @@ def test_levels_order(node):
 
 
 @pytest.mark.unit
-def test_levels_service(node):
-    node.changeLevel('0, 1, 2, 3, 4, 5, 6, 7')
-    assert 0 == 0
+def test_levels_service_set(node):
+    node.setLevelSrv([0, 1, 3, 2, 7])
+    assert node.getLevelSrv() == ['0', '1', '3', '2', '7']
+
+
+@pytest.mark.unit
+def test_levels_service_reset(node):
+    node.resetLevelSrv()
+    assert node.getLevelSrv() == ['0', '1', '2', '3', '4', '5', '6', '7']

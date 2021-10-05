@@ -5,8 +5,11 @@ import rospy
 from promobot_msgs.msg import ASRResult
 from promobot_msgs.msg import Answer
 from promobot_msgs.msg import TTSCommand
+from promobot_msgs.msg import LinguoLevel
 from promobot_srvs.srv import SetLinguoLevels
-from std_msgs.msg import Empty
+from promobot_srvs.srv import GetLinguoLevels
+from std_msgs.msg import Empty as Empty_msg
+from std_srvs.srv import Empty as Empty_srv
 from src.helpers.messages import AsrTtsMsg
 
 
@@ -22,7 +25,7 @@ class TtsAsrService:
             'tts/start', TTSCommand, latch=True, queue_size=10
         )
         self._pub_cancel_speech = rospy.Publisher(
-            'tts/cancel', Empty, latch=True, queue_size=10
+            'tts/cancel', Empty_msg, latch=True, queue_size=10
         )
         '''
         subscribers
@@ -32,6 +35,18 @@ class TtsAsrService:
         )
         rospy.Subscriber(
             'tts/start', TTSCommand, self._ttsListener
+        )
+        '''
+        services
+        '''
+        self._srv_answers_levels_set = rospy.ServiceProxy(
+            'answers/levels/set', SetLinguoLevels
+        )
+        self._srv_answers_levels_reset = rospy.ServiceProxy(
+            'answers/levels/reset', Empty_srv
+        )
+        self._srv_answers_levels_get = rospy.ServiceProxy(
+            'answers/levels/get', GetLinguoLevels
         )
         '''
         переменные для геттеров
@@ -62,7 +77,7 @@ class TtsAsrService:
         return self._robot_answer
 
     def cancelSpeechPub(self):
-        empty_msg = Empty()
+        empty_msg = Empty_msg()
         self._pub_cancel_speech.publish(empty_msg)
         rospy.sleep(self._timeout)
 
@@ -92,11 +107,20 @@ class TtsAsrService:
         system_language = rospy.get_param('system/language')
         return system_language
 
-    def changeLevel(self, levels):
-        rospy.wait_for_service('answers/levels/set')
-        set_params = rospy.ServiceProxy('answers/levels/set', SetLinguoLevels)
-        test = SetLinguoLevels()
-        test.levels = levels
-        test.ignore_errors = False
-        set_params(test)
-        return 'heeeellooooooo'
+    def setLevelSrv(self, levels):
+        changed_levels = []
+        for level in levels:
+            ling_level = LinguoLevel()
+            ling_level.id = level
+            changed_levels.append(ling_level)
+        self._srv_answers_levels_set(changed_levels, False)
+
+    def resetLevelSrv(self):
+        self._srv_answers_levels_reset()
+
+    def getLevelSrv(self):
+        srv_response = self._srv_answers_levels_get(True)
+        current_levels = []
+        for item in srv_response.levels:
+            current_levels.append(str(item.id))
+        return current_levels
