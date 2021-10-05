@@ -47,7 +47,7 @@ pip install xmltodict
 
 # API класса main.py
 
-### Publishers:
+## Publishers:
 
 - `node.autoModePub()`
 - `node.joyModePub()`
@@ -81,7 +81,17 @@ pip install xmltodict
 - `node.ttsPub(str)`
 - `node.cancelSpeechPub()`
 
-### Getters:
+#
+
+## Services:
+
+- `node.setLevelSrv([int])` -> [0, 1, 2, 3,...]
+- `resetLevelSrv()` -> устанавливает уровень ответов в дефолт
+- `getLevelsOrder()` -> ['0', '1', '2',...] = [str, str, str,...]
+
+#
+
+## Getters:
 
 - `node.getDriveMode()` -> X = int
 - `node.getCurrentPoint()` -> X = int
@@ -116,6 +126,8 @@ pip install xmltodict
 - `node.getLevelsOrder()` -> ['0', '1', '2', '3', '4', '5', '6', '7']
 - `node.getSystemLanguage()` -> 'выбранный язык системы' = str
 
+#
+
 # Фикстуры (вспомогательные функции)
 
 - `screenDiffChecker('dir/original_image', coordinates=screen_resolution)` - создает скриншот текущего экрана, сравнивает с оригиналом. Если нет оригинального скриншота - делает его
@@ -123,10 +135,12 @@ pip install xmltodict
 - `click(btn.X.X|modal.X.X|param.X.X)` - функция клика на указанную координату (кнопку, модальное окно, параметр)
 - `openPwdModal()` - функция, открывающая модальное окно ввода пароля
 - `openServiceMenu()` - функция, открывающая сервисное меню из запущенной gui
-- `typeText('привет'|123456)` - функция печати, если тип аргумента str - печатает текст, если тип аргумента int - сначала выбирается ввод цифр, затем печать цифр  
+- `typeText('привет'|123456)` - функция печати, если тип аргумента str - печатает текст, если тип аргумента int - сначала выбирается ввод цифр, затем печать цифр
 - `node.getX()` - методы получения данных с топика
 - `node.XPub(data|empty)` - методы для публикации данных в топик
 - `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()` - методы имитации управления джойстиком
+
+#
 
 # Пример теста
 
