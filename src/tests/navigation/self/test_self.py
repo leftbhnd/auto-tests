@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import default, slowly
+from src.helpers.config import slowly
 '''
 X seconds
 '''

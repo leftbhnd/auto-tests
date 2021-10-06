@@ -2,7 +2,7 @@ import os
 import time
 import pytest
 
-from src.helpers.config import btn, modal,running, restart
+from src.helpers.config import btn, modal, running, restart
 
 
 @pytest.mark.navigation_self
