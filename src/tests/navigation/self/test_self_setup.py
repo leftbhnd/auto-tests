@@ -2,18 +2,18 @@ import os
 import time
 import pytest
 
-from src.helpers.config import btn, modal,running, restart
+from src.helpers.config import btn, modal, running, restart
 
 
-@pytest.mark.navigation_back_mp
-def test_setup_back_mp(click, openServiceMenu):
+@pytest.mark.navigation_self
+def test_setup(click, openServiceMenu):
     openServiceMenu()
     os.rename(
         '/home/promobot/.promobot/resources/map.json',
-        '/home/promobot/.promobot/resources/map.json_back_mp'
+        '/home/promobot/.promobot/resources/map.json_back'
     )
     os.rename(
-        '/home/promobot/.promobot/resources/map.json_back',
+        '/home/promobot/.promobot/resources/map.json_self',
         '/home/promobot/.promobot/resources/map.json'
     )
     click(btn.control.restart)
