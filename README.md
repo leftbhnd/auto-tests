@@ -139,6 +139,8 @@ pip install xmltodict
 - `node.getX()` - методы получения данных с топика
 - `node.XPub(data|empty)` - методы для публикации данных в топик
 - `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()` - методы имитации управления джойстиком
+- `db.updateValue([{'name': str, value: any}])` - метод обновления параметров робота, аргумент: массив объекта(ов) с ключами 'name' и 'value'
+- `db.getValue('/param_group/param_name')` - метод получения значения у указанного параметра, например, '/driving/useRaius'
 
 #
 
