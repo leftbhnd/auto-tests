@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, running, restart
+from src.helpers.config import btn, modal, restart
 
 
 @pytest.mark.navigation_restore
