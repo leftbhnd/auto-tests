@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, interaction
+from src.helpers.config import btn, interaction
 '''
 57.86 seconds
 '''
@@ -41,28 +41,18 @@ def test_failed_greeting_known_second(node):
 
 
 @pytest.mark.interaction_greeting
-def test_set_zero_greeting_timeout(click, openServiceMenu, node):
+def test_set_zero_greeting_timeout(click, openServiceMenu, node, db):
     node.clearFacePub()
+    db.updateValue([
+        {'name': '/dialog/timeRecently', 'value': 0.0},
+        {'name': '/dialog/timeRecentlyUnknown', 'value': 0.0}
+    ])
     openServiceMenu()
-    click(btn.control.settings)
-    click(btn.settings.system)
-    click(btn.system.dialog)
-    click(btn.handler.dialog_down_arr)
-    for i in range(5):
-        click(param.dialog.timeRecently_decrease)
-    for i in range(2):
-        click(param.dialog.timeRecentlyUnknown_decrease)
     click(btn.handler.back)
-    click(modal.save.yes)
-    click(btn.handler.reset)
-    click(btn.handler.back)
-    click(btn.handler.back)
-    click(btn.handler.reset)
 
 
 @pytest.mark.interaction_greeting
 def test_first_greeting_unknown(node):
-    node.cancelSpeechPub()
     node.facePub(3, 0, 0, 3, 1.0)
     assert node.getTts() == 'тестовый привет, незнакомец'
 
@@ -92,20 +82,12 @@ def test_second_greeting_known(node):
 
 
 @pytest.mark.interaction_greeting
-def test_restore(click, openServiceMenu, node):
+def test_restore(click, openServiceMenu, node, db):
     node.clearFacePub()
+    db.updateValue([
+        {'name': '/dialog/timeRecently', 'value': 5.0},
+        {'name': '/dialog/timeRecentlyUnknown', 'value': 2.0}
+    ])
     openServiceMenu()
-    click(btn.control.settings)
-    click(btn.settings.system)
-    click(btn.system.dialog)
-    click(btn.handler.dialog_down_arr)
-    for i in range(5):
-        click(param.dialog.timeRecently_increase)
-    for i in range(2):
-        click(param.dialog.timeRecentlyUnknown_increase)
-    click(btn.handler.back)
-    click(modal.save.yes)
-    click(btn.handler.reset)
-    click(btn.handler.back)
     click(btn.handler.back)
     time.sleep(interaction)
