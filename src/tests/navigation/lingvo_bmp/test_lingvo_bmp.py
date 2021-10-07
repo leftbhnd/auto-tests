@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import slowly
+from src.helpers.config import slowly, interaction
 '''
 X seconds
 '''
@@ -19,11 +19,16 @@ def test_first_point(node):
 
 
 @pytest.mark.navigation_lingvo_bmp
-def test_second_point(node):
-    node.asrPub('едь на вторую точку')
-    while node.getCurrentPoint() != 2:
+def test_start_bmp(node):
+    time.sleep(interaction)
+    assert node.getAnswer() == 'Еду на первую точку'
+
+
+@pytest.mark.navigation_lingvo_bmp
+def test_finish_bmp(node):
+    while node.getCurrentPoint() != 1:
         time.sleep(slowly)
-    assert node.getAnswer() == 'Приехал на вторую точку'
+    assert node.getAnswer() == 'Приехал на первую точку'
 
 
 @pytest.mark.navigation_lingvo_bmp
@@ -32,16 +37,23 @@ def test_change_point(node):
     while node.getDrivePause() != False:
         time.sleep(slowly)
     time.sleep(5)
-    node.asrPub('едь на 1 первую точку')
+    node.asrPub('нет')
+    assert node.getAnswer() == 'тестовое правило с нет'
+
+
+@pytest.mark.navigation_lingvo_bmp
+def test_waiting_start_bmp(node):
+    time.sleep(interaction)
+    while node.getDrivePause() != False:
+        time.sleep(slowly)
     assert node.getAnswer() == 'Еду на первую точку'
 
 
 @pytest.mark.navigation_lingvo_bmp
-def test_waiting(node):
+def test_waiting_finish_bmp(node):
     while node.getCurrentPoint() != 1:
         time.sleep(slowly)
-    time.sleep(60)
-    assert node.getCurrentPoint() == 1
+    assert node.getAnswer() == 'Приехал на первую точку'
 
 
 @pytest.mark.navigation_lingvo_bmp
