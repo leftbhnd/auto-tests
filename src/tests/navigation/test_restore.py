@@ -7,13 +7,12 @@ from src.helpers.config import btn, modal, restart
 
 
 @pytest.mark.navigation_restore
-def test_restore(click, typeText, db):
+def test_restore(click, openServiceMenu, db):
     db.updateValue([
         {'name': '/driving/useMap', 'value': False},
         {'name': '/driving/useRadius', 'value': True}
     ])
-    click(btn.start.control)
-    typeText('123456')
+    openServiceMenu()
     click(btn.control.restart)
     click(modal.restart.yes)
     time.sleep(restart)
