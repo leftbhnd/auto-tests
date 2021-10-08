@@ -108,6 +108,7 @@ def test_add_picture_modal(click, screenDiffChecker):
 @pytest.mark.localization_sv_SE
 def test_added_picture(click, screenDiffChecker):
     click(modal.promo.yes)
+    click(btn.promo.parent_dir)
     assert screenDiffChecker(
         'localization/sv_SE/con_add_picture_slideshow.png'
     ) is None
