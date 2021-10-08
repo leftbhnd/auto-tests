@@ -129,13 +129,20 @@ def test_navigation(click, screenDiffChecker):
 
 
 @pytest.mark.localization_ru_RU
-def test_save_parameters(click, screenDiffChecker):
+def test_save_parameters_modal(click, screenDiffChecker):
     click(param.driving.useRadius)
     click(param.driving.useRadius)
     click(btn.handler.back)
+    assert screenDiffChecker(
+        'localization/ru_RU/set_save_parameters_modal.png'
+    ) is None
+
+
+@pytest.mark.localization_ru_RU
+def test_save_parameters_popup(click, screenDiffChecker):
     click(modal.save.yes)
     assert screenDiffChecker(
-        'localization/ru_RU/set_save_parameters.png'
+        'localization/ru_RU/set_save_parameters_popup.png'
     ) is None
 
 
