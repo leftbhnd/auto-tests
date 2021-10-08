@@ -92,18 +92,10 @@ def test_connection_update(click, screenDiffChecker):
 
 
 @pytest.mark.localization_az_AZ
-def test_promo_open(click, screenDiffChecker):
+def test_add_picture_modal(click, screenDiffChecker):
     click(btn.handler.reset)
     click(btn.handler.back)
     click(btn.control.promo)
-    assert screenDiffChecker(
-        'localization/az_AZ/con_promo.png',
-        (0, 40, 1280, 100)
-    ) is None
-
-
-@pytest.mark.localization_az_AZ
-def test_add_picture_modal(click, screenDiffChecker):
     click(btn.promo.pictures)
     click(btn.promo.pictures)
     click(btn.promo.fs_checkbox1)
