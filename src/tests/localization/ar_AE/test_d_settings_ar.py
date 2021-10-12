@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, default, slowly
+from src.helpers.config import btn, modal, default, slowly
 '''
 29.95 seconds
 '''
@@ -131,8 +131,8 @@ def test_navigation(click, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_save_parameters_modal(click, screenDiffChecker):
-    click(param.driving.useRadius_ae)
-    click(param.driving.useRadius_ae)
+    click(btn.nav.useRadius_ae)
+    click(btn.nav.useRadius_ae)
     click(btn.handler.back_ae)
     assert screenDiffChecker(
         'localization/ar_AE/set_save_parameters_modal.png'

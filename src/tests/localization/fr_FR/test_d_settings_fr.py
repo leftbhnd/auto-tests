@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, param, default, slowly
+from src.helpers.config import btn, modal, default, slowly
 '''
 29.36 seconds
 '''
@@ -130,8 +130,8 @@ def test_navigation(click, screenDiffChecker):
 
 @pytest.mark.localization_fr_FR
 def test_save_parameters_modal(click, screenDiffChecker):
-    click(param.driving.useRadius)
-    click(param.driving.useRadius)
+    click(btn.nav.useRadius)
+    click(btn.nav.useRadius)
     click(btn.handler.back)
     assert screenDiffChecker(
         'localization/fr_FR/set_save_parameters_modal.png'
