@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, slowly, restart, running
+from src.helpers.config import btn, param, modal, slowly, restart, running
 '''
 X seconds
 '''
@@ -12,7 +12,7 @@ X seconds
 @pytest.mark.navigation_interaction
 def test_setup_ingore_interaction(click, openServiceMenu, node, db):
     db.updateValue([
-        {'name': '/navigation/ignoreInteractions', 'value': True}
+        {'name': param.navigation.ignoreInteractions, 'value': True}
     ])
     openServiceMenu()
     click(btn.control.restart)

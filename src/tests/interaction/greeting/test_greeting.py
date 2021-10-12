@@ -3,7 +3,7 @@
 import pytest
 import time
 
-from src.helpers.config import btn, interaction
+from src.helpers.config import btn, param, interaction
 '''
 57.86 seconds
 '''
@@ -44,8 +44,8 @@ def test_failed_greeting_known_second(node):
 def test_set_zero_greeting_timeout(click, openServiceMenu, node, db):
     node.clearFacePub()
     db.updateValue([
-        {'name': '/dialog/timeRecently', 'value': 0.0},
-        {'name': '/dialog/timeRecentlyUnknown', 'value': 0.0}
+        {'name': param.dialog.timeRecently, 'value': 0.0},
+        {'name': param.dialog.timeRecentlyUnknown, 'value': 0.0}
     ])
     openServiceMenu()
     click(btn.handler.back)
@@ -85,8 +85,8 @@ def test_second_greeting_known(node):
 def test_restore(click, openServiceMenu, node, db):
     node.clearFacePub()
     db.updateValue([
-        {'name': '/dialog/timeRecently', 'value': 5.0},
-        {'name': '/dialog/timeRecentlyUnknown', 'value': 2.0}
+        {'name': param.dialog.timeRecently, 'value': 5.0},
+        {'name': param.dialog.timeRecentlyUnknown, 'value': 2.0}
     ])
     openServiceMenu()
     click(btn.handler.back)

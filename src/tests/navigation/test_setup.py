@@ -3,14 +3,14 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, running, restart
+from src.helpers.config import btn, param, modal, running, restart
 
 
 @pytest.mark.navigation_setup
 def test_setup(click, typeText, db):
     db.updateValue([
-        {'name': '/driving/useMap', 'value': True},
-        {'name': '/driving/useRadius', 'value': False}
+        {'name': param.driving.useMap, 'value': True},
+        {'name': param.driving.useRadius, 'value': False}
     ])
     click(btn.start.control)
     typeText('123456')

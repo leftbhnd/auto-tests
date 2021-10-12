@@ -4,8 +4,8 @@
 db_name = 'promobot'
 login = 'promobot'
 password = 'PR)(m0bot1'
-update = """update robotsettings
+sql_update = """update robotsettings
     set value = %s
     where parameter=%s"""
-select = """select * from robotsettings
+sql_select = """select * from robotsettings
     where parameter=%s"""

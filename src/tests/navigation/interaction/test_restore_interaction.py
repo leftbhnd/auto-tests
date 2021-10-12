@@ -4,7 +4,7 @@ import os
 import time
 import pytest
 
-from src.helpers.config import btn, modal, running, restart
+from src.helpers.config import btn, param, modal, running, restart
 
 
 @pytest.mark.navigation_interaction
@@ -19,10 +19,10 @@ def test_restore(click, openServiceMenu, db):
         '/home/promobot/.promobot/resources/map.json'
     )
     db.updateValue([
-        {'name': '/interaction/startByFaceInDrive', 'value': 0},
-        {'name': '/interaction/updateByFaceInDrive', 'value': 0},
-        {'name': '/interaction/updateBySpeechInDrive', 'value': 0},
-        {'name': '/navigation/ignoreInteractions', 'value': False}
+        {'name': param.interaction.startByFaceInDrive, 'value': 0},
+        {'name': param.interaction.updateByFaceInDrive, 'value': 0},
+        {'name': param.interaction.updateBySpeechInDrive, 'value': 0},
+        {'name': param.navigation.ignoreInteractions, 'value': False}
     ])
     click(btn.control.restart)
     click(modal.restart.yes)

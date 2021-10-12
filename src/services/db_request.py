@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import psycopg2
 
-from db_access import db_name, login, password, update, select
+from db_access import db_name, login, password, sql_update, sql_select
 
 
 class DbRequest:
@@ -12,8 +12,8 @@ class DbRequest:
             password=password
         )
         self._cursor = self._connection.cursor()
-        self._update = update
-        self._select = select
+        self._update = sql_update
+        self._select = sql_select
         self._updated_rows = 0
 
     def _closeConnection(self):
@@ -28,7 +28,7 @@ class DbRequest:
             self._cursor.execute(
                 self._update, (
                     param['value'],
-                    self._createParamName(param['name'])
+                    self._createParamName(param['name'].value)
                 )
             )
             self._updated_rows += self._cursor.rowcount
@@ -39,7 +39,7 @@ class DbRequest:
     def getValue(self, param):
         self._cursor.execute(
             self._select, (
-                self._createParamName(param),
+                self._createParamName(param.value),
             )
         )
         for row in self._cursor:

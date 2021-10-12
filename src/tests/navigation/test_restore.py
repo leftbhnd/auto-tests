@@ -3,14 +3,14 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, restart
+from src.helpers.config import btn, param, modal, restart
 
 
 @pytest.mark.navigation_restore
 def test_restore(click, openServiceMenu, db):
     db.updateValue([
-        {'name': '/driving/useMap', 'value': False},
-        {'name': '/driving/useRadius', 'value': True}
+        {'name': param.driving.useMap, 'value': False},
+        {'name': param.driving.useRadius, 'value': True}
     ])
     openServiceMenu()
     click(btn.control.restart)

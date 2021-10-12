@@ -3,14 +3,14 @@
 import pytest
 import time
 
-from src.helpers.config import btn, modal, running, restart
+from src.helpers.config import btn, param, modal, running, restart
 
 
 @pytest.mark.navigation_lingvo_bmp
 def test_restore_bmp(click, openServiceMenu, db):
     openServiceMenu()
     db.updateValue([
-        {'name': '/navigation/backMainPoint/', 'value': False}
+        {'name': param.navigation.backMainPoint, 'value': False}
     ])
     click(btn.control.restart)
     click(modal.restart.yes)
