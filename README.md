@@ -17,7 +17,7 @@ pip install xmltodict
 
 `src/helpers/modals/*` - координаты кнопок у соответствующего модального окна
 
-`src/helpers/params/*` - координаты параметров у соответствующего экрана
+`src/helpers/params/*` - enum классы параметров робота
 
 `src/helpers/config.py` - конфигурационный файл проекта (задается разрешение экрана, координаты и так далее)
 
@@ -139,8 +139,8 @@ pip install xmltodict
 - `node.getX()` - методы получения данных с топика
 - `node.XPub(data|empty)` - методы для публикации данных в топик
 - `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()` - методы имитации управления джойстиком
-- `db.updateValue([{'name': str, value: any}])` - метод обновления параметров робота, аргумент: массив объекта(ов) с ключами 'name' и 'value'
-- `db.getValue('/param_group/param_name')` - метод получения значения у указанного параметра, например, '/driving/useRaius'
+- `db.updateValue([{'name': param.X.X, value: any}])` - метод обновления параметров робота, аргумент: массив объекта(ов) с ключами 'name' и 'value'
+- `db.getValue(param.X.X)` - метод получения значения у указанного параметра, например, param.driving.radius = '/driving/useRaius'
 
 #
 
