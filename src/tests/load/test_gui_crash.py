@@ -8,10 +8,11 @@ X seconds
 '''
 
 
-@pytest.mark.load
+@pytest.mark.load_test
 def test_load(click, typeText):
     while True:
         click(btn.start.control)
+        click(modal.pwd.input)
         typeText(123456)
         click(modal.pwd.ok)
         click(btn.control.restart)
