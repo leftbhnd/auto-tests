@@ -64,6 +64,16 @@ def click():
 
 
 @pytest.fixture
+def raw_click():
+    def _method(coords):
+        x = coords[0]
+        y = coords[1]
+        p.leftClick(x, y, _pause=False)
+        time.sleep(default)
+    return _method
+
+
+@pytest.fixture
 def typeText():
     def _method(symbols):
         if type(symbols) != str:
