@@ -18,5 +18,11 @@ def test_get_acquainted(node):
 
 @pytest.mark.unit
 def test_get_not_acquainted(node):
+    node.clearFacePub()
     node.facePub(3, 0, 0, 3, 1.0)
-    assert node.getFaceIsAcquainted() == True
+    assert node.getFaceIsAcquainted() == False
+
+
+@pytest.mark.unit
+def test_reset(node):
+    node.clearFacePub()
