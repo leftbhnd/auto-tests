@@ -70,9 +70,11 @@ class FaceRecognizeService:
         rospy.sleep(self._timeout)
 
     def _faceInfoListener(self, face_info):
-        # можно расширить для нужных ключей топика
+        # [-1] последнее (актуальное) лицо в массиве с лицами
+        face = face_info.faces[-1]
         # type = 1 - распознается / 2 - знаком / 3 - временная база
-        self._face_type = face_info.type
+        self._face_type = face.type
+        # можно дополнить и добавить для других ключей топика /face/info/array
 
     def getFaceIsAcquainted(self):
         if self._face_type == 2:
