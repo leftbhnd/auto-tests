@@ -9,7 +9,7 @@ import rospy
 from datetime import datetime
 from PIL import Image, ImageChops
 from main import AutoTest
-from services.db_request import DbRequest
+#from services.db_request import DbRequest
 from helpers.config import screens_dir, failed_dir, default, screen_resolution, keyboard
 from helpers.messages import JoyCmdMsg
 
@@ -125,7 +125,7 @@ def joy():
     return joy
 
 
-@pytest.fixture
-def db():
-    db = DbRequest()
-    return db
+# @pytest.fixture
+# def db():
+#     db = DbRequest()
+#     return db
