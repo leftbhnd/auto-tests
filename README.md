@@ -105,6 +105,11 @@ pip install psycopg2
 
 #
 
+- `node.getFaceIsAcquainted()` -> True|False = bool
+
+
+#
+
 - `node.getInteraction()` -> [State, Reason] = [bool, int]
 
 #
