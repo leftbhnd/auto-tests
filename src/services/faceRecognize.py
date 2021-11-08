@@ -15,6 +15,16 @@ class FaceRecognizeService:
         self._pub_face_to_faceArray = rospy.Publisher(
             'face/info/array', FaceArray, latch=True, queue_size=10
         )
+        '''
+        subscribers
+        '''
+        rospy.Subscriber(
+            'face/info/array', FaceArray, self._faceInfoListener
+        )
+        '''
+        переменные для геттеров
+        '''
+        self._face_type = 0
 
         self._timeout = 0.5
 
@@ -58,3 +68,14 @@ class FaceRecognizeService:
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
+
+    def _faceInfoListener(self, face_info):
+        # можно расширить для нужных ключей топика
+        # type = 1 - распознается / 2 - знаком / 3 - временная база
+        self._face_type = face_info.type
+
+    def getFaceIsAcquainted(self):
+        if self._face_type == 2:
+            return True
+        else:
+            return False
