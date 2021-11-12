@@ -1,0 +1,8 @@
+enum34==1.1.10
+Pillow==8.4.0
+psycopg2==2.8.6
+PyAutoGUI==0.9.53
+pymouse==1.0
+pytest==6.2.5
+PyUserInput==0.1.11
+requests==2.18.4
