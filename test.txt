@@ -1,0 +1,44 @@
+src/tests/localization/ar_AE/test_b_running_ar.py::test_no_connection_modal PASSED [  3%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_radius_modal PASSED [  4%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_check_run_state PASSED [  6%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_check_run_active PASSED [  7%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_check_run PASSED [  9%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_answer_log PASSED [ 10%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_speech_settings PASSED [ 12%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_testing_script PASSED [ 14%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_main_camera PASSED [ 15%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_face_recognize PASSED [ 17%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_bottom_camera PASSED [ 18%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_fisheye_camera PASSED [ 20%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_periphery_statuses FAILED [ 21%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_record_sound_start PASSED [ 23%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_record_sound_finish PASSED [ 25%]
+src/tests/localization/ar_AE/test_b_running_ar.py::test_restore PASSED   [ 26%]
+
+=================================== FAILURES ===================================
+_______________________________ test_choose_lang _______________________________
+
+click = <function _method at 0x7f069f980bd0>
+typeText = <function _method at 0x7f069f949d50>
+node = <main.AutoTest instance at 0x7f069f831500>
+
+    @pytest.mark.localization_ar_AE
+    def test_choose_lang(click, typeText, node):
+        click(btn.start.control)
+        typeText(123456)
+        click(modal.pwd.ok)
+        click(btn.control.settings)
+        click(btn.settings.lang)
+        click(btn.lang.ar_AE)
+        click(btn.lang.set_default)
+        click(btn.handler.back)
+        click(modal.save.yes)
+        time.sleep(modals)
+        click(btn.handler.back)
+        click(btn.handler.back_ae)
+        click(btn.handler.back_ae)
+        click(btn.handler.reset)
+>       assert node.getSystemLanguage() == 'ar_AE'
+E       AssertionError: assert 'ru_RU' == 'ar_AE'
+E         - ru_RU
+E         + ar_AE

@@ -1,0 +1,10 @@
+enum34==1.1.10
+Pillow==5.1.0
+psycopg2==2.8.6
+PyAutoGUI==0.9.53
+pymouse==1.0
+pytest==4.6.11
+PyUserInput==0.1.11
+PyYAML==3.12
+requests==2.18.4
+rospkg==1.3.0

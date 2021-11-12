@@ -1,16 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-import xmltodict
+import requests
 import json
-import glob, os
-os.chdir("./")
+import re
 
-for file in glob.glob("*.png"):
-    print(file)
+suite = ''
+tests = []
+reg = r'(?<=src/tests/)[\w_/.: ]+(?=[ \d%])'
 
 
-data = open('./test.xml', 'r', encoding='utf-8').read()
+data = open('./test.txt', 'r', encoding='utf-8').read()
+parsed = re.findall(reg, data)
 
-xpars = xmltodict.parse(data)
-test = json.dumps(xpars)
+for line in parsed:
+    line = re.sub(r'::', ' ', line).split()
+    tests.append({'test_name': line[1], 'test_result': line[2]})
+    suite = line[0]
+
+
+result_obj = {'suite': suite, 'test-cases': tests}
+
+payload = json.dumps(result_obj)
+print(payload)
+
+requests.post('http://127.0.0.1/post', data=payload)

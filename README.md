@@ -1,10 +1,8 @@
 # Настройка окружения на ubuntu 18.04
 
 ```
-sudo apt-get install -y python-pytest
-sudo apt-get install -y scrot
-pip install pyautogui
-pip install xmltodict
+запустить скрипт устновки:
+./install.sh
 ```
 
 # Структура проекта:
@@ -104,6 +102,11 @@ pip install xmltodict
 
 #
 
+- `node.getFaceIsAcquainted()` -> True|False = bool
+
+
+#
+
 - `node.getInteraction()` -> [State, Reason] = [bool, int]
 
 #
@@ -180,7 +183,9 @@ def test_restore(click, openServiceMenu):
 ### Подготовка
 
 ```
+source env/bin/activate
 export DISPLAY=:0
+deactivate (Для выхода из окружения в ./auto-tests)
 ```
 
 ### Запуск всех тестов:

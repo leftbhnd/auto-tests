@@ -15,6 +15,16 @@ class FaceRecognizeService:
         self._pub_face_to_faceArray = rospy.Publisher(
             'face/info/array', FaceArray, latch=True, queue_size=10
         )
+        '''
+        subscribers
+        '''
+        rospy.Subscriber(
+            'face/info/array', FaceArray, self._faceInfoListener
+        )
+        '''
+        переменные для геттеров
+        '''
+        self._face_type = 0
 
         self._timeout = 0.5
 
@@ -22,24 +32,16 @@ class FaceRecognizeService:
         face_array = FaceArray()
         face = Face()
         face_score = FaceScore()
-        # имитируем появление нераспознанного лица
-        face.type = 1
-        face.source = 1
+        # публикуем нужное лицо
+        face.type = type
+        face.source = source
         face.is_tracking = True
-        face.track_id = 0
-        face.id = -1
+        face.track_id = track_id
+        face.id = id
         face.gender = 0
         face.age = 0.0
         face.emotion = ''
         face.liveness_type = 0
-        face.persons = []
-        face_array.faces.append(face)
-        self._pub_face_to_faceArray.publish(face_array)
-        # публикуем нужное лицо
-        face.type = type
-        face.is_tracking = True
-        face.track_id = track_id
-        face.id = id
         face_score.source = source
         face_score.personSource = 1
         face_score.id = id
@@ -66,3 +68,16 @@ class FaceRecognizeService:
         face_array.faces.append(face)
         self._pub_face_to_faceArray.publish(face_array)
         rospy.sleep(self._timeout)
+
+    def _faceInfoListener(self, face_info):
+        # [-1] последнее (актуальное) лицо в массиве с лицами
+        face = face_info.faces[-1]
+        # type = 1 - распознается / 2 - знаком / 3 - временная база
+        self._face_type = face.type
+        # можно дополнить и добавить для других ключей топика /face/info/array
+
+    def getFaceIsAcquainted(self):
+        if self._face_type == 2:
+            return True
+        else:
+            return False
