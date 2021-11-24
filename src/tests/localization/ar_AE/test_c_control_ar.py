@@ -28,7 +28,7 @@ def test_control(click, typeText, screenDiffChecker):
     click(modal.pwd.wr_input_ae)
     click(btn.kb.lang)
     typeText(123456)
-    click(modal.pwd.ok_ae)
+    click(modal.pwd.wr_ok_ae)
     assert screenDiffChecker(
         'localization/ar_AE/con_control.png'
     ) is None
