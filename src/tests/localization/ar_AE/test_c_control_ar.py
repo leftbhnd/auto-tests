@@ -25,7 +25,7 @@ def test_con_wrong_pass_modal(click, typeText, screenDiffChecker):
 
 @pytest.mark.localization_ar_AE
 def test_control(click, typeText, screenDiffChecker):
-    click(modal.pwd.input)
+    click(modal.pwd.wr_input_ae)
     click(btn.kb.lang)
     typeText(123456)
     click(modal.pwd.ok_ae)

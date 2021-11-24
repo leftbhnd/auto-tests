@@ -9,6 +9,7 @@ class PasswordModal(enum.Enum):
     wr_input_el = (431, 274)
     wr_input_fi = (400, 273)
     wr_input_pt = (403, 271)
+    wr_input_ae = (838, 284)
     ok = (823, 310)
     wr_ok_de = (832, 328)
     wr_ok_el = (833, 334)
