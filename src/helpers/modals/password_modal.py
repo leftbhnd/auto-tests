@@ -16,6 +16,7 @@ class PasswordModal(enum.Enum):
     wr_ok_pt = (821, 329)
     ok_ae = (443, 315)
     ok_he = (443, 315)
+    ok_el = (828, 338)
     close = (896, 178)
     wr_close_de = (893, 171)
     wr_close_el = (889, 160)
