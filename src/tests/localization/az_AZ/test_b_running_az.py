@@ -17,7 +17,7 @@ def test_no_connection_modal(click, typeText, screenDiffChecker):
     click(btn.control.answers_log)
     click(btn.control.restart)
     click(modal.restart.yes)
-    time.sleep(35)
+    time.sleep(20)
     click(btn.start.play)
     time.sleep(slowly)
     assert screenDiffChecker(
@@ -54,7 +54,7 @@ def test_check_run_active(screenDiffChecker):
 
 @pytest.mark.localization_az_AZ
 def test_check_run(screenDiffChecker):
-    time.sleep(0.6)
+    time.sleep(0.7)
     assert screenDiffChecker(
         'localization/az_AZ/run.png'
     ) is None
