@@ -5,8 +5,7 @@ import pyautogui as p
 
 from datetime import datetime
 from PIL import Image, ImageChops
-from helpers.config import screens_dir, failed_dir, default, screen_resolution, keyboard
-from helpers.messages import JoyCmdMsg
+from src.helpers.config import screens_dir, failed_dir, default, screen_resolution, keyboard
 
 
 class Gui:
