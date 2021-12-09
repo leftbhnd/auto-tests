@@ -9,7 +9,7 @@ from src.helpers.config import screens_dir, failed_dir, default, screen_resoluti
 
 
 class Gui:
-    def screenDiffChecker(original_image, coordinates):
+    def screenDiffChecker(self, original_image, coordinates=screen_resolution):
         p.screenshot(
             screens_dir + 'screen.png', region=coordinates
         )
@@ -36,23 +36,23 @@ class Gui:
             )
         return difference
 
-    def dNd(start, finish):
+    def dNd(self, start, finish):
         p.leftClick(start[0], start[1], 0.5)
         p.dragTo(finish[0], finish[1], 0.5, button='left')
 
-    def click(button):
+    def click(self, button):
         x = button.value[0]
         y = button.value[1]
         p.leftClick(x, y, _pause=False)
         time.sleep(default)
 
-    def raw_click(coords):
+    def raw_click(self, coords):
         x = coords[0]
         y = coords[1]
         p.leftClick(x, y, _pause=False)
         time.sleep(default)
 
-    def typeText(symbols):
+    def typeText(self, symbols):
         if type(symbols) != str:
             p.leftClick(299, 758, _pause=False)
             symbols = str(symbols)
@@ -61,12 +61,12 @@ class Gui:
             y = keyboard[symbol][1]
             p.leftClick(x, y, _pause=False)
 
-    def openPwdModal():
+    def openPwdModal(self):
         for i in range(4):
             p.leftClick(50, 50)
         time.sleep(default)
 
-    def openServiceMenu():
+    def openServiceMenu(self):
         for i in range(4):
             p.leftClick(50, 50)
             p.leftClick(299, 758)
