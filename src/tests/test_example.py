@@ -4,19 +4,16 @@ import pytest
 import time
 
 from src.helpers.config import btn, param, interaction
-'''
-183.89 seconds
-'''
 
 
 @pytest.mark.interaction_interaction
-def test_activate_speech(click, openServiceMenu, db):
+def test_activate_speech(gui, db):
     db.updateValue([
         {'name': param.interaction.startByFace, 'value': 0},
         {'name': param.interaction.updateByFace, 'value': 0}
     ])
-    openServiceMenu()
-    click(btn.handler.back)
+    gui.openServiceMenu()
+    gui.click(btn.handler.back)
     time.sleep(interaction)
 
 
@@ -44,15 +41,15 @@ def test_start_by_face_disabled(node):
 
 
 @pytest.mark.interaction_interaction
-def test_activate_face(click, openServiceMenu, db):
+def test_activate_face(gui, db):
     db.updateValue([
         {'name': param.interaction.startByFace, 'value': 1},
         {'name': param.interaction.updateByFace, 'value': 1},
         {'name': param.interaction.startBySpeech, 'value': 0},
         {'name': param.interaction.updateBySpeech, 'value': 0}
     ])
-    openServiceMenu()
-    click(btn.handler.back)
+    gui.openServiceMenu()
+    gui.click(btn.handler.back)
     time.sleep(interaction)
 
 
@@ -81,13 +78,13 @@ def test_start_by_speech_disabled(node):
 
 
 @pytest.mark.interaction_interaction
-def test_restore(click, openServiceMenu, db):
+def test_restore(gui, db):
     db.updateValue([
         {'name': param.interaction.startByFace, 'value': 1},
         {'name': param.interaction.updateByFace, 'value': 1},
         {'name': param.interaction.startBySpeech, 'value': 1},
         {'name': param.interaction.updateBySpeech, 'value': 1}
     ])
-    openServiceMenu()
-    click(btn.handler.back)
+    gui.openServiceMenu()
+    gui.click(btn.handler.back)
     time.sleep(interaction)
