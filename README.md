@@ -133,12 +133,13 @@
 
 # Фикстуры (вспомогательные функции)
 
-- `screenDiffChecker('dir/original_image', coordinates=screen_resolution)` - создает скриншот текущего экрана, сравнивает с оригиналом. Если нет оригинального скриншота - делает его
-- `dNd((start[0], start[1]), (finish[0], finish[1]))` - функция Drag And Drop
-- `click(btn.X.X|modal.X.X|param.X.X)` - функция клика на указанную координату (кнопку, модальное окно, параметр)
-- `openPwdModal()` - функция, открывающая модальное окно ввода пароля
-- `openServiceMenu()` - функция, открывающая сервисное меню из запущенной gui
-- `typeText('привет'|123456)` - функция печати, если тип аргумента str - печатает текст, если тип аргумента int - сначала выбирается ввод цифр, затем печать цифр
+- `gui` - класс фикстур, содержит в себе методы работы с элементами gui
+- `gui.screenDiffChecker('dir/original_image', coordinates=screen_resolution)` - создает скриншот текущего экрана, сравнивает с оригиналом. Если нет оригинального скриншота - делает его
+- `gui.dNd((start[0], start[1]), (finish[0], finish[1]))` - функция Drag And Drop
+- `gui.click(btn.X.X|modal.X.X|param.X.X)` - функция клика на указанную координату (кнопку, модальное окно, параметр)
+- `gui.openPwdModal()` - функция, открывающая модальное окно ввода пароля
+- `gui.openServiceMenu()` - функция, открывающая сервисное меню из запущенной gui
+- `gui.typeText('привет'|123456)` - функция печати, если тип аргумента str - печатает текст, если тип аргумента int - сначала выбирается ввод цифр, затем печать цифр
 - `node.getX()` - методы получения данных с топика
 - `node.XPub(data|empty)` - методы для публикации данных в топик
 - `joy.upVolume()|downVolume()|upMic()|downMic()|phraseMode()|nextPhrase()|previousPhrase()|autoMode()` - методы имитации управления джойстиком
@@ -159,22 +160,22 @@ from src.helpers.config import btn, modal, running, restart #импорт кно
 
 
 @pytest.mark.interface # маркер для запуска
-def test_dialog_line(click, screenDiffChecker, node): # название тестовой функции с аргументами-фикстурами
-    click(btn.start.play) # клик на кнопку Play на стартовом экране
-    click(modal.radius.yes) # клик на кнопку ДА у модального окна радиуса
+def test_dialog_line(gui, node): # название тестовой функции с аргументами-фикстурами
+    gui.click(btn.start.play) # клик на кнопку Play на стартовом экране
+    gui.click(modal.radius.yes) # клик на кнопку ДА у модального окна радиуса
     time.sleep(running) # таймаут для запуска
     node.cancelSpeechPub() # прерывание текущей реплики робота
     node.asrPub('тестовое правило') # публикация сообщения роботу для распознавания речи
-    assert screenDiffChecker(
+    assert gui.screenDiffChecker(
         'interfaces/dialog_line.png'
     ) is None # сравнение скриншота текущего экрана с оригиналом
 
 
 @pytest.mark.interface
-def test_restore(click, openServiceMenu):
-    openServiceMenu() # фикстура открытия сервисного меню
-    click(btn.control.restart) # клик на кнопку перезапуска на экране "Управление"
-    click(modal.restart.yes) # клик на кнопку ДА у модального окна перезапуска
+def test_restore(gui):
+    gui.openServiceMenu() # фикстура открытия сервисного меню
+    gui.click(btn.control.restart) # клик на кнопку перезапуска на экране "Управление"
+    gui.click(modal.restart.yes) # клик на кнопку ДА у модального окна перезапуска
     time.sleep(restart) # таймаут перезапуска
 ```
 
